@@ -190,13 +190,14 @@ Point Claude to specific workflow files:
 
 ---
 
-### Phase 4: Wordmark (30-45 min)
+### Phase 4: Wordmark (15-30 min)
 
-**Goal:** Pair the mark with typography to create lockup systems.
+**Goal:** Explore typography, get approval, then create lockup systems.
 
 **Process:**
-- Choose font direction (sans, serif, mono)
-- Create horizontal, stacked, and text-only variants
+- Propose 3-4 font candidates with rendered previews
+- Get explicit user approval on font choice (do not skip this)
+- Create horizontal, stacked, and text-only lockup variants
 - Refine alignment through iteration
 - Test in real-world contexts (nav, footer, headers)
 
@@ -205,7 +206,7 @@ Point Claude to specific workflow files:
 - Lockup variants (horizontal, stacked, text-only)
 
 **Example prompt:**
-> "Create wordmark lockups for the final logo"
+> "Start Phase 4. Show me font options for the wordmark before creating any lockups."
 
 ---
 

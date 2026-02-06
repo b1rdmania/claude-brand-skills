@@ -4,7 +4,7 @@ Pair the mark with typography to create complete logo lockups.
 
 ## Time
 
-10-20 minutes.
+15-30 minutes (includes font exploration).
 
 ## Prerequisites
 
@@ -28,21 +28,59 @@ wc -c [brand]-mark-final.svg
 
 ## Process
 
-### 1. Pick Typography
+### 1. Font Exploration (Required — Do Not Skip)
 
-Match font to brand personality:
+**This step must produce user-approved typography before any lockup work begins.**
 
-| Personality | Font Direction |
-|-------------|----------------|
-| Technical/Dev | Monospace (JetBrains Mono, SF Mono) |
-| Modern/Neutral | Geometric sans (Inter, Geist) |
-| Enterprise | Neutral sans (Inter, Helvetica) |
-| Friendly | Humanist sans (Work Sans) |
-| Premium | Light weight sans or serif |
+The previous audit found that skipping font exploration leads to wordmarks in fonts the user never chose. Do not default to Inter or any other font without presenting options first.
 
-**Safe defaults:**
-- **Inter** — Works everywhere, very legible
-- **JetBrains Mono** — Developer/technical feel
+#### Step 1a: Propose 3-4 Candidates
+
+Based on the brand personality from Phases 0-1, propose 3-4 font candidates across different directions:
+
+| Personality | Font Direction | Examples |
+|-------------|----------------|----------|
+| Technical/Dev | Monospace | JetBrains Mono, SF Mono, IBM Plex Mono |
+| Modern/Neutral | Geometric sans | Inter, Geist, DM Sans |
+| Enterprise | Neutral sans | Inter, Helvetica Neue, Source Sans |
+| Friendly | Humanist sans | Work Sans, Nunito, Lato |
+| Premium | Light weight sans or serif | Outfit, Satoshi, Fraunces |
+| Editorial | Serif | Newsreader, Lora, Playfair Display |
+
+Present each candidate with:
+- Name and classification
+- Why it fits the brand personality
+- Weight recommendation (e.g., 400 body, 500 headings)
+- Any concerns (licensing, web availability, legibility at small sizes)
+
+#### Step 1b: Render Font Previews
+
+**Create a preview SVG for each candidate** showing the brand name in that font:
+
+```svg
+<svg viewBox="0 0 400 48" xmlns="http://www.w3.org/2000/svg">
+  <text x="16" y="36" font-family="[FONT], sans-serif" font-size="28" font-weight="[WEIGHT]" fill="#e4e1e8">
+    brandname
+  </text>
+</svg>
+```
+
+Render each preview:
+```bash
+rsvg-convert -w 512 font-preview-[font].svg -o font-preview-[font].png
+```
+
+Present all previews side by side. If rsvg-convert doesn't have the font, note that the preview is approximate and describe the font's character.
+
+#### Step 1c: Get Explicit Approval
+
+Ask the user which font direction they prefer:
+
+> **"Here are 3-4 typography options for the wordmark. Which direction do you want to explore? Or should I try different candidates?"**
+
+**Do not proceed to Step 2 until the user has chosen a font direction.**
+
+If the user says "you pick" or similar, explain that typography choice significantly affects brand perception and present the trade-offs more concretely. If they still defer, pick the one that best matches the emotive narrative and state your choice explicitly: "Going with [Font] at [weight] because [reason]. Speak up if that's wrong."
 
 ### 2. Create Variants
 
@@ -255,6 +293,7 @@ Never present SVG code as the final result. Always show the rendered output.
 
 ## Pitfalls
 
+- **Skipping font exploration** — The most common failure. Never default to a font without user approval. Delivering wordmarks in unapproved fonts means the kit is incomplete.
 - **Mathematical vs optical** — Centered by numbers often looks wrong
 - **Too tight** — Need breathing room
 - **Mismatched weight** — Mark should feel balanced with text
