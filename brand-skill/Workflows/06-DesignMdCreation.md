@@ -819,15 +819,11 @@ DESIGN.md is a living document:
 
 ## Gate Check
 
-Before moving to Phase 7 (Packaging), validate:
-
-1. **Completeness:** All 8 sections filled out thoroughly
-2. **Coherence:** Each section connects to the narrative
-3. **Usability:** Can a new designer/developer use this immediately?
-4. **Accuracy:** All code snippets are copy-paste ready
-5. **Clarity:** No ambiguous "use your judgment" without guidance
-
-Get user approval on the complete DESIGN.md before packaging.
+1. Validate completeness (all 8 sections), coherence, usability, accuracy, and clarity
+2. Present the DESIGN.md to the user (or a summary of all sections)
+3. Ask: **"Phase 6 Gate Check — DESIGN.md has all 8 sections complete. Approved to proceed to Phase 7: Packaging?"**
+4. On approval: update `.brand-progress.md` → Phase 6: COMPLETE
+5. Only proceed to Phase 7 when user explicitly approves
 
 ---
 

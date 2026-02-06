@@ -173,11 +173,12 @@ Names the aesthetic movement and describes how it manifests:
 - `[brand]-philosophy.md`
 - `[brand]-visual-philosophy.md`
 
-## Gate
+## Gate Check
 
-Get explicit approval before moving to visuals:
-
-> "Does this direction feel right?"
+1. Present the philosophy and visual philosophy docs to the user
+2. Ask: **"Phase 1 Gate Check — Does this direction feel right? Approved to proceed to Phase 2: Visual Direction?"**
+3. On approval: update `.brand-progress.md` → Phase 1: COMPLETE
+4. Only proceed to Phase 2 when user explicitly approves
 
 ---
 

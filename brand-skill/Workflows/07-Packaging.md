@@ -168,6 +168,15 @@ If they need to ask questions, documentation is incomplete.
 
 ---
 
+## Gate Check
+
+1. Verify all files are present (run the checklist above)
+2. Present the kit contents to the user
+3. Ask: **"Phase 7 Gate Check — Brand kit packaged with all assets. Process complete?"**
+4. On approval: update `.brand-progress.md` → Phase 7: COMPLETE
+
+---
+
 ## Outputs
 
 - `~/Downloads/[brand]-brand-kit/`

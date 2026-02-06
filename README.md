@@ -27,19 +27,26 @@ The **brand-skill** is a complete **7-phase system** for building professional b
 
 **Starts with emotion, not visuals.** Phase 0 creates an emotive narrative that gives LLMs deep memory — preventing generic "clean and modern" drift.
 
+**Accounts for LLM blindness.** Phase 3 uses bitmap tracing (vtracer) as the primary path for logo development — because LLMs can't see their own SVG output. Render-verify loops and iteration limits prevent endless blind refinement.
+
+**Orchestrated with state tracking.** A progress file (`.brand-progress.md`) persists across conversations, enforcing sequential phase completion with explicit gate checks.
+
 **Result:** Brands that are coherent, distinctive, and impossible to confuse with AI slop.
 
 ### Process Overview
 
 ```
-Phase 0: Emotive Narrative  ⭐ NEW → Soul of the brand in beautiful language
-Phase 1: Discovery          → Strategic foundation & positioning
-Phase 2: Visual Direction   → Reference images exploring directions
-Phase 3: Mark Development   → Iterative logo design (SVG)
-Phase 4: Wordmark          → Typography and lockups
-Phase 5: Design System     ⭐ UPDATED → Complete system (web + iOS)
-Phase 6: DESIGN.md         ⭐ NEW → Consolidate everything to master file
-Phase 7: Packaging         → Final deliverable kit
+          00-Orchestrator.md    → Read first. Tracks phase state.
+          TOOLS-REQUIRED.md     → Verify prerequisites before starting.
+
+Phase 0: Emotive Narrative     → Soul of the brand in beautiful language
+Phase 1: Discovery             → Strategic foundation & positioning
+Phase 2: Visual Direction      → Reference images exploring directions
+Phase 3: Mark Development      → Logo via tracing (vtracer) or hand-coded SVG
+Phase 4: Wordmark              → Typography and lockups
+Phase 5: Design System         → Complete system (web + iOS)
+Phase 6: DESIGN.md             → Consolidate everything to master file
+Phase 7: Packaging             → Final deliverable kit
 ```
 
 ### Final Output
@@ -102,6 +109,23 @@ Point Claude to specific workflow files:
 
 ## 📖 Brand Development Detailed Guide
 
+### Phase 0: Emotive Narrative (10-15 min)
+
+**Goal:** Capture the soul of the brand in evocative language before any strategic work.
+
+**Process:**
+- Write a short narrative that captures the feeling of using the product
+- Focus on sensory language, metaphor, and emotional resonance
+- This becomes the "north star" that prevents generic drift in later phases
+
+**Outputs:**
+- `[brand]-emotive-narrative.md` — The brand's soul in prose
+
+**Example prompt:**
+> "Start Phase 0 of the brand process. Write an emotive narrative for [project] — it should feel like [adjectives]."
+
+---
+
 ### Phase 1: Discovery (15-20 min)
 
 **Goal:** Establish strategic foundation before any visual work.
@@ -136,14 +160,19 @@ Point Claude to specific workflow files:
 
 ---
 
-### Phase 3: Mark Development (45-90 min)
+### Phase 3: Mark Development (20-60 min)
 
-**Goal:** Iterate on the logo through SVG code. Typically 15-30 versions.
+**Goal:** Develop the logo mark through tracing or hand-coded SVG.
+
+**Two paths:**
+- **Path A (Primary):** Generate reference image → trace to SVG with vtracer → refine
+- **Path B:** Hand-code simple geometric marks directly in SVG
 
 **Process:**
-- Create initial batch (v1-v5) exploring chosen direction
-- Present options with descriptions
-- Get feedback, refine iteratively
+- Generate or source a reference image
+- Trace to SVG (vtracer or freeconvert.com)
+- Render and verify at multiple sizes (rsvg-convert)
+- Refine with iteration limit: 5-8 rounds, then pivot
 - Test at favicon sizes (32px, 16px)
 - Lock final version
 
@@ -152,12 +181,12 @@ Point Claude to specific workflow files:
 - Favicon PNG exports
 
 **Example prompt:**
-> "Start Phase 3. Create 5 initial logo variations based on the [direction] we chose"
+> "Start Phase 3. I have a reference image at [path]. Trace it and let's refine from there."
 
 **Tips:**
-- Don't expect perfection on version 1
-- Version 15 is usually much better than version 3
-- Always test at small sizes — if it falls apart, simplify
+- LLMs can't see SVG output — always render to PNG before presenting
+- If refinement isn't converging after 5-8 rounds, change approach
+- Use freeconvert.com as a fallback for tracing
 
 ---
 
@@ -199,7 +228,24 @@ Point Claude to specific workflow files:
 
 ---
 
-### Phase 6: Packaging (10-15 min)
+### Phase 6: DESIGN.md Creation (15-20 min)
+
+**Goal:** Consolidate everything into a single master reference document.
+
+**Process:**
+- Pull from all previous phase outputs
+- Create comprehensive DESIGN.md with brand narrative, visual system, and implementation specs
+- Single-source-of-truth for anyone implementing the brand
+
+**Outputs:**
+- `DESIGN.md` — Complete brand reference document
+
+**Example prompt:**
+> "Create the DESIGN.md consolidating everything from Phases 0-5"
+
+---
+
+### Phase 7: Packaging (10-15 min)
 
 **Goal:** Package everything for delivery or handoff.
 
@@ -300,13 +346,17 @@ Provides aesthetic guidelines to avoid generic "AI slop" patterns.
 ├── README.md                          ← You are here
 ├── brand-skill/
 │   ├── SKILL.md                       # Main skill definition
+│   ├── 00-Orchestrator.md             # Phase state tracker (read first)
+│   ├── TOOLS-REQUIRED.md              # Prerequisites checklist
 │   ├── Workflows/
+│   │   ├── 00-EmotiveNarrative.md
 │   │   ├── 01-Discovery.md
 │   │   ├── 02-VisualDirection.md
-│   │   ├── 03-MarkDevelopment.md
+│   │   ├── 03-MarkDevelopment.md      # Tracing-first logo workflow
 │   │   ├── 04-Wordmark.md
 │   │   ├── 05-DesignSystem.md
-│   │   └── 06-Packaging.md
+│   │   ├── 06-DesignMdCreation.md
+│   │   └── 07-Packaging.md
 │   ├── Templates/                     # Reusable templates
 │   │   ├── philosophy-template.md
 │   │   ├── visual-philosophy-template.md
@@ -392,20 +442,28 @@ This skills library was used to create:
    - Shows warm infrastructure aesthetic
    - Dense, functional design language
 
-Both examples show the full 6-phase process in action.
+Both examples show the full 8-phase process in action.
 
 ---
 
 ## 🛠️ Dependencies
 
-### Required
+### Brand Skill
+
+See `brand-skill/TOOLS-REQUIRED.md` for full details. Key requirements:
+
+- **Required:** `rsvg-convert` (librsvg) — `brew install librsvg`
+- **Recommended:** `vtracer` for PNG→SVG tracing — `cargo install vtracer`
+- **Recommended:** `svgo` for SVG optimization — `npm install -g svgo`
+- **Fallback:** freeconvert.com for browser-based tracing
+
+### General
 - Claude Code CLI (for running workflows)
 - Access to Claude API (Sonnet 4.5 or Opus 4.5)
 
-### Optional
-- `librsvg` (for SVG to PNG conversion) — `brew install librsvg`
-- Google Gemini API key (for art skill image generation)
-- Vercel account (for deploying results)
+### Art Skill (Optional)
+- Google Gemini API key (for image generation)
+- Bun runtime (for Generate.ts)
 
 ---
 
@@ -438,5 +496,5 @@ These workflows are personal tools. Use them for your own projects, modify them 
 ---
 
 **Last Updated:** February 2026
-**Version:** 1.0
+**Version:** 1.1
 **Created by:** Andy (with Claude Code)

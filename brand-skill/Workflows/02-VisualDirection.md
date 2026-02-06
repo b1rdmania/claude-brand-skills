@@ -131,9 +131,12 @@ bun run ... --prompt "Abstract logo: broken circle with connector bridging the g
 
 - Reference images (typically 4-8 PNGs)
 
-## Gate
+## Gate Check
 
-User confirms direction before SVG iteration starts.
+1. Present the chosen reference images / direction to the user
+2. Ask: **"Phase 2 Gate Check — Direction confirmed as [chosen direction]. Approved to proceed to Phase 3: Mark Development?"**
+3. On approval: update `.brand-progress.md` → Phase 2: COMPLETE
+4. Only proceed to Phase 3 when user explicitly approves
 
 ---
 

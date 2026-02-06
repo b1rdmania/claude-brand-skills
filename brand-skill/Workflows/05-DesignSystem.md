@@ -27,6 +27,14 @@ Before finalizing the design system, validate against these principles:
 
 ---
 
+## Important: Template Colors
+
+The hex values in this workflow are from the **Sorted.fund** example brand. They are illustrative — do not copy them into your brand. Replace ALL color values with your brand's palette derived from Phases 0-2 (emotive narrative and visual philosophy).
+
+The same applies to font choices (Inter, JetBrains Mono) — these are Sorted defaults. Choose fonts that match your brand's personality.
+
+---
+
 ## Process
 
 ### 1. Colors
@@ -659,13 +667,10 @@ Before declaring this phase complete, validate:
 
 ## Gate Check
 
-Review system with user:
-- Show color palette in context
-- Demonstrate typography hierarchy
-- Walk through key components
-- Validate it "feels right" for the brand
-
-Get explicit approval before Phase 6.
+1. Present the color palette, typography hierarchy, and key components to the user
+2. Ask: **"Phase 5 Gate Check — Design system covers colors, type, spacing, and components. Approved to proceed to Phase 6: DESIGN.md Creation?"**
+3. On approval: update `.brand-progress.md` → Phase 5: COMPLETE
+4. Only proceed to Phase 6 when user explicitly approves
 
 ---
 

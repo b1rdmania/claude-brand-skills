@@ -9,6 +9,20 @@ Pair the mark with typography to create complete logo lockups.
 ## Prerequisites
 
 - Mark locked from Phase 3
+- Know whether the mark is **hand-coded** (clean SVG, few paths) or **traced** (complex paths from vtracer/freeconvert)
+
+---
+
+## Mark Complexity Check
+
+Before starting, check the mark file:
+
+```bash
+wc -c [brand]-mark-final.svg
+```
+
+- **Under ~5KB:** Clean/hand-coded. Embed directly into lockup SVGs (standard approach below).
+- **Over ~5KB:** Likely traced with complex paths. Use the "Working with Traced Marks" section.
 
 ---
 
@@ -153,15 +167,89 @@ Treats it as unified word.
 
 ---
 
+## Working with Traced Marks
+
+When the mark SVG is complex (traced from bitmap, dozens of paths, 10KB+), embedding it directly into a lockup SVG is impractical. Use one of these approaches:
+
+### Approach 1: Group Reference (Simple)
+
+Keep the mark paths in a `<g>` group and scale/translate the entire group:
+
+```svg
+<svg viewBox="0 0 [WIDTH] 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Mark: scaled down from original viewBox -->
+  <g transform="translate([X], [Y]) scale(0.4)">
+    <!-- Paste all mark paths here -->
+  </g>
+
+  <!-- Text -->
+  <text x="[X]" y="[Y]" font-family="Inter, sans-serif" font-size="24" font-weight="500" fill="#e4e1e8">
+    brandname
+  </text>
+</svg>
+```
+
+The `scale()` factor depends on the mark's original viewBox vs the lockup height. Calculate: `target_height / original_viewBox_height`.
+
+### Approach 2: Bitmap Lockup → Re-trace
+
+When the SVG is too unwieldy to embed:
+
+1. Render the mark to PNG at the size needed for the lockup
+2. Create the wordmark text as a separate SVG, render to PNG
+3. Composite them together at the bitmap level (ImageMagick):
+   ```bash
+   # Render mark at lockup size
+   rsvg-convert -h 48 [brand]-mark-final.svg -o mark-for-lockup.png
+
+   # Create text SVG and render
+   rsvg-convert -h 48 text-only.svg -o text-for-lockup.png
+
+   # Composite horizontally with gap
+   magick mark-for-lockup.png text-for-lockup.png +append -gravity center [brand]-wordmark-composite.png
+   ```
+4. If you need the lockup as SVG, trace the composite:
+   ```bash
+   vtracer --input [brand]-wordmark-composite.png --output [brand]-wordmark-final.svg
+   ```
+
+### Approach 3: Text-Only SVG + Separate Mark
+
+Create lockups as instructions rather than single files:
+- `[brand]-mark-final.svg` — The mark
+- `[brand]-wordmark-textonly.svg` — Just the text
+- Usage docs: "Place mark left, text right, gap of Xpx, vertically centered"
+
+This is pragmatic when the combined SVG would be impractically large.
+
+---
+
+## Render and Verify
+
+**After every lockup version, render and present:**
+
+```bash
+rsvg-convert -w 512 [brand]-wordmark-v1.svg -o wordmark-v1-preview.png
+open wordmark-v1-preview.png
+```
+
+Never present SVG code as the final result. Always show the rendered output.
+
+---
+
 ## Outputs
 
 - `[brand]-wordmark-final.svg` — Primary horizontal
 - `[brand]-wordmark-short.svg` — Compact variant
 - `[brand]-wordmark-stacked.svg` — If needed
 
-## Gate
+## Gate Check
 
-User confirms alignment and variants.
+1. Render all wordmark variants at 512px width
+2. Present renders to the user
+3. Ask: **"Phase 4 Gate Check — Wordmark lockups rendered above. Approved to proceed to Phase 5: Design System?"**
+4. On approval: update `.brand-progress.md` → Phase 4: COMPLETE
+5. Only proceed to Phase 5 when user explicitly approves
 
 ---
 

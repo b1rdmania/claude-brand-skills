@@ -23,17 +23,19 @@ Build complete brand identities that are coherent, distinctive, and impossible t
 ```
 brand-skill/
 ├── SKILL.md                      # Overview and routing (you are here)
+├── 00-Orchestrator.md            # Master phase tracker — READ FIRST
+├── TOOLS-REQUIRED.md             # Prerequisites checklist
 ├── Workflows/
-│   ├── 00-EmotiveNarrative.md    # Soul of the brand (NEW)
+│   ├── 00-EmotiveNarrative.md    # Soul of the brand
 │   ├── 01-Discovery.md            # Strategy and positioning
 │   ├── 02-VisualDirection.md      # Reference exploration
-│   ├── 03-MarkDevelopment.md      # Logo iteration
+│   ├── 03-MarkDevelopment.md      # Logo via tracing or hand-coding
 │   ├── 04-Wordmark.md             # Typography and lockups
 │   ├── 05-DesignSystem.md         # Complete system (web + iOS)
-│   ├── 06-DesignMdCreation.md     # Consolidate to DESIGN.md (NEW)
+│   ├── 06-DesignMdCreation.md     # Consolidate to DESIGN.md
 │   └── 07-Packaging.md            # Final delivery
 ├── Templates/
-│   ├── DESIGN-template.md         # Comprehensive DESIGN.md template (NEW)
+│   ├── DESIGN-template.md         # Comprehensive DESIGN.md template
 │   ├── philosophy-template.md
 │   ├── visual-philosophy-template.md
 │   ├── design-guidelines-template.md
@@ -43,6 +45,13 @@ brand-skill/
 ```
 
 ---
+
+## Getting Started
+
+**Before anything else:**
+1. Read `00-Orchestrator.md` — controls phase progression and state tracking
+2. Read `TOOLS-REQUIRED.md` — verify prerequisites (rsvg-convert, vtracer, etc.)
+3. Create `.brand-progress.md` in the project directory
 
 ## Triggers
 
@@ -102,14 +111,16 @@ brand-skill/
 ---
 
 ### Phase 3: Mark Development
-**Iterate on logo through SVG sketches**
+**Develop logo via tracing or hand-coded SVG**
 
 **Output:** `[brand]-mark-final.svg`, favicon PNG
-- 15-30 iterations typical
+- **Primary path:** Generate reference → trace to SVG (vtracer) → refine
+- **Secondary path:** Hand-code simple geometric marks
+- Render-verify loop after every change (rsvg-convert)
+- Iteration limit: 5-8 rounds, then pivot approach
 - Test at favicon sizes (32px, 16px)
-- Lock final version
 
-**Time:** 45-90 minutes
+**Time:** 20-60 minutes
 
 ---
 
@@ -276,32 +287,28 @@ Avoid generic patterns: purple-blue gradients, overly rounded shapes, meaningles
 
 ## Dependencies
 
+**See `TOOLS-REQUIRED.md` for the complete checklist with installation commands.**
+
+### Required
+
+- **rsvg-convert** (librsvg) — SVG→PNG rendering for the render-verify loop
+
+### Recommended
+
+- **vtracer** — PNG→SVG tracing (primary path for Phase 3 mark development)
+- **svgo** — SVG optimization (cleaning up traced output)
+
+### Fallback
+
+- **freeconvert.com** — Browser-based PNG→SVG conversion when vtracer is unavailable
+
 ### Image Generation (Optional)
 
-Phase 2 can use AI image generation for reference exploration. Options:
+Phase 2 can use AI image generation for reference exploration:
 
 1. **Art skill** — If you have the Art skill installed, use its Generate.ts tool
 2. **Manual references** — User provides mood board images or links
-3. **Skip to SVG** — Go directly to Phase 3, iterate on concepts through code
-
-If skipping image generation, start Phase 3 with more initial variations (8-10 instead of 4-5).
-
-### SVG to PNG Conversion
-
-For favicon generation, you need `rsvg-convert`:
-
-```bash
-# macOS
-brew install librsvg
-
-# Ubuntu/Debian
-sudo apt-get install librsvg2-bin
-
-# Check installation
-rsvg-convert --version
-```
-
-**Alternative:** If unavailable, use online converter or ask user to export.
+3. **Skip to SVG** — Go directly to Phase 3 with more initial variations
 
 ### Fonts
 

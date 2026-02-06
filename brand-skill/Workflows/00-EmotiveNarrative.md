@@ -374,9 +374,10 @@ When unsure about a design decision: "Does this make our infrastructure more vis
 
 ## Gate Check
 
-Before proceeding to Phase 1, get confirmation:
-
-> "Does this capture the soul of what we're building? Does it feel true?"
+1. Present the complete emotive narrative to the user
+2. Ask: **"Phase 0 Gate Check — Does this capture the soul of what we're building? Approved to proceed to Phase 1: Discovery?"**
+3. On approval: update `.brand-progress.md` → Phase 0: COMPLETE
+4. Only proceed to Phase 1 when user explicitly approves
 
 Only move forward when the narrative resonates.
 
