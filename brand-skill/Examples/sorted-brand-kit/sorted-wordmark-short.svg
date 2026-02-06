@@ -1,0 +1,12 @@
+<svg viewBox="0 0 190 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Wordmark short: Mark + "sorted" only (same alignment as v2d) -->
+
+  <!-- Mark -->
+  <g transform="translate(4, 6)">
+    <path d="M4 28 Q 14 40, 22 28 Q 30 16, 38 22" stroke="#52505a" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <circle cx="38" cy="22" r="5.5" fill="#22c55e"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="58" y="36" font-family="Inter, -apple-system, sans-serif" font-size="24" font-weight="500" letter-spacing="-0.01em" fill="#e4e1e8">sorted</text>
+</svg>

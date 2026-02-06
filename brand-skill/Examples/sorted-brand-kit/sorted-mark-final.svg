@@ -1,0 +1,6 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sorted.fund - Final Mark (v27) -->
+  <!-- Wave flow with green terminal dot -->
+  <path d="M8 40 Q 22 56, 32 40 Q 42 24, 52 34" stroke="#52505a" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <circle cx="52" cy="34" r="7" fill="#22c55e"/>
+</svg>

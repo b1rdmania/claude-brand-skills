@@ -1,0 +1,16 @@
+# System files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+.cache/
+
+# Node modules (if any tools need them)
+node_modules/
