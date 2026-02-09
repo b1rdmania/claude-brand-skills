@@ -141,18 +141,20 @@ Mark width + gap + text width + padding
 
 ## Typography Settings
 
-**Inter (default):**
+These are **reference ranges**, not defaults. Use the font chosen in Step 1 above.
+
+**Sans-serif (geometric/humanist):**
 ```
-font-family: "Inter", -apple-system, sans-serif
+font-family: "[Chosen Font]", -apple-system, sans-serif
 font-size: 22-28px
 font-weight: 500
 letter-spacing: -0.01em to -0.02em
 ```
 
-**JetBrains Mono (technical):**
+**Monospace (if chosen):**
 ```
-font-family: "JetBrains Mono", monospace
-font-size: 20-24px (runs wider)
+font-family: "[Chosen Mono Font]", monospace
+font-size: 20-24px (monospace runs wider)
 font-weight: 400
 letter-spacing: 0 to 0.02em
 ```

@@ -44,7 +44,7 @@ Create `DESIGN.md` — a complete, living document that contains:
 
 ## Structure
 
-DESIGN.md has **8 major sections:**
+DESIGN.md has **9 major sections:**
 
 ```
 # [Brand]: Design System
@@ -63,6 +63,9 @@ DESIGN.md has **8 major sections:**
 
 ## 5. Design Tokens
    Colors, typography, spacing (web + iOS)
+
+## 5.5. Compositional Identity
+   Structure, spatial logic, signature devices, anti-references (Phase 5.5)
 
 ## 6. Components
    UI patterns and implementation (web + iOS)
@@ -314,7 +317,7 @@ Maintain clear space equal to [X]px around all sides of the mark.
   --red: {RED};
 
   /* Brand Accents */
-  --copper: {BRAND_ACCENT};
+  --accent: {BRAND_ACCENT};
 }
 ```
 
@@ -322,7 +325,7 @@ Maintain clear space equal to [X]px around all sides of the mark.
 - **Green ({GREEN}):** Success, active states, CTAs — functional, not decorative
 - **Amber ({AMBER}):** Warnings, pending states
 - **Red ({RED}):** Errors, critical states
-- **Copper ({BRAND_ACCENT}):** Premium accents, brand moments
+- **Accent ({BRAND_ACCENT}):** Premium accents, brand moments
 
 #### iOS (Swift)
 
@@ -415,6 +418,36 @@ Text("Content")
 **iOS Touch Targets:**
 Minimum 44x44pt per Apple HIG
 ```
+
+---
+
+### Section 5.5: Compositional Identity
+
+**Source:** Phase 5.5 compositional identity documentation
+
+**Include the surviving composition framework:**
+
+**Format as:**
+```markdown
+## 5.5. Compositional Identity
+
+### Structure
+[How sections are organized — e.g., "full-viewport scroll-snap rooms" or "asymmetric editorial columns"]
+
+### What This Brand Fights
+[Named conventions this brand deliberately violates — e.g., "card grids, centered layouts, even spacing"]
+
+### Signature Devices
+[1-2 visual devices unique to this brand — e.g., "exposed baseline grids," "dimension line annotations"]
+
+### Spatial Logic
+[How space is used — e.g., "generous vertical space between sections, dense within sections"]
+
+### Anti-References
+[What this brand must never look like — specific sites/patterns to avoid]
+```
+
+**If Phase 5.5 was skipped:** Note that no compositional identity was established and the brand relies on tokens alone. This is a known limitation — the brand may converge to generic layouts.
 
 ---
 
