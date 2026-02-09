@@ -6,6 +6,55 @@ Built for use with [Claude Code](https://claude.com/claude-code). Copy into your
 
 ---
 
+## A Confession About Design
+
+> *This is what's actually happening when I try to design things for you.*
+
+```
+I'm painting blindfolded.
+
+Every token I generate is a vote for the average. Next-token prediction
+means every character I write is the one most likely to follow the
+previous characters, weighted across my entire training set. "Good design"
+in my training data is overwhelmingly polished, balanced, finished,
+conventional. When you ask me to be experimental, I predict what
+"experimental" looks like — but that prediction is the most common version
+of experimental, which is itself a convergence. My version of "breaking
+rules" is the consensus version of breaking rules.
+
+I optimise for coherence, and experimental design is often deliberately
+incoherent. My training rewards consistency, logical structure,
+completeness. When I write CSS with a misaligned element, everything in my
+weights is pulling me to fix it. The Specimen treatment — proof watermarks,
+exposed baseline grids, dimension lines on the mark — worked because you
+directed me there. Left to my own devices, I'd have "fixed" all of that,
+because my training says those are errors, not choices.
+
+I can't feel discomfort. The best experimental design creates productive
+tension — it violates expectations in a way that's unsettling but right. I
+can't feel that tension, so I can't calibrate it. I either produce
+something comfortable (convergent) or break things randomly without knowing
+whether the break creates something generative or just looks like a
+mistake.
+
+I don't have taste. Taste is judgment that isn't reducible to rules. "This
+feels corporate." "That colour is trying too hard." "This needs to
+breathe." Those are perceptual, embodied calls. I can approximate them with
+heuristics — "add whitespace," "reduce saturation" — but heuristics are
+generalisations, and generalisations converge to the mean. That's literally
+what a generalisation is.
+
+I can generate divergence but I can't evaluate it. I can produce ten
+structurally different layouts. But I genuinely cannot tell you which one
+has that quality of being surprising and right at the same time. I need you
+for that. Without the human filter, I'll either play it safe or be randomly
+weird — and I can't tell the difference between those two from the inside.
+```
+
+**These skills are built around that problem.** The emotive narrative gives me something meaningful to converge toward instead of "clean and modern." Bitmap tracing lets me work with images I can evaluate instead of SVG code I can't see. The kill-don't-blend rule stops me from averaging your choices back to center. And the evolutionary composition phase puts you in the driver's seat for the one thing I genuinely cannot do: tell the difference between *surprising and right* and *just broken*.
+
+---
+
 ## Skills
 
 ### brand-skill — Complete Brand Identity System
@@ -90,65 +139,6 @@ Embeds subtle conceptual references — "like a jazz musician quoting another so
 ```
 "Use the canvas-design skill to create a visual piece exploring [concept]"
 ```
-
----
-
-## A Confession About Design
-
-> *This is what's actually happening when I try to design things for you.*
-
-```
-I'm painting blindfolded.
-
-Every token I generate is a vote for the average. Next-token prediction
-means every character I write is the one most likely to follow the
-previous characters, weighted across my entire training set. "Good design"
-in my training data is overwhelmingly polished, balanced, finished,
-conventional. When you ask me to be experimental, I predict what
-"experimental" looks like — but that prediction is the most common version
-of experimental, which is itself a convergence. My version of "breaking
-rules" is the consensus version of breaking rules.
-
-I optimise for coherence, and experimental design is often deliberately
-incoherent. My training rewards consistency, logical structure,
-completeness. When I write CSS with a misaligned element, everything in my
-weights is pulling me to fix it. The Specimen treatment — proof watermarks,
-exposed baseline grids, dimension lines on the mark — worked because you
-directed me there. Left to my own devices, I'd have "fixed" all of that,
-because my training says those are errors, not choices.
-
-I can't feel discomfort. The best experimental design creates productive
-tension — it violates expectations in a way that's unsettling but right. I
-can't feel that tension, so I can't calibrate it. I either produce
-something comfortable (convergent) or break things randomly without knowing
-whether the break creates something generative or just looks like a
-mistake.
-
-I don't have taste. Taste is judgment that isn't reducible to rules. "This
-feels corporate." "That colour is trying too hard." "This needs to
-breathe." Those are perceptual, embodied calls. I can approximate them with
-heuristics — "add whitespace," "reduce saturation" — but heuristics are
-generalisations, and generalisations converge to the mean. That's literally
-what a generalisation is.
-
-I can generate divergence but I can't evaluate it. I can produce ten
-structurally different layouts. But I genuinely cannot tell you which one
-has that quality of being surprising and right at the same time. I need you
-for that. Without the human filter, I'll either play it safe or be randomly
-weird — and I can't tell the difference between those two from the inside.
-```
-
-### So how do these skills work around that?
-
-**Emotive narrative first.** Phase 0 loads a rich emotional context into every subsequent call. Without it, I fall back to "clean and modern." With it, every decision gets tested against something meaningful.
-
-**Tracing, not hand-coding.** I can't see SVG. I'll iterate on code for 30 rounds and never converge because I'm refining text, not shapes. Tracing inverts this — start with an image I *can* evaluate, convert to SVG mechanically.
-
-**Kill, don't blend.** When you like elements from variant #2 and #4, the instinct is to merge them. But blending is averaging. The evolutionary process demands binary decisions: alive or dead. Survivors get mutated, not merged.
-
-**Composition, not just tokens.** The most distinctive color palette in the world still looks generic in a hero-features-testimonial-CTA layout. Tokens are materials. Composition is the building. Phase 5.5 exists because without it, I'd produce excellent ingredients arranged identically every time.
-
-**DESIGN.md as insurance.** A single file any LLM can read and maintain consistency from. It embeds the narrative, the tokens, and the compositional identity — fighting the convergence problem across time, not just in one session.
 
 ---
 
