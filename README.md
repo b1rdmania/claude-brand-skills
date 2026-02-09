@@ -1,501 +1,300 @@
-# Claude Skills Library
+# Claude Brand Skills
 
-**A reusable collection of specialized workflows for brand development, image generation, and design work.**
-
-Created for use with Claude Code and exportable to any project.
+**A complete system for building distinctive brand identities with LLMs — designed around the limitations of LLMs.**
 
 ---
 
-## 📦 What's Inside
+## The Problem This Solves
 
-This skills library contains four specialized skill systems:
+LLMs generate output by predicting the most probable next token. This is a statistical averaging operation. The output doesn't *drift* toward the average — it **starts there**, because the average is what the mechanism is optimized to find.
 
-| Skill | Purpose | When to Use |
-|-------|---------|-------------|
-| **brand-skill** | Complete brand identity development | Building a brand from scratch: logo, design system, guidelines |
-| **art** | AI image generation workflows | Creating visualizations, diagrams, illustrations, reference images |
-| **frontend-design** | Frontend design guidelines | Avoiding generic aesthetics, building distinctive interfaces |
-| **canvas-design** | Canvas/layout design workflows | Designing layouts and compositions |
+When you ask an LLM to "design a clean, modern brand," it produces the statistical center of every clean, modern brand in its training data. Different colors on the same layout. Different fonts on the same hierarchy. Every instruction specific enough to produce a distinctive result just becomes a new center of convergence.
 
----
+**This skill system is designed around that limitation.**
 
-## 🎨 The Brand Development Process
+### What LLMs Can't Do
 
-The **brand-skill** is a complete **7-phase system** for building professional brand identities **with anti-AI-slop principles**.
+- **Can't see their own output.** They write SVG/HTML/CSS as text tokens with no visual feedback loop. They're painting blindfolded.
+- **Can't feel tension.** Great design creates productive discomfort. LLMs either produce something comfortable (convergent) or break things randomly.
+- **Can't resist coherence.** Deliberately unfinished, misaligned, or rule-breaking design goes against training weights. They'll "fix" anything that looks like an error, even when the error was the point.
+- **Don't have taste.** Taste is judgment that isn't reducible to rules. LLMs approximate taste with heuristics, and heuristics are generalizations, and generalizations converge to the mean.
 
-### What Makes This Different
+### What LLMs Can Do
 
-**Starts with emotion, not visuals.** Phase 0 creates an emotive narrative that gives LLMs deep memory — preventing generic "clean and modern" drift.
+- **Emotive narrative** — Beautiful, grounded language that captures a brand's soul
+- **Strategic positioning** — Frameworks, voice, personality traits
+- **Systematic tokens** — Coherent color, typography, and spacing systems
+- **Execution at speed** — Generate 5 structural variants in the time it takes a human to sketch one
 
-**Accounts for LLM blindness.** Phase 3 uses bitmap tracing (vtracer) as the primary path for logo development — because LLMs can't see their own SVG output. Render-verify loops and iteration limits prevent endless blind refinement.
+### The Escape: Process, Not Instruction
 
-**Orchestrated with state tracking.** A progress file (`.brand-progress.md`) persists across conversations, enforcing sequential phase completion with explicit gate checks.
+Prescribing techniques doesn't work: "be bold" converges to the average of bold. "Break the grid" converges to the average of grid-breaking. Even "surprise me" converges to the average of surprise.
 
-**Result:** Brands that are coherent, distinctive, and impossible to confuse with AI slop.
-
-### Process Overview
+**The only escape is evolutionary process with human selection pressure:**
 
 ```
-          00-Orchestrator.md    → Read first. Tracks phase state.
-          TOOLS-REQUIRED.md     → Verify prerequisites before starting.
-
-Phase 0: Emotive Narrative     → Soul of the brand in beautiful language
-Phase 1: Discovery             → Strategic foundation & positioning
-Phase 2: Visual Direction      → Reference images exploring directions
-Phase 3: Mark Development      → Logo via tracing (vtracer) or hand-coded SVG
-Phase 4: Wordmark              → Typography and lockups
-Phase 5: Design System         → Complete system (web + iOS)
-Phase 6: DESIGN.md             → Consolidate everything to master file
-Phase 7: Packaging             → Final deliverable kit
+Generate → Compare → Kill → Mutate → Repeat
+   LLM       Human    Human    LLM      ↺
 ```
 
-### Final Output
-
-**DESIGN.md** — A comprehensive, single-source-of-truth document containing:
-- Emotive narrative (the soul)
-- Strategic positioning
-- Visual philosophy
-- Complete design system (web + iOS)
-- Implementation specs
-- Anti-AI-slop validation
-
-### Time Investment
-
-- **Fast track:** 2-3 hours (with clear direction)
-- **Full process:** 4-6 hours (including exploration and iteration)
-- **Complex brands:** 8+ hours (multiple concepts, extensive iteration)
-
-### What You Get
-
-A complete brand kit including:
-- ✅ Brand philosophy and positioning documents
-- ✅ Logo mark (SVG, scalable, tested at all sizes)
-- ✅ Typography system and lockup variants
-- ✅ Complete design system (colors, spacing, components)
-- ✅ Design guidelines documentation
-- ✅ All assets packaged and ready to use
+The LLM is the hand. The user is the eye. This skill encodes that division throughout.
 
 ---
 
-## 🚀 How to Use These Skills
+## How It Works
 
-### Option 1: In a Specific Project
+```
+                          ┌─────────────────────────────┐
+                          │   00-Orchestrator.md        │
+                          │   (tracks phase state)      │
+                          └──────────┬──────────────────┘
+                                     │
+    ┌────────────────────────────────┼────────────────────────────────┐
+    │              TEXT PHASES (LLM-native — work well)               │
+    │                                                                 │
+    │  Phase 0: Emotive Narrative                                     │
+    │  ├─ Soul of the brand in evocative language                     │
+    │  ├─ Human moment, transformation, ethos, personality            │
+    │  └─ Creates deep LLM memory → prevents generic drift            │
+    │                                                                 │
+    │  Phase 1: Discovery                                             │
+    │  ├─ Strategic positioning, voice, personality                   │
+    │  └─ Core metaphor that organizes all visual choices             │
+    │                                                                 │
+    │  Phase 2: Visual Direction  ← API keys optional (see below)    │
+    │  ├─ AI-generated reference images (Mode A)                      │
+    │  ├─ User-provided mood boards (Mode B)                          │
+    │  └─ Skip to SVG iteration (Mode C)                              │
+    │                                                                 │
+    └────────────────────────────────┼────────────────────────────────┘
+                                     │
+    ┌────────────────────────────────┼────────────────────────────────┐
+    │          VISUAL PHASES (LLM-blind — need guardrails)           │
+    │                                                                 │
+    │  Phase 3: Mark Development                                      │
+    │  ├─ Path A: Reference image → vtracer → SVG (primary)          │
+    │  ├─ Path B: Hand-coded geometric SVG (simple marks only)        │
+    │  ├─ Mandatory render-verify loop (rsvg-convert → PNG)           │
+    │  └─ Hard iteration limit: 5-8 rounds, then pivot                │
+    │                                                                 │
+    │  Phase 4: Wordmark                                              │
+    │  ├─ MANDATORY font exploration (3-4 candidates rendered)        │
+    │  ├─ User picks font BEFORE any lockup work                      │
+    │  └─ Horizontal, stacked, text-only variants                     │
+    │                                                                 │
+    │  Phase 5: Design System                                         │
+    │  ├─ Colors, typography, spacing, components                     │
+    │  ├─ Web (CSS) + iOS (SwiftUI) implementations                   │
+    │  └─ All values derived from mark — no template defaults          │
+    │                                                                 │
+    └────────────────────────────────┼────────────────────────────────┘
+                                     │
+    ┌────────────────────────────────┼────────────────────────────────┐
+    │        COMPOSITION PHASE (evolutionary — user drives)          │
+    │                                                                 │
+    │  Phase 5.5: Composition & Visual Identity                       │
+    │  ├─ Tokens (Phase 5) = materials. Composition = the building.   │
+    │  ├─ Without this, every brand converges to same layout.         │
+    │  │                                                              │
+    │  │  The Process:                                                │
+    │  │  1. Create anti-reference board (what to avoid)              │
+    │  │  2. Generate 3-5 structurally different variants             │
+    │  │     (not color swaps — different spatial logic)              │
+    │  │  3. User kills variants (no blending — blending = averaging) │
+    │  │  4. Mutate survivors with named convention breaks            │
+    │  │  5. Repeat until blur test passes                            │
+    │  │                                                              │
+    │  └─ Blur test: at 20% visibility, layout silhouette must be     │
+    │     distinguishable from the anti-references                    │
+    │                                                                 │
+    └────────────────────────────────┼────────────────────────────────┘
+                                     │
+    ┌────────────────────────────────┼────────────────────────────────┐
+    │              DELIVERY PHASES                                    │
+    │                                                                 │
+    │  Phase 6: DESIGN.md Creation                                    │
+    │  ├─ Single source of truth: narrative + tokens + composition    │
+    │  └─ Any LLM can read it → brand stays consistent forever       │
+    │                                                                 │
+    │  Phase 7: Packaging                                             │
+    │  └─ All assets organized → brand-kit/ or .zip                   │
+    │                                                                 │
+    └─────────────────────────────────────────────────────────────────┘
+```
 
-Copy the skills folder into your project's `.claude/` directory:
+---
+
+## Quick Start
 
 ```bash
-# From your project root:
-mkdir -p .claude/skills
-cp -r ~/Claude\ Skills/* ./.claude/skills/
+# Clone
+git clone https://github.com/b1rdmania/claude-brand-skills.git
+
+# Tell Claude to use it
+"Use the brand-skill to build a complete brand identity for [project].
+ Start with Phase 0: create the emotive narrative."
 ```
 
-Then tell Claude:
+### Prerequisites
 
-> "Use the brand-skill to build a complete brand identity for [project name]"
+See `brand-skill/TOOLS-REQUIRED.md` for full details.
 
-### Option 2: Global Installation
+**Required:**
+- `rsvg-convert` — `brew install librsvg` (SVG rendering)
 
-Keep skills in `~/Claude Skills/` and reference them when needed:
+**Recommended:**
+- `vtracer` — `cargo install vtracer` (PNG→SVG tracing for Phase 3)
+- `svgo` — `npm install -g svgo` (SVG optimization)
 
-> "I have brand development workflows at ~/Claude Skills/brand-skill/. Let's use those to build a brand for [project]."
-
-### Option 3: Ad-Hoc Usage
-
-Point Claude to specific workflow files:
-
-> "Follow the process in ~/Claude Skills/brand-skill/Workflows/03-MarkDevelopment.md to iterate on a logo"
+**Image generation (Phase 2, optional):**
+- Requires API keys: `GOOGLE_API_KEY`, `REPLICATE_API_TOKEN`, or `OPENAI_API_KEY`
+- Phases 0-1 work without any image generation
+- Can always use your own reference images (Mode B) or skip to SVG (Mode C)
 
 ---
 
-## 📖 Brand Development Detailed Guide
+## What's Inside
 
-### Phase 0: Emotive Narrative (10-15 min)
+| Skill | Purpose |
+|-------|---------|
+| **brand-skill** | Complete 8-phase brand identity system |
+| **art** | AI image generation workflows (visualizations, diagrams, illustrations) |
+| **frontend-design** | Frontend design guidelines with LLM convergence awareness |
+| **canvas-design** | Canvas/layout design workflows |
 
-**Goal:** Capture the soul of the brand in evocative language before any strategic work.
-
-**Process:**
-- Write a short narrative that captures the feeling of using the product
-- Focus on sensory language, metaphor, and emotional resonance
-- This becomes the "north star" that prevents generic drift in later phases
-
-**Outputs:**
-- `[brand]-emotive-narrative.md` — The brand's soul in prose
-
-**Example prompt:**
-> "Start Phase 0 of the brand process. Write an emotive narrative for [project] — it should feel like [adjectives]."
-
----
-
-### Phase 1: Discovery (15-20 min)
-
-**Goal:** Establish strategic foundation before any visual work.
-
-**Two approaches:**
-- **Research-first (preferred):** If Claude has access to your codebase, it will read your project files and draft a positioning hypothesis
-- **Question-based:** If working blind, Claude will ask targeted questions
-
-**Outputs:**
-- `[brand]-philosophy.md` — Brand essence, voice, principles
-- `[brand]-visual-philosophy.md` — Aesthetic movement and visual approach
-
-**Example prompt:**
-> "Start Phase 1 of the brand process. My project is called [name] and it [brief description]."
-
----
-
-### Phase 2: Visual Direction (10-15 min)
-
-**Goal:** Generate reference images to explore visual territory before committing to detailed work.
-
-**Process:**
-- Generate 3-4 reference images exploring different interpretations
-- Review and pick a direction
-- Refine if needed
-
-**Outputs:**
-- Reference images (PNG) showing visual directions
-
-**Example prompt:**
-> "Generate visual direction references based on the philosophy we created"
-
----
-
-### Phase 3: Mark Development (20-60 min)
-
-**Goal:** Develop the logo mark through tracing or hand-coded SVG.
-
-**Two paths:**
-- **Path A (Primary):** Generate reference image → trace to SVG with vtracer → refine
-- **Path B:** Hand-code simple geometric marks directly in SVG
-
-**Process:**
-- Generate or source a reference image
-- Trace to SVG (vtracer or freeconvert.com)
-- Render and verify at multiple sizes (rsvg-convert)
-- Refine with iteration limit: 5-8 rounds, then pivot
-- Test at favicon sizes (32px, 16px)
-- Lock final version
-
-**Outputs:**
-- `[brand]-mark-final.svg` — Production logo
-- Favicon PNG exports
-
-**Example prompt:**
-> "Start Phase 3. I have a reference image at [path]. Trace it and let's refine from there."
-
-**Tips:**
-- LLMs can't see SVG output — always render to PNG before presenting
-- If refinement isn't converging after 5-8 rounds, change approach
-- Use freeconvert.com as a fallback for tracing
-
----
-
-### Phase 4: Wordmark (15-30 min)
-
-**Goal:** Explore typography, get approval, then create lockup systems.
-
-**Process:**
-- Propose 3-4 font candidates with rendered previews
-- Get explicit user approval on font choice (do not skip this)
-- Create horizontal, stacked, and text-only lockup variants
-- Refine alignment through iteration
-- Test in real-world contexts (nav, footer, headers)
-
-**Outputs:**
-- `[brand]-wordmark-final.svg`
-- Lockup variants (horizontal, stacked, text-only)
-
-**Example prompt:**
-> "Start Phase 4. Show me font options for the wordmark before creating any lockups."
-
----
-
-### Phase 5: Design System (30-60 min)
-
-**Goal:** Define the complete visual language.
-
-**Covers:**
-- Color palette (backgrounds, text, functional colors, accents)
-- Typography (font families, type scale, weights, line heights)
-- Spacing (base unit, scale from xs to 3xl)
-- Components (buttons, inputs, cards, borders, shadows)
-- Motion (timing, easing)
-
-**Outputs:**
-- `[brand]-design-guidelines.md` — Comprehensive guidelines with CSS variables
-
-**Example prompt:**
-> "Create the design system with colors, typography, spacing, and components"
-
----
-
-### Phase 6: DESIGN.md Creation (15-20 min)
-
-**Goal:** Consolidate everything into a single master reference document.
-
-**Process:**
-- Pull from all previous phase outputs
-- Create comprehensive DESIGN.md with brand narrative, visual system, and implementation specs
-- Single-source-of-truth for anyone implementing the brand
-
-**Outputs:**
-- `DESIGN.md` — Complete brand reference document
-
-**Example prompt:**
-> "Create the DESIGN.md consolidating everything from Phases 0-5"
-
----
-
-### Phase 7: Packaging (10-15 min)
-
-**Goal:** Package everything for delivery or handoff.
-
-**Process:**
-- Collect all final assets
-- Create quick-start README
-- Organize into clean folder structure
-- Zip for delivery (optional)
-
-**Outputs:**
-- `[brand]-brand-kit/` folder with all assets
-- `[brand]-brand-kit.zip` (optional)
-
-**Example prompt:**
-> "Package the complete brand kit for delivery"
-
----
-
-## 🎯 Brand Process Example Commands
-
-### Starting Fresh
+### Directory Structure
 
 ```
-"Use the brand-skill at ~/Claude Skills/brand-skill/ to build a complete
-brand identity for my project. The project is called [name] and it's a
-[brief description]. Start with Phase 1: Discovery."
-```
-
-### Resuming Mid-Process
-
-```
-"Continue Phase 3 of the brand process. Here's the feedback on v1-v5:
-[your feedback]. Create the next iteration batch."
-```
-
-### Skipping Phases
-
-```
-"I already have a logo. Skip to Phase 5 and create a design system
-that complements this mark: [describe or reference logo]."
-```
-
----
-
-## 🖼️ Art Skill: Image Generation
-
-The **art** skill provides structured workflows for AI image generation.
-
-### Available Workflows
-
-| Workflow | Purpose | Output |
-|----------|---------|--------|
-| `Visualize.md` | Adaptive content visualization | Infographics, data viz, mixed media |
-| `TechnicalDiagrams.md` | Architecture and process diagrams | Excalidraw-style technical diagrams |
-| `Stats.md` | Data visualization | Charts, graphs, quantitative displays |
-| `Frameworks.md` | Conceptual frameworks | 2x2 matrices, taxonomies, mental models |
-| `Essay.md` | Editorial illustrations | Metaphorical images for written content |
-| `Mermaid.md` | Flowcharts and diagrams | Mermaid-compatible diagram generation |
-
-### Usage Example
-
-```
-"Use the TechnicalDiagrams workflow from ~/Claude Skills/art/ to create
-an architecture diagram showing [system description]"
-```
-
-### Dependencies
-
-The art skill uses a CLI tool for image generation:
-- Location: `~/.claude/skills/art/Tools/Generate.ts`
-- Models: Supports Gemini (nano-banana-pro), Flux, and others
-- Output: PNG images to specified location or ~/Downloads
-
----
-
-## 🎨 Frontend Design Skill
-
-Provides aesthetic guidelines to avoid generic "AI slop" patterns.
-
-**Emphasizes:**
-- Distinctive visual language
-- Avoiding purple gradients, overly rounded shapes
-- Meaningful color use (functional vs decorative)
-- Professional typography
-- Density and information hierarchy
-
-**Usage:**
-```
-"Use the frontend-design guidelines to review this component and suggest improvements"
-```
-
----
-
-## 📂 Directory Structure
-
-```
-~/Claude Skills/
-├── README.md                          ← You are here
+claude-brand-skills/
+├── README.md
+├── CHANGELOG.md
 ├── brand-skill/
 │   ├── SKILL.md                       # Main skill definition
 │   ├── 00-Orchestrator.md             # Phase state tracker (read first)
 │   ├── TOOLS-REQUIRED.md              # Prerequisites checklist
+│   ├── ADDENDUM-4-WEB-PRESENCE.md     # Convergence theory (full framework)
+│   ├── SKILL-AUDIT.md                 # Gap analysis from real-world build
 │   ├── Workflows/
-│   │   ├── 00-EmotiveNarrative.md
-│   │   ├── 01-Discovery.md
-│   │   ├── 02-VisualDirection.md
-│   │   ├── 03-MarkDevelopment.md      # Tracing-first logo workflow
-│   │   ├── 04-Wordmark.md
-│   │   ├── 05-DesignSystem.md
-│   │   ├── 06-DesignMdCreation.md
-│   │   └── 07-Packaging.md
-│   ├── Templates/                     # Reusable templates
+│   │   ├── 00-EmotiveNarrative.md     # Phase 0: Soul of the brand
+│   │   ├── 01-Discovery.md            # Phase 1: Strategy & positioning
+│   │   ├── 02-VisualDirection.md      # Phase 2: Reference exploration
+│   │   ├── 03-MarkDevelopment.md      # Phase 3: Logo (tracing-first)
+│   │   ├── 04-Wordmark.md            # Phase 4: Typography & lockups
+│   │   ├── 05-DesignSystem.md         # Phase 5: Tokens (web + iOS)
+│   │   ├── 05A-CompositionIdentity.md # Phase 5.5: Evolutionary composition
+│   │   ├── 06-DesignMdCreation.md     # Phase 6: Master DESIGN.md
+│   │   └── 07-Packaging.md            # Phase 7: Asset delivery
+│   ├── Templates/
+│   │   ├── DESIGN-template.md
 │   │   ├── philosophy-template.md
 │   │   ├── visual-philosophy-template.md
 │   │   ├── design-guidelines-template.md
 │   │   └── readme-template.md
 │   └── Examples/
-│       └── sorted-brand-kit/          # Real-world example
-│           ├── README.md
-│           ├── sorted-philosophy.md
-│           ├── sorted-design-guidelines.md
-│           └── sorted-utility-sublime-philosophy.md
+│       └── sorted-brand-kit/          # Real-world example (Sorted.fund)
 ├── art/
 │   ├── SKILL.md
-│   ├── Tools/
-│   │   └── Generate.ts                # Image generation CLI
-│   └── Workflows/
-│       ├── Visualize.md
-│       ├── TechnicalDiagrams.md
-│       ├── Stats.md
-│       ├── Frameworks.md
-│       ├── Essay.md
-│       └── Mermaid.md
+│   ├── Tools/Generate.ts              # Image generation CLI
+│   └── Workflows/                     # Visualize, Diagrams, Stats, etc.
 ├── frontend-design/
-│   └── SKILL.md
+│   └── SKILL.md                       # Includes LLM design limitations
 └── canvas-design/
     └── SKILL.md
 ```
 
 ---
 
-## 💡 Tips for Success
+## The Philosophy in Detail
 
-### Working with Claude
+### Why "emotive narrative first"
 
-1. **Be specific about phase** — "Start Phase 3" is clearer than "make a logo"
-2. **Give directional feedback** — "Too playful, more serious" is better than "I don't like it"
-3. **Iterate freely** — Version 15 is usually much better than version 3
-4. **Test at scale** — Logos must work at 16px (favicon) and 200px (hero)
-5. **Trust the process** — Each phase builds on the previous
+Phase 0 creates a rich emotional context that gets loaded into every subsequent LLM call. Without it, the LLM falls back to its statistical center: "clean and modern." With it, every decision can be tested: *does this serve the narrative?*
 
-### Brand Development
+The narrative doesn't prevent convergence on its own — but it prevents *arbitrary* convergence. The brand converges toward something meaningful rather than something generic.
 
-- **Start with research** — If Claude has codebase access, let it research first
-- **Find the metaphor** — Strong brands have a central organizing idea
-- **Color carries meaning** — Functional colors (green = success) shouldn't be decorative
-- **Avoid generic patterns** — Purple gradients, overly rounded shapes, meaningless geometry
-- **Test small sizes** — If the logo falls apart at 32px, simplify
+### Why "tracing, not hand-coding"
 
-### Image Generation
+LLMs write SVG as text tokens. They cannot see the result. Hand-coding complex marks leads to endless blind iteration — 30+ rounds that never converge because the LLM is refining code, not shapes.
 
-- **Use the right workflow** — Each has specific strengths
-- **Provide context** — The more detail in your prompt, the better the output
-- **Iterate** — First generation is a starting point, not the final product
-- **Background matters** — Specify if you need transparent, white, or colored backgrounds
+Tracing inverts this: start with an image the LLM *can* evaluate, convert to SVG mechanically (vtracer), then refine. The creative judgment happens on bitmaps. The vector conversion is mechanical.
 
----
+### Why "kill, don't blend"
 
-## 🔄 Updating Skills
+When users see 5 variants and like elements from #2 and #4, the natural instinct is to blend them. But blending is averaging — it moves the result back toward the statistical center. The evolutionary process demands binary decisions: alive or dead.
 
-When you improve a workflow or create new ones:
+The surviving variant gets mutated (pushed further from center), not merged with the dead ones.
 
-```bash
-# Copy updates back to the library
-cp -r ./path/to/project/.claude/skills/* ~/Claude\ Skills/
+### Why "composition, not just tokens"
 
-# Or copy specific skills
-cp -r ./path/to/project/.claude/skills/brand-skill ~/Claude\ Skills/
-```
+A brand can have the most distinctive color palette, typography, and spacing system in the world. Put those tokens into a standard hero-features-testimonial-CTA layout and it looks like every other well-designed page.
+
+**Tokens are materials. Composition is the building.** Phase 5.5 exists because without it, every brand built with this skill would produce excellent ingredients arranged identically.
+
+### Why DESIGN.md
+
+Traditional brand systems scatter knowledge across Figma files, PDF guidelines, and people's heads. Knowledge degrades over time. New team members approximate. The brand drifts.
+
+DESIGN.md is a single file that any LLM can read and maintain consistency from. It embeds the emotive narrative (preventing generic drift), the compositional identity (preventing layout convergence), and the implementation specs (preventing token approximation).
+
+**It's the insurance policy against the very convergence problem this skill was built to solve.**
 
 ---
 
-## 📋 Real-World Examples
+## Real-World Examples
 
-This skills library was used to create:
+This skill system was used to create:
 
-1. **Compost.fi** — Complete brand identity
-   - Process documented at: `compost.fi/process.html`
+1. **AutonoLabs.ai** — Agentic venture studio brand
+   - Full 8-phase process including Phase 5.5 composition
+   - 11 page variants through evolutionary kill/mutate process
+   - Avenir Next weight system, AL monogram, type specimen aesthetic
+   - The audit that produced v2.0 of this skill
+
+2. **Compost.fi** — "Quiet Infrastructure" brand
    - ~2,600 API calls from philosophy to production
    - 26 logo iterations, full design system
 
-2. **Sorted.fund** — "Utility Sublime" brand
-   - Example included at: `brand-skill/Examples/sorted-brand-kit/`
-   - Shows warm infrastructure aesthetic
-   - Dense, functional design language
-
-Both examples show the full 8-phase process in action.
+3. **Sorted.fund** — "Utility Sublime" brand
+   - Example included at `brand-skill/Examples/sorted-brand-kit/`
+   - Warm infrastructure aesthetic, dense functional design language
 
 ---
 
-## 🛠️ Dependencies
+## Example Commands
 
-### Brand Skill
-
-See `brand-skill/TOOLS-REQUIRED.md` for full details. Key requirements:
-
-- **Required:** `rsvg-convert` (librsvg) — `brew install librsvg`
-- **Recommended:** `vtracer` for PNG→SVG tracing — `cargo install vtracer`
-- **Recommended:** `svgo` for SVG optimization — `npm install -g svgo`
-- **Fallback:** freeconvert.com for browser-based tracing
-
-### General
-- Claude Code CLI (for running workflows)
-- Access to Claude API (Sonnet 4.5 or Opus 4.5)
-
-### Art Skill (Optional)
-- Google Gemini API key (for image generation)
-- Bun runtime (for Generate.ts)
-
----
-
-## 📞 Need Help?
-
-**Starting a new brand:**
+**Starting fresh:**
 ```
-"I want to build a brand using the brand-skill at ~/Claude Skills/.
-My project is [description]. Walk me through Phase 1."
+"Use the brand-skill to build a complete brand identity for [project].
+ Start with Phase 0: create the emotive narrative."
 ```
 
-**Just need a logo:**
+**Resuming mid-process:**
 ```
-"Skip to Phase 3 of brand-skill. I need a logo for [project].
-The brand should feel [adjectives]."
+"Continue Phase 3 of the brand process. Here's feedback on v1-v5:
+ [your feedback]. Create the next iteration batch."
 ```
 
-**Creating visualizations:**
+**Already have a logo:**
 ```
-"Use the Visualize workflow from ~/Claude Skills/art/ to create
-an infographic showing [data/concept]."
+"I already have a logo. Skip to Phase 5 and create a design system
+ (web + iOS) that complements this mark: [describe logo]."
+```
+
+**Just need the master doc:**
+```
+"We've completed Phases 0-5. Now create the master DESIGN.md file
+ that consolidates everything into one comprehensive reference."
 ```
 
 ---
 
-## 📝 License
+## License
 
-These workflows are personal tools. Use them for your own projects, modify them as needed, share with your team. Attribution appreciated but not required.
+These workflows are personal tools. Use them for your own projects, modify as needed. Attribution appreciated but not required.
 
 ---
 
-**Last Updated:** February 2026
-**Version:** 1.1
+**Version:** 2.0 — February 2026
 **Created by:** Andy (with Claude Code)
+
+*"Love in action is a harsh and dreadful thing compared to love in dreams." — Dostoevsky*

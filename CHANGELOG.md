@@ -1,5 +1,47 @@
 # Changelog
 
+## v2.0 — February 2026
+
+**Convergence framework release.** Integrates the theoretical understanding of *why* LLMs produce generic design into the skill system itself, and adds the process structures to escape it.
+
+### New: Convergence theory
+
+- **`ADDENDUM-4-WEB-PRESENCE.md`** — Full theoretical framework on why LLMs revert to statistical mean in design output
+- **`SKILL-AUDIT.md`** — Gap analysis from running the full process on AutonoLabs.ai
+- **LLM Design Limitations** section added to both brand-skill and frontend-design SKILL.md — honest about what LLMs can and can't do, with the evolutionary process as the prescribed escape
+
+### New: Phase 5.5 — Composition & Visual Identity
+
+Tokens (Phase 5) define materials; composition defines what to build with them. Without this phase, every brand converges to the same layout regardless of tokens.
+
+- **`05A-CompositionIdentity.md`** — Evolutionary diverge/kill/mutate process
+- Anti-reference boards, blur test (20% visibility silhouette test)
+- Binary kill decisions (no blending — blending is averaging)
+- Named convention breaks as mutation mechanism
+
+### Updated: Phase 2 — API key hand-holding
+
+- Added "Before You Start" section with API key requirements table
+- Clear guidance that Phases 0-1 work without any image generation
+- Inline reminder at the generate step pointing to Modes B/C as alternatives
+
+### Updated: Template placeholders
+
+All hardcoded Sorted.fund hex values replaced with semantic placeholders (`{BG_DEEP}`, `{TEXT_PRIMARY}`, `{BRAND_ACCENT}`, etc.) across:
+- `05-DesignSystem.md`
+- `06-DesignMdCreation.md`
+- `Templates/DESIGN-template.md`
+
+### Updated: README
+
+Complete rewrite with:
+- Philosophy section explaining the convergence problem and how this flow addresses it
+- ASCII architecture diagram of the full phase pipeline
+- Phase 5.5 in the process overview
+- Honest framing of LLM limitations up front
+
+---
+
 ## v1.1 — February 2026
 
 **Post-audit release.** Every change here comes from running the brand-skill end-to-end on a real project (AutonoLabs) and documenting what broke.
