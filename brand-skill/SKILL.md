@@ -65,7 +65,7 @@ brand-skill/
 
 ---
 
-## The Process (7 Phases)
+## The Process (8 Phases)
 
 ### Phase 0: Emotive Narrative ⭐ NEW
 **Create the soul before the visuals**

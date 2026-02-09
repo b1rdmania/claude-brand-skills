@@ -148,7 +148,7 @@ OPTIONS:
                              Gemini (nano-banana-pro): 1K, 2K, 4K (resolution); aspect ratio inferred from context or defaults to 16:9
   --aspect-ratio <ratio>     Aspect ratio for Gemini nano-banana-pro (default: 16:9)
                              Options: 1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
-  --output <path>            Output file path (default: /tmp/generated-image.png)
+  --output <path>            Output file path (default: ~/Downloads/generated-image.png)
   --reference-image <path>   Reference image for style/character consistency (Nano Banana Pro only)
                              Can specify MULTIPLE times for improved consistency
                              Accepts: PNG, JPEG, WebP images
