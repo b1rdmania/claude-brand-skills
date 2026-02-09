@@ -1,15 +1,15 @@
 #!/usr/bin/env bun
 
 /**
- * generate - UL Image Generation CLI
+ * generate - Image Generation CLI
  *
- * Generate Unsupervised Learning branded images using Flux 1.1 Pro, Nano Banana, Nano Banana Pro, or GPT-image-1.
+ * Generate images using Flux 1.1 Pro, Nano Banana, Nano Banana Pro, or GPT-image-1.
  * Follows llcli pattern for deterministic, composable CLI design.
  *
  * Usage:
  *   generate --model nano-banana-pro --prompt "..." --size 16:9 --output /tmp/image.png
  *
- * @see ~/.claude/skills/art/README.md
+ * @see art/SKILL.md
  */
 
 import Replicate from "replicate";
@@ -84,7 +84,7 @@ interface CLIArgs {
 const DEFAULTS = {
   model: "flux" as Model,
   size: "16:9" as Size,
-  output: `${process.env.HOME}/Downloads/ul-image.png`,
+  output: `${process.env.HOME}/Downloads/generated-image.png`,
 };
 
 const REPLICATE_SIZES: ReplicateSize[] = ["1:1", "16:9", "3:2", "2:3", "3:4", "4:3", "4:5", "5:4", "9:16", "21:9"];
@@ -130,9 +130,9 @@ const PAI_DIR = process.env.PAI_DIR || `${process.env.HOME}/.claude`;
 
 function showHelp(): void {
   console.log(`
-generate - UL Image Generation CLI
+generate - Image Generation CLI
 
-Generate Unsupervised Learning branded images using Flux 1.1 Pro, Nano Banana, or GPT-image-1.
+Generate images using Flux 1.1 Pro, Nano Banana, or GPT-image-1.
 
 USAGE:
   generate --model <model> --prompt "<prompt>" [OPTIONS]
@@ -148,7 +148,7 @@ OPTIONS:
                              Gemini (nano-banana-pro): 1K, 2K, 4K (resolution); aspect ratio inferred from context or defaults to 16:9
   --aspect-ratio <ratio>     Aspect ratio for Gemini nano-banana-pro (default: 16:9)
                              Options: 1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
-  --output <path>            Output file path (default: /tmp/ul-image.png)
+  --output <path>            Output file path (default: /tmp/generated-image.png)
   --reference-image <path>   Reference image for style/character consistency (Nano Banana Pro only)
                              Can specify MULTIPLE times for improved consistency
                              Accepts: PNG, JPEG, WebP images
@@ -215,8 +215,8 @@ ERROR CODES:
   1  General error (invalid arguments, API error, file write error)
 
 MORE INFO:
-  Documentation: ${PAI_DIR}/skills/Art/README.md
-  Source: ${PAI_DIR}/skills/Art/Tools/Generate.ts
+  Documentation: art/SKILL.md
+  Source: art/Tools/Generate.ts
 `);
   process.exit(0);
 }

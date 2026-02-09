@@ -23,7 +23,6 @@ Build complete brand identities that are coherent, distinctive, and impossible t
 ```
 brand-skill/
 ├── SKILL.md                      # Overview and routing (you are here)
-├── 00-Orchestrator.md            # Master phase tracker — READ FIRST
 ├── TOOLS-REQUIRED.md             # Prerequisites checklist
 ├── ADDENDUM-4-WEB-PRESENCE.md    # Convergence theory (why LLMs revert to mean)
 ├── SKILL-AUDIT.md                # Gap analysis from AutonoLabs build
@@ -52,7 +51,7 @@ brand-skill/
 ## Getting Started
 
 **Before anything else:**
-1. Read `00-Orchestrator.md` — controls phase progression and state tracking
+1. Read `Workflows/00-Orchestrator.md` — controls phase progression and state tracking
 2. Read `TOOLS-REQUIRED.md` — verify prerequisites (rsvg-convert, vtracer, etc.)
 3. Create `.brand-progress.md` in the project directory
 
@@ -353,7 +352,7 @@ Avoid generic patterns: purple-blue gradients, overly rounded shapes, meaningles
 
 Phase 2 can use AI image generation for reference exploration. Requires API keys — see `TOOLS-REQUIRED.md` for setup.
 
-1. **Art skill** — If you have the Art skill installed, use its Generate.ts tool
+1. **Any text-to-image tool** — Gemini, DALL-E, Midjourney, Flux, etc.
 2. **Manual references** — User provides mood board images or links
 3. **Skip to SVG** — Go directly to Phase 3 with more initial variations (8-10)
 

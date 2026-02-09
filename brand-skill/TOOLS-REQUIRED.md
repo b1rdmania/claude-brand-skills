@@ -55,26 +55,17 @@ Common fonts used in examples:
 - Avenir Next — System font on macOS
 - SF Pro — System font on macOS/iOS
 
-## Image Generation (Phase 2 — Optional but recommended)
+## Image Generation (Phase 2 — Optional)
 
-Phase 2 (Visual Direction) can use AI image generation to explore aesthetic territory before committing to SVG work. This uses the **Art skill's** `Generate.ts` tool, which supports multiple models.
+Phase 2 (Visual Direction) can use AI image generation to explore aesthetic territory before committing to SVG work. Use any text-to-image tool you have access to:
 
-**API keys required** (set as environment variables):
+| Tool | How to access |
+|------|--------------|
+| Gemini | [Google AI Studio](https://aistudio.google.com/) (free tier available) |
+| DALL-E | ChatGPT Plus or [OpenAI API](https://platform.openai.com/) |
+| Midjourney | [midjourney.com](https://midjourney.com/) |
+| Flux / Stable Diffusion | [Replicate](https://replicate.com/) or local install |
 
-| Model | Env Variable | Provider | Best for |
-|-------|-------------|----------|----------|
-| `nano-banana-pro` | `GOOGLE_API_KEY` | Google/Gemini | Best quality, text rendering, reference images |
-| `nano-banana` | `REPLICATE_API_TOKEN` | Replicate | Faster iteration, slightly lower quality |
-| `flux` | `REPLICATE_API_TOKEN` | Replicate (Black Forest Labs) | Alternative high-quality generation |
-| `gpt-image-1` | `OPENAI_API_KEY` | OpenAI | Alternative generation |
+**Without image generation:** Phase 2 still works — provide your own reference images or mood boards (Mode B), or skip directly to Phase 3 with more initial SVG variations (Mode C).
 
-**Without API keys:** Phase 2 still works — the user can provide their own reference images or mood boards, or you can skip directly to Phase 3 with more initial SVG variations (8-10 instead of 4-5).
-
-**The Art skill is not required for the brand skill to function.** It enhances Phase 2 but every other phase works without it.
-
-## Optional MCP Servers
-
-If available, these enhance the workflow:
-- **SVGMaker MCP** — Real-time SVG rendering in-context
-- **SVG Converter MCP** — Format conversion without external tools
-- **Image generation MCP** — Alternative to Art skill for Phase 2 reference generation
+**Image generation is not required.** It enhances Phase 2 but every other phase works without it.

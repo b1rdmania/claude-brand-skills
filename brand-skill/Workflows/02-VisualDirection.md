@@ -73,23 +73,17 @@ Simple enough for small sizes. No text."
 
 > **Need API keys?** This step requires a configured image generation API. If you haven't set one up, check the "Before You Start" section above — or skip to **Mode B** (your own references) or **Mode C** (straight to SVG) below. Everything before this point (Phases 0-1) works without image generation.
 
-**With Art skill (if available):**
-```bash
-# Requires GOOGLE_API_KEY, REPLICATE_API_TOKEN, or OPENAI_API_KEY
-# See TOOLS-REQUIRED.md for setup
+**Use any text-to-image tool you have access to:**
+- Gemini (Google AI Studio)
+- DALL-E / ChatGPT image generation
+- Midjourney
+- Stable Diffusion / Flux (via Replicate)
+- Any other image generation API or tool
 
-bun run ~/.claude/skills/Art/Tools/Generate.ts \
-  --model nano-banana-pro \
-  --prompt "[YOUR PROMPT]" \
-  --size 2K \
-  --aspect-ratio 1:1 \
-  --output ~/Downloads/[brand]-ref-1-[concept].png
-```
-
-**With other image generation tools:**
-- Use any text-to-image API (Midjourney, DALL-E, Stable Diffusion, Gemini)
+**Tips:**
 - Keep prompts abstract and specify "no text", "logo concept", "minimalist"
 - Square aspect ratio works best for logo references
+- Generate at the highest resolution available
 
 **If no image generation available:** Use Mode B (your own references) or Mode C (skip to SVG) below. Both produce equally good results — image generation just speeds up the exploration.
 

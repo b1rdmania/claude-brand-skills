@@ -86,26 +86,18 @@ Starts with emotion, not visuals. Accounts for LLM blindness in visual phases. P
 
 ---
 
-### art — AI Image Generation
+### art — Image Generation Tool
 
-Structured workflows for creating visual content with AI image generation models. Supports Gemini, Flux, and other models via a unified CLI tool.
+A multi-model CLI tool (`Tools/Generate.ts`) for generating images from text prompts. Used by the brand-skill for reference images in Phase 2 and mark references in Phase 3.
 
-| Workflow | Purpose |
-|----------|---------|
-| `Visualize.md` | Adaptive content visualization — infographics, data viz, mixed media |
-| `TechnicalDiagrams.md` | Architecture and process diagrams (Excalidraw style) |
-| `Stats.md` | Data visualization — charts, graphs, stat cards |
-| `Frameworks.md` | Conceptual frameworks — 2x2 matrices, taxonomies, mental models |
-| `Essay.md` | Editorial illustrations — metaphorical images for written content |
-| `Mermaid.md` | Flowcharts and sequence diagrams |
-
-Images output to `~/Downloads/` for preview before deployment. Supports multiple reference images for style consistency.
-
-**Requires:** `bun` runtime, API key for at least one image model (`GOOGLE_API_KEY`, `REPLICATE_API_TOKEN`, or `OPENAI_API_KEY`)
+Supports Gemini, Flux, Replicate, and OpenAI models. Requires `bun` runtime and at least one API key.
 
 ```
-"Use the art skill's TechnicalDiagrams workflow to create
- an architecture diagram showing [system description]"
+bun run art/Tools/Generate.ts \
+  --model nano-banana-pro \
+  --prompt "Abstract minimalist logo concept: [description]. No text." \
+  --size 2K --aspect-ratio 1:1 \
+  --output ~/Downloads/brand-ref.png
 ```
 
 ---
@@ -184,11 +176,11 @@ See `brand-skill/TOOLS-REQUIRED.md` for full details.
 claude-brand-skills/
 ├── brand-skill/
 │   ├── SKILL.md                       # Main skill definition
-│   ├── 00-Orchestrator.md             # Phase state tracker
 │   ├── TOOLS-REQUIRED.md              # Prerequisites checklist
 │   ├── ADDENDUM-4-WEB-PRESENCE.md     # Convergence theory framework
 │   ├── SKILL-AUDIT.md                 # Gap analysis from real-world builds
 │   ├── Workflows/
+│   │   ├── 00-Orchestrator.md         # Phase state tracker
 │   │   ├── 00-EmotiveNarrative.md
 │   │   ├── 01-Discovery.md
 │   │   ├── 02-VisualDirection.md
@@ -202,9 +194,8 @@ claude-brand-skills/
 │   └── Examples/
 │       └── sorted-brand-kit/          # Real-world example
 ├── art/
-│   ├── SKILL.md
-│   ├── Tools/Generate.ts              # Image generation CLI
-│   └── Workflows/                     # 6 specialized workflows
+│   ├── SKILL.md                       # Tool reference and usage guide
+│   └── Tools/Generate.ts              # Multi-model image generation CLI
 ├── frontend-design/
 │   └── SKILL.md
 └── canvas-design/
