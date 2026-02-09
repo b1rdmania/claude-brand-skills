@@ -13,12 +13,16 @@ Use this to track progress through the brand development process. Each phase has
 | 2 | Visual Direction | Phase 1 complete | Reference images or skip decision | User picks direction(s) |
 | 3 | Mark Development | Phase 2 complete (or explicit skip) | `[brand]-mark-final.svg`, favicon PNG | User locks mark: "That's the one" |
 | 4 | Wordmark | Phase 3 complete | `[brand]-wordmark-*.svg` variants | User confirms font, alignment, and variants |
-| 5 | Design System | Phase 4 complete | `[brand]-design-guidelines.md` | User reviews tokens, no Sorted defaults remain |
+| 5 | Design System | Phase 4 complete | `[brand]-design-guidelines.md` | User reviews tokens, no template defaults remain |
 | 5.5 | Composition | Phase 5 complete | Structural variants deployed, compositional identity documented | Blur test passes, user selects direction |
 | 6 | DESIGN.md | Phase 5.5 complete | `DESIGN.md` | Single file captures everything |
 | 7 | Packaging | Phase 6 complete | `[brand]-brand-kit/` or `.zip` | All assets present and organized |
 
 ---
+
+## Creating `.brand-progress.md`
+
+At the start of every brand engagement, create `.brand-progress.md` in the project directory by copying the checklist below. This is the living progress tracker — update it at each gate check by marking phases complete with `[x]`.
 
 ## Checklist
 

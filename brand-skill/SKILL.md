@@ -52,8 +52,8 @@ brand-skill/
 
 **Before anything else:**
 1. Read `Workflows/00-Orchestrator.md` — controls phase progression and state tracking
-2. Read `TOOLS-REQUIRED.md` — verify prerequisites (rsvg-convert, vtracer, etc.)
-3. Create `.brand-progress.md` in the project directory
+2. Read `TOOLS-REQUIRED.md` — verify prerequisites
+3. Create `.brand-progress.md` in the project directory using the checklist from `00-Orchestrator.md`. This is the living progress tracker — update it at each gate check.
 
 ## Triggers
 

@@ -170,8 +170,8 @@ Names the aesthetic movement and describes how it manifests:
 
 ## Outputs
 
-- `[brand]-philosophy.md`
-- `[brand]-visual-philosophy.md`
+- `[brand]-philosophy.md` — use `Templates/philosophy-template.md` as a starting structure
+- `[brand]-visual-philosophy.md` — use `Templates/visual-philosophy-template.md` as a starting structure
 
 ## Gate Check
 

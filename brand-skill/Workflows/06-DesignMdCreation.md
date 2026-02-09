@@ -19,6 +19,7 @@ Create `DESIGN.md` — a complete, living document that contains:
 
 **Time:** 20-30 minutes
 **Output:** `DESIGN.md` (comprehensive reference document)
+**Template:** `Templates/DESIGN-template.md` — use as structural reference, but build from your actual phase outputs
 
 ---
 

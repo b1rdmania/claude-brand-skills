@@ -44,7 +44,7 @@ cp [brand]-visual-philosophy.md [brand]-brand-kit/
 
 ### 3. Write README
 
-Quick-start doc for anyone picking up the kit:
+Use `Templates/readme-template.md` as a starting structure. Quick-start doc for anyone picking up the kit:
 
 ```markdown
 # [Brand] Brand Kit

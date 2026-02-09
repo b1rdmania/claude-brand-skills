@@ -645,7 +645,7 @@ Create comprehensive documentation in `[brand]-design-guidelines.md`:
 
 ## Outputs
 
-- `[brand]-design-guidelines.md` (comprehensive, platform-agnostic where possible)
+- `[brand]-design-guidelines.md` — use `Templates/design-guidelines-template.md` as a starting structure (comprehensive, platform-agnostic where possible)
 
 This becomes **Section 3** of the final DESIGN.md.
 
