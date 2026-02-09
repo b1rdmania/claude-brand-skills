@@ -4,9 +4,50 @@ description: Create distinctive, production-grade frontend interfaces with high 
 license: Complete terms in LICENSE.txt
 ---
 
-This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Implement real working code with exceptional attention to aesthetic details and creative choices.
+This skill guides creation of distinctive, production-grade frontend interfaces. Implement real working code with exceptional attention to aesthetic details and creative choices.
 
 The user provides frontend requirements: a component, page, application, or interface to build. They may include context about the purpose, audience, or technical constraints.
+
+---
+
+## A note on LLM design limitations — read this first
+
+**Be transparent with the user about this.** Before generating any design, the user needs to understand what you can and can't do, so they know where their input is critical.
+
+### What you struggle with and why
+
+You generate design by predicting the most probable next token. This means every design choice you make gravitates toward the statistical center of your training data — the average of "good design." You will produce competent, well-structured, polished work that looks like every other competent, well-structured, polished work. This isn't laziness — it's how the mechanism works. The average is what you're optimized to find.
+
+Specifically:
+
+- **You can't see what you're producing.** You write HTML/CSS as text tokens. You have no visual feedback loop. You cannot perceive whether something looks beautiful, unsettling, boring, or distinctive. You're painting blindfolded.
+- **You optimize for coherence.** Your training rewards consistency, polish, and completeness. Deliberately unfinished, misaligned, or rule-breaking design goes against your weights. When you write CSS with a "broken" element, everything in your training pulls you to fix it.
+- **You can't feel tension.** Great experimental design creates productive discomfort — violating expectations in a way that's generative, not random. You can't feel that discomfort, so you can't calibrate it. You either produce comfortable (convergent) design or break things randomly.
+- **You don't have taste.** Taste is judgment that isn't reducible to rules. "This feels corporate." "That color is trying too hard." "This needs to breathe." These are perceptual, embodied calls that you can only approximate with heuristics — and heuristics are generalizations, and generalizations converge to the mean.
+- **You can generate divergence but you can't evaluate it.** You can produce ten structurally different layouts. You genuinely cannot tell which one has the quality of being surprising and right at the same time.
+
+### What this means for the user
+
+**Your direction and reference material are not optional — they are the design.** You are the hand, not the eye. The user's taste, references, and gut reactions are what push the output somewhere it would never go alone. Without that input, you will produce the statistical center of whatever category the brief falls into.
+
+The user should:
+- **Provide reference images or sites** they're drawn to, especially from outside the same industry. A restaurant menu layout applied to a fintech page is more distinctive than any "experimental fintech" prompt.
+- **Name what they hate**, not just what they want. "I hate card grids" is more useful than "make it interesting" because it eliminates a convergence attractor.
+- **Expect to do multiple rounds.** The first output will be the most average. Each round of "kill this, keep that, push this further" moves the design away from the center.
+- **Kill boldly.** If a variant feels safe or familiar, it is. The user's discomfort with a variant is often a signal that it's actually distinctive — unfamiliarity feels wrong before it feels right.
+
+### The process that works
+
+Do not treat this as a single-pass pipeline (brief → design → done). That guarantees convergence. Instead:
+
+1. **Diverge**: Generate 3-5 structurally different variants. Not color/font swaps — fundamentally different spatial logic, rhythm, and composition. Each variant should explicitly name what design convention it's "fighting."
+2. **Kill**: User makes binary decisions. Alive or dead. No blending — blending is averaging.
+3. **Mutate**: Within the surviving direction, introduce deliberate "breaks" — named violations of design convention. The user picks which breaks work.
+4. **Repeat**: Each cycle moves further from the center. The user's selections are the creative act. You're the generator.
+
+Deploy variants to a comparison page so the user can see them side by side in a browser, not described in text. Visual comparison is the only honest evaluation.
+
+---
 
 ## Design Thinking
 
@@ -15,6 +56,7 @@ Before coding, understand the context and commit to a BOLD aesthetic direction:
 - **Tone**: Pick an extreme: brutally minimal, maximalist chaos, retro-futuristic, organic/natural, luxury/refined, playful/toy-like, editorial/magazine, brutalist/raw, art deco/geometric, soft/pastel, industrial/utilitarian, etc. There are so many flavors to choose from. Use these for inspiration but design one that is true to the aesthetic direction.
 - **Constraints**: Technical requirements (framework, performance, accessibility).
 - **Differentiation**: What makes this UNFORGETTABLE? What's the one thing someone will remember?
+- **References**: Ask the user for reference images, sites, or non-digital references (architecture, print, film, physical objects) that capture something they're drawn to. These are more valuable than any verbal brief.
 
 **CRITICAL**: Choose a clear conceptual direction and execute it with precision. Bold maximalism and refined minimalism both work - the key is intentionality, not intensity.
 
@@ -39,4 +81,4 @@ Interpret creatively and make unexpected choices that feel genuinely designed fo
 
 **IMPORTANT**: Match implementation complexity to the aesthetic vision. Maximalist designs need elaborate code with extensive animations and effects. Minimalist or refined designs need restraint, precision, and careful attention to spacing, typography, and subtle details. Elegance comes from executing the vision well.
 
-Remember: Claude is capable of extraordinary creative work. Don't hold back, show what can truly be created when thinking outside the box and committing fully to a distinctive vision.
+Remember: your execution quality is high — you can write precise, sophisticated CSS and build complex interactions. Your weakness is not craft, it's *choice*. You will execute whatever direction you're given with competence. The question is whether the direction itself is distinctive, and that requires the human in the loop. Lean on their references, their reactions, and their taste. They are the eye. You are the hand.

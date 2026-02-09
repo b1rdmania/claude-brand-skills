@@ -1,159 +1,80 @@
-# Tools Required
-
-**Check these before starting the brand process. Install what's missing.**
-
----
-
-## Quick Check
-
-Run this to verify your setup:
-
-```bash
-# Required
-rsvg-convert --version 2>/dev/null && echo "rsvg-convert: OK" || echo "rsvg-convert: MISSING"
-
-# Recommended
-vtracer --version 2>/dev/null && echo "vtracer: OK" || echo "vtracer: MISSING"
-svgo --version 2>/dev/null && echo "svgo: OK" || echo "svgo: MISSING"
-```
-
----
+# Tools Required for Brand Skill
 
 ## Required
 
-### rsvg-convert (SVG → PNG rendering)
-
-**Used in:** Phases 3, 4 (render-verify loop, favicon export)
-
-Renders SVGs to PNG at specific sizes. Essential for verifying marks at favicon sizes and presenting visual work to the user.
-
-```bash
-# macOS
-brew install librsvg
-
-# Ubuntu/Debian
-sudo apt-get install librsvg2-bin
-
-# Verify
-rsvg-convert --version
-```
-
-**Usage:**
-```bash
-# Render at review size
-rsvg-convert -w 512 -h 512 mark.svg -o mark-preview.png
-
-# Render at favicon size
-rsvg-convert -w 32 -h 32 mark.svg -o mark-32px.png
-```
-
----
+| Tool | Purpose | Install |
+|------|---------|---------|
+| Node.js | SVGO optimization | `brew install node` or [nodejs.org](https://nodejs.org) |
+| SVGO | SVG optimization | `npx svgo@latest` (no install needed) |
+| Browser | SVG/HTML preview | Already installed |
 
 ## Recommended
 
-### vtracer (PNG → SVG tracing)
+| Tool | Purpose | Install |
+|------|---------|---------|
+| vtracer | PNG-to-SVG bitmap tracing (Phase 3) | `brew install vtracer` |
+| potrace | Bitmap tracing (simpler alternative) | `brew install potrace` |
+| librsvg | SVG-to-PNG conversion (favicons) | `brew install librsvg` → `rsvg-convert` |
 
-**Used in:** Phase 3 (primary mark development path)
+## Platform-Specific
 
-Traces bitmap images to clean SVG paths. The primary tool for converting AI-generated reference images or sketches into production SVG marks.
+### macOS
+- **Quick Look rendering**: `qlmanage -t -s 512 -o /output/dir file.svg` — renders SVGs to PNG for visual verification. Built into macOS.
+
+### Linux
+- **librsvg**: `sudo apt-get install librsvg2-bin` → `rsvg-convert`
+- **potrace**: `sudo apt-get install potrace`
+
+## Verification
+
+Run these to check your setup:
 
 ```bash
-# Requires Rust toolchain
-cargo install vtracer
+# Required
+node --version
+npx svgo --version
 
-# Verify
+# Recommended
 vtracer --version
+rsvg-convert --version
+
+# macOS specific
+qlmanage -h 2>&1 | head -1
 ```
 
-**Usage:**
-```bash
-# Basic trace
-vtracer --input reference.png --output mark-draft.svg
+## Fonts
 
-# With options for cleaner output
-vtracer --input reference.png --output mark-draft.svg \
-  --colormode binary \
-  --filter_speckle 4 \
-  --corner_threshold 60 \
-  --segment_length 4
-```
+The skill does not prescribe default fonts — font selection happens in Phase 4 based on brand personality. However, for rendering font specimens, the system should have access to web fonts via:
 
-**If cargo is not installed:**
-```bash
-# Install Rust toolchain
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source ~/.cargo/env
-```
+- **Google Fonts**: Load via `<link>` in HTML specimens
+- **Local install**: For offline work, install chosen fonts via system package manager or font manager
 
-### svgo (SVG optimization)
+Common fonts used in examples:
+- Inter — `https://fonts.google.com/specimen/Inter`
+- JetBrains Mono — `https://fonts.google.com/specimen/JetBrains+Mono`
+- Avenir Next — System font on macOS
+- SF Pro — System font on macOS/iOS
 
-**Used in:** Phases 3, 4 (cleaning up traced SVGs, reducing file size)
+## Image Generation (Phase 2 — Optional but recommended)
 
-Optimizes SVG files by removing unnecessary metadata, simplifying paths, and reducing file size. Particularly important for traced SVGs which can be bloated.
+Phase 2 (Visual Direction) can use AI image generation to explore aesthetic territory before committing to SVG work. This uses the **Art skill's** `Generate.ts` tool, which supports multiple models.
 
-```bash
-npm install -g svgo
+**API keys required** (set as environment variables):
 
-# Verify
-svgo --version
-```
+| Model | Env Variable | Provider | Best for |
+|-------|-------------|----------|----------|
+| `nano-banana-pro` | `GOOGLE_API_KEY` | Google/Gemini | Best quality, text rendering, reference images |
+| `nano-banana` | `REPLICATE_API_TOKEN` | Replicate | Faster iteration, slightly lower quality |
+| `flux` | `REPLICATE_API_TOKEN` | Replicate (Black Forest Labs) | Alternative high-quality generation |
+| `gpt-image-1` | `OPENAI_API_KEY` | OpenAI | Alternative generation |
 
-**Usage:**
-```bash
-# Optimize an SVG
-svgo mark-draft.svg -o mark-optimized.svg
+**Without API keys:** Phase 2 still works — the user can provide their own reference images or mood boards, or you can skip directly to Phase 3 with more initial SVG variations (8-10 instead of 4-5).
 
-# Preview what would change
-svgo mark-draft.svg --pretty --indent=2 -o mark-clean.svg
-```
+**The Art skill is not required for the brand skill to function.** It enhances Phase 2 but every other phase works without it.
 
----
+## Optional MCP Servers
 
-## Fallback: Manual Conversion
-
-### freeconvert.com (PNG → SVG, browser-based)
-
-**Used when:** vtracer is unavailable, or tracing results need a different approach.
-
-1. Go to https://www.freeconvert.com/png-to-svg
-2. Upload the reference PNG
-3. Download the resulting SVG
-4. Continue with the refinement steps in Phase 3
-
-This is a manual step — use it as a backup when automated tracing isn't working or isn't installed.
-
----
-
-## Optional
-
-### ImageMagick (image manipulation)
-
-Useful for batch resizing, format conversion, and compositing.
-
-```bash
-brew install imagemagick
-
-# Verify
-magick --version
-```
-
-### Bun (for art skill image generation)
-
-Required only if using the art skill for Phase 2 reference image generation.
-
-```bash
-curl -fsSL https://bun.sh/install | bash
-
-# Verify
-bun --version
-```
-
----
-
-## What Happens Without These Tools
-
-| Tool Missing | Impact | Workaround |
-|-------------|--------|------------|
-| rsvg-convert | Can't render SVGs for review | Open SVGs in browser, screenshot manually |
-| vtracer | Can't trace PNGs to SVG | Use freeconvert.com or hand-code simple geometry |
-| svgo | Traced SVGs may be large/bloated | Manual cleanup or accept larger files |
+If available, these enhance the workflow:
+- **SVGMaker MCP** — Real-time SVG rendering in-context
+- **SVG Converter MCP** — Format conversion without external tools
+- **Image generation MCP** — Alternative to Art skill for Phase 2 reference generation

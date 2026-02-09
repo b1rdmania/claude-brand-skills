@@ -4,83 +4,58 @@ Pair the mark with typography to create complete logo lockups.
 
 ## Time
 
-15-30 minutes (includes font exploration).
+10-20 minutes.
 
 ## Prerequisites
 
 - Mark locked from Phase 3
-- Know whether the mark is **hand-coded** (clean SVG, few paths) or **traced** (complex paths from vtracer/freeconvert)
-
----
-
-## Mark Complexity Check
-
-Before starting, check the mark file:
-
-```bash
-wc -c [brand]-mark-final.svg
-```
-
-- **Under ~5KB:** Clean/hand-coded. Embed directly into lockup SVGs (standard approach below).
-- **Over ~5KB:** Likely traced with complex paths. Use the "Working with Traced Marks" section.
 
 ---
 
 ## Process
 
-### 1. Font Exploration (Required — Do Not Skip)
+### 1. Font Exploration (MANDATORY)
 
-**This step must produce user-approved typography before any lockup work begins.**
+**Do not skip this step.** The user should choose their font before seeing a wordmark. Presenting a wordmark in a font they never selected is a decision made for them, not with them.
 
-The previous audit found that skipping font exploration leads to wordmarks in fonts the user never chose. Do not default to Inter or any other font without presenting options first.
+#### 1a. Select Candidates
 
-#### Step 1a: Propose 3-4 Candidates
+Based on the brand personality (Phase 0-1), select 3-5 candidate fonts. Go beyond the safe defaults — use the emotive narrative and visual philosophy to guide choices.
 
-Based on the brand personality from Phases 0-1, propose 3-4 font candidates across different directions:
+| Personality | Font Direction | Examples beyond defaults |
+|-------------|----------------|--------------------------|
+| Technical/Dev | Monospace | JetBrains Mono, Berkeley Mono, IBM Plex Mono |
+| Modern/Neutral | Geometric sans | Geist, Satoshi, General Sans |
+| Enterprise | Neutral sans | Neue Haas Grotesk, Aktiv Grotesk |
+| Friendly | Humanist sans | Work Sans, Source Sans, DM Sans |
+| Premium | Light weight sans or serif | Avenir Next, Canela, GT Sectra |
+| Brutalist | Heavy/Display | Clash Display, Cabinet Grotesk, Space Grotesk |
+| Editorial | Serif or slab | Playfair Display, Lora, Roboto Slab |
 
-| Personality | Font Direction | Examples |
-|-------------|----------------|----------|
-| Technical/Dev | Monospace | JetBrains Mono, SF Mono, IBM Plex Mono |
-| Modern/Neutral | Geometric sans | Inter, Geist, DM Sans |
-| Enterprise | Neutral sans | Inter, Helvetica Neue, Source Sans |
-| Friendly | Humanist sans | Work Sans, Nunito, Lato |
-| Premium | Light weight sans or serif | Outfit, Satoshi, Fraunces |
-| Editorial | Serif | Newsreader, Lora, Playfair Display |
+**Do not default to Inter or JetBrains Mono unless the brand personality specifically calls for them.** These are the LLM convergence choices — the statistical center of "safe developer font."
 
-Present each candidate with:
-- Name and classification
-- Why it fits the brand personality
-- Weight recommendation (e.g., 400 body, 500 headings)
-- Any concerns (licensing, web availability, legibility at small sizes)
+#### 1b. Render Font Specimens
 
-#### Step 1b: Render Font Previews
+For each candidate font, render the brand name in SVG or HTML at wordmark size:
 
-**Create a preview SVG for each candidate** showing the brand name in that font:
-
-```svg
-<svg viewBox="0 0 400 48" xmlns="http://www.w3.org/2000/svg">
-  <text x="16" y="36" font-family="[FONT], sans-serif" font-size="28" font-weight="[WEIGHT]" fill="#e4e1e8">
-    brandname
-  </text>
-</svg>
+```html
+<!-- Quick specimen rendering -->
+<div style="font-family: 'Avenir Next'; font-size: 28px; font-weight: 300; letter-spacing: -0.01em;">
+  brandname
+</div>
+<div style="font-family: 'Avenir Next'; font-size: 28px; font-weight: 500; letter-spacing: -0.01em;">
+  brandname
+</div>
+<div style="font-family: 'Avenir Next'; font-size: 28px; font-weight: 600; letter-spacing: -0.01em;">
+  brandname
+</div>
 ```
 
-Render each preview:
-```bash
-rsvg-convert -w 512 font-preview-[font].svg -o font-preview-[font].png
-```
+Show 2-3 weights per font. Present side by side with brief rationale for each option.
 
-Present all previews side by side. If rsvg-convert doesn't have the font, note that the preview is approximate and describe the font's character.
+#### 1c. User Selects
 
-#### Step 1c: Get Explicit Approval
-
-Ask the user which font direction they prefer:
-
-> **"Here are 3-4 typography options for the wordmark. Which direction do you want to explore? Or should I try different candidates?"**
-
-**Do not proceed to Step 2 until the user has chosen a font direction.**
-
-If the user says "you pick" or similar, explain that typography choice significantly affects brand perception and present the trade-offs more concretely. If they still defer, pick the one that best matches the emotive narrative and state your choice explicitly: "Going with [Font] at [weight] because [reason]. Speak up if that's wrong."
+Present the specimens and ask: "Which font and weight feels right for this brand?" User picks one direction. Only then proceed to wordmark creation.
 
 ### 2. Create Variants
 
@@ -152,7 +127,7 @@ Create lockups for different contexts:
     font-family="Inter, sans-serif"
     font-size="24"
     font-weight="500"
-    fill="#e4e1e8"
+    fill="{TEXT_PRIMARY}"
   >
     brandname
   </text>
@@ -190,88 +165,18 @@ If including domain extension:
 
 **Accent color:**
 ```svg
-<tspan fill="#22c55e">.fund</tspan>
+<tspan fill="{BRAND_ACCENT}">.tld</tspan>
 ```
-Ties to mark's accent.
+Ties to mark's accent. Use the brand's primary accent color from Phase 5.
 
 **Muted:**
 ```svg
-<tspan fill="#625e6c">.fund</tspan>
+<tspan fill="{TEXT_MUTED}">.tld</tspan>
 ```
-De-emphasizes extension.
+De-emphasizes extension. Use the brand's muted text color from Phase 5.
 
 **Same as name:**
 Treats it as unified word.
-
----
-
-## Working with Traced Marks
-
-When the mark SVG is complex (traced from bitmap, dozens of paths, 10KB+), embedding it directly into a lockup SVG is impractical. Use one of these approaches:
-
-### Approach 1: Group Reference (Simple)
-
-Keep the mark paths in a `<g>` group and scale/translate the entire group:
-
-```svg
-<svg viewBox="0 0 [WIDTH] 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Mark: scaled down from original viewBox -->
-  <g transform="translate([X], [Y]) scale(0.4)">
-    <!-- Paste all mark paths here -->
-  </g>
-
-  <!-- Text -->
-  <text x="[X]" y="[Y]" font-family="Inter, sans-serif" font-size="24" font-weight="500" fill="#e4e1e8">
-    brandname
-  </text>
-</svg>
-```
-
-The `scale()` factor depends on the mark's original viewBox vs the lockup height. Calculate: `target_height / original_viewBox_height`.
-
-### Approach 2: Bitmap Lockup → Re-trace
-
-When the SVG is too unwieldy to embed:
-
-1. Render the mark to PNG at the size needed for the lockup
-2. Create the wordmark text as a separate SVG, render to PNG
-3. Composite them together at the bitmap level (ImageMagick):
-   ```bash
-   # Render mark at lockup size
-   rsvg-convert -h 48 [brand]-mark-final.svg -o mark-for-lockup.png
-
-   # Create text SVG and render
-   rsvg-convert -h 48 text-only.svg -o text-for-lockup.png
-
-   # Composite horizontally with gap
-   magick mark-for-lockup.png text-for-lockup.png +append -gravity center [brand]-wordmark-composite.png
-   ```
-4. If you need the lockup as SVG, trace the composite:
-   ```bash
-   vtracer --input [brand]-wordmark-composite.png --output [brand]-wordmark-final.svg
-   ```
-
-### Approach 3: Text-Only SVG + Separate Mark
-
-Create lockups as instructions rather than single files:
-- `[brand]-mark-final.svg` — The mark
-- `[brand]-wordmark-textonly.svg` — Just the text
-- Usage docs: "Place mark left, text right, gap of Xpx, vertically centered"
-
-This is pragmatic when the combined SVG would be impractically large.
-
----
-
-## Render and Verify
-
-**After every lockup version, render and present:**
-
-```bash
-rsvg-convert -w 512 [brand]-wordmark-v1.svg -o wordmark-v1-preview.png
-open wordmark-v1-preview.png
-```
-
-Never present SVG code as the final result. Always show the rendered output.
 
 ---
 
@@ -281,19 +186,14 @@ Never present SVG code as the final result. Always show the rendered output.
 - `[brand]-wordmark-short.svg` — Compact variant
 - `[brand]-wordmark-stacked.svg` — If needed
 
-## Gate Check
+## Gate
 
-1. Render all wordmark variants at 512px width
-2. Present renders to the user
-3. Ask: **"Phase 4 Gate Check — Wordmark lockups rendered above. Approved to proceed to Phase 5: Design System?"**
-4. On approval: update `.brand-progress.md` → Phase 4: COMPLETE
-5. Only proceed to Phase 5 when user explicitly approves
+User confirms alignment and variants.
 
 ---
 
 ## Pitfalls
 
-- **Skipping font exploration** — The most common failure. Never default to a font without user approval. Delivering wordmarks in unapproved fonts means the kit is incomplete.
 - **Mathematical vs optical** — Centered by numbers often looks wrong
 - **Too tight** — Need breathing room
 - **Mismatched weight** — Mark should feel balanced with text

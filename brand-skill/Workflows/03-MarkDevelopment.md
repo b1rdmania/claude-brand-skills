@@ -1,147 +1,71 @@
 # Phase 3: Mark Development
 
-Develop the logo mark through tracing, hand-coding, or a combination of both.
+Iterate on the logo until the user locks a final version.
 
 ## Time
 
-20-60 minutes. This is typically the longest phase.
+20-90 minutes. This is typically the longest phase.
 
 ## Prerequisites
 
 - Visual direction confirmed from Phase 2
-- Tools verified (see `TOOLS-REQUIRED.md`): rsvg-convert required, vtracer recommended
 
 ---
 
-## The Core Problem
+## LLM Honesty: Know Your Limits Here
 
-LLMs cannot see their own SVG output. Iterating on complex shapes by editing SVG code blind leads to endless loops that never converge. This phase accounts for that limitation by offering two paths:
+**Be transparent with the user:** LLMs struggle with mark development because they write SVG as text tokens without seeing the visual result. For simple geometric marks (circles, squares, basic monograms), hand-coded SVG works. For anything with complex curves, letterforms, or illustrative elements, hand-coding will likely fail — expect 5-8 iterations before pivoting to bitmap tracing.
 
-- **Path A (Tracing):** Generate or source a reference image, trace it to SVG, then refine
-- **Path B (Hand-coded):** Build simple geometric marks directly in SVG code
-
-Choose the path that fits the mark's complexity. Most marks with curves, organic shapes, or detailed geometry should use Path A.
+Tell the user upfront: "I can hand-code geometric marks well. For complex shapes, I'll try a few iterations, but if it's not converging we should switch to tracing from a reference image — that's faster and produces better results."
 
 ---
 
-## Path A: Reference → Trace → Refine (Primary)
+## Approach Selection
 
-**Use when:** The mark has curves, organic shapes, detailed geometry, or needs to match a visual reference from Phase 2.
+Choose the right approach based on mark complexity:
 
-### 1. Get a Reference Image
+### Path A: Hand-coded SVG (geometric marks)
 
-Start with a clean, high-contrast reference:
+Best for: circles, squares, basic monograms, simple abstract shapes, stroke-based marks.
 
-**From Phase 2 AI generation:**
-```bash
-# If using the art skill
-bun run ~/.claude/skills/art/Tools/Generate.ts \
-  --model nano-banana-pro \
-  --prompt "Minimalist logo mark: [concept]. Black on white background. Simple, clean, geometric. No text." \
-  --size 2K \
-  --aspect-ratio 1:1 \
-  --output ~/Downloads/[brand]-mark-ref.png
-```
+Use this when the mark is **geometrically describable** — you could explain the construction with compass and ruler.
 
-**From user:** Ask the user for a sketch, screenshot, or reference image.
+### Path B: Bitmap tracing (complex marks)
 
-**From earlier iteration:** Use a rendered PNG from a previous attempt as the new reference.
+Best for: letterforms, illustrative elements, organic shapes, anything with complex curves.
 
-### 2. Trace to SVG
+**Process:**
+1. Generate or obtain a reference image (from Phase 2, or user provides)
+2. Trace with a vector tool:
+   ```bash
+   # vtracer (recommended — better curve handling)
+   brew install vtracer
+   vtracer --input mark-reference.png --output mark-traced.svg
 
-**With vtracer (recommended):**
-```bash
-# Basic trace — good starting point
-vtracer --input [brand]-mark-ref.png --output [brand]-mark-draft.svg
+   # OR potrace (simpler, good for high-contrast images)
+   brew install potrace
+   potrace -s mark-reference.bmp -o mark-traced.svg
+   ```
+3. Optimize with SVGO:
+   ```bash
+   npx svgo@latest mark-traced.svg -o mark-optimized.svg
+   ```
+4. Manually refine paths if needed (adjust viewBox, clean up artifacts)
+5. Render to verify: `qlmanage -t -s 512 -o /tmp mark-optimized.svg`
 
-# For cleaner output (fewer paths, smoother curves)
-vtracer --input [brand]-mark-ref.png --output [brand]-mark-draft.svg \
-  --colormode binary \
-  --filter_speckle 4 \
-  --corner_threshold 60 \
-  --segment_length 4
+### Path C: Hybrid
 
-# For color logos
-vtracer --input [brand]-mark-ref.png --output [brand]-mark-draft.svg \
-  --colormode color \
-  --filter_speckle 4 \
-  --color_precision 6
-```
-
-**With freeconvert.com (fallback):**
-1. Go to https://www.freeconvert.com/png-to-svg
-2. Upload the reference PNG
-3. Download the resulting SVG
-4. Save as `[brand]-mark-draft.svg`
-
-### 3. Optimize the Traced SVG
-
-Traced SVGs are often bloated. Clean them up:
-
-```bash
-# Optimize with svgo (if available)
-svgo [brand]-mark-draft.svg -o [brand]-mark-v1.svg
-
-# Or manually: open the SVG, remove unnecessary metadata, simplify viewBox
-```
-
-Key cleanup tasks:
-- Set a clean viewBox (e.g., `viewBox="0 0 64 64"` or `viewBox="0 0 128 128"`)
-- Remove unnecessary `<metadata>`, `<defs>`, empty groups
-- Adjust colors to match brand palette
-- Remove background shapes (keep only the mark)
-
-### 4. Render and Verify
-
-**This step is mandatory after every SVG change.**
-
-```bash
-# Review size (512px)
-rsvg-convert -w 512 -h 512 [brand]-mark-v1.svg -o [brand]-mark-v1-preview.png
-open [brand]-mark-v1-preview.png
-
-# Favicon size (32px) — always test this
-rsvg-convert -w 32 -h 32 [brand]-mark-v1.svg -o [brand]-mark-v1-32px.png
-open [brand]-mark-v1-32px.png
-```
-
-Present both renders to the user:
-> **Mark v1** — [Description of what this version looks like]
-> Rendered at 512px and 32px. How does this look?
-
-### 5. Refine
-
-Based on user feedback, adjust the SVG:
-- Simplify paths for small-size readability
-- Adjust colors
-- Modify proportions
-- Remove or add elements
-
-**After every change:** Re-render and verify (Step 4). Never present un-rendered SVG code as "the result."
-
-### 6. Iteration Limits
-
-**If the mark isn't converging after 5-8 refinement rounds:**
-
-1. **Stop.** Don't keep editing SVG paths hoping to get closer.
-2. **Assess the problem:**
-   - If the shape is wrong: generate a new reference image and re-trace
-   - If the trace quality is poor: try freeconvert.com for a different trace
-   - If the concept isn't working: go back to Phase 2 for new directions
-3. **Tell the user:** "The current approach isn't converging. I recommend [specific alternative]."
-
-**Never:** Loop endlessly refining SVG code. The LLM cannot see the output — blind iteration past 5-8 rounds is wasted effort.
+Start with hand-coded SVG. If not converging after 5-8 iterations, pivot to bitmap tracing. Don't burn 30 iterations trying to hand-code something that tracing would solve in minutes.
 
 ---
 
-## Path B: Hand-Coded Geometric Marks
-
-**Use when:** The mark is simple geometry — circles, lines, rectangles, basic compositions. The kind of mark you could describe precisely in coordinates.
+## Process (Hand-coded Path)
 
 ### 1. Initial Batch (v1-v5)
 
 Create 4-5 SVG variations exploring the chosen direction.
 
+**SVG setup:**
 ```svg
 <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- Content -->
@@ -156,23 +80,36 @@ Use 64x64 viewBox consistently.
 - Stroke weight (thin vs bold)
 - Accent placement (where does color go?)
 
-### 2. Render and Verify
+### 2. Convert for Preview
 
-**Mandatory after every version.** Same as Path A Step 4:
-
+**With rsvg-convert:**
 ```bash
-rsvg-convert -w 512 -h 512 mark-v1.svg -o mark-v1-preview.png
-rsvg-convert -w 32 -h 32 mark-v1.svg -o mark-v1-32px.png
-open mark-v1-preview.png
+# Full size
+rsvg-convert -w 256 -h 256 mark-v1.svg -o mark-v1.png
+
+# Favicon size — always test this
+rsvg-convert -w 32 -h 32 mark-v1.svg -o mark-v1-favicon.png
 ```
 
-### 3. Present and Iterate
+**Without rsvg-convert:**
+- Open SVG in browser, use DevTools to screenshot at specific sizes
+- Use online converter (svgtopng.com, cloudconvert.com)
+- Ask user to export from Preview/Figma/other tool
+- For size testing, zoom browser to approximate pixel sizes
 
-Show rendered versions with brief descriptions:
+If it doesn't work at 32px, simplify.
 
-> **v1** — [What this explores]. Rendered at 512px and 32px.
+### 3. Present Batch
+
+Show versions with brief descriptions:
+
+> **v1** — [What this explores]
 > **v2** — [What this explores]
 > **v3** — [Different interpretation]
+
+Ask: "Which direction? Or try something else?"
+
+### 4. Read Feedback
 
 | They say | You do |
 |----------|--------|
@@ -181,14 +118,34 @@ Show rendered versions with brief descriptions:
 | "v3 but bolder" | Increase stroke weight, scale up |
 | "v3 but simpler" | Remove elements, reduce detail |
 | "None of these" | Go back to Phase 2 or try new approach |
+| "Maybe weird" | Identify what's off, adjust |
 
-### 4. Iteration Limits (Same as Path A)
+### 5. Iterate (v6-v15)
 
-If not converging after 5-8 rounds: stop, reassess, pivot. Consider switching to Path A (generate a reference of what you're trying to achieve, then trace it).
+Refine based on feedback:
+- Adjust curves
+- Change proportions
+- Modify weights
+- Shift color placement
+- Simplify for small sizes
+
+### 6. Polish (v16-v25+)
+
+Once direction is locked, focus on:
+- Optical balance (mathematical center often looks wrong)
+- Consistent stroke weights
+- Color value tuning
+- Size testing
+
+### 7. Lock
+
+User says: "That's it" / "Lock this one" / "Perfect"
+
+Save as `[brand]-mark-final.svg`
 
 ---
 
-## SVG Techniques (Path B Reference)
+## SVG Techniques
 
 **Organic curves:**
 ```svg
@@ -203,8 +160,8 @@ If not converging after 5-8 rounds: stop, reassess, pivot. Consider switching to
 
 **Basic shapes:**
 ```svg
-<circle cx="48" cy="48" r="6" fill="#22c55e"/>
-<rect x="10" y="30" width="44" height="10" rx="4" fill="#52505a"/>
+<circle cx="48" cy="48" r="6" fill="{BRAND_ACCENT}"/>
+<rect x="10" y="30" width="44" height="10" rx="4" fill="{TEXT_MUTED}"/>
 ```
 
 **Arcs:**
@@ -225,56 +182,33 @@ If not converging after 5-8 rounds: stop, reassess, pivot. Consider switching to
 
 ---
 
-## Working with Complex Traced SVGs
-
-Traced SVGs can be large (100KB+) with dozens of paths. Tips:
-
-**Simplify with svgo:**
-```bash
-svgo [brand]-mark-v1.svg -o [brand]-mark-v1-clean.svg --pretty
-```
-
-**Manual simplification:**
-- Remove paths that are background artifacts
-- Merge paths with the same fill color
-- Replace complex curves with simpler approximations (only for hand-editable marks)
-
-**When the SVG is too complex to edit by hand:**
-- Don't try to edit individual path data points
-- Instead: render to PNG, modify the PNG concept (new reference image), re-trace
-- This is the "generate → trace → refine at bitmap level → re-trace" loop
-
----
-
 ## Mark Categories
 
-**Flowing/Organic** → Usually Path A
+**Flowing/Organic**
 - Curves, waves, S-shapes
 - Suggests movement, continuity
+- Works for: process, data, infrastructure
 
-**Geometric** → Usually Path B
+**Geometric**
 - Circles, squares, precise angles
 - Suggests stability, precision
+- Works for: finance, security, enterprise
 
-**Abstract Symbol** → Path A or B depending on complexity
+**Abstract Symbol**
 - Simplified representation of concept
+- Suggests meaning, identity
+- Works for: distinctive recognition
 
-**Letterform** → Path A recommended
+**Letterform**
 - Based on brand initial
-- Typography-based marks are hard to hand-code well
+- Suggests identity, recognition
+- Works for: consumer brands, memorable names
 
 ---
 
 ## Quality Checks
 
-Before locking, render at all sizes and verify:
-
-```bash
-rsvg-convert -w 256 -h 256 [brand]-mark-final.svg -o preview-256.png
-rsvg-convert -w 64 -h 64 [brand]-mark-final.svg -o preview-64.png
-rsvg-convert -w 32 -h 32 [brand]-mark-final.svg -o preview-32.png
-rsvg-convert -w 16 -h 16 [brand]-mark-final.svg -o preview-16.png
-```
+Before locking:
 
 - [ ] Reads at 256px (hero)
 - [ ] Reads at 64px (app icon)
@@ -288,42 +222,62 @@ rsvg-convert -w 16 -h 16 [brand]-mark-final.svg -o preview-16.png
 
 ---
 
-## Lock and Export
-
-User says: "That's it" / "Lock this one" / "Perfect"
-
-```bash
-# Save final mark
-cp [brand]-mark-v[n].svg [brand]-mark-final.svg
-
-# Export favicon
-rsvg-convert -w 32 -h 32 [brand]-mark-final.svg -o [brand]-favicon.png
-```
-
----
-
 ## Outputs
 
 - `[brand]-mark-v[n].svg` — Iterations
 - `[brand]-mark-final.svg` — Locked version
 - `[brand]-favicon.png` — 32px export
-- `[brand]-mark-*-preview.png` — Rendered previews (can be cleaned up)
 
-## Gate Check
+## Gate
 
-1. Render the final mark at 512px, 32px, and 16px
-2. Present all three renders to the user
-3. Ask: **"Phase 3 Gate Check — Mark renders at 512px, 32px, and 16px shown above. Approved to proceed to Phase 4: Wordmark?"**
-4. On approval: update `.brand-progress.md` → Phase 3: COMPLETE
-5. Only proceed to Phase 4 when user explicitly approves
+User explicitly locks: "That's the one."
+
+---
+
+## Iteration Limits and Escape Hatches
+
+**Do not iterate indefinitely.** If the mark isn't converging, change approach rather than grinding.
+
+| Iteration count | Action |
+|----------------|--------|
+| v1-v5 | Initial exploration — expect nothing final |
+| v6-v10 | Direction should be clear. If not, revisit Phase 2. |
+| v11-v15 | Should be refining, not still exploring. If still exploring, **pivot approach.** |
+| v16+ | Only justified for polish on a locked direction. If still searching at v16, stop and either: switch to bitmap tracing, simplify the concept, or ask user to provide a reference image to trace. |
+
+**Escape hatches:**
+1. **Simplify the concept.** If a complex mark isn't working, try a simpler version of the same idea.
+2. **Switch to bitmap tracing.** Generate a reference image, trace it, optimize. This is not a failure — it's the right tool for the job.
+3. **Use an external tool.** Ask the user to sketch something (even rough) and photograph it. Trace the photo.
+4. **Present current best.** Show the user the best iteration so far and ask: "Is this close enough to refine, or should we try a completely different concept?"
+
+---
+
+## Render and Verify (MANDATORY)
+
+After every SVG creation, render to verify visually:
+
+```bash
+# macOS (Quick Look)
+qlmanage -t -s 512 -o /tmp mark-v1.svg
+open /tmp/mark-v1.svg.png
+
+# Browser
+open mark-v1.svg
+
+# Favicon size test
+qlmanage -t -s 32 -o /tmp mark-v1.svg
+```
+
+Never present an SVG to the user without rendering it first. You cannot see what you've written — the render is how you check.
 
 ---
 
 ## Pitfalls
 
-- **Blind SVG iteration** — The #1 failure mode. If you can't see the output, you can't refine it. Always render.
-- **No iteration limit** — Set a hard limit of 5-8 rounds. After that, change approach.
+- **Grinding past v15 without changing approach** — This is the #1 failure mode. Pivot, don't grind.
+- **Not rendering** — You can't see SVG as text. Always render.
 - **Ignoring small sizes** — If it fails at favicon, it fails
-- **Over-detailing** — Simpler is better, especially for traced marks
+- **Over-detailing** — Simpler is better
 - **Losing the concept** — Mark should connect to Phase 1's metaphor
-- **Editing complex traced paths by hand** — Don't. Re-trace from a modified reference instead.
+- **Inconsistent weights** — Pick a weight, stick to it

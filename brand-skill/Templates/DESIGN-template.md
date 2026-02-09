@@ -4,6 +4,10 @@
 >
 > This document contains everything needed to understand, build, and maintain the [Brand] identity — from emotional essence to implementation details.
 
+<!-- TEMPLATE NOTE: All color hex values in this document are semantic placeholders
+     (e.g. {BG_DEEP}, {TEXT_PRIMARY}, {GREEN}, {BRAND_ACCENT}).
+     Replace every {PLACEHOLDER} with the brand's actual hex values from Phase 5. -->
+
 ---
 
 ## Table of Contents
@@ -837,10 +841,10 @@ StatusIndicator(status: .active)
 #### Dark Mode
 
 ```css
-/* Default (dark mode) */
+/* Default (dark mode) — replace placeholders with brand-specific hex values */
 :root {
-  --bg-deep: #0e0e10;
-  --text-primary: #e4e1e8;
+  --bg-deep: {BG_DEEP};
+  --text-primary: {TEXT_PRIMARY};
 }
 
 /* Light mode override */

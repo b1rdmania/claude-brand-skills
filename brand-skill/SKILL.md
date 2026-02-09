@@ -25,6 +25,8 @@ brand-skill/
 ├── SKILL.md                      # Overview and routing (you are here)
 ├── 00-Orchestrator.md            # Master phase tracker — READ FIRST
 ├── TOOLS-REQUIRED.md             # Prerequisites checklist
+├── ADDENDUM-4-WEB-PRESENCE.md    # Convergence theory (why LLMs revert to mean)
+├── SKILL-AUDIT.md                # Gap analysis from AutonoLabs build
 ├── Workflows/
 │   ├── 00-EmotiveNarrative.md    # Soul of the brand
 │   ├── 01-Discovery.md            # Strategy and positioning
@@ -32,6 +34,7 @@ brand-skill/
 │   ├── 03-MarkDevelopment.md      # Logo via tracing or hand-coding
 │   ├── 04-Wordmark.md             # Typography and lockups
 │   ├── 05-DesignSystem.md         # Complete system (web + iOS)
+│   ├── 05A-CompositionIdentity.md # Evolutionary diverge/kill/mutate process
 │   ├── 06-DesignMdCreation.md     # Consolidate to DESIGN.md
 │   └── 07-Packaging.md            # Final delivery
 ├── Templates/
@@ -41,7 +44,7 @@ brand-skill/
 │   ├── design-guidelines-template.md
 │   └── readme-template.md
 └── Examples/
-    └── sorted-brand-kit/          # Real-world example
+    └── sorted-brand-kit/          # Real-world example (Sorted.fund)
 ```
 
 ---
@@ -158,7 +161,27 @@ brand-skill/
 
 ---
 
-### Phase 6: DESIGN.md Creation ⭐ NEW
+### Phase 5.5: Composition & Visual Identity ⭐ NEW
+**Define how this brand uniquely occupies space**
+
+**Output:** Compositional framework + 3-5 named structural variants deployed for comparison
+
+This is where the evolutionary process lives. Tokens (Phase 5) define materials; composition defines what to build with them. Without this phase, every brand converges to the same layout regardless of tokens.
+
+**Process:**
+1. Create anti-reference board (sites/patterns to explicitly avoid)
+2. Generate 3-5 structurally different page variants — each fighting a named convention
+3. Deploy to comparison page for user to evaluate visually
+4. User kills variants (no blending). Surviving direction gets mutated.
+5. Repeat until the composition is distinctive under the blur test (at 20% visibility, the layout silhouette is distinguishable from the anti-references)
+
+**Critical:** The user's reference images and gut reactions drive this phase entirely. The LLM generates; the user selects. See `05A-CompositionIdentity.md` for full process.
+
+**Time:** 60-120 minutes (most important phase for distinctiveness)
+
+---
+
+### Phase 6: DESIGN.md Creation
 **Consolidate everything into one master reference**
 
 **Output:** `DESIGN.md` (comprehensive, living document)
@@ -216,25 +239,47 @@ brand-skill/
 
 ---
 
-## Anti-AI-Slop Framework
+## On LLM Design Limitations — Read This First
 
-### What This Prevents
+**Be honest with the user about this at the start of every brand engagement.**
 
-❌ Generic "clean and modern" aesthetics
-❌ Purple-to-blue gradients without reason
-❌ Rounded corners everywhere "because friendly"
-❌ Copy-paste component libraries without customization
-❌ Random spacing/sizing not from a system
-❌ Arbitrary design decisions "because it looks nice"
+This skill produces excellent *ingredients* — emotive narratives, color palettes, typography systems, design tokens. What it cannot produce on its own is a distinctive *composition* — how those ingredients come together into something that doesn't look like every other well-designed page.
 
-### How It Prevents This
+### Why this happens
 
-✅ **Emotive narrative** grounds every choice in meaning
-✅ **Visual philosophy** defines a specific aesthetic movement
-✅ **Systematic tokens** (8px spacing, named colors, consistent radii)
-✅ **Decision testing framework** (every choice must answer "why")
-✅ **Validation checklists** (coherence, craft, distinctiveness)
-✅ **DESIGN.md** embeds the philosophy so future work stays coherent
+An LLM generates output by predicting the most probable next token. This is a statistical averaging operation. The output doesn't drift toward the average — it starts there, because the average is what the mechanism is optimized to find. "Good design" in the training data is overwhelmingly polished, balanced, finished, conventional. Every brand that asks for "good" gets the same good.
+
+Specifically:
+
+- **The LLM can't see what it's producing.** It writes HTML/CSS/SVG as text tokens with no visual feedback loop. It's painting blindfolded.
+- **It optimizes for coherence.** Deliberately unfinished, misaligned, or rule-breaking design goes against its training weights. It will "fix" anything that looks like an error, even when the error was the point.
+- **It can't feel tension.** Great design creates productive discomfort. The LLM can't calibrate this — it either produces something comfortable (convergent) or breaks things randomly.
+- **It doesn't have taste.** Taste is judgment that isn't reducible to rules. The LLM approximates taste with heuristics, and heuristics are generalizations, and generalizations converge to the mean.
+
+### What this means for the process
+
+**The user's direction, references, and gut reactions are not optional — they ARE the design.** The LLM is the hand. The user is the eye.
+
+Prescribing techniques doesn't help: "be bold" converges to the average of bold. "Break the grid" converges to the average of grid-breaking. Even "surprise me" converges to the average of surprise. Any instruction specific enough to produce a distinctive result becomes a new center of convergence.
+
+**The only escape is process, not instruction:**
+1. **Diverge** — Generate 3-5 structurally different variants (not color swaps — different spatial logic). Each must name what design convention it's "fighting."
+2. **Kill** — User makes binary decisions. Alive or dead. No blending — blending is averaging.
+3. **Mutate** — Within the surviving direction, introduce deliberate named "breaks" (violations of convention).
+4. **Repeat** — Each cycle moves further from the center. The user's selections are the creative act.
+
+This evolutionary process is encoded in Phase 5.5 (Composition). See also: `ADDENDUM-4-WEB-PRESENCE.md` for the full theoretical framework.
+
+### What this skill still prevents
+
+The above doesn't mean the brand phases are pointless. The emotive narrative, philosophy, and tokens do critical work:
+
+- **Emotive narrative** grounds every choice in meaning (prevents arbitrary decisions)
+- **Visual philosophy** defines a specific aesthetic movement (prevents "clean and modern")
+- **Systematic tokens** create coherence (prevents random sizing/spacing)
+- **DESIGN.md** embeds the philosophy (prevents drift over time)
+
+But tokens alone cannot prevent compositional convergence. The skill produces excellent ingredients. The user + evolutionary process determines the meal.
 
 ---
 
@@ -242,13 +287,13 @@ brand-skill/
 
 ### On Iteration
 
-Don't aim for perfection on the first try. The process is:
-- Generate options
-- Get reaction
-- Refine
-- Repeat
+Don't aim for perfection on the first try. The process is evolutionary:
+- **Diverge** — Generate structurally different options, not variations on a theme
+- **Kill** — User picks survivors. Dead means dead. No blending.
+- **Mutate** — Push survivors in unexpected directions
+- **Repeat** — Each cycle gets more distinctive
 
-Version 15 is usually much better than version 3.
+Version 15 is usually much better than version 3 — but only if the iterations are driven by human selection pressure, not by the LLM refining toward its own center.
 
 ### On User Input
 
@@ -297,26 +342,26 @@ Avoid generic patterns: purple-blue gradients, overly rounded shapes, meaningles
 
 - **vtracer** — PNG→SVG tracing (primary path for Phase 3 mark development)
 - **svgo** — SVG optimization (cleaning up traced output)
+- **potrace** — Bitmap tracing (simpler alternative to vtracer)
 
 ### Fallback
 
 - **freeconvert.com** — Browser-based PNG→SVG conversion when vtracer is unavailable
+- **qlmanage** (macOS) — Built-in SVG rendering for visual verification
 
 ### Image Generation (Optional)
 
-Phase 2 can use AI image generation for reference exploration:
+Phase 2 can use AI image generation for reference exploration. Requires API keys — see `TOOLS-REQUIRED.md` for setup.
 
 1. **Art skill** — If you have the Art skill installed, use its Generate.ts tool
 2. **Manual references** — User provides mood board images or links
-3. **Skip to SVG** — Go directly to Phase 3 with more initial variations
+3. **Skip to SVG** — Go directly to Phase 3 with more initial variations (8-10)
+
+**Phases 0-1 work without any image generation.** You only need API keys when you reach Phase 2 Mode A.
 
 ### Fonts
 
-Uses system fonts by default. For web fonts:
-- **Inter** — `https://fonts.google.com/specimen/Inter`
-- **JetBrains Mono** — `https://fonts.google.com/specimen/JetBrains+Mono`
-
-For iOS: SF Pro (system font) is preferred for native feel.
+Selected in Phase 4 based on brand personality. No defaults prescribed.
 
 ---
 
@@ -329,8 +374,9 @@ Each phase has detailed instructions in `Workflows/`:
 - `02-VisualDirection.md` — Reference image generation guide
 - `03-MarkDevelopment.md` — SVG iteration techniques
 - `04-Wordmark.md` — Typography pairing and alignment
-- `05-DesignSystem.md` — Token and component definitions (web + iOS) ⭐ UPDATED
-- `06-DesignMdCreation.md` — Consolidate to master DESIGN.md ⭐ NEW
+- `05-DesignSystem.md` — Token and component definitions (web + iOS)
+- `05A-CompositionIdentity.md` — How the brand occupies space (evolutionary process) ⭐ NEW
+- `06-DesignMdCreation.md` — Consolidate to master DESIGN.md
 - `07-Packaging.md` — Asset collection and handoff
 
 Read the relevant workflow file when executing each phase.
@@ -399,12 +445,13 @@ Every brand created with this skill should:
 
 1. **Have emotional depth** (not just visual style)
 2. **Be systematically coherent** (not random choices)
-3. **Feel distinctive** (not generic/interchangeable)
-4. **Work cross-platform** (web + iOS implementations)
-5. **Be implementable** (copy-paste ready code)
-6. **Stay consistent** (DESIGN.md prevents drift)
+3. **Feel distinctive in composition, not just tokens** (different colors on the same layout is not distinctive)
+4. **Survive the blur test** (at 20% visibility, the layout silhouette should be recognizable)
+5. **Work cross-platform** (web + iOS implementations)
+6. **Be implementable** (copy-paste ready code)
+7. **Stay consistent** (DESIGN.md prevents token drift; compositional identity prevents layout drift)
 
-**If it could be any "clean and modern" brand, we failed.**
+**If it could be any "clean and modern" brand with different hex values, we failed. Distinctiveness lives in composition — how the brand occupies space — not in tokens alone.**
 
 ---
 
@@ -426,5 +473,5 @@ Both show the full 7-phase process in action, with distinctive results.
 
 ---
 
-*Last Updated: February 2026 — Version 2.0*
-*Now with emotive narrative foundation, iOS specifications, and DESIGN.md consolidation*
+*Last Updated: February 2026 — Version 3.0*
+*Added: LLM design limitations honesty, Phase 5.5 Composition (evolutionary process), bitmap tracing for marks, font exploration, convergence framework*

@@ -43,43 +43,53 @@ Build outward from the mark's colors and visual philosophy.
 
 #### Web Colors (Dark Mode Default)
 
-**Backgrounds:**
+**Backgrounds** (derive from mark's darkest tone, step up in lightness):
 ```css
---bg-deep:     #0e0e10    /* Main background - warm near-black */
---bg-warm:     #16151a    /* Cards, elevated surfaces */
---bg-surface:  #201e24    /* Inputs, wells, recessed areas */
---bg-elevated: #2a2830    /* Hover states, overlays */
+--bg-deep:     {BG_DEEP}      /* Main background — warm near-black, derive from mark's darkest neutral */
+--bg-warm:     {BG_WARM}      /* Cards, elevated surfaces — +6-8% lightness from bg-deep */
+--bg-surface:  {BG_SURFACE}   /* Inputs, wells, recessed areas — +4-6% from bg-warm */
+--bg-elevated: {BG_ELEVATED}  /* Hover states, overlays — +4-6% from bg-surface */
 ```
 
-**Text:**
+**Text** (derive for contrast against backgrounds):
 ```css
---text-primary:   #e4e1e8    /* Headings, important text */
---text-secondary: #a8a2b2    /* Body copy, descriptions */
---text-muted:     #625e6c    /* Labels, hints, de-emphasized */
---text-whisper:   #3a3741    /* Disabled states */
+--text-primary:   {TEXT_PRIMARY}    /* Headings — minimum 7:1 contrast against bg-deep */
+--text-secondary: {TEXT_SECONDARY}  /* Body copy — ~60-70% of primary's contrast */
+--text-muted:     {TEXT_MUTED}      /* Labels, hints — ~35-45% of primary's contrast */
+--text-whisper:   {TEXT_WHISPER}    /* Disabled states — near-invisible */
 ```
 
 **Borders:**
 ```css
---border:       #37343e    /* Default borders */
---border-light: #484452    /* Emphasized borders */
+--border:       {BORDER}        /* Default borders — between bg-elevated and text-whisper */
+--border-light: {BORDER_LIGHT}  /* Emphasized borders — slightly lighter */
 ```
 
-**Functional:**
+**Functional** (harmonize with brand accent):
 ```css
---green:       #22c55e    /* Success, active, healthy, CTAs */
---green-dim:   #187840    /* Green hover/secondary */
---green-dark:  #0f4d2a    /* Green backgrounds */
---amber:       #cf9a37    /* Warnings, pending states */
---red:         #dc2626    /* Errors, critical states */
---blue:        #5886b0    /* Links, info (use sparingly) */
+--green:       {GREEN}       /* Success, active, CTAs — harmonize with brand accent */
+--green-dim:   {GREEN_DIM}   /* Green hover/secondary — reduce lightness 20-30% */
+--green-dark:  {GREEN_DARK}  /* Green backgrounds — very low lightness */
+--amber:       {AMBER}       /* Warnings, pending states */
+--red:         {RED}         /* Errors, critical states */
+--blue:        {BLUE}        /* Links, info (use sparingly) */
 ```
 
-**Brand Accents** (from visual philosophy):
+**Brand Accents** (from mark and visual philosophy):
 ```css
---copper:      #b07e58    /* Premium touches, accent elements */
---copper-dim:  #785640    /* Secondary copper */
+--accent:      {BRAND_ACCENT}      /* Primary accent — from mark or visual philosophy */
+--accent-dim:  {BRAND_ACCENT_DIM}  /* Secondary accent — reduce lightness 20-30%, saturation 10-20% */
 ```
+
+### Color Derivation Process
+
+**Do not invent colors arbitrarily.** Derive the full palette from the mark:
+
+1. **Start with mark colors** (typically 2-3: primary neutral, accent, optional secondary)
+2. **Derive backgrounds**: Take the darkest neutral from the mark. Step up in lightness (+6-8% per level) while maintaining the same warmth/coolness.
+3. **Derive text**: Set primary text for WCAG AAA (7:1) against bg-deep. Step down contrast for secondary, muted, whisper.
+4. **Functional colors**: Green, amber, red should harmonize with the brand accent. Test against all backgrounds.
+5. **Validate**: Run every text/background combination through contrast check. Minimum 4.5:1 for body text (WCAG AA), 3:1 for large text.
 
 #### iOS Colors (Semantic + Brand)
 
@@ -91,19 +101,19 @@ Color("BackgroundSecondary") // Warm surface
 Color("BackgroundTertiary")  // Elevated surface
 
 // Text
-Color("TextPrimary")         // e4e1e8 (dark) / 1a1a1a (light)
-Color("TextSecondary")       // a8a2b2 (dark) / 666666 (light)
-Color("TextTertiary")        // 625e6c (dark) / 999999 (light)
+Color("TextPrimary")         // {TEXT_PRIMARY} (dark) / {TEXT_PRIMARY_LIGHT} (light)
+Color("TextSecondary")       // {TEXT_SECONDARY} (dark) / {TEXT_SECONDARY_LIGHT} (light)
+Color("TextTertiary")        // {TEXT_MUTED} (dark) / {TEXT_MUTED_LIGHT} (light)
 
-// System (semantic)
-Color("Success")             // green #22c55e
-Color("Warning")             // amber #cf9a37
-Color("Error")               // red #dc2626
-Color("Info")                // blue #5886b0
+// System (semantic — derive from brand accent)
+Color("Success")             // {GREEN}
+Color("Warning")             // {AMBER}
+Color("Error")               // {RED}
+Color("Info")                // {BLUE}
 
 // Brand
-Color("BrandPrimary")        // From logo (e.g., green accent)
-Color("BrandAccent")         // Copper or secondary brand color
+Color("BrandPrimary")        // {BRAND_ACCENT} — from mark's primary accent
+Color("BrandAccent")         // {BRAND_ACCENT_DIM} — secondary brand color
 ```
 
 **iOS Asset Catalog Setup:**
@@ -311,10 +321,10 @@ padding: 20px 24px;
 
 **Status Indicators:**
 - Size: 8px diameter
-- Green (`#22c55e`): Healthy/Active
-- Amber (`#cf9a37`): Warning/Pending
-- Red (`#dc2626`): Error/Critical
-- Gray (`#625e6c`): Inactive/Disabled
+- Green (`{GREEN}`): Healthy/Active
+- Amber (`{AMBER}`): Warning/Pending
+- Red (`{RED}`): Error/Critical
+- Gray (`{TEXT_MUTED}`): Inactive/Disabled
 
 #### iOS Components
 

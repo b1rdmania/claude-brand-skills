@@ -274,6 +274,10 @@ Maintain clear space equal to [X]px around all sides of the mark.
 
 **Include complete token specifications for web and iOS:**
 
+<!-- TEMPLATE NOTE: All color hex values in the examples below are semantic placeholders
+     (e.g. {BG_DEEP}, {TEXT_PRIMARY}, {GREEN}, {BRAND_ACCENT}).
+     Replace every {PLACEHOLDER} with the brand's actual hex values from Phase 5. -->
+
 #### 5.1 Colors
 
 **Format as:**
@@ -284,38 +288,41 @@ Maintain clear space equal to [X]px around all sides of the mark.
 
 #### Web (CSS Variables)
 
+<!-- NOTE: All hex values below are semantic placeholders (e.g. {BG_DEEP}).
+     Replace with brand-specific values from the project's color palette. -->
+
 ```css
 :root {
   /* Backgrounds */
-  --bg-deep: #0e0e10;
-  --bg-warm: #16151a;
-  --bg-surface: #201e24;
+  --bg-deep: {BG_DEEP};
+  --bg-warm: {BG_WARM};
+  --bg-surface: {BG_SURFACE};
 
   /* Text */
-  --text-primary: #e4e1e8;
-  --text-secondary: #a8a2b2;
-  --text-muted: #625e6c;
+  --text-primary: {TEXT_PRIMARY};
+  --text-secondary: {TEXT_SECONDARY};
+  --text-muted: {TEXT_MUTED};
 
   /* Borders */
-  --border: #37343e;
-  --border-light: #484452;
+  --border: {BORDER};
+  --border-light: {BORDER_LIGHT};
 
   /* Functional */
-  --green: #22c55e;
-  --green-dim: #187840;
-  --amber: #cf9a37;
-  --red: #dc2626;
+  --green: {GREEN};
+  --green-dim: {GREEN_DIM};
+  --amber: {AMBER};
+  --red: {RED};
 
   /* Brand Accents */
-  --copper: #b07e58;
+  --copper: {BRAND_ACCENT};
 }
 ```
 
 **Color Meanings:**
-- **Green (#22c55e):** Success, active states, CTAs — functional, not decorative
-- **Amber (#cf9a37):** Warnings, pending states
-- **Red (#dc2626):** Errors, critical states
-- **Copper (#b07e58):** Premium accents, brand moments
+- **Green ({GREEN}):** Success, active states, CTAs — functional, not decorative
+- **Amber ({AMBER}):** Warnings, pending states
+- **Red ({RED}):** Errors, critical states
+- **Copper ({BRAND_ACCENT}):** Premium accents, brand moments
 
 #### iOS (Swift)
 
@@ -327,8 +334,8 @@ extension Color {
     static let backgroundSecondary = Color("BackgroundSecondary")
     static let textPrimary = Color("TextPrimary")
     static let textSecondary = Color("TextSecondary")
-    static let success = Color("Success")  // #22c55e
-    static let brandAccent = Color("BrandAccent")  // #b07e58
+    static let success = Color("Success")  // {GREEN}
+    static let brandAccent = Color("BrandAccent")  // {BRAND_ACCENT}
 }
 ```
 
@@ -738,7 +745,7 @@ At the very bottom, add:
 
 **Colors (Web):**
 ```css
---bg-deep: #0e0e10; --text-primary: #e4e1e8; --green: #22c55e;
+--bg-deep: {BG_DEEP}; --text-primary: {TEXT_PRIMARY}; --green: {GREEN};
 ```
 
 **Spacing:** 4, 8, 16, 24, 32, 48px

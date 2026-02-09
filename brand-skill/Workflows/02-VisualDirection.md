@@ -10,6 +10,24 @@ Explore visual territories before committing to detailed SVG work.
 
 - Phase 1 complete with approved positioning
 
+## Before You Start: API Keys for Image Generation
+
+**Image generation is optional but recommended.** If you want to use Mode A (AI-generated reference images), you'll need at least one of these API keys set as environment variables:
+
+| Model | Env Variable | Get it from |
+|-------|-------------|-------------|
+| `nano-banana-pro` (recommended) | `GOOGLE_API_KEY` | [Google AI Studio](https://aistudio.google.com/) |
+| `nano-banana` / `flux` | `REPLICATE_API_TOKEN` | [Replicate](https://replicate.com/) |
+| `gpt-image-1` | `OPENAI_API_KEY` | [OpenAI](https://platform.openai.com/) |
+
+**Don't have API keys? That's fine.** Phases 0 (Emotive Narrative) and 1 (Discovery) work perfectly without any image generation — they're pure text and strategy. When you reach this phase, you can:
+- **Mode B**: Supply your own mood boards, screenshots, or reference images
+- **Mode C**: Skip image generation entirely and go straight to SVG iteration in Phase 3
+
+See `TOOLS-REQUIRED.md` for full setup details.
+
+---
+
 ## Modes
 
 This phase can work three ways:
@@ -53,8 +71,13 @@ Simple enough for small sizes. No text."
 
 ### 2. Generate Images
 
+> **Need API keys?** This step requires a configured image generation API. If you haven't set one up, check the "Before You Start" section above — or skip to **Mode B** (your own references) or **Mode C** (straight to SVG) below. Everything before this point (Phases 0-1) works without image generation.
+
 **With Art skill (if available):**
 ```bash
+# Requires GOOGLE_API_KEY, REPLICATE_API_TOKEN, or OPENAI_API_KEY
+# See TOOLS-REQUIRED.md for setup
+
 bun run ~/.claude/skills/Art/Tools/Generate.ts \
   --model nano-banana-pro \
   --prompt "[YOUR PROMPT]" \
@@ -68,7 +91,7 @@ bun run ~/.claude/skills/Art/Tools/Generate.ts \
 - Keep prompts abstract and specify "no text", "logo concept", "minimalist"
 - Square aspect ratio works best for logo references
 
-**If no image generation available:** See Mode B or Mode C below.
+**If no image generation available:** Use Mode B (your own references) or Mode C (skip to SVG) below. Both produce equally good results — image generation just speeds up the exploration.
 
 Name files descriptively: `[brand]-ref-1-junction.png`, `[brand]-ref-2-flow.png`, etc.
 
