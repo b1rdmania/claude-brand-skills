@@ -162,9 +162,10 @@ See `brand-skill/TOOLS-REQUIRED.md` for full details.
 
 | Tool | Install | Used for |
 |------|---------|----------|
-| `rsvg-convert` | `brew install librsvg` | SVG rendering (required) |
-| `vtracer` | `cargo install vtracer` | PNG→SVG tracing (recommended) |
-| `svgo` | `npm install -g svgo` | SVG optimization (recommended) |
+| Node.js | `brew install node` or [nodejs.org](https://nodejs.org) | SVGO optimization (required) |
+| `svgo` | `npx svgo@latest` (no install) | SVG optimization (required) |
+| `rsvg-convert` | `brew install librsvg` | SVG rendering (recommended — browser works as fallback) |
+| `vtracer` | `brew install vtracer` | PNG→SVG tracing (recommended) |
 
 **Image generation** (Phase 2, optional) requires API keys — `GOOGLE_API_KEY`, `REPLICATE_API_TOKEN`, or `OPENAI_API_KEY`. Phases 0-1 work without any image generation. You can always supply your own reference images or skip to SVG iteration.
 

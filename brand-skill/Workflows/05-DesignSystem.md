@@ -678,9 +678,9 @@ Before declaring this phase complete, validate:
 ## Gate Check
 
 1. Present the color palette, typography hierarchy, and key components to the user
-2. Ask: **"Phase 5 Gate Check — Design system covers colors, type, spacing, and components. Approved to proceed to Phase 6: DESIGN.md Creation?"**
+2. Ask: **"Phase 5 Gate Check — Design system covers colors, type, spacing, and components. Approved to proceed to Phase 5.5: Composition & Visual Identity?"**
 3. On approval: update `.brand-progress.md` → Phase 5: COMPLETE
-4. Only proceed to Phase 6 when user explicitly approves
+4. Only proceed to Phase 5.5 when user explicitly approves
 
 ---
 

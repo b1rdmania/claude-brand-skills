@@ -186,9 +186,12 @@ Treats it as unified word.
 - `[brand]-wordmark-short.svg` — Compact variant
 - `[brand]-wordmark-stacked.svg` — If needed
 
-## Gate
+## Gate Check
 
-User confirms alignment and variants.
+1. Present all wordmark variants to the user
+2. Ask: **"Phase 4 Gate Check — Font chosen, lockups aligned. Approved to proceed to Phase 5: Design System?"**
+3. On approval: update `.brand-progress.md` → Phase 4: COMPLETE
+4. Only proceed to Phase 5 when user explicitly approves
 
 ---
 

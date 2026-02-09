@@ -169,13 +169,13 @@ OPTIONS:
 
 EXAMPLES:
   # Generate blog header with Nano Banana Pro (16:9, 2K quality)
-  generate --model nano-banana-pro --prompt "Abstract UL illustration..." --size 2K --aspect-ratio 16:9
+  generate --model nano-banana-pro --prompt "Abstract minimalist illustration..." --size 2K --aspect-ratio 16:9
 
   # Generate high-res 4K image with Nano Banana Pro
   generate --model nano-banana-pro --prompt "Editorial cover..." --size 4K --aspect-ratio 3:2
 
   # Generate blog header with original Nano Banana (16:9)
-  generate --model nano-banana --prompt "Abstract UL illustration..." --size 16:9
+  generate --model nano-banana --prompt "Abstract minimalist illustration..." --size 16:9
 
   # Generate square image with Flux
   generate --model flux --prompt "Minimal geometric art..." --size 1:1 --output /tmp/header.png

@@ -228,9 +228,12 @@ Before locking:
 - `[brand]-mark-final.svg` — Locked version
 - `[brand]-favicon.png` — 32px export
 
-## Gate
+## Gate Check
 
-User explicitly locks: "That's the one."
+1. Present the final mark at multiple sizes (256px, 64px, 32px) to the user
+2. Ask: **"Phase 3 Gate Check — Mark locked as final. Approved to proceed to Phase 4: Wordmark?"**
+3. On approval: update `.brand-progress.md` → Phase 3: COMPLETE
+4. Only proceed to Phase 4 when user explicitly approves
 
 ---
 

@@ -58,18 +58,18 @@ bun run Tools/Generate.ts \
 |------|---------|---------|---------|
 | `--model` | nano-banana-pro, nano-banana, flux, gpt-image-1 | nano-banana-pro | Image generation model |
 | `--prompt` | text | (required) | The generation prompt |
-| `--size` | 1K, 2K, 4K | 2K | Output resolution |
-| `--aspect-ratio` | 1:1, 16:9, 9:16, 21:9 | 1:1 | Image dimensions |
-| `--output` | path | ~/Downloads/output.png | Output file path |
-| `--remove-bg` | (flag) | off | Remove background after generation |
-| `--thumbnail` | (flag) | off | Generate both transparent + background versions |
-| `--reference-image` | path (repeatable) | none | Style/content reference images |
-| `--creative-variations` | number | 1 | Generate multiple variations |
+| `--size` | 1K, 2K, 4K (or aspect like 16:9) | 16:9 | Output resolution or aspect ratio |
+| `--aspect-ratio` | 1:1, 16:9, 9:16, 3:2, 21:9 | 16:9 | Aspect ratio (Gemini nano-banana-pro) |
+| `--output` | path | ~/Downloads/generated-image.png | Output file path |
+| `--remove-bg` | (flag) | off | Remove background (requires REMOVEBG_API_KEY) |
+| `--thumbnail` | (flag) | off | Generate both transparent + background versions (enables --remove-bg) |
+| `--reference-image` | path (repeatable) | none | Style/content reference (nano-banana-pro only) |
+| `--creative-variations` | number | 1 | Generate multiple variations (-v1, -v2, etc.) |
 
 ## In the Brand Process
 
 **Phase 2 — Visual Direction (Mode A):**
-Generate 3-4 reference images exploring different visual interpretations of the brand concept. Square aspect ratio, high resolution, abstract/minimalist prompts.
+Generate 3-4 reference images exploring different visual interpretations of the brand concept. Use `--aspect-ratio 1:1` for logo references (default is 16:9). High resolution, abstract/minimalist prompts.
 
 **Phase 3 — Mark Development (Path A):**
 Generate high-contrast reference images for bitmap tracing with vtracer. Use `--remove-bg` for clean marks. Trace the result to SVG.

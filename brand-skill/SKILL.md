@@ -335,12 +335,14 @@ Avoid generic patterns: purple-blue gradients, overly rounded shapes, meaningles
 
 ### Required
 
-- **rsvg-convert** (librsvg) — SVG→PNG rendering for the render-verify loop
+- **Node.js** — Required for SVGO optimization
+- **SVGO** — SVG optimization (`npx svgo@latest` — no global install needed)
+- **Browser** — SVG/HTML preview
 
 ### Recommended
 
+- **rsvg-convert** (librsvg) — SVG→PNG rendering for the render-verify loop (fallback: browser or `qlmanage` on macOS)
 - **vtracer** — PNG→SVG tracing (primary path for Phase 3 mark development)
-- **svgo** — SVG optimization (cleaning up traced output)
 - **potrace** — Bitmap tracing (simpler alternative to vtracer)
 
 ### Fallback

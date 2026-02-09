@@ -138,9 +138,12 @@ At 20% visibility (squint or blur the screenshot), the page's layout silhouette 
 - Surviving direction with mutations applied
 - Compositional identity documentation (for Phase 6)
 
-## Gate
+## Gate Check
 
-User confirms the composition is distinctive and ready for DESIGN.md documentation. The blur test passes.
+1. Present the surviving composition with blur test results
+2. Ask: **"Phase 5.5 Gate Check — Composition is distinctive, blur test passes. Approved to proceed to Phase 6: DESIGN.md Creation?"**
+3. On approval: update `.brand-progress.md` → Phase 5.5: COMPLETE
+4. Only proceed to Phase 6 when user explicitly approves
 
 ---
 

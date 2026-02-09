@@ -1,4 +1,4 @@
-# Phase 6: Packaging
+# Phase 7: Packaging
 
 Collect everything into a self-contained kit for handoff.
 
@@ -35,6 +35,8 @@ cp [brand]-wordmark-final.svg [brand]-brand-kit/
 cp [brand]-wordmark-short.svg [brand]-brand-kit/
 
 # Docs
+cp DESIGN.md [brand]-brand-kit/
+cp [brand]-emotive-narrative.md [brand]-brand-kit/
 cp [brand]-design-guidelines.md [brand]-brand-kit/
 cp [brand]-philosophy.md [brand]-brand-kit/
 cp [brand]-visual-philosophy.md [brand]-brand-kit/
@@ -145,15 +147,18 @@ zip -r [brand]-brand-kit.zip [brand]-brand-kit/
 
 **Required:**
 - [ ] README.md
+- [ ] DESIGN.md (master reference — Phase 6 output)
 - [ ] Mark SVG
 - [ ] Favicon PNG
 - [ ] Primary wordmark SVG
+- [ ] Emotive narrative MD (Phase 0 output)
 - [ ] Design guidelines MD
 
 **Recommended:**
 - [ ] Short wordmark SVG
 - [ ] Philosophy docs
-- [ ] Visual reference/canvas
+- [ ] Visual philosophy docs
+- [ ] Compositional identity docs (Phase 5.5 output)
 
 ---
 
