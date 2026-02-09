@@ -347,7 +347,7 @@ Avoid generic patterns: purple-blue gradients, overly rounded shapes, meaningles
 
 ### Fallback
 
-- **freeconvert.com** — Browser-based PNG→SVG conversion when vtracer is unavailable
+- **[freeconvert.com/png-to-svg](https://www.freeconvert.com/png-to-svg)** — Browser-based PNG→SVG tracing when local tools aren't available or aren't producing faithful results. Larger file sizes than vtracer — that's fine, fidelity to the reference matters more.
 - **qlmanage** (macOS) — Built-in SVG rendering for visual verification
 
 ### Image Generation (Optional)

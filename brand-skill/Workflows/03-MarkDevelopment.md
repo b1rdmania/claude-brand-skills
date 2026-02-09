@@ -37,6 +37,8 @@ Best for: letterforms, illustrative elements, organic shapes, anything with comp
 **Process:**
 1. Generate or obtain a reference image (from Phase 2, or user provides)
 2. Trace with a vector tool:
+
+   **Option A: Local tools (best quality, smallest files)**
    ```bash
    # vtracer (recommended — better curve handling)
    brew install vtracer
@@ -46,10 +48,21 @@ Best for: letterforms, illustrative elements, organic shapes, anything with comp
    brew install potrace
    potrace -s mark-reference.bmp -o mark-traced.svg
    ```
+
+   **Option B: Browser-based (no install needed)**
+   If vtracer/potrace aren't available or aren't producing good results, use [freeconvert.com/png-to-svg](https://www.freeconvert.com/png-to-svg):
+   - Upload the reference PNG
+   - Download the traced SVG
+   - Copy the SVG content into your file
+
+   Browser-traced SVGs will be larger than locally-traced ones — that's fine. **Fidelity to the reference image matters more than file size.** The mark needs to look right first. You can optimize later with SVGO, but don't sacrifice visual accuracy for smaller files.
+
 3. Optimize with SVGO:
    ```bash
    npx svgo@latest mark-traced.svg -o mark-optimized.svg
    ```
+   **Note:** If SVGO optimization visibly degrades the mark (lost details, simplified curves), keep the unoptimized version. A 150KB SVG that looks right beats a 30KB SVG that doesn't.
+
 4. Manually refine paths if needed (adjust viewBox, clean up artifacts)
 5. Render to verify: `qlmanage -t -s 512 -o /tmp mark-optimized.svg`
 
