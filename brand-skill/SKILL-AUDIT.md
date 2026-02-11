@@ -6,6 +6,38 @@
 
 ---
 
+## Implementation Status
+
+**Last updated:** 2026-02-11
+
+All critical and high-severity issues have been resolved. All P0 and P1 gaps have been implemented. Two P2 and one P3 item remain as future work.
+
+| # | Issue | Severity | Status |
+|---|-------|----------|--------|
+| 1 | Phase 3 SVG hand-coding | Critical | ✅ Implemented |
+| 2 | No orchestrator | Critical | ✅ Implemented |
+| 3 | No visual validation loop | Critical | ✅ Implemented |
+| 4 | Template colors from Sorted | High | ✅ Implemented |
+| 5 | Phase 4 lockups with traced SVGs | High | ⚠️ Partial |
+| 6 | No iteration limits | High | ✅ Implemented |
+| 7 | Gate checks vague | Medium | ✅ Implemented |
+| 8 | No tooling requirements | Medium | ✅ Implemented |
+| 9 | Anti-slop checklists aspirational | Medium | ⚠️ Partial |
+| 10 | Phase 0-2 vs 3+ quality gap | Medium | ✅ Implemented |
+| 2.1 | Font exploration | P0 | ✅ Implemented |
+| 2.2 | Color derivation process | P0 | ✅ Implemented |
+| 2.3 | Real-world mockups | P2 | ❌ Not implemented |
+| 2.4 | Favicon/icon export pipeline | P1 | ✅ Implemented |
+| 2.5 | Social media assets | P2 | ✅ Implemented |
+| 2.6 | Brand guidelines PDF | P3 | ❌ Not implemented |
+| 2.7 | Light mode derivation | P0 | ✅ Implemented |
+| 2.8 | Accessibility validation | P1 | ✅ Implemented |
+| 2.9 | File format variety | P2 | ✅ Implemented |
+| A3 | Convergence / composition | Critical | ✅ Implemented |
+| §5 | Phase 4 rewrite | P0 | ✅ Implemented |
+
+---
+
 ## Executive Summary
 
 The brand skill's text-based phases (0-2: Emotive Narrative, Philosophy, Visual Direction) are strong and play to LLM strengths. Quality drops sharply when the skill hits visual output in Phase 3+. The core issue is an assumption that LLMs can iteratively design SVG visuals by code alone — they can't see their output, leading to long iteration loops with diminishing returns.
@@ -18,7 +50,7 @@ Phase 3 consumed 30 SVG iterations without converging on the reference. The user
 
 ### Critical
 
-#### 1. Phase 3 SVG Mark Creation Is Fundamentally Flawed for LLMs
+#### 1. Phase 3 SVG Mark Creation Is Fundamentally Flawed for LLMs ✅ IMPLEMENTED
 
 **Problem:** The skill assumes the executor can hand-code SVG paths to match a visual reference image. LLMs cannot see rendered output. Each iteration is a blind guess informed only by coordinate math and the previous code. After 30 iterations, the result still didn't match the reference.
 
@@ -30,7 +62,7 @@ Phase 3 consumed 30 SVG iterations without converging on the reference. The user
 - Hand-coded SVG should be reserved for simple geometric marks only (circles, squares, basic monograms)
 - Add explicit guidance: "If the mark involves letterforms, illustrative elements, or complex geometry, use bitmap tracing"
 
-#### 2. No Master Orchestrator / Phase Progression Tracker
+#### 2. No Master Orchestrator / Phase Progression Tracker ✅ IMPLEMENTED
 
 **Problem:** Each phase is a separate markdown file with no mechanism to track which phases are complete, enforce sequential execution, or prevent skipping. The executor jumped from Phase 3 to Phase 5, skipping the lockup portion of Phase 4.
 
@@ -46,7 +78,7 @@ Phase 3 consumed 30 SVG iterations without converging on the reference. The user
   - [ ] Phase 2: Visual Direction → ...
   ```
 
-#### 3. No Visual Validation Loop
+#### 3. No Visual Validation Loop ✅ IMPLEMENTED
 
 **Problem:** The skill never specifies how to verify visual output. There's no "render and check" step. The executor had to discover `qlmanage -t -s 512` on macOS as an ad-hoc workaround.
 
@@ -61,7 +93,7 @@ Phase 3 consumed 30 SVG iterations without converging on the reference. The user
 
 ### High
 
-#### 4. Template Colors Are From a Different Brand
+#### 4. Template Colors Are From a Different Brand ✅ IMPLEMENTED
 
 **Problem:** The Phase 5 (Design System) workflow contains hardcoded CSS/Swift values using a cool purple palette (`#0e0e10`, `#e4e1e8`, `#22c55e`). These are not placeholders — they look like final values. The executor must manually identify which are template values and replace them, which is error-prone.
 
@@ -75,7 +107,7 @@ Phase 3 consumed 30 SVG iterations without converging on the reference. The user
   ```
 - Or add a clear header: "ALL COLOR VALUES BELOW ARE EXAMPLES. Replace with values derived from the mark and visual philosophy."
 
-#### 5. Phase 4 Lockups Are Impractical With Traced SVGs
+#### 5. Phase 4 Lockups Are Impractical With Traced SVGs ⚠️ PARTIAL
 
 **Problem:** The Phase 4 workflow assumes the mark is a clean, hand-coded SVG that can be embedded into a lockup via `<g transform="translate(...)">`. The actual mark is a 158KB traced file with dozens of complex paths. Embedding it into a lockup creates unwieldy files.
 
@@ -84,7 +116,7 @@ Phase 3 consumed 30 SVG iterations without converging on the reference. The user
 - Consider lockups as composite assets (mark image + text SVG side by side) rather than single SVG files
 - Add SVGO optimization as a required step before lockup creation
 
-#### 6. No Iteration Limits or Escape Hatches
+#### 6. No Iteration Limits or Escape Hatches ✅ IMPLEMENTED
 
 **Problem:** Phase 3 has no guidance on when to stop iterating and change approach. The executor kept refining the same approach for 30 rounds because the skill's implicit message is "keep going until it matches."
 
@@ -102,7 +134,7 @@ Phase 3 consumed 30 SVG iterations without converging on the reference. The user
 
 ### Medium
 
-#### 7. Gate Checks Are Vague
+#### 7. Gate Checks Are Vague ✅ IMPLEMENTED
 
 **Problem:** Each phase ends with something like "User confirms alignment and variants" but doesn't specify the mechanism. Should the executor render a PNG? Describe it? List the files? The lack of specificity leads to gates being skipped or performed inconsistently.
 
@@ -117,7 +149,7 @@ Phase 3 consumed 30 SVG iterations without converging on the reference. The user
   5. Do not proceed to Phase N+1 until approved
   ```
 
-#### 8. No Tooling Requirements Document
+#### 8. No Tooling Requirements Document ✅ IMPLEMENTED
 
 **Problem:** The skill assumes tools are available but never lists them. During execution, the following were needed and discovered ad-hoc:
 - `qlmanage` (macOS SVG rendering)
@@ -146,7 +178,7 @@ Phase 3 consumed 30 SVG iterations without converging on the reference. The user
   - SVG Converter MCP (format conversion)
   ```
 
-#### 9. Anti-AI-Slop Checklists Are Aspirational, Not Actionable
+#### 9. Anti-AI-Slop Checklists Are Aspirational, Not Actionable ⚠️ PARTIAL
 
 **Problem:** Checklist items like "Colors have meaning" and "Components feel distinctive" are good principles but subjective. There's no way to objectively verify them during execution. They serve as vibes, not gates.
 
@@ -155,7 +187,7 @@ Phase 3 consumed 30 SVG iterations without converging on the reference. The user
   - Verifiable: "Every color in the system is used in at least one component" / "WCAG AA contrast ratios met for all text/background pairs"
   - Aspirational: Keep as design principles, but don't frame them as checkboxes
 
-#### 10. Phase 0-2 vs 3+ Quality Gap
+#### 10. Phase 0-2 vs 3+ Quality Gap ✅ IMPLEMENTED
 
 **Problem:** Phases 0-2 (narrative, philosophy, visual direction) are text generation tasks — LLM strengths. Phase 3+ requires spatial reasoning, visual design, and iterative refinement of visual output — LLM weaknesses. The skill doesn't acknowledge this gap or adjust its approach.
 
@@ -184,12 +216,12 @@ Phase 3 consumed 30 SVG iterations without converging on the reference. The user
 
 ## Recommended Additions
 
-| File | Purpose |
-|------|---------|
-| `00-Orchestrator.md` | Master checklist, phase tracker, entry/exit criteria |
-| `TOOLS-REQUIRED.md` | Prerequisites, installation commands, MCP servers |
-| `RENDER-VERIFY.md` | Standard process for rendering SVGs and presenting to user |
-| `ITERATION-LIMITS.md` | When to pivot approaches, escape hatches, escalation paths |
+| File | Purpose | Status |
+|------|---------|--------|
+| `00-Orchestrator.md` | Master checklist, phase tracker, entry/exit criteria | ✅ Created |
+| `TOOLS-REQUIRED.md` | Prerequisites, installation commands, MCP servers | ✅ Created |
+| `RENDER-VERIFY.md` | Standard process for rendering SVGs and presenting to user | ✅ Incorporated into Phase 3 |
+| `ITERATION-LIMITS.md` | When to pivot approaches, escape hatches, escalation paths | ✅ Incorporated into Phase 3 |
 
 ---
 
@@ -279,7 +311,7 @@ The skill produces: an emotive narrative, a philosophy document, a visual philos
 
 ---
 
-#### 2.1 Font Exploration and Testing
+#### 2.1 Font Exploration and Testing ✅ IMPLEMENTED
 
 **Current state:** Phase 4 has a table mapping personality to font direction and lists two "safe defaults" (Inter, JetBrains Mono). Phase 5 defines a type scale. Neither phase involves showing the user rendered font specimens.
 
@@ -293,7 +325,7 @@ The skill produces: an emotive narrative, a philosophy document, a visual philos
 
 ---
 
-#### 2.2 Color Derivation Process
+#### 2.2 Color Derivation Process ✅ IMPLEMENTED
 
 **Current state:** Phase 5 says "Build outward from the mark's colors and visual philosophy" and then immediately provides a complete hardcoded palette (the Sorted palette). The workflow never explains *how* to derive a full palette from mark colors.
 
@@ -332,7 +364,7 @@ The skill produces: an emotive narrative, a philosophy document, a visual philos
 
 ---
 
-#### 2.3 Real-World Application Mockups
+#### 2.3 Real-World Application Mockups ❌ NOT IMPLEMENTED
 
 **Current state:** The skill produces SVG assets and markdown documentation. No workflow step creates mockups showing how the brand looks in context.
 
@@ -349,7 +381,7 @@ This does not need to be pixel-perfect. Even a simple SVG or HTML layout rendere
 
 ---
 
-#### 2.4 Favicon and App Icon Generation
+#### 2.4 Favicon and App Icon Generation ✅ IMPLEMENTED
 
 **Current state:** Phase 3 mentions `[brand]-favicon.png` as an output (32px) and has size testing checkboxes for 256px, 64px, 32px, and 16px. Phase 7 (Packaging) includes the favicon in the file list. The design-guidelines template mentions `sorted-og-image.png` (1200x630 for social) in a checklist but the workflow never describes how to create it.
 
@@ -372,7 +404,7 @@ The skill also has no guidance on how to adapt the mark for icon contexts. The m
 
 ---
 
-#### 2.5 Social Media Asset Templates
+#### 2.5 Social Media Asset Templates ✅ IMPLEMENTED
 
 **Current state:** Not addressed anywhere in the skill. The Sorted example checklist mentions `sorted-og-image.png` but no workflow produces it or any social templates.
 
@@ -393,7 +425,7 @@ These are straightforward compositions using the existing mark, wordmark, colors
 
 ---
 
-#### 2.6 Brand Guidelines PDF Generation
+#### 2.6 Brand Guidelines PDF Generation ❌ NOT IMPLEMENTED
 
 **Current state:** The skill produces `DESIGN.md` and `[brand]-design-guidelines.md` as markdown files. No PDF is generated.
 
@@ -412,7 +444,7 @@ These are straightforward compositions using the existing mark, wordmark, colors
 
 ---
 
-#### 2.7 Light Mode Derivation Process
+#### 2.7 Light Mode Derivation Process ✅ IMPLEMENTED
 
 **Current state:** Phase 5 mentions light mode in passing:
 - CSS: `@media (prefers-color-scheme: light) { --bg-deep: #ffffff; --text-primary: #1a1a1a; }` with a "..." comment
@@ -438,7 +470,7 @@ The actual light mode palette is never derived. The workflow provides a complete
 
 ---
 
-#### 2.8 Accessibility Validation
+#### 2.8 Accessibility Validation ✅ IMPLEMENTED
 
 **Current state:** Phase 5 ends with a note: "Ensure color contrast meets WCAG AA (4.5:1 for body text, 3:1 for large text)." The anti-slop checklist says "Sufficient contrast (WCAG AA: 4.5:1 for body, 3:1 for large text)." The DESIGN template includes a "4.5:1 minimum" note in logo usage guidelines.
 
@@ -467,7 +499,7 @@ In the Sorted example, the palette uses `#a8a2b2` (text-secondary) on `#0e0e10` 
 
 ---
 
-#### 2.9 File Format Variety and Export Pipeline
+#### 2.9 File Format Variety and Export Pipeline ✅ IMPLEMENTED
 
 **Current state:** The skill produces SVGs for marks and wordmarks, a single 32px favicon PNG, and markdown documents. Phase 7 collects these into a folder and zips it.
 
@@ -516,19 +548,19 @@ The skill should also include the `rsvg-convert` commands (or equivalent) to pro
 
 ### 3. Summary: Priority-Ranked Gaps
 
-| Priority | Gap | Effort | Impact |
-|----------|-----|--------|--------|
-| **P0** | Phase 4 font exploration/feedback loop | Low | High -- prevents "executor picks font without user input" |
-| **P0** | Color derivation process (dark mode) | Medium | High -- the most critical creative step has no guidance |
-| **P0** | Light mode derivation process | Medium | High -- half the palette is hand-waved |
-| **P1** | Accessibility contrast checking | Low | High -- turns an aspirational note into an actual check |
-| **P1** | Favicon/icon export pipeline | Low | Medium -- mechanical but expected in any kit |
-| **P1** | Wordmark size testing + gate check | Low | Medium -- prevents weak gate from Phase 4 |
-| **P2** | Real-world application mockups | Medium | High -- but harder for LLMs to execute well |
-| **P2** | Social media assets (OG image, avatar) | Low | Medium -- simple compositions, high practical value |
-| **P2** | File format variety (PNG exports at sizes) | Low | Medium -- mechanical, easy to automate |
-| **P3** | Brand guidelines PDF | High | Medium -- nice for stakeholders but markdown serves developers |
-| **P3** | Mark color variations (white, dark) | Low | Low -- straightforward SVG edits |
+| Priority | Gap | Effort | Impact | Status |
+|----------|-----|--------|--------|--------|
+| **P0** | Phase 4 font exploration/feedback loop | Low | High | ✅ Implemented |
+| **P0** | Color derivation process (dark mode) | Medium | High | ✅ Implemented |
+| **P0** | Light mode derivation process | Medium | High | ✅ Implemented |
+| **P1** | Accessibility contrast checking | Low | High | ✅ Implemented |
+| **P1** | Favicon/icon export pipeline | Low | Medium | ✅ Implemented |
+| **P1** | Wordmark size testing + gate check | Low | Medium | ✅ Implemented |
+| **P2** | Real-world application mockups | Medium | High | ❌ Future work |
+| **P2** | Social media assets (OG image, avatar) | Low | Medium | ✅ Implemented |
+| **P2** | File format variety (PNG exports at sizes) | Low | Medium | ✅ Implemented |
+| **P3** | Brand guidelines PDF | High | Medium | ❌ Future work |
+| **P3** | Mark color variations (white, dark) | Low | Low | ✅ Implemented |
 
 ---
 
@@ -552,9 +584,11 @@ The skill should also include the `rsvg-convert` commands (or equivalent) to pro
 
 ---
 
-### 5. Specific Recommendations for Phase 4 Rewrite
+### 5. Specific Recommendations for Phase 4 Rewrite ✅ IMPLEMENTED
 
-Phase 4 needs the most substantial revision of any workflow. Here is a recommended structure:
+Phase 4 has been rewritten with all recommended steps. The current `04-Wordmark.md` includes: mandatory font exploration (Step 1), typographic refinement with tracking and case treatment (Step 2), variant creation (Step 3), alignment (Step 4), lockup system (Step 5), size testing at hero/nav/compact (Step 6), a 10-item quality checklist, and a strengthened gate check.
+
+The original recommended structure (preserved below for reference):
 
 ```
 # Phase 4: Wordmark & Lockups
@@ -617,7 +651,9 @@ These are worth acknowledging as "beyond current scope" rather than trying to ad
 
 ---
 
-## Addendum 3: The Convergence Problem — Why Every Page Looks the Same
+## Addendum 3: The Convergence Problem — Why Every Page Looks the Same ✅ IMPLEMENTED
+
+> **Resolution:** This was addressed by adding Phase 5.5: Composition & Visual Identity (`05A-CompositionIdentity.md`) — an evolutionary diverge/kill/mutate process where the LLM generates structural diversity and the user selects for distinctiveness. Also added `ADDENDUM-4-WEB-PRESENCE.md` with the full theoretical framework, and a comprehensive LLM Design Limitations section in `SKILL.md`. The proposed phase addition below was implemented as described.
 
 **Date:** 2026-02-06 (post-deployment)
 **Trigger:** After executing the full brand skill for AutonoLabs.ai and deploying the landing page, it was visually indistinguishable from two other sites (sorted.fund, compost.fi) built by the same process. Same layout, same rhythm, same visual weight. Three brands, one page.

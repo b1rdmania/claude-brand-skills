@@ -566,16 +566,52 @@ h1 {
 }
 ```
 
-**Dark Mode Toggle:**
+**Light Mode Derivation:**
+
+Light mode is not "invert the values." It requires its own derivation process:
+
 ```css
 @media (prefers-color-scheme: light) {
     :root {
-        --bg-deep: #ffffff;
-        --text-primary: #1a1a1a;
-        /* ... */
+        /* Backgrounds — light to lighter (opposite of dark mode's dark to lighter) */
+        --bg-deep:     {BG_DEEP_LIGHT};     /* White or warm off-white */
+        --bg-warm:     {BG_WARM_LIGHT};     /* Slightly darker — light gray with brand warmth */
+        --bg-surface:  {BG_SURFACE_LIGHT};  /* Slightly darker still — for inputs, wells */
+        --bg-elevated: {BG_ELEVATED_LIGHT}; /* Lightest gray — hovers, overlays */
+
+        /* Text — dark text, preserve warmth (not pure #000) */
+        --text-primary:   {TEXT_PRIMARY_LIGHT};   /* Near-black with brand warmth */
+        --text-secondary: {TEXT_SECONDARY_LIGHT}; /* Medium gray */
+        --text-muted:     {TEXT_MUTED_LIGHT};     /* Light gray */
+        --text-whisper:   {TEXT_WHISPER_LIGHT};   /* Very light gray */
+
+        /* Borders — darker on light backgrounds */
+        --border:       {BORDER_LIGHT_MODE};
+        --border-light: {BORDER_LIGHT_MODE_EMPHASIS};
+
+        /* Functional — may need saturation/lightness adjustment for white backgrounds */
+        --green:      {GREEN_LIGHT};      /* Often needs to be darker/more saturated */
+        --green-dim:  {GREEN_DIM_LIGHT};
+        --green-dark: {GREEN_DARK_LIGHT}; /* Light tint for green backgrounds */
+        --amber:      {AMBER_LIGHT};
+        --red:        {RED_LIGHT};
+        --blue:       {BLUE_LIGHT};
+
+        /* Accents — may need adjustment for contrast on white */
+        --accent:     {ACCENT_LIGHT};
+        --accent-dim: {ACCENT_DIM_LIGHT};
     }
 }
 ```
+
+**Light mode derivation process:**
+
+1. **Backgrounds**: Start with white or warm off-white for `bg-deep`. Step *down* in lightness for warm, surface, elevated (the progression direction reverses — in dark mode you go lighter, in light mode you go slightly darker for depth).
+2. **Text**: Primary text is near-black — preserve the brand's warmth (not pure `#000000`). Step down contrast for secondary/muted/whisper just like dark mode.
+3. **Accent colors**: Test every accent against white/off-white backgrounds. Many dark-mode accents are too light on white — increase saturation or decrease lightness until WCAG AA passes.
+4. **Functional colors**: Green/amber/red often need to be slightly darker on light backgrounds. Don't just reuse the dark mode values without checking contrast.
+5. **Borders**: Borders that were light-on-dark need to become dark-on-light with lower opacity. Typical pattern: `rgba(0, 0, 0, 0.1)` for default, `rgba(0, 0, 0, 0.2)` for emphasis.
+6. **Validate all pairs**: Run every text/background combination through contrast check for light mode separately from dark mode.
 
 #### iOS-Specific
 
@@ -677,10 +713,11 @@ Before declaring this phase complete, validate:
 
 ## Gate Check
 
-1. Present the color palette, typography hierarchy, and key components to the user
-2. Ask: **"Phase 5 Gate Check — Design system covers colors, type, spacing, and components. Approved to proceed to Phase 5.5: Composition & Visual Identity?"**
-3. On approval: update `.brand-progress.md` → Phase 5: COMPLETE
-4. Only proceed to Phase 5.5 when user explicitly approves
+1. Confirm contrast validation matrix is complete (Section 9) — all text/background pairs checked for both dark and light mode
+2. Present the color palette, typography hierarchy, contrast matrix, and key components to the user
+3. Ask: **"Phase 5 Gate Check — Design system covers colors (dark+light), type, spacing, components, and contrast validation. Approved to proceed to Phase 5.5: Composition & Visual Identity?"**
+4. On approval: update `.brand-progress.md` → Phase 5: COMPLETE
+5. Only proceed to Phase 5.5 when user explicitly approves
 
 ---
 
@@ -694,4 +731,64 @@ Before declaring this phase complete, validate:
 
 **CSS/Swift variables:** Developers need copy-paste code. Make it production-ready.
 
-**Accessibility:** Ensure color contrast meets WCAG AA (4.5:1 for body text, 3:1 for large text).
+**Accessibility:** See the contrast validation step below — do not skip this.
+
+---
+
+### 9. Contrast Validation (MANDATORY)
+
+**Do not declare Phase 5 complete without running this check.** "Ensure contrast" is not a checklist item — it's a concrete step with a concrete output.
+
+#### Process
+
+Test every text color against every background color it will appear on. This means:
+
+1. `text-primary` against `bg-deep`, `bg-warm`, `bg-surface`, `bg-elevated`
+2. `text-secondary` against the same four backgrounds
+3. `text-muted` against the same four backgrounds
+4. `green` (for CTAs/buttons) against `bg-deep` and `bg-warm`
+5. `accent` against `bg-deep` and `bg-warm`
+6. Focus ring color (`green` or `accent`) against all backgrounds
+
+**WCAG AA minimums:**
+- Body text (under 18px or under 14px bold): **4.5:1**
+- Large text (18px+ or 14px+ bold): **3:1**
+- UI components (icons, borders, focus rings): **3:1**
+
+#### Contrast Ratio Calculation
+
+If you have Node.js, you can compute contrast ratios programmatically. Otherwise, use this formula:
+
+1. Convert hex to relative luminance: `L = 0.2126*R + 0.7152*G + 0.0722*B` (where R, G, B are linearized sRGB values)
+2. Contrast ratio = `(L1 + 0.05) / (L2 + 0.05)` where L1 is the lighter color
+
+Or use an online tool: [webaim.org/resources/contrastchecker](https://webaim.org/resources/contrastchecker/)
+
+#### Output: Contrast Matrix
+
+Include this table in the design guidelines:
+
+```markdown
+### Contrast Validation
+
+| Text Color | Background | Ratio | AA Body (4.5:1) | AA Large (3:1) |
+|-----------|-----------|-------|-----------------|----------------|
+| text-primary (#hex) | bg-deep (#hex) | X:1 | PASS/FAIL | PASS/FAIL |
+| text-primary (#hex) | bg-warm (#hex) | X:1 | PASS/FAIL | PASS/FAIL |
+| text-secondary (#hex) | bg-deep (#hex) | X:1 | PASS/FAIL | PASS/FAIL |
+| text-secondary (#hex) | bg-warm (#hex) | X:1 | PASS/FAIL | PASS/FAIL |
+| text-muted (#hex) | bg-deep (#hex) | X:1 | PASS/FAIL | PASS/FAIL |
+| text-muted (#hex) | bg-warm (#hex) | X:1 | PASS/FAIL | PASS/FAIL |
+| green (#hex) | bg-deep (#hex) | X:1 | PASS/FAIL | PASS/FAIL |
+| accent (#hex) | bg-deep (#hex) | X:1 | PASS/FAIL | PASS/FAIL |
+```
+
+**If a pair fails:**
+- For text colors: increase lightness (dark mode) or decrease lightness (light mode) until the ratio meets 4.5:1
+- For functional colors: increase saturation and/or adjust lightness
+- For muted text: failure at body size is acceptable if it's only used at large text sizes — document this explicitly
+- **Never sacrifice legibility for aesthetics**
+
+#### Light Mode Validation
+
+Run the same matrix for light mode tokens. Light mode often has different failure points — accent colors that worked on dark backgrounds may fail on white.

@@ -291,11 +291,62 @@ Maintain clear space equal to [X] around all sides of the mark.
 | **Blue** | `#[hex]` | Info, Links | Informational elements, hyperlinks (use sparingly) |
 | **Accent** | `#[hex]` | Brand moment | Strategic brand emphasis, premium elements |
 
+**Light Mode:**
+
+```css
+@media (prefers-color-scheme: light) {
+    :root {
+        /* Backgrounds — step DOWN in lightness (opposite of dark mode) */
+        --bg-deep:     #[hex];     /* White or warm off-white */
+        --bg-warm:     #[hex];     /* Light gray with brand warmth */
+        --bg-surface:  #[hex];     /* Slightly darker — inputs, wells */
+        --bg-elevated: #[hex];     /* Lightest gray — hovers */
+
+        /* Text — preserve warmth (not pure #000) */
+        --text-primary:   #[hex];  /* Near-black */
+        --text-secondary: #[hex];  /* Medium gray */
+        --text-muted:     #[hex];  /* Light gray */
+        --text-whisper:   #[hex];  /* Very light gray */
+
+        /* Borders */
+        --border:       #[hex];
+        --border-light: #[hex];
+
+        /* Functional — adjusted for white backgrounds */
+        --green:      #[hex];
+        --green-dim:  #[hex];
+        --green-dark: #[hex];      /* Light tint for green backgrounds */
+        --amber:      #[hex];
+        --red:        #[hex];
+        --blue:       #[hex];
+
+        /* Accents */
+        --accent:     #[hex];
+        --accent-dim: #[hex];
+    }
+}
+```
+
+**Contrast Validation:**
+
+| Text Color | Background | Ratio | AA Body (4.5:1) | AA Large (3:1) |
+|-----------|-----------|-------|-----------------|----------------|
+| text-primary (`#[hex]`) | bg-deep (`#[hex]`) | X:1 | PASS/FAIL | PASS/FAIL |
+| text-primary (`#[hex]`) | bg-warm (`#[hex]`) | X:1 | PASS/FAIL | PASS/FAIL |
+| text-secondary (`#[hex]`) | bg-deep (`#[hex]`) | X:1 | PASS/FAIL | PASS/FAIL |
+| text-secondary (`#[hex]`) | bg-warm (`#[hex]`) | X:1 | PASS/FAIL | PASS/FAIL |
+| text-muted (`#[hex]`) | bg-deep (`#[hex]`) | X:1 | PASS/FAIL | PASS/FAIL |
+| text-muted (`#[hex]`) | bg-warm (`#[hex]`) | X:1 | PASS/FAIL | PASS/FAIL |
+| green (`#[hex]`) | bg-deep (`#[hex]`) | X:1 | PASS/FAIL | PASS/FAIL |
+| accent (`#[hex]`) | bg-deep (`#[hex]`) | X:1 | PASS/FAIL | PASS/FAIL |
+
+*Run this matrix for both dark mode and light mode tokens. All body text pairs must pass 4.5:1. Muted text used only at large sizes may pass at 3:1 — document this explicitly.*
+
 **Principles:**
 - Green = success/go (functional meaning, not decoration)
 - Use color strategically (10-20% of elements, not everything)
 - Warm backgrounds (never pure #000000)
-- Sufficient contrast (WCAG AA: 4.5:1 for body, 3:1 for large text)
+- All text/background pairs validated for WCAG AA contrast
 
 #### iOS (Swift + Asset Catalog)
 
@@ -330,9 +381,16 @@ Each color has light/dark variants:
 | Color | Dark Mode | Light Mode |
 |-------|-----------|------------|
 | BackgroundPrimary | `#[hex]` | `#[hex]` |
+| BackgroundSecondary | `#[hex]` | `#[hex]` |
+| BackgroundTertiary | `#[hex]` | `#[hex]` |
 | TextPrimary | `#[hex]` | `#[hex]` |
+| TextSecondary | `#[hex]` | `#[hex]` |
+| TextTertiary | `#[hex]` | `#[hex]` |
 | Success | `#[hex]` | `#[hex]` |
-| ... | ... | ... |
+| Warning | `#[hex]` | `#[hex]` |
+| Error | `#[hex]` | `#[hex]` |
+| BrandPrimary | `#[hex]` | `#[hex]` |
+| BrandAccent | `#[hex]` | `#[hex]` |
 
 ---
 
@@ -838,24 +896,40 @@ StatusIndicator(status: .active)
 }
 ```
 
-#### Dark Mode
+#### Dark/Light Mode
 
 ```css
 /* Default (dark mode) — replace placeholders with brand-specific hex values */
 :root {
   --bg-deep: {BG_DEEP};
   --text-primary: {TEXT_PRIMARY};
+  /* ... all dark mode tokens from Section 5.1 */
 }
 
-/* Light mode override */
+/* Light mode override — full token set, not abbreviated */
 @media (prefers-color-scheme: light) {
   :root {
-    --bg-deep: #ffffff;
-    --text-primary: #1a1a1a;
-    /* ... override all color tokens */
+    --bg-deep: #[hex];          /* White or warm off-white */
+    --bg-warm: #[hex];          /* Light gray with brand warmth */
+    --bg-surface: #[hex];       /* Slightly darker */
+    --bg-elevated: #[hex];      /* Lightest gray */
+    --text-primary: #[hex];     /* Near-black with warmth */
+    --text-secondary: #[hex];
+    --text-muted: #[hex];
+    --text-whisper: #[hex];
+    --border: #[hex];
+    --border-light: #[hex];
+    --green: #[hex];            /* May need adjustment for white backgrounds */
+    --green-dim: #[hex];
+    --amber: #[hex];
+    --red: #[hex];
+    --accent: #[hex];
+    --accent-dim: #[hex];
   }
 }
 ```
+
+**Every token must have a light mode value.** Do not use `/* ... */` — incomplete light mode is a common failure point.
 
 #### Focus States
 

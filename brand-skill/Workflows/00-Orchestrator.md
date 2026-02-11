@@ -50,14 +50,17 @@ Mark phases as you complete them:
 
 [ ] Phase 4: Wordmark
     → Output: Font specimen comparison (MANDATORY before creating wordmark)
+    → Output: Tracking + case treatment comparison
     → Output: [brand]-wordmark-final.svg (horizontal)
     → Output: [brand]-wordmark-short.svg (compact)
     → Output: [brand]-wordmark-stacked.svg (if needed)
-    → Gate: User confirms font choice, alignment, and variants
+    → Gate: User confirms font, tracking, case treatment, alignment, and size testing
 
 [ ] Phase 5: Design System
     → Output: [brand]-design-guidelines.md
+    → Output: Contrast validation matrix (dark + light mode)
     → Gate: All colors derived from mark (no template defaults)
+    → Gate: Light mode fully specified (not hand-waved with "...")
     → Gate: Contrast validation passes (WCAG AA minimum)
 
 [ ] Phase 5.5: Composition & Visual Identity
@@ -72,6 +75,10 @@ Mark phases as you complete them:
     → Gate: Contains emotive narrative, tokens, composition identity, anti-references
 
 [ ] Phase 7: Packaging
+    → Output: Mark variations (white, dark, mono SVGs)
+    → Output: Mark PNGs (512, 256, 64px)
+    → Output: Favicons (16, 32, 48px) + apple-touch-icon (180px)
+    → Output: Social assets (OG image 1200x630, avatar 400x400)
     → Output: [brand]-brand-kit/ folder or .zip
     → Output: Quick-start README
     → Gate: All final assets present and organized
