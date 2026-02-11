@@ -613,61 +613,62 @@ Light mode is not "invert the values." It requires its own derivation process:
 5. **Borders**: Borders that were light-on-dark need to become dark-on-light with lower opacity. Typical pattern: `rgba(0, 0, 0, 0.1)` for default, `rgba(0, 0, 0, 0.2)` for emphasis.
 6. **Validate all pairs**: Run every text/background combination through contrast check for light mode separately from dark mode.
 
-**iOS Safari Safe Areas (Web):**
+**iOS Safari Status Bar & Fixed Nav (Web):**
 
-Fixed/sticky navigation bars on iOS Safari will overlap the status bar, Dynamic Island, and home indicator unless safe-area insets are handled correctly. This is a **recurring failure point** — get it right the first time.
+On iOS Safari, the status bar area is transparent — the browser composites scrolling page content over the `html` element's background-color. If page content bleeds visibly into this area above a fixed nav, the cause is almost always CSS on the `html` element that turns it into its own scroll container, breaking the normal canvas-painting behavior. This is a **recurring failure point** — get it right the first time.
 
-**1. Viewport meta tag — always include `viewport-fit=cover`:**
+**1. CRITICAL — Keep the `html` element clean:**
+
+The CSS spec states: when `overflow-x` is set to `hidden` and `overflow-y` is `visible` (default), `overflow-y` implicitly computes to `auto`. This silently turns `html` into a scroll container, which breaks how Safari paints the status bar area with the `html` background-color.
+
+```css
+/* BAD — causes iOS Safari status bar content bleed */
+html {
+  overflow-x: hidden;              /* ← turns html into scroll container */
+  scroll-snap-type: y proximity;   /* ← reinforces broken scroll context */
+  -webkit-overflow-scrolling: touch; /* ← deprecated, compounds the issue */
+}
+
+/* GOOD — html stays clean, properties move to body */
+html {
+  scroll-behavior: smooth;
+  background-color: #[bg-hex];     /* ← paints the status bar area */
+}
+
+body {
+  overflow-x: hidden;              /* safe here — propagates to viewport per CSS spec */
+  scroll-snap-type: y proximity;   /* if needed */
+  overscroll-behavior-y: none;     /* prevents rubber-band scroll bleed */
+}
+```
+
+**Rule: Never put `overflow-x: hidden`, `scroll-snap-type`, or `-webkit-overflow-scrolling: touch` on the `html` element.** Use `body` or a wrapper `<div>`. The `-webkit-overflow-scrolling: touch` property is deprecated entirely — modern iOS uses momentum scrolling by default.
+
+**2. Match `html` background-color to nav/page background:**
+```css
+html {
+  background-color: #[bg-deep-hex]; /* hardcode the hex — not a CSS variable */
+}
+```
+Safari paints this color in the status bar area. Use `background-color` (not `background` shorthand). Hardcode the hex value — CSS custom properties may not resolve in the canvas-painting context.
+
+**3. Theme-color meta tag (status bar tinting):**
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#[bg-deep-hex]">
 ```
-Without `viewport-fit=cover`, `env(safe-area-inset-*)` values will always be `0px` and the page won't extend behind the status bar.
-
-**2. Fixed nav bars must preserve safe-area padding in ALL states:**
-```css
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding-top: max(1.5rem, env(safe-area-inset-top));
-  padding-left: max(var(--pad-x), env(safe-area-inset-left));
-  padding-right: max(var(--pad-x), env(safe-area-inset-right));
-}
+Update dynamically when theme toggles:
+```js
+document.querySelector('meta[name="theme-color"]').setAttribute('content', newColor);
+document.documentElement.style.backgroundColor = newColor;
 ```
 
-**3. CRITICAL — CSS shorthand `padding:` overrides individual `padding-top:`:**
+**4. What does NOT work (don't waste time on these):**
+- `env(safe-area-inset-top)` — returns `0px` in regular Safari browsing (only works in standalone PWA mode)
+- `viewport-fit=cover` — does NOT make fixed elements reach the status bar; creates more problems than it solves unless building a PWA
+- Status bar cover `<div>` at `position: fixed; top: 0` — iOS Safari clips all fixed elements below the status bar boundary; even `top: -500px` cannot reach it
+- `padding-top` with `env()` values — moot since `env()` returns 0
 
-This is the most common bug. If your nav has state changes (e.g., `.scrolled`, `.compact`) that use shorthand `padding:`, the shorthand will **silently override** the safe-area `padding-top` from the base rule:
-
-```css
-/* BUG — shorthand kills safe-area padding-top */
-nav.scrolled {
-  padding: 0.75rem var(--pad-x);  /* ← overrides env(safe-area-inset-top) */
-}
-
-/* FIX — set padding-top explicitly AFTER any shorthand */
-nav.scrolled {
-  padding: 0.75rem var(--pad-x);
-  padding-top: calc(0.75rem + env(safe-area-inset-top, 0px));
-  padding-left: max(var(--pad-x), env(safe-area-inset-left));
-  padding-right: max(var(--pad-x), env(safe-area-inset-right));
-}
-```
-
-**Rule: Never use `padding:` shorthand on elements that need safe-area insets.** If you must use shorthand (e.g., for a state change), immediately re-declare the individual safe-area properties after it.
-
-**4. Mobile media query overrides need it too:**
-```css
-@media (max-width: 600px) {
-  nav.scrolled {
-    padding-top: calc(0.5rem + env(safe-area-inset-top, 0px));
-  }
-}
-```
-
-**5. Bottom safe area for footers/CTAs:**
+**5. Bottom safe area for fixed footers (still works):**
 ```css
 .bottom-bar {
   position: fixed;
@@ -675,6 +676,7 @@ nav.scrolled {
   padding-bottom: max(1rem, env(safe-area-inset-bottom));
 }
 ```
+Note: `env(safe-area-inset-bottom)` DOES work in regular Safari (unlike `inset-top`), because the home indicator area is handled differently.
 
 **6. iOS-specific backdrop blur:**
 ```css
@@ -684,7 +686,7 @@ nav {
 }
 ```
 
-**Testing:** Simulate in Chrome DevTools (toggle device toolbar, select iPhone) or use Safari's Responsive Design Mode. But **always verify on a real iOS device** — simulators don't always reproduce safe-area behavior accurately.
+**Testing:** Always verify on a **real iOS device** — Chrome DevTools and Safari simulators do not reproduce status bar rendering. Test in a private/incognito tab to avoid cached stylesheets.
 
 #### iOS-Specific
 

@@ -963,41 +963,40 @@ StatusIndicator(status: .active)
 }
 ```
 
-#### iOS Safari Safe Areas
+#### iOS Safari Status Bar & Fixed Nav
 
-Fixed navigation bars on iOS Safari will overlap the status bar and Dynamic Island unless safe-area insets are explicitly handled. This is a common failure point.
+Page content bleeds into the iOS Safari status bar area when the `html` element is turned into a scroll container by CSS. This is the #1 iOS web bug — get it right the first time.
 
-**Viewport meta tag (required):**
+**CRITICAL — keep `html` clean. Never put these on `html`:**
+- `overflow-x: hidden` (implicitly computes `overflow-y: auto`, creating a scroll container)
+- `scroll-snap-type` (reinforces broken scroll context)
+- `-webkit-overflow-scrolling: touch` (deprecated entirely)
+
+```css
+/* Correct pattern */
+html {
+  scroll-behavior: smooth;
+  background-color: #[bg-deep-hex];  /* paints the status bar area — hardcode hex */
+}
+body {
+  overflow-x: hidden;
+  scroll-snap-type: y proximity;     /* if needed */
+  overscroll-behavior-y: none;       /* prevents rubber-band bleed */
+}
+```
+
+**Theme-color meta tag:**
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#[bg-deep-hex]">
 ```
+Update via JS on theme toggle: `document.querySelector('meta[name="theme-color"]').setAttribute('content', newColor)`
 
-**Fixed nav with safe-area awareness:**
-```css
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding-top: max(1.5rem, env(safe-area-inset-top));
-  padding-left: max(var(--pad-x), env(safe-area-inset-left));
-  padding-right: max(var(--pad-x), env(safe-area-inset-right));
-}
-```
+**What does NOT work** (don't waste time):
+- `env(safe-area-inset-top)` — returns `0px` in regular Safari (only works in PWA standalone mode)
+- `viewport-fit=cover` — doesn't help for regular websites
+- Status bar cover divs — `position: fixed` elements are clipped below the status bar boundary
 
-**CRITICAL: CSS shorthand `padding:` overrides `padding-top:`.**
-If the nav has state changes (`.scrolled`, `.compact`) that use shorthand `padding:`, re-declare the safe-area properties after:
-
-```css
-/* Shorthand kills the base safe-area padding-top — re-declare it */
-nav.scrolled {
-  padding: 0.75rem var(--pad-x);
-  padding-top: calc(0.75rem + env(safe-area-inset-top, 0px));
-}
-```
-
-**Bottom safe area for fixed footers:**
+**Bottom safe area (still works):**
 ```css
 .bottom-bar {
   position: fixed;
@@ -1013,6 +1012,8 @@ nav {
   -webkit-backdrop-filter: blur(20px);  /* Required for iOS Safari */
 }
 ```
+
+**Always test on a real iOS device** — simulators don't reproduce status bar rendering.
 
 ---
 
