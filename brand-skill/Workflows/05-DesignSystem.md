@@ -613,6 +613,79 @@ Light mode is not "invert the values." It requires its own derivation process:
 5. **Borders**: Borders that were light-on-dark need to become dark-on-light with lower opacity. Typical pattern: `rgba(0, 0, 0, 0.1)` for default, `rgba(0, 0, 0, 0.2)` for emphasis.
 6. **Validate all pairs**: Run every text/background combination through contrast check for light mode separately from dark mode.
 
+**iOS Safari Safe Areas (Web):**
+
+Fixed/sticky navigation bars on iOS Safari will overlap the status bar, Dynamic Island, and home indicator unless safe-area insets are handled correctly. This is a **recurring failure point** — get it right the first time.
+
+**1. Viewport meta tag — always include `viewport-fit=cover`:**
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+```
+Without `viewport-fit=cover`, `env(safe-area-inset-*)` values will always be `0px` and the page won't extend behind the status bar.
+
+**2. Fixed nav bars must preserve safe-area padding in ALL states:**
+```css
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding-top: max(1.5rem, env(safe-area-inset-top));
+  padding-left: max(var(--pad-x), env(safe-area-inset-left));
+  padding-right: max(var(--pad-x), env(safe-area-inset-right));
+}
+```
+
+**3. CRITICAL — CSS shorthand `padding:` overrides individual `padding-top:`:**
+
+This is the most common bug. If your nav has state changes (e.g., `.scrolled`, `.compact`) that use shorthand `padding:`, the shorthand will **silently override** the safe-area `padding-top` from the base rule:
+
+```css
+/* BUG — shorthand kills safe-area padding-top */
+nav.scrolled {
+  padding: 0.75rem var(--pad-x);  /* ← overrides env(safe-area-inset-top) */
+}
+
+/* FIX — set padding-top explicitly AFTER any shorthand */
+nav.scrolled {
+  padding: 0.75rem var(--pad-x);
+  padding-top: calc(0.75rem + env(safe-area-inset-top, 0px));
+  padding-left: max(var(--pad-x), env(safe-area-inset-left));
+  padding-right: max(var(--pad-x), env(safe-area-inset-right));
+}
+```
+
+**Rule: Never use `padding:` shorthand on elements that need safe-area insets.** If you must use shorthand (e.g., for a state change), immediately re-declare the individual safe-area properties after it.
+
+**4. Mobile media query overrides need it too:**
+```css
+@media (max-width: 600px) {
+  nav.scrolled {
+    padding-top: calc(0.5rem + env(safe-area-inset-top, 0px));
+  }
+}
+```
+
+**5. Bottom safe area for footers/CTAs:**
+```css
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+```
+
+**6. iOS-specific backdrop blur:**
+```css
+nav {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);  /* Required for iOS Safari */
+}
+```
+
+**Testing:** Simulate in Chrome DevTools (toggle device toolbar, select iPhone) or use Safari's Responsive Design Mode. But **always verify on a real iOS device** — simulators don't always reproduce safe-area behavior accurately.
+
 #### iOS-Specific
 
 **Navigation:**

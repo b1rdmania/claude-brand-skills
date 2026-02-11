@@ -963,6 +963,57 @@ StatusIndicator(status: .active)
 }
 ```
 
+#### iOS Safari Safe Areas
+
+Fixed navigation bars on iOS Safari will overlap the status bar and Dynamic Island unless safe-area insets are explicitly handled. This is a common failure point.
+
+**Viewport meta tag (required):**
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+```
+
+**Fixed nav with safe-area awareness:**
+```css
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding-top: max(1.5rem, env(safe-area-inset-top));
+  padding-left: max(var(--pad-x), env(safe-area-inset-left));
+  padding-right: max(var(--pad-x), env(safe-area-inset-right));
+}
+```
+
+**CRITICAL: CSS shorthand `padding:` overrides `padding-top:`.**
+If the nav has state changes (`.scrolled`, `.compact`) that use shorthand `padding:`, re-declare the safe-area properties after:
+
+```css
+/* Shorthand kills the base safe-area padding-top — re-declare it */
+nav.scrolled {
+  padding: 0.75rem var(--pad-x);
+  padding-top: calc(0.75rem + env(safe-area-inset-top, 0px));
+}
+```
+
+**Bottom safe area for fixed footers:**
+```css
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+```
+
+**iOS backdrop blur:**
+```css
+nav {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);  /* Required for iOS Safari */
+}
+```
+
 ---
 
 ### 7.2 iOS Implementation
