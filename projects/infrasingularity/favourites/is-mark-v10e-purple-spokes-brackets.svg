@@ -1,0 +1,40 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- v10e - Purple spokes + white dots + brackets -->
+
+  <!-- Bracket corners -->
+  <path d="M 12 12 L 12 17" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 12 12 L 17 12" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 52 12 L 52 17" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 52 12 L 47 12" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 12 52 L 12 47" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 12 52 L 17 52" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 52 52 L 52 47" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 52 52 L 47 52" stroke="#fff" stroke-width="1.5"/>
+
+  <!-- Purple structural spokes -->
+  <line x1="32" y1="32" x2="32" y2="14" stroke="#6B4FEC" stroke-width="1.0"/>
+  <line x1="32" y1="32" x2="45.5" y2="18.5" stroke="#6B4FEC" stroke-width="1.0"/>
+  <line x1="32" y1="32" x2="50" y2="32" stroke="#6B4FEC" stroke-width="1.0"/>
+  <line x1="32" y1="32" x2="45.5" y2="45.5" stroke="#6B4FEC" stroke-width="1.0"/>
+  <line x1="32" y1="32" x2="32" y2="50" stroke="#6B4FEC" stroke-width="1.0"/>
+  <line x1="32" y1="32" x2="18.5" y2="45.5" stroke="#6B4FEC" stroke-width="1.0"/>
+  <line x1="32" y1="32" x2="14" y2="32" stroke="#6B4FEC" stroke-width="1.0"/>
+  <line x1="32" y1="32" x2="18.5" y2="18.5" stroke="#6B4FEC" stroke-width="1.0"/>
+
+  <!-- White center cluster -->
+  <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+  <circle cx="30" cy="32" r="1.3" fill="#fff"/>
+  <circle cx="34" cy="32" r="1.3" fill="#fff"/>
+  <circle cx="32" cy="30" r="1.3" fill="#fff"/>
+  <circle cx="32" cy="34" r="1.3" fill="#fff"/>
+
+  <!-- White outer dots -->
+  <circle cx="32" cy="14" r="2.2" fill="#fff"/>
+  <circle cx="45.5" cy="18.5" r="2.2" fill="#fff"/>
+  <circle cx="50" cy="32" r="2.2" fill="#fff"/>
+  <circle cx="45.5" cy="45.5" r="2.2" fill="#fff"/>
+  <circle cx="32" cy="50" r="2.2" fill="#fff"/>
+  <circle cx="18.5" cy="45.5" r="2.2" fill="#fff"/>
+  <circle cx="14" cy="32" r="2.2" fill="#fff"/>
+  <circle cx="18.5" cy="18.5" r="2.2" fill="#fff"/>
+</svg>

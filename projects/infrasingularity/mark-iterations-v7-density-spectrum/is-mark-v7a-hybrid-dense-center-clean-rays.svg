@@ -1,0 +1,39 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- v7a - Hybrid: Dense center cluster + clean solid rays -->
+
+  <!-- Dense center cluster (9 dots) -->
+  <circle cx="32" cy="32" r="1.8" fill="#fff"/>
+  <circle cx="30" cy="32" r="1.5" fill="#fff"/>
+  <circle cx="34" cy="32" r="1.5" fill="#fff"/>
+  <circle cx="32" cy="30" r="1.5" fill="#fff"/>
+  <circle cx="32" cy="34" r="1.5" fill="#fff"/>
+  <circle cx="30.5" cy="30.5" r="1.2" fill="#fff"/>
+  <circle cx="33.5" cy="33.5" r="1.2" fill="#fff"/>
+  <circle cx="30.5" cy="33.5" r="1.2" fill="#fff"/>
+  <circle cx="33.5" cy="30.5" r="1.2" fill="#fff"/>
+
+  <!-- 8 solid rays (thin, extending outward) -->
+  <!-- North -->
+  <rect x="31" y="10" width="2" height="16" rx="1" fill="#fff"/>
+
+  <!-- Northeast -->
+  <rect x="38" y="17" width="2" height="14" rx="1" fill="#fff" transform="rotate(45 39 24)"/>
+
+  <!-- East -->
+  <rect x="38" y="31" width="16" height="2" rx="1" fill="#fff"/>
+
+  <!-- Southeast -->
+  <rect x="38" y="33" width="2" height="14" rx="1" fill="#fff" transform="rotate(135 39 40)"/>
+
+  <!-- South -->
+  <rect x="31" y="38" width="2" height="16" rx="1" fill="#fff"/>
+
+  <!-- Southwest -->
+  <rect x="10" y="33" width="2" height="14" rx="1" fill="#fff" transform="rotate(45 11 40)"/>
+
+  <!-- West -->
+  <rect x="10" y="31" width="16" height="2" rx="1" fill="#fff"/>
+
+  <!-- Northwest -->
+  <rect x="10" y="17" width="2" height="14" rx="1" fill="#fff" transform="rotate(135 11 24)"/>
+</svg>

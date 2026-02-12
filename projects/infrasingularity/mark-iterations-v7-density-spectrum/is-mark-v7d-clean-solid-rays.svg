@@ -1,0 +1,35 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- v7d - Clean solid rays (simplified from CleanShot) -->
+
+  <!-- Center dot cluster (5 dots like original) -->
+  <circle cx="32" cy="32" r="1.5" fill="#fff"/>
+  <circle cx="30.5" cy="32" r="1.0" fill="#fff"/>
+  <circle cx="33.5" cy="32" r="1.0" fill="#fff"/>
+  <circle cx="32" cy="30.5" r="1.0" fill="#fff"/>
+  <circle cx="32" cy="33.5" r="1.0" fill="#fff"/>
+
+  <!-- 8 solid rays -->
+  <!-- North -->
+  <rect x="30.5" y="8" width="3" height="20" rx="1.5" fill="#fff"/>
+
+  <!-- Northeast -->
+  <rect x="39" y="15" width="3" height="18" rx="1.5" fill="#fff" transform="rotate(45 40.5 24)"/>
+
+  <!-- East -->
+  <rect x="36" y="30.5" width="20" height="3" rx="1.5" fill="#fff"/>
+
+  <!-- Southeast -->
+  <rect x="39" y="31" width="3" height="18" rx="1.5" fill="#fff" transform="rotate(135 40.5 40)"/>
+
+  <!-- South -->
+  <rect x="30.5" y="36" width="3" height="20" rx="1.5" fill="#fff"/>
+
+  <!-- Southwest -->
+  <rect x="8" y="31" width="3" height="18" rx="1.5" fill="#fff" transform="rotate(45 9.5 40)"/>
+
+  <!-- West -->
+  <rect x="8" y="30.5" width="20" height="3" rx="1.5" fill="#fff"/>
+
+  <!-- Northwest -->
+  <rect x="8" y="15" width="3" height="18" rx="1.5" fill="#fff" transform="rotate(135 9.5 24)"/>
+</svg>

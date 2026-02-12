@@ -1,0 +1,16 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- v5a - Solid rays, equal length (like Relay) -->
+
+  <!-- Violet center -->
+  <circle cx="32" cy="32" r="3" fill="#8B5CF6"/>
+
+  <!-- 8 solid white rays, equal length -->
+  <line x1="32" y1="32" x2="32" y2="10" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <line x1="32" y1="32" x2="47.8" y2="16.2" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <line x1="32" y1="32" x2="54" y2="32" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <line x1="32" y1="32" x2="47.8" y2="47.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <line x1="32" y1="32" x2="32" y2="54" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <line x1="32" y1="32" x2="16.2" y2="47.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <line x1="32" y1="32" x2="10" y2="32" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <line x1="32" y1="32" x2="16.2" y2="16.2" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+</svg>

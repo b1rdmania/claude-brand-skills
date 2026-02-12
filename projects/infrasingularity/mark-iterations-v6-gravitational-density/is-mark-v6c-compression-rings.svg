@@ -1,0 +1,46 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- v6c - Concentric compression rings (gravitational collapse) -->
+
+  <!-- Violet singularity core -->
+  <circle cx="32" cy="32" r="3" fill="#8B5CF6"/>
+
+  <!-- Ring 1 (closest, densest) - 8 dots -->
+  <circle cx="32" cy="26" r="1.6" fill="#fff"/>
+  <circle cx="38" cy="32" r="1.6" fill="#fff"/>
+  <circle cx="32" cy="38" r="1.6" fill="#fff"/>
+  <circle cx="26" cy="32" r="1.6" fill="#fff"/>
+  <circle cx="36.2" cy="27.8" r="1.4" fill="#fff"/>
+  <circle cx="36.2" cy="36.2" r="1.4" fill="#fff"/>
+  <circle cx="27.8" cy="36.2" r="1.4" fill="#fff"/>
+  <circle cx="27.8" cy="27.8" r="1.4" fill="#fff"/>
+
+  <!-- Ring 2 (middle) - 12 dots, violet accent -->
+  <circle cx="32" cy="20" r="1.4" fill="#8B5CF6"/>
+  <circle cx="44" cy="32" r="1.4" fill="#8B5CF6"/>
+  <circle cx="32" cy="44" r="1.4" fill="#8B5CF6"/>
+  <circle cx="20" cy="32" r="1.4" fill="#8B5CF6"/>
+
+  <circle cx="40.2" cy="23.8" r="1.2" fill="#fff"/>
+  <circle cx="40.2" cy="40.2" r="1.2" fill="#fff"/>
+  <circle cx="23.8" cy="40.2" r="1.2" fill="#fff"/>
+  <circle cx="23.8" cy="23.8" r="1.2" fill="#fff"/>
+
+  <circle cx="36" cy="22" r="1.1" fill="#fff"/>
+  <circle cx="42" cy="28" r="1.1" fill="#fff"/>
+  <circle cx="42" cy="36" r="1.1" fill="#fff"/>
+  <circle cx="36" cy="42" r="1.1" fill="#fff"/>
+  <circle cx="28" cy="42" r="1.1" fill="#fff"/>
+  <circle cx="22" cy="36" r="1.1" fill="#fff"/>
+  <circle cx="22" cy="28" r="1.1" fill="#fff"/>
+  <circle cx="28" cy="22" r="1.1" fill="#fff"/>
+
+  <!-- Ring 3 (outer, sparse) - 8 dots -->
+  <circle cx="32" cy="14" r="1.0" fill="#fff"/>
+  <circle cx="50" cy="32" r="1.0" fill="#fff"/>
+  <circle cx="32" cy="50" r="1.0" fill="#fff"/>
+  <circle cx="14" cy="32" r="1.0" fill="#fff"/>
+  <circle cx="45" cy="19" r="0.9" fill="#fff"/>
+  <circle cx="45" cy="45" r="0.9" fill="#fff"/>
+  <circle cx="19" cy="45" r="0.9" fill="#fff"/>
+  <circle cx="19" cy="19" r="0.9" fill="#fff"/>
+</svg>

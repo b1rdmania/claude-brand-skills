@@ -1,0 +1,46 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- v11d: Original structure with slightly tightened spacing -->
+
+  <!-- Center dot -->
+  <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+
+  <!-- Top arm (3 dots) - slightly tighter spacing -->
+  <circle cx="32" cy="9" r="2.2" fill="#fff"/>
+  <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+  <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+
+  <!-- Top-right arm (3 dots) -->
+  <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+  <circle cx="41.5" cy="19" r="2.0" fill="#fff"/>
+  <circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+
+  <!-- Right arm (3 dots) -->
+  <circle cx="55" cy="32" r="2.2" fill="#fff"/>
+  <circle cx="47" cy="32" r="2.0" fill="#fff"/>
+  <circle cx="40" cy="32" r="1.8" fill="#fff"/>
+
+  <!-- Bottom-right arm (3 dots) -->
+  <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+  <circle cx="41.5" cy="45" r="2.0" fill="#fff"/>
+  <circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+
+  <!-- Bottom arm (3 dots) -->
+  <circle cx="32" cy="55" r="2.2" fill="#fff"/>
+  <circle cx="32" cy="47" r="2.0" fill="#fff"/>
+  <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+
+  <!-- Bottom-left arm (3 dots) -->
+  <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+  <circle cx="22.5" cy="45" r="2.0" fill="#fff"/>
+  <circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+
+  <!-- Left arm (3 dots) -->
+  <circle cx="9" cy="32" r="2.2" fill="#fff"/>
+  <circle cx="17" cy="32" r="2.0" fill="#fff"/>
+  <circle cx="24" cy="32" r="1.8" fill="#fff"/>
+
+  <!-- Top-left arm (3 dots) -->
+  <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+  <circle cx="22.5" cy="19" r="2.0" fill="#fff"/>
+  <circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+</svg>

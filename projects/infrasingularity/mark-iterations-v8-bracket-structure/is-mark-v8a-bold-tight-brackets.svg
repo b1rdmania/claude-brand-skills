@@ -1,0 +1,60 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- v8a - Bold tight brackets (closer to mark, heavier weight) -->
+
+  <!-- Bold bracket corners (closer, heavier) -->
+  <path d="M 10 10 L 10 18" stroke="#fff" stroke-width="2.0"/>
+  <path d="M 10 10 L 18 10" stroke="#fff" stroke-width="2.0"/>
+
+  <path d="M 54 10 L 54 18" stroke="#fff" stroke-width="2.0"/>
+  <path d="M 54 10 L 46 10" stroke="#fff" stroke-width="2.0"/>
+
+  <path d="M 10 54 L 10 46" stroke="#fff" stroke-width="2.0"/>
+  <path d="M 10 54 L 18 54" stroke="#fff" stroke-width="2.0"/>
+
+  <path d="M 54 54 L 54 46" stroke="#fff" stroke-width="2.0"/>
+  <path d="M 54 54 L 46 54" stroke="#fff" stroke-width="2.0"/>
+
+  <!-- Dense center cluster -->
+  <circle cx="32" cy="32" r="1.8" fill="#fff"/>
+  <circle cx="30" cy="32" r="1.5" fill="#fff"/>
+  <circle cx="34" cy="32" r="1.5" fill="#fff"/>
+  <circle cx="32" cy="30" r="1.5" fill="#fff"/>
+  <circle cx="32" cy="34" r="1.5" fill="#fff"/>
+  <circle cx="30.5" cy="30.5" r="1.2" fill="#fff"/>
+  <circle cx="33.5" cy="33.5" r="1.2" fill="#fff"/>
+  <circle cx="30.5" cy="33.5" r="1.2" fill="#fff"/>
+  <circle cx="33.5" cy="30.5" r="1.2" fill="#fff"/>
+
+  <!-- 8 arms (3 dots per arm) -->
+  <circle cx="32" cy="13" r="1.0" fill="#fff"/>
+  <circle cx="32" cy="18" r="1.3" fill="#fff"/>
+  <circle cx="32" cy="24" r="1.6" fill="#fff"/>
+
+  <circle cx="46.5" cy="15.5" r="1.0" fill="#fff"/>
+  <circle cx="42.4" cy="19.6" r="1.3" fill="#fff"/>
+  <circle cx="37.7" cy="24.3" r="1.6" fill="#fff"/>
+
+  <circle cx="51" cy="32" r="1.0" fill="#fff"/>
+  <circle cx="46" cy="32" r="1.3" fill="#fff"/>
+  <circle cx="40" cy="32" r="1.6" fill="#fff"/>
+
+  <circle cx="46.5" cy="48.5" r="1.0" fill="#fff"/>
+  <circle cx="42.4" cy="44.4" r="1.3" fill="#fff"/>
+  <circle cx="37.7" cy="39.7" r="1.6" fill="#fff"/>
+
+  <circle cx="32" cy="51" r="1.0" fill="#fff"/>
+  <circle cx="32" cy="46" r="1.3" fill="#fff"/>
+  <circle cx="32" cy="40" r="1.6" fill="#fff"/>
+
+  <circle cx="15.5" cy="48.5" r="1.0" fill="#fff"/>
+  <circle cx="19.6" cy="44.4" r="1.3" fill="#fff"/>
+  <circle cx="24.3" cy="39.7" r="1.6" fill="#fff"/>
+
+  <circle cx="13" cy="32" r="1.0" fill="#fff"/>
+  <circle cx="18" cy="32" r="1.3" fill="#fff"/>
+  <circle cx="24" cy="32" r="1.6" fill="#fff"/>
+
+  <circle cx="15.5" cy="15.5" r="1.0" fill="#fff"/>
+  <circle cx="19.6" cy="19.6" r="1.3" fill="#fff"/>
+  <circle cx="24.3" cy="24.3" r="1.6" fill="#fff"/>
+</svg>

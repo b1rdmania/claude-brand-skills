@@ -1,0 +1,59 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- v11c: Original structure + very subtle bracket corners -->
+
+  <!-- Subtle corner brackets -->
+  <path d="M 6 6 L 6 11" stroke="#fff" stroke-width="1.2" stroke-opacity="0.6"/>
+  <path d="M 6 6 L 11 6" stroke="#fff" stroke-width="1.2" stroke-opacity="0.6"/>
+
+  <path d="M 58 6 L 58 11" stroke="#fff" stroke-width="1.2" stroke-opacity="0.6"/>
+  <path d="M 58 6 L 53 6" stroke="#fff" stroke-width="1.2" stroke-opacity="0.6"/>
+
+  <path d="M 58 58 L 58 53" stroke="#fff" stroke-width="1.2" stroke-opacity="0.6"/>
+  <path d="M 58 58 L 53 58" stroke="#fff" stroke-width="1.2" stroke-opacity="0.6"/>
+
+  <path d="M 6 58 L 6 53" stroke="#fff" stroke-width="1.2" stroke-opacity="0.6"/>
+  <path d="M 6 58 L 11 58" stroke="#fff" stroke-width="1.2" stroke-opacity="0.6"/>
+
+  <!-- Center dot -->
+  <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+
+  <!-- Top arm (3 dots) -->
+  <circle cx="32" cy="8" r="2.2" fill="#fff"/>
+  <circle cx="32" cy="16" r="2.0" fill="#fff"/>
+  <circle cx="32" cy="23" r="1.8" fill="#fff"/>
+
+  <!-- Top-right arm (3 dots) -->
+  <circle cx="47.5" cy="10.5" r="2.2" fill="#fff"/>
+  <circle cx="42" cy="18" r="2.0" fill="#fff"/>
+  <circle cx="38" cy="24" r="1.8" fill="#fff"/>
+
+  <!-- Right arm (3 dots) -->
+  <circle cx="56" cy="32" r="2.2" fill="#fff"/>
+  <circle cx="48" cy="32" r="2.0" fill="#fff"/>
+  <circle cx="41" cy="32" r="1.8" fill="#fff"/>
+
+  <!-- Bottom-right arm (3 dots) -->
+  <circle cx="47.5" cy="53.5" r="2.2" fill="#fff"/>
+  <circle cx="42" cy="46" r="2.0" fill="#fff"/>
+  <circle cx="38" cy="40" r="1.8" fill="#fff"/>
+
+  <!-- Bottom arm (3 dots) -->
+  <circle cx="32" cy="56" r="2.2" fill="#fff"/>
+  <circle cx="32" cy="48" r="2.0" fill="#fff"/>
+  <circle cx="32" cy="41" r="1.8" fill="#fff"/>
+
+  <!-- Bottom-left arm (3 dots) -->
+  <circle cx="16.5" cy="53.5" r="2.2" fill="#fff"/>
+  <circle cx="22" cy="46" r="2.0" fill="#fff"/>
+  <circle cx="26" cy="40" r="1.8" fill="#fff"/>
+
+  <!-- Left arm (3 dots) -->
+  <circle cx="8" cy="32" r="2.2" fill="#fff"/>
+  <circle cx="16" cy="32" r="2.0" fill="#fff"/>
+  <circle cx="23" cy="32" r="1.8" fill="#fff"/>
+
+  <!-- Top-left arm (3 dots) -->
+  <circle cx="16.5" cy="10.5" r="2.2" fill="#fff"/>
+  <circle cx="22" cy="18" r="2.0" fill="#fff"/>
+  <circle cx="26" cy="24" r="1.8" fill="#fff"/>
+</svg>

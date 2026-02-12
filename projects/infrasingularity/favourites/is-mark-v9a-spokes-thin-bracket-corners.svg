@@ -1,0 +1,44 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- v9a - Thin connecting spokes + bracket corners (brand scale complexity) -->
+
+  <!-- Bracket corners -->
+  <path d="M 12 12 L 12 17" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 12 12 L 17 12" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 52 12 L 52 17" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 52 12 L 47 12" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 12 52 L 12 47" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 12 52 L 17 52" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 52 52 L 52 47" stroke="#fff" stroke-width="1.5"/>
+  <path d="M 52 52 L 47 52" stroke="#fff" stroke-width="1.5"/>
+
+  <!-- Thin structural spokes connecting center to outer dots -->
+  <line x1="32" y1="32" x2="32" y2="13" stroke="#fff" stroke-width="0.5"/>
+  <line x1="32" y1="32" x2="46.5" y2="15.5" stroke="#fff" stroke-width="0.5"/>
+  <line x1="32" y1="32" x2="51" y2="32" stroke="#fff" stroke-width="0.5"/>
+  <line x1="32" y1="32" x2="46.5" y2="48.5" stroke="#fff" stroke-width="0.5"/>
+  <line x1="32" y1="32" x2="32" y2="51" stroke="#fff" stroke-width="0.5"/>
+  <line x1="32" y1="32" x2="15.5" y2="48.5" stroke="#fff" stroke-width="0.5"/>
+  <line x1="32" y1="32" x2="13" y2="32" stroke="#fff" stroke-width="0.5"/>
+  <line x1="32" y1="32" x2="15.5" y2="15.5" stroke="#fff" stroke-width="0.5"/>
+
+  <!-- Dense center cluster -->
+  <circle cx="32" cy="32" r="2.0" fill="#fff"/>
+  <circle cx="30" cy="32" r="1.5" fill="#fff"/>
+  <circle cx="34" cy="32" r="1.5" fill="#fff"/>
+  <circle cx="32" cy="30" r="1.5" fill="#fff"/>
+  <circle cx="32" cy="34" r="1.5" fill="#fff"/>
+  <circle cx="30.5" cy="30.5" r="1.2" fill="#fff"/>
+  <circle cx="33.5" cy="33.5" r="1.2" fill="#fff"/>
+  <circle cx="30.5" cy="33.5" r="1.2" fill="#fff"/>
+  <circle cx="33.5" cy="30.5" r="1.2" fill="#fff"/>
+
+  <!-- 8 outer dots (endpoints) -->
+  <circle cx="32" cy="13" r="2.0" fill="#fff"/>
+  <circle cx="46.5" cy="15.5" r="2.0" fill="#fff"/>
+  <circle cx="51" cy="32" r="2.0" fill="#fff"/>
+  <circle cx="46.5" cy="48.5" r="2.0" fill="#fff"/>
+  <circle cx="32" cy="51" r="2.0" fill="#fff"/>
+  <circle cx="15.5" cy="48.5" r="2.0" fill="#fff"/>
+  <circle cx="13" cy="32" r="2.0" fill="#fff"/>
+  <circle cx="15.5" cy="15.5" r="2.0" fill="#fff"/>
+</svg>
