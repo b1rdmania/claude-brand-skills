@@ -1,0 +1,37 @@
+<svg viewBox="0 0 420 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Variant 11: Bold "Singularity" in Purple, White "Infra" -->
+
+  <!-- Mark v11d -->
+  <g transform="translate(0, 0)">
+    <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+    <circle cx="32" cy="9" r="2.2" fill="#fff"/>
+    <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+    <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+    <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+    <circle cx="41.5" cy="19" r="2.0" fill="#fff"/>
+    <circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+    <circle cx="55" cy="32" r="2.2" fill="#fff"/>
+    <circle cx="47" cy="32" r="2.0" fill="#fff"/>
+    <circle cx="40" cy="32" r="1.8" fill="#fff"/>
+    <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+    <circle cx="41.5" cy="45" r="2.0" fill="#fff"/>
+    <circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+    <circle cx="32" cy="55" r="2.2" fill="#fff"/>
+    <circle cx="32" cy="47" r="2.0" fill="#fff"/>
+    <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+    <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+    <circle cx="22.5" cy="45" r="2.0" fill="#fff"/>
+    <circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+    <circle cx="9" cy="32" r="2.2" fill="#fff"/>
+    <circle cx="17" cy="32" r="2.0" fill="#fff"/>
+    <circle cx="24" cy="32" r="1.8" fill="#fff"/>
+    <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+    <circle cx="22.5" cy="19" r="2.0" fill="#fff"/>
+    <circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+  </g>
+
+  <!-- Mixed weight + color wordmark -->
+  <text x="78" y="40" font-family="Outfit, sans-serif" font-size="26" letter-spacing="-0.4" fill="#fff">
+    <tspan font-weight="500">Infra</tspan><tspan font-weight="700" fill="#6B4FEC">Singularity</tspan>
+  </text>
+</svg>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1B Mutations - Stats-First Direction</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #000;
+      color: #fff;
+      padding: 40px 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .header p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .mutations {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 40px;
+      max-width: 2400px;
+      margin: 0 auto;
+    }
+
+    .mutation {
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .mutation:hover {
+      border-color: #6B4FEC;
+      transform: scale(1.01);
+    }
+
+    .mutation-label {
+      background: rgba(255,255,255,0.05);
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .preview {
+      background: #0A0D10;
+      height: 800px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* 1B-1: Original with Logo */
+    .mutation-1 {
+      padding: 50px;
+      font-family: 'Outfit', sans-serif;
+      position: relative;
+    }
+
+    .mutation-1 .logo {
+      position: absolute;
+      top: 40px;
+      left: 50px;
+      width: 48px;
+      height: 48px;
+    }
+
+    .mutation-1 .mark-bg {
+      position: absolute;
+      bottom: -150px;
+      left: -150px;
+      width: 400px;
+      height: 400px;
+      opacity: 0.05;
+    }
+
+    .mutation-1 .stats-hero {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-bottom: 60px;
+      padding-bottom: 40px;
+      border-bottom: 2px solid #6B4FEC;
+    }
+
+    .mutation-1 .stat {
+      text-align: center;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .mutation-1 .stat:nth-child(1) {
+      background: rgba(76,175,140,0.1);
+      border: 1px solid rgba(76,175,140,0.3);
+    }
+
+    .mutation-1 .stat:nth-child(2) {
+      background: rgba(245,158,66,0.1);
+      border: 1px solid rgba(245,158,66,0.3);
+    }
+
+    .mutation-1 .stat:nth-child(3) {
+      background: rgba(91,158,255,0.1);
+      border: 1px solid rgba(91,158,255,0.3);
+    }
+
+    .mutation-1 .stat-value {
+      font-size: 64px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .mutation-1 .stat:nth-child(1) .stat-value { color: #4CAF8C; }
+    .mutation-1 .stat:nth-child(2) .stat-value { color: #F59E42; }
+    .mutation-1 .stat:nth-child(3) .stat-value { color: #5B9EFF; }
+
+    .mutation-1 .stat-label {
+      font-size: 12px;
+      font-weight: 500;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .mutation-1 h1 {
+      font-size: 56px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    .mutation-1 .body {
+      font-family: 'Figtree', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      opacity: 0.8;
+      max-width: 600px;
+    }
+
+    /* 1B-2: Vertical Stack with Integrated Logo */
+    .mutation-2 {
+      padding: 60px;
+      font-family: 'Outfit', sans-serif;
+      position: relative;
+      display: flex;
+      gap: 60px;
+    }
+
+    .mutation-2 .left {
+      flex: 1;
+    }
+
+    .mutation-2 .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+
+    .mutation-2 .logo {
+      width: 64px;
+      height: 64px;
+    }
+
+    .mutation-2 .brand {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+
+    .mutation-2 h1 {
+      font-size: 64px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 32px;
+    }
+
+    .mutation-2 .body {
+      font-family: 'Figtree', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      opacity: 0.8;
+      max-width: 500px;
+    }
+
+    .mutation-2 .right {
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .mutation-2 .stat-card {
+      padding: 24px;
+      border-radius: 8px;
+      border-left: 4px solid;
+    }
+
+    .mutation-2 .stat-card:nth-child(1) {
+      background: rgba(76,175,140,0.1);
+      border-color: #4CAF8C;
+    }
+
+    .mutation-2 .stat-card:nth-child(2) {
+      background: rgba(245,158,66,0.1);
+      border-color: #F59E42;
+    }
+
+    .mutation-2 .stat-card:nth-child(3) {
+      background: rgba(91,158,255,0.1);
+      border-color: #5B9EFF;
+    }
+
+    .mutation-2 .stat-value {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .mutation-2 .stat-card:nth-child(1) .stat-value { color: #4CAF8C; }
+    .mutation-2 .stat-card:nth-child(2) .stat-value { color: #F59E42; }
+    .mutation-2 .stat-card:nth-child(3) .stat-value { color: #5B9EFF; }
+
+    .mutation-2 .stat-label {
+      font-size: 11px;
+      font-weight: 500;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* 1B-3: Asymmetric Large Logo */
+    .mutation-3 {
+      padding: 0;
+      font-family: 'Outfit', sans-serif;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      height: 100%;
+    }
+
+    .mutation-3 .left-panel {
+      background: #6B4FEC;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .mutation-3 .logo-large {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 40px;
+    }
+
+    .mutation-3 .brand-text {
+      font-size: 32px;
+      font-weight: 600;
+      color: #000;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+
+    .mutation-3 .tagline {
+      font-size: 14px;
+      color: rgba(0,0,0,0.7);
+      margin-top: 16px;
+      font-weight: 500;
+    }
+
+    .mutation-3 .right-panel {
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .mutation-3 h1 {
+      font-size: 48px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 0;
+    }
+
+    .mutation-3 .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .mutation-3 .stat-block {
+      padding: 20px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .mutation-3 .stat-block:nth-child(1) {
+      background: rgba(76,175,140,0.15);
+      border: 2px solid #4CAF8C;
+    }
+
+    .mutation-3 .stat-block:nth-child(2) {
+      background: rgba(245,158,66,0.15);
+      border: 2px solid #F59E42;
+    }
+
+    .mutation-3 .stat-block:nth-child(3) {
+      background: rgba(91,158,255,0.15);
+      border: 2px solid #5B9EFF;
+    }
+
+    .mutation-3 .stat-value {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+
+    .mutation-3 .stat-block:nth-child(1) .stat-value { color: #4CAF8C; }
+    .mutation-3 .stat-block:nth-child(2) .stat-value { color: #F59E42; }
+    .mutation-3 .stat-block:nth-child(3) .stat-value { color: #5B9EFF; }
+
+    .mutation-3 .stat-label {
+      font-size: 10px;
+      font-weight: 500;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .mutation-3 .body {
+      font-family: 'Figtree', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>1B Mutations: Stats-First + Logo</h1>
+    <p>3 variations exploring the stats-forward color-blocked direction</p>
+  </div>
+
+  <div class="mutations">
+    <!-- 1B-1: Original with Logo -->
+    <div class="mutation">
+      <div class="mutation-label">1B-1: Original + Purple Logo (Top Left)</div>
+      <div class="preview mutation-1">
+        <svg class="logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="2.5" fill="#6B4FEC"/>
+          <circle cx="32" cy="9" r="2.2" fill="#6B4FEC"/>
+          <circle cx="32" cy="17" r="2.0" fill="#6B4FEC"/>
+          <circle cx="32" cy="24" r="1.8" fill="#6B4FEC"/>
+          <circle cx="46.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+          <circle cx="41.5" cy="19" r="2.0" fill="#6B4FEC"/>
+          <circle cx="37.5" cy="25" r="1.8" fill="#6B4FEC"/>
+          <circle cx="55" cy="32" r="2.2" fill="#6B4FEC"/>
+          <circle cx="47" cy="32" r="2.0" fill="#6B4FEC"/>
+          <circle cx="40" cy="32" r="1.8" fill="#6B4FEC"/>
+          <circle cx="46.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+          <circle cx="41.5" cy="45" r="2.0" fill="#6B4FEC"/>
+          <circle cx="37.5" cy="39" r="1.8" fill="#6B4FEC"/>
+          <circle cx="32" cy="55" r="2.2" fill="#6B4FEC"/>
+          <circle cx="32" cy="47" r="2.0" fill="#6B4FEC"/>
+          <circle cx="32" cy="40" r="1.8" fill="#6B4FEC"/>
+          <circle cx="17.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+          <circle cx="22.5" cy="45" r="2.0" fill="#6B4FEC"/>
+          <circle cx="26.5" cy="39" r="1.8" fill="#6B4FEC"/>
+          <circle cx="9" cy="32" r="2.2" fill="#6B4FEC"/>
+          <circle cx="17" cy="32" r="2.0" fill="#6B4FEC"/>
+          <circle cx="24" cy="32" r="1.8" fill="#6B4FEC"/>
+          <circle cx="17.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+          <circle cx="22.5" cy="19" r="2.0" fill="#6B4FEC"/>
+          <circle cx="26.5" cy="25" r="1.8" fill="#6B4FEC"/>
+        </svg>
+        <svg class="mark-bg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+          <circle cx="32" cy="9" r="2.2" fill="#fff"/>
+          <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+          <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+          <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+          <circle cx="41.5" cy="19" r="2.0" fill="#fff"/>
+          <circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+          <circle cx="55" cy="32" r="2.2" fill="#fff"/>
+          <circle cx="47" cy="32" r="2.0" fill="#fff"/>
+          <circle cx="40" cy="32" r="1.8" fill="#fff"/>
+          <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+          <circle cx="41.5" cy="45" r="2.0" fill="#fff"/>
+          <circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+          <circle cx="32" cy="55" r="2.2" fill="#fff"/>
+          <circle cx="32" cy="47" r="2.0" fill="#fff"/>
+          <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+          <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+          <circle cx="22.5" cy="45" r="2.0" fill="#fff"/>
+          <circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+          <circle cx="9" cy="32" r="2.2" fill="#fff"/>
+          <circle cx="17" cy="32" r="2.0" fill="#fff"/>
+          <circle cx="24" cy="32" r="1.8" fill="#fff"/>
+          <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+          <circle cx="22.5" cy="19" r="2.0" fill="#fff"/>
+          <circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+        </svg>
+        <div class="stats-hero">
+          <div class="stat">
+            <div class="stat-value">50+</div>
+            <div class="stat-label">Mainnets</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">$100M+</div>
+            <div class="stat-label">Assets</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">99.9%</div>
+            <div class="stat-label">Uptime</div>
+          </div>
+        </div>
+        <h1>Institutional infrastructure at scale</h1>
+        <div class="body">
+          InfraSingularity provides enterprise-grade blockchain infrastructure with 24/7 monitoring, automated failover systems, and institutional security protocols.
+        </div>
+      </div>
+    </div>
+
+    <!-- 1B-2: Vertical Stack -->
+    <div class="mutation">
+      <div class="mutation-label">1B-2: Split Layout + Logo with Brand Name</div>
+      <div class="preview mutation-2">
+        <div class="left">
+          <div class="logo-section">
+            <svg class="logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="2.5" fill="#6B4FEC"/>
+              <circle cx="32" cy="9" r="2.2" fill="#6B4FEC"/>
+              <circle cx="32" cy="17" r="2.0" fill="#6B4FEC"/>
+              <circle cx="32" cy="24" r="1.8" fill="#6B4FEC"/>
+              <circle cx="46.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+              <circle cx="41.5" cy="19" r="2.0" fill="#6B4FEC"/>
+              <circle cx="37.5" cy="25" r="1.8" fill="#6B4FEC"/>
+              <circle cx="55" cy="32" r="2.2" fill="#6B4FEC"/>
+              <circle cx="47" cy="32" r="2.0" fill="#6B4FEC"/>
+              <circle cx="40" cy="32" r="1.8" fill="#6B4FEC"/>
+              <circle cx="46.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+              <circle cx="41.5" cy="45" r="2.0" fill="#6B4FEC"/>
+              <circle cx="37.5" cy="39" r="1.8" fill="#6B4FEC"/>
+              <circle cx="32" cy="55" r="2.2" fill="#6B4FEC"/>
+              <circle cx="32" cy="47" r="2.0" fill="#6B4FEC"/>
+              <circle cx="32" cy="40" r="1.8" fill="#6B4FEC"/>
+              <circle cx="17.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+              <circle cx="22.5" cy="45" r="2.0" fill="#6B4FEC"/>
+              <circle cx="26.5" cy="39" r="1.8" fill="#6B4FEC"/>
+              <circle cx="9" cy="32" r="2.2" fill="#6B4FEC"/>
+              <circle cx="17" cy="32" r="2.0" fill="#6B4FEC"/>
+              <circle cx="24" cy="32" r="1.8" fill="#6B4FEC"/>
+              <circle cx="17.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+              <circle cx="22.5" cy="19" r="2.0" fill="#6B4FEC"/>
+              <circle cx="26.5" cy="25" r="1.8" fill="#6B4FEC"/>
+            </svg>
+            <div class="brand">InfraSingularity</div>
+          </div>
+          <h1>Where infrastructure converges</h1>
+          <div class="body">
+            Enterprise-grade blockchain infrastructure with 24/7 monitoring, automated failover systems, and institutional security protocols. Official NaaS partner for Canton Network.
+          </div>
+        </div>
+        <div class="right">
+          <div class="stat-card">
+            <div class="stat-value">50+</div>
+            <div class="stat-label">Mainnets</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">$100M+</div>
+            <div class="stat-label">Assets Under Management</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">99.9%</div>
+            <div class="stat-label">Infrastructure Uptime</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1B-3: Asymmetric -->
+    <div class="mutation">
+      <div class="mutation-label">1B-3: Purple Panel + Large Logo + Compact Stats</div>
+      <div class="preview mutation-3">
+        <div class="left-panel">
+          <div>
+            <svg class="logo-large" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="2.5" fill="#000"/>
+              <circle cx="32" cy="9" r="2.2" fill="#000"/>
+              <circle cx="32" cy="17" r="2.0" fill="#000"/>
+              <circle cx="32" cy="24" r="1.8" fill="#000"/>
+              <circle cx="46.5" cy="11.5" r="2.2" fill="#000"/>
+              <circle cx="41.5" cy="19" r="2.0" fill="#000"/>
+              <circle cx="37.5" cy="25" r="1.8" fill="#000"/>
+              <circle cx="55" cy="32" r="2.2" fill="#000"/>
+              <circle cx="47" cy="32" r="2.0" fill="#000"/>
+              <circle cx="40" cy="32" r="1.8" fill="#000"/>
+              <circle cx="46.5" cy="52.5" r="2.2" fill="#000"/>
+              <circle cx="41.5" cy="45" r="2.0" fill="#000"/>
+              <circle cx="37.5" cy="39" r="1.8" fill="#000"/>
+              <circle cx="32" cy="55" r="2.2" fill="#000"/>
+              <circle cx="32" cy="47" r="2.0" fill="#000"/>
+              <circle cx="32" cy="40" r="1.8" fill="#000"/>
+              <circle cx="17.5" cy="52.5" r="2.2" fill="#000"/>
+              <circle cx="22.5" cy="45" r="2.0" fill="#000"/>
+              <circle cx="26.5" cy="39" r="1.8" fill="#000"/>
+              <circle cx="9" cy="32" r="2.2" fill="#000"/>
+              <circle cx="17" cy="32" r="2.0" fill="#000"/>
+              <circle cx="24" cy="32" r="1.8" fill="#000"/>
+              <circle cx="17.5" cy="11.5" r="2.2" fill="#000"/>
+              <circle cx="22.5" cy="19" r="2.0" fill="#000"/>
+              <circle cx="26.5" cy="25" r="1.8" fill="#000"/>
+            </svg>
+            <div class="brand-text">INFRA<br>SINGULARITY</div>
+            <div class="tagline">Where institutional infrastructure converges</div>
+          </div>
+        </div>
+        <div class="right-panel">
+          <h1>Enterprise-grade infrastructure at scale</h1>
+          <div class="stats-grid">
+            <div class="stat-block">
+              <div class="stat-value">50+</div>
+              <div class="stat-label">Mainnets</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-value">$100M+</div>
+              <div class="stat-label">Assets</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-value">99.9%</div>
+              <div class="stat-label">Uptime</div>
+            </div>
+          </div>
+          <div class="body">
+            InfraSingularity provides institutional-grade blockchain infrastructure with 24/7 monitoring, automated failover systems, and compliance-ready security protocols. Official NaaS partner for Canton Network, bridging traditional finance to decentralized infrastructure.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

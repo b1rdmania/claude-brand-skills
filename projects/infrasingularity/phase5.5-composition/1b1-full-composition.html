@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InfraSingularity - Full Composition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Figtree', sans-serif;
+      background: #0A0D10;
+      color: #fff;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 80px 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero .stats-hero {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 80px;
+      padding-bottom: 48px;
+      border-bottom: 2px solid #6B4FEC;
+    }
+
+    .hero .stat {
+      text-align: center;
+      padding: 32px 24px;
+      border-radius: 8px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .hero .stat:hover {
+      transform: translateY(-4px);
+    }
+
+    .hero .stat:nth-child(1) {
+      background: rgba(76,175,140,0.12);
+      border: 1px solid rgba(76,175,140,0.4);
+    }
+
+    .hero .stat:nth-child(1):hover {
+      box-shadow: 0 8px 32px rgba(76,175,140,0.2);
+    }
+
+    .hero .stat:nth-child(2) {
+      background: rgba(245,158,66,0.12);
+      border: 1px solid rgba(245,158,66,0.4);
+    }
+
+    .hero .stat:nth-child(2):hover {
+      box-shadow: 0 8px 32px rgba(245,158,66,0.2);
+    }
+
+    .hero .stat:nth-child(3) {
+      background: rgba(91,158,255,0.12);
+      border: 1px solid rgba(91,158,255,0.4);
+    }
+
+    .hero .stat:nth-child(3):hover {
+      box-shadow: 0 8px 32px rgba(91,158,255,0.2);
+    }
+
+    .hero .stat-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 72px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+
+    .hero .stat:nth-child(1) .stat-value { color: #4CAF8C; }
+    .hero .stat:nth-child(2) .stat-value { color: #F59E42; }
+    .hero .stat:nth-child(3) .stat-value { color: #5B9EFF; }
+
+    .hero .stat-label {
+      font-size: 13px;
+      font-weight: 500;
+      opacity: 0.85;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 64px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -2.5px;
+      margin-bottom: 32px;
+    }
+
+    .hero .body {
+      font-size: 18px;
+      line-height: 1.7;
+      opacity: 0.85;
+      max-width: 700px;
+      margin-bottom: 48px;
+    }
+
+    .hero .cta-group {
+      display: flex;
+      gap: 20px;
+    }
+
+    .hero .cta-primary {
+      padding: 18px 48px;
+      background: #6B4FEC;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .hero .cta-primary:hover {
+      background: #8B6FFF;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(107,79,236,0.4);
+    }
+
+    .hero .cta-secondary {
+      padding: 18px 48px;
+      background: transparent;
+      color: rgba(255,255,255,0.9);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .hero .cta-secondary:hover {
+      border-color: rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 80px 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .features .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #6B4FEC;
+      margin-bottom: 24px;
+    }
+
+    .features h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 48px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 64px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .feature-card {
+      padding: 32px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .feature-card:nth-child(1) .feature-icon {
+      background: rgba(76,175,140,0.15);
+      color: #4CAF8C;
+    }
+
+    .feature-card:nth-child(2) .feature-icon {
+      background: rgba(245,158,66,0.15);
+      color: #F59E42;
+    }
+
+    .feature-card:nth-child(3) .feature-icon {
+      background: rgba(91,158,255,0.15);
+      color: #5B9EFF;
+    }
+
+    .feature-card:nth-child(4) .feature-icon {
+      background: rgba(107,79,236,0.15);
+      color: #6B4FEC;
+    }
+
+    .feature-card:nth-child(5) .feature-icon {
+      background: rgba(76,175,140,0.15);
+      color: #4CAF8C;
+    }
+
+    .feature-card:nth-child(6) .feature-icon {
+      background: rgba(245,158,66,0.15);
+      color: #F59E42;
+    }
+
+    .feature-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .feature-card p {
+      font-size: 15px;
+      line-height: 1.6;
+      opacity: 0.75;
+    }
+
+    /* Technical Specs */
+    .specs {
+      padding: 80px 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .specs .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #4CAF8C;
+      margin-bottom: 24px;
+    }
+
+    .specs h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 48px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 48px;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .spec-item {
+      padding: 32px;
+      background: rgba(76,175,140,0.05);
+      border-left: 3px solid #4CAF8C;
+      border-radius: 4px;
+    }
+
+    .spec-label {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #4CAF8C;
+      margin-bottom: 8px;
+    }
+
+    .spec-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .spec-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      opacity: 0.7;
+    }
+
+    /* Partnership */
+    .partnership {
+      padding: 80px 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .partnership-card {
+      padding: 64px;
+      background: linear-gradient(135deg, rgba(91,158,255,0.1) 0%, rgba(107,79,236,0.1) 100%);
+      border: 1px solid rgba(91,158,255,0.3);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .partnership .badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: rgba(91,158,255,0.2);
+      border: 1px solid #5B9EFF;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #5B9EFF;
+      margin-bottom: 32px;
+    }
+
+    .partnership h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 40px;
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+    }
+
+    .partnership p {
+      font-size: 17px;
+      line-height: 1.7;
+      opacity: 0.8;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 100px 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .cta-section h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 56px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 32px;
+    }
+
+    .cta-section p {
+      font-size: 18px;
+      line-height: 1.7;
+      opacity: 0.8;
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+
+    .cta-section .cta-button {
+      padding: 20px 64px;
+      background: #F59E42;
+      color: #000;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .cta-section .cta-button:hover {
+      background: #FF9D3E;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(245,158,66,0.4);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 60px 60px 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      opacity: 0.6;
+      line-height: 1.6;
+    }
+
+    .footer-column h4 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 12px;
+    }
+
+    .footer-column a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: #6B4FEC;
+    }
+
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="stats-hero">
+      <div class="stat">
+        <div class="stat-value">50+</div>
+        <div class="stat-label">Mainnets</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">$100M+</div>
+        <div class="stat-label">Assets</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">99.9%</div>
+        <div class="stat-label">Uptime</div>
+      </div>
+    </div>
+    <h1>Institutional infrastructure at scale</h1>
+    <div class="body">
+      InfraSingularity provides enterprise-grade blockchain infrastructure with 24/7 monitoring, automated failover systems, and institutional security protocols.
+    </div>
+    <div class="cta-group">
+      <button class="cta-primary">Get Started</button>
+      <button class="cta-secondary">View Documentation</button>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="section-label">Capabilities</div>
+    <h2>Built for institutional demands</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">50+</div>
+        <h3>Multi-Chain Support</h3>
+        <p>Comprehensive coverage across 50+ blockchain networks with unified management and monitoring.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">24/7</div>
+        <h3>Automated Monitoring</h3>
+        <p>Real-time infrastructure health checks with automated failover and incident response systems.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">99.9%</div>
+        <h3>Enterprise SLA</h3>
+        <p>99.9% uptime guarantee with institutional-grade security protocols and compliance readiness.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">API</div>
+        <h3>Developer APIs</h3>
+        <p>RESTful APIs and SDKs for seamless integration with your existing infrastructure and workflows.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">SEC</div>
+        <h3>Security First</h3>
+        <p>Hardware security modules, multi-sig policies, and SOC 2 Type II compliance for institutional security.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">OPS</div>
+        <h3>White-Label Ready</h3>
+        <p>Fully customizable infrastructure platform for institutions building branded blockchain services.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Specs -->
+  <section class="specs">
+    <div class="section-label">Infrastructure</div>
+    <h2>Technical specifications</h2>
+    <div class="specs-grid">
+      <div class="spec-item">
+        <div class="spec-label">Validator Nodes</div>
+        <div class="spec-value">200+ Active</div>
+        <div class="spec-desc">Distributed globally across multiple data centers with redundant failover systems</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Network Coverage</div>
+        <div class="spec-value">50+ Mainnets</div>
+        <div class="spec-desc">Support for Ethereum, Cosmos, Polkadot, Avalanche, and 40+ additional networks</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Response Time</div>
+        <div class="spec-value">&lt; 5min SLA</div>
+        <div class="spec-desc">24/7 NOC with automated incident detection and response protocols</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Security Model</div>
+        <div class="spec-value">HSM + Multi-Sig</div>
+        <div class="spec-desc">Hardware security modules with configurable multi-signature threshold policies</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partnership -->
+  <section class="partnership">
+    <div class="partnership-card">
+      <div class="badge">Official Partner</div>
+      <h2>Canton Network NaaS Provider</h2>
+      <p>Trusted infrastructure partner for Canton Network, providing Node-as-a-Service for institutional clients bridging traditional finance to decentralized infrastructure. Enabling seamless connectivity between TradFi and blockchain networks.</p>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <h2>Ready to scale your infrastructure?</h2>
+    <p>Join 50+ institutions leveraging InfraSingularity for enterprise-grade blockchain infrastructure.</p>
+    <button class="cta-button">Start Building</button>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">InfraSingularity</div>
+        <div class="footer-tagline">Where institutional infrastructure converges.</div>
+      </div>
+      <div class="footer-column">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#">Infrastructure</a></li>
+          <li><a href="#">APIs</a></li>
+          <li><a href="#">Security</a></li>
+          <li><a href="#">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Partners</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">API Reference</a></li>
+          <li><a href="#">Status</a></li>
+          <li><a href="#">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 InfraSingularity. All rights reserved.</div>
+      <div>Terms · Privacy · Security</div>
+    </div>
+  </footer>
+</body>
+</html>

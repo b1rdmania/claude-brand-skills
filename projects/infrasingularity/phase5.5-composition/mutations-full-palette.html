@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InfraSingularity - Full Palette Mutations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #000;
+      color: #fff;
+      padding: 40px 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .header p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .family {
+      margin-bottom: 80px;
+    }
+
+    .family-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #6B4FEC;
+    }
+
+    .family-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 40px;
+    }
+
+    .mutations {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 30px;
+    }
+
+    .mutation {
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .mutation:hover {
+      border-color: #6B4FEC;
+      transform: scale(1.02);
+    }
+
+    .mutation-label {
+      background: rgba(255,255,255,0.05);
+      padding: 12px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .preview {
+      background: #0A0D10;
+      height: 700px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Shared mark styles */
+    .mark {
+      width: 64px;
+      height: 64px;
+    }
+
+    .mark-large {
+      width: 200px;
+      height: 200px;
+      opacity: 0.15;
+    }
+
+    .mark-bg {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      opacity: 0.05;
+    }
+
+    /* EDITORIAL MUTATIONS */
+
+    /* Editorial A: Ultra-Dense with Green Stats */
+    .editorial-a {
+      padding: 40px 60px;
+      font-family: 'Outfit', sans-serif;
+      position: relative;
+    }
+
+    .editorial-a .mark-bg {
+      top: -100px;
+      right: -100px;
+    }
+
+    .editorial-a .logo-mark {
+      margin-bottom: 60px;
+      opacity: 0.8;
+    }
+
+    .editorial-a h1 {
+      font-size: 96px;
+      font-weight: 600;
+      line-height: 0.85;
+      letter-spacing: -4px;
+      margin-bottom: 20px;
+    }
+
+    .editorial-a .metrics {
+      display: flex;
+      gap: 60px;
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .editorial-a .metric {
+      font-size: 13px;
+      font-weight: 500;
+      opacity: 0.6;
+    }
+
+    .editorial-a .metric span {
+      display: block;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .editorial-a .metric:nth-child(1) span { color: #4CAF8C; }
+    .editorial-a .metric:nth-child(2) span { color: #F59E42; }
+    .editorial-a .metric:nth-child(3) span { color: #5B9EFF; }
+
+    .editorial-a .body {
+      font-family: 'Figtree', sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      max-width: 500px;
+      opacity: 0.7;
+    }
+
+    .editorial-a .cta {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 32px;
+      background: #F59E42;
+      color: #000;
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    /* Editorial B: Stats-First with Color Coding */
+    .editorial-b {
+      padding: 50px;
+      font-family: 'Outfit', sans-serif;
+      position: relative;
+    }
+
+    .editorial-b .mark-bg {
+      bottom: -150px;
+      left: -150px;
+    }
+
+    .editorial-b .stats-hero {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-bottom: 60px;
+      padding-bottom: 40px;
+      border-bottom: 2px solid #6B4FEC;
+    }
+
+    .editorial-b .stat {
+      text-align: center;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .editorial-b .stat:nth-child(1) {
+      background: rgba(76,175,140,0.1);
+      border: 1px solid rgba(76,175,140,0.3);
+    }
+
+    .editorial-b .stat:nth-child(2) {
+      background: rgba(245,158,66,0.1);
+      border: 1px solid rgba(245,158,66,0.3);
+    }
+
+    .editorial-b .stat:nth-child(3) {
+      background: rgba(91,158,255,0.1);
+      border: 1px solid rgba(91,158,255,0.3);
+    }
+
+    .editorial-b .stat-value {
+      font-size: 64px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .editorial-b .stat:nth-child(1) .stat-value { color: #4CAF8C; }
+    .editorial-b .stat:nth-child(2) .stat-value { color: #F59E42; }
+    .editorial-b .stat:nth-child(3) .stat-value { color: #5B9EFF; }
+
+    .editorial-b .stat-label {
+      font-size: 12px;
+      font-weight: 500;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .editorial-b h1 {
+      font-size: 56px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    .editorial-b .body {
+      font-family: 'Figtree', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      opacity: 0.8;
+      max-width: 600px;
+    }
+
+    /* Editorial C: Asymmetric with Mark */
+    .editorial-c {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 60px;
+      padding: 60px;
+      font-family: 'Outfit', sans-serif;
+      position: relative;
+    }
+
+    .editorial-c .mark-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 300px;
+      opacity: 0.08;
+    }
+
+    .editorial-c .left h1 {
+      font-size: 80px;
+      font-weight: 600;
+      line-height: 0.9;
+      letter-spacing: -3px;
+      margin-bottom: 40px;
+    }
+
+    .editorial-c .left .body {
+      font-family: 'Figtree', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      opacity: 0.7;
+    }
+
+    .editorial-c .right {
+      padding-top: 100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .editorial-c .stat-block {
+      margin-bottom: 40px;
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 3px solid;
+    }
+
+    .editorial-c .stat-block:nth-child(1) {
+      border-color: #4CAF8C;
+      background: rgba(76,175,140,0.05);
+    }
+
+    .editorial-c .stat-block:nth-child(2) {
+      border-color: #F59E42;
+      background: rgba(245,158,66,0.05);
+    }
+
+    .editorial-c .stat-block:nth-child(3) {
+      border-color: #5B9EFF;
+      background: rgba(91,158,255,0.05);
+    }
+
+    .editorial-c .stat-value {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .editorial-c .stat-block:nth-child(1) .stat-value { color: #4CAF8C; }
+    .editorial-c .stat-block:nth-child(2) .stat-value { color: #F59E42; }
+    .editorial-c .stat-block:nth-child(3) .stat-value { color: #5B9EFF; }
+
+    .editorial-c .stat-label {
+      font-size: 13px;
+      opacity: 0.6;
+    }
+
+    /* BRUTALIST MUTATIONS */
+
+    /* Brutalist A: Heavy Purple Block with Green Stats */
+    .brutalist-a {
+      background: #000;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .brutalist-a .hero-section {
+      background: #6B4FEC;
+      padding: 60px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .brutalist-a h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: -3px;
+      color: #000;
+      max-width: 60%;
+    }
+
+    .brutalist-a .mark-display {
+      width: 120px;
+      height: 120px;
+      opacity: 0.25;
+    }
+
+    .brutalist-a .stats-bar {
+      background: #4CAF8C;
+      padding: 30px 60px;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .brutalist-a .stat {
+      color: #000;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+    }
+
+    .brutalist-a .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-left: 8px;
+    }
+
+    /* Brutalist B: Stacked Color Blocks */
+    .brutalist-b {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: #000;
+    }
+
+    .brutalist-b .top-section {
+      flex: 2;
+      background: #0A0D10;
+      padding: 60px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .brutalist-b .mark-display {
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+    }
+
+    .brutalist-b h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 0.85;
+      letter-spacing: -3px;
+      color: #fff;
+    }
+
+    .brutalist-b .green-strip {
+      background: #4CAF8C;
+      padding: 24px 60px;
+      display: flex;
+      gap: 50px;
+    }
+
+    .brutalist-b .green-strip .stat {
+      color: #000;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+    }
+
+    .brutalist-b .amber-strip {
+      background: #F59E42;
+      padding: 20px 60px;
+      color: #000;
+      font-family: 'Figtree', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .brutalist-b .blue-strip {
+      background: #5B9EFF;
+      padding: 30px 60px;
+      flex: 1;
+    }
+
+    .brutalist-b .blue-strip p {
+      font-family: 'Figtree', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #000;
+      font-weight: 500;
+    }
+
+    /* Brutalist C: Stacked with Echoed Marks */
+    .brutalist-c {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+    }
+
+    .brutalist-c .mark-echo {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      opacity: 0.1;
+    }
+
+    .brutalist-c .mark-echo:nth-child(1) {
+      top: 10%;
+      right: 10%;
+    }
+
+    .brutalist-c .mark-echo:nth-child(2) {
+      bottom: 20%;
+      left: 15%;
+    }
+
+    .brutalist-c .strip-1 {
+      height: 45%;
+      background: #0A0D10;
+      padding: 60px;
+      display: flex;
+      align-items: center;
+      border-bottom: 4px solid #6B4FEC;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brutalist-c .strip-1 h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .brutalist-c .strip-2 {
+      height: 30%;
+      background: linear-gradient(90deg, #4CAF8C 0%, #F59E42 50%, #5B9EFF 100%);
+      padding: 40px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brutalist-c .stat {
+      color: #000;
+    }
+
+    .brutalist-c .stat-value {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .brutalist-c .stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      opacity: 0.8;
+    }
+
+    .brutalist-c .strip-3 {
+      flex: 1;
+      background: #fff;
+      padding: 40px 60px;
+      color: #000;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brutalist-c .strip-3 p {
+      font-family: 'Figtree', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    /* CINEMATIC MUTATIONS */
+
+    /* Cinematic A: Minimal with Floating Mark */
+    .cinematic-a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      background: #000;
+      text-align: center;
+      position: relative;
+    }
+
+    .cinematic-a .mark-float {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      opacity: 0.06;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .cinematic-a .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cinematic-a h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 120px;
+      font-weight: 300;
+      letter-spacing: -6px;
+      line-height: 0.9;
+      margin-bottom: 40px;
+    }
+
+    .cinematic-a .subtitle {
+      font-size: 16px;
+      font-weight: 300;
+      opacity: 0.4;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 60px;
+    }
+
+    .cinematic-a .badges {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .cinematic-a .badge {
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .cinematic-a .badge:nth-child(1) {
+      background: rgba(76,175,140,0.2);
+      color: #4CAF8C;
+      border: 1px solid #4CAF8C;
+    }
+
+    .cinematic-a .badge:nth-child(2) {
+      background: rgba(245,158,66,0.2);
+      color: #F59E42;
+      border: 1px solid #F59E42;
+    }
+
+    .cinematic-a .badge:nth-child(3) {
+      background: rgba(91,158,255,0.2);
+      color: #5B9EFF;
+      border: 1px solid #5B9EFF;
+    }
+
+    /* Cinematic B: Off-Center with Color Accents */
+    .cinematic-b {
+      position: relative;
+      height: 100%;
+      background: radial-gradient(circle at 70% 30%, rgba(107,79,236,0.2) 0%, transparent 60%),
+                  #0A0D10;
+    }
+
+    .cinematic-b .mark-corner {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      width: 100px;
+      height: 100px;
+      opacity: 0.6;
+    }
+
+    .cinematic-b .content {
+      position: absolute;
+      left: 10%;
+      top: 35%;
+      max-width: 50%;
+    }
+
+    .cinematic-b h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 96px;
+      font-weight: 400;
+      letter-spacing: -4px;
+      line-height: 0.9;
+      margin-bottom: 32px;
+    }
+
+    .cinematic-b .tagline {
+      font-size: 18px;
+      font-weight: 300;
+      opacity: 0.6;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .cinematic-b .cta-group {
+      display: flex;
+      gap: 16px;
+    }
+
+    .cinematic-b .cta-primary {
+      padding: 14px 40px;
+      background: #F59E42;
+      color: #000;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 4px;
+    }
+
+    .cinematic-b .cta-secondary {
+      padding: 14px 40px;
+      border: 1px solid #5B9EFF;
+      color: #5B9EFF;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 4px;
+    }
+
+    /* Cinematic C: Gradient with Mark Array */
+    .cinematic-c {
+      position: relative;
+      height: 100%;
+      background:
+        linear-gradient(135deg, rgba(107,79,236,0.15) 0%, transparent 50%),
+        linear-gradient(225deg, rgba(76,175,140,0.1) 0%, transparent 40%),
+        #0A0D10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .cinematic-c .mark-array {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      opacity: 0.08;
+    }
+
+    .cinematic-c .mark-array:nth-child(1) { top: 10%; left: 15%; }
+    .cinematic-c .mark-array:nth-child(2) { top: 20%; right: 20%; }
+    .cinematic-c .mark-array:nth-child(3) { bottom: 15%; left: 25%; }
+    .cinematic-c .mark-array:nth-child(4) { bottom: 25%; right: 15%; }
+
+    .cinematic-c .glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(107,79,236,0.2) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .cinematic-c .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cinematic-c h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 88px;
+      font-weight: 500;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    .cinematic-c .deck {
+      font-size: 20px;
+      font-weight: 300;
+      opacity: 0.7;
+      max-width: 500px;
+      margin: 0 auto 48px;
+      line-height: 1.5;
+    }
+
+    .cinematic-c .meta {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .cinematic-c .meta-item:nth-child(1) { color: #4CAF8C; }
+    .cinematic-c .meta-item:nth-child(2) { color: #F59E42; }
+    .cinematic-c .meta-item:nth-child(3) { color: #5B9EFF; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Full Palette + Mark Integration</h1>
+    <p>9 mutations using complete color system and standalone mark</p>
+  </div>
+
+  <!-- EDITORIAL FAMILY -->
+  <div class="family">
+    <div class="family-title">Editorial Dense — Full Palette</div>
+    <div class="family-desc">Green (stats), Amber (CTAs), Blue (info), Purple (brand), Mark integrated</div>
+
+    <div class="mutations">
+      <div class="mutation">
+        <div class="mutation-label">1A: Ultra-Dense + Color-Coded Stats + Background Mark</div>
+        <div class="preview editorial-a">
+          <svg class="mark-bg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+            <circle cx="32" cy="9" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+            <circle cx="55" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="47" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="40" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="32" cy="55" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="47" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="9" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="17" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="24" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+          </svg>
+          <svg class="logo-mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="2.5" fill="#6B4FEC"/>
+            <circle cx="32" cy="9" r="2.2" fill="#6B4FEC"/>
+            <circle cx="32" cy="17" r="2.0" fill="#6B4FEC"/>
+            <circle cx="32" cy="24" r="1.8" fill="#6B4FEC"/>
+            <circle cx="46.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+            <circle cx="41.5" cy="19" r="2.0" fill="#6B4FEC"/>
+            <circle cx="37.5" cy="25" r="1.8" fill="#6B4FEC"/>
+            <circle cx="55" cy="32" r="2.2" fill="#6B4FEC"/>
+            <circle cx="47" cy="32" r="2.0" fill="#6B4FEC"/>
+            <circle cx="40" cy="32" r="1.8" fill="#6B4FEC"/>
+            <circle cx="46.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+            <circle cx="41.5" cy="45" r="2.0" fill="#6B4FEC"/>
+            <circle cx="37.5" cy="39" r="1.8" fill="#6B4FEC"/>
+            <circle cx="32" cy="55" r="2.2" fill="#6B4FEC"/>
+            <circle cx="32" cy="47" r="2.0" fill="#6B4FEC"/>
+            <circle cx="32" cy="40" r="1.8" fill="#6B4FEC"/>
+            <circle cx="17.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+            <circle cx="22.5" cy="45" r="2.0" fill="#6B4FEC"/>
+            <circle cx="26.5" cy="39" r="1.8" fill="#6B4FEC"/>
+            <circle cx="9" cy="32" r="2.2" fill="#6B4FEC"/>
+            <circle cx="17" cy="32" r="2.0" fill="#6B4FEC"/>
+            <circle cx="24" cy="32" r="1.8" fill="#6B4FEC"/>
+            <circle cx="17.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+            <circle cx="22.5" cy="19" r="2.0" fill="#6B4FEC"/>
+            <circle cx="26.5" cy="25" r="1.8" fill="#6B4FEC"/>
+          </svg>
+          <h1>WHERE<br>INFRA<br>STRUCTURE<br>CONVERGES</h1>
+          <div class="metrics">
+            <div class="metric"><span>50+</span>Mainnets</div>
+            <div class="metric"><span>$100M+</span>AUM</div>
+            <div class="metric"><span>99.9%</span>Uptime</div>
+          </div>
+          <div class="body">
+            Institutional-grade blockchain infrastructure. 24/7 monitoring, automated failover, compliance-ready security.
+          </div>
+          <div class="cta">Get Started</div>
+        </div>
+      </div>
+
+      <div class="mutation">
+        <div class="mutation-label">1B: Stats-First + Color Blocks + Background Mark</div>
+        <div class="preview editorial-b">
+          <svg class="mark-bg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+            <circle cx="32" cy="9" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+            <circle cx="55" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="47" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="40" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="32" cy="55" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="47" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="9" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="17" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="24" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+          </svg>
+          <div class="stats-hero">
+            <div class="stat">
+              <div class="stat-value">50+</div>
+              <div class="stat-label">Mainnets</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">$100M+</div>
+              <div class="stat-label">Assets</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">99.9%</div>
+              <div class="stat-label">Uptime</div>
+            </div>
+          </div>
+          <h1>Institutional infrastructure at scale</h1>
+          <div class="body">
+            InfraSingularity provides enterprise-grade blockchain infrastructure with 24/7 monitoring, automated failover systems, and institutional security protocols.
+          </div>
+        </div>
+      </div>
+
+      <div class="mutation">
+        <div class="mutation-label">1C: Asymmetric + Color Borders + Watermark</div>
+        <div class="preview editorial-c">
+          <svg class="mark-watermark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+            <circle cx="32" cy="9" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+            <circle cx="55" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="47" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="40" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="32" cy="55" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="47" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="9" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="17" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="24" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+          </svg>
+          <div class="left">
+            <h1>INFRA<br>SINGULARITY</h1>
+            <div class="body">
+              Where institutional infrastructure converges. Built for enterprises that demand precision, reliability, and institutional-grade security.
+            </div>
+          </div>
+          <div class="right">
+            <div class="stat-block">
+              <div class="stat-value">50+</div>
+              <div class="stat-label">Supported Mainnets</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-value">$100M+</div>
+              <div class="stat-label">Assets Under Management</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-value">99.9%</div>
+              <div class="stat-label">Infrastructure Uptime</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRUTALIST FAMILY -->
+  <div class="family">
+    <div class="family-title">Architectural Brutalist — Full Palette</div>
+    <div class="family-desc">Bold color blocks, mark as structural element</div>
+
+    <div class="mutations">
+      <div class="mutation">
+        <div class="mutation-label">3A: Heavy Purple Block + Green Stats Bar</div>
+        <div class="preview brutalist-a">
+          <div class="hero-section">
+            <h1>WHERE<br>INFRASTRUCTURE<br>CONVERGES</h1>
+            <svg class="mark-display" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="2.5" fill="#000"/>
+              <circle cx="32" cy="9" r="2.2" fill="#000"/>
+              <circle cx="32" cy="17" r="2.0" fill="#000"/>
+              <circle cx="32" cy="24" r="1.8" fill="#000"/>
+              <circle cx="46.5" cy="11.5" r="2.2" fill="#000"/>
+              <circle cx="41.5" cy="19" r="2.0" fill="#000"/>
+              <circle cx="37.5" cy="25" r="1.8" fill="#000"/>
+              <circle cx="55" cy="32" r="2.2" fill="#000"/>
+              <circle cx="47" cy="32" r="2.0" fill="#000"/>
+              <circle cx="40" cy="32" r="1.8" fill="#000"/>
+              <circle cx="46.5" cy="52.5" r="2.2" fill="#000"/>
+              <circle cx="41.5" cy="45" r="2.0" fill="#000"/>
+              <circle cx="37.5" cy="39" r="1.8" fill="#000"/>
+              <circle cx="32" cy="55" r="2.2" fill="#000"/>
+              <circle cx="32" cy="47" r="2.0" fill="#000"/>
+              <circle cx="32" cy="40" r="1.8" fill="#000"/>
+              <circle cx="17.5" cy="52.5" r="2.2" fill="#000"/>
+              <circle cx="22.5" cy="45" r="2.0" fill="#000"/>
+              <circle cx="26.5" cy="39" r="1.8" fill="#000"/>
+              <circle cx="9" cy="32" r="2.2" fill="#000"/>
+              <circle cx="17" cy="32" r="2.0" fill="#000"/>
+              <circle cx="24" cy="32" r="1.8" fill="#000"/>
+              <circle cx="17.5" cy="11.5" r="2.2" fill="#000"/>
+              <circle cx="22.5" cy="19" r="2.0" fill="#000"/>
+              <circle cx="26.5" cy="25" r="1.8" fill="#000"/>
+            </svg>
+          </div>
+          <div class="stats-bar">
+            <div class="stat">50+<span class="stat-label">MAINNETS</span></div>
+            <div class="stat">$100M+<span class="stat-label">AUM</span></div>
+            <div class="stat">99.9%<span class="stat-label">UPTIME</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mutation">
+        <div class="mutation-label">3B: Stacked Color Strips (Green/Amber/Blue)</div>
+        <div class="preview brutalist-b">
+          <div class="top-section">
+            <svg class="mark-display" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="2.5" fill="#6B4FEC"/>
+              <circle cx="32" cy="9" r="2.2" fill="#6B4FEC"/>
+              <circle cx="32" cy="17" r="2.0" fill="#6B4FEC"/>
+              <circle cx="32" cy="24" r="1.8" fill="#6B4FEC"/>
+              <circle cx="46.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+              <circle cx="41.5" cy="19" r="2.0" fill="#6B4FEC"/>
+              <circle cx="37.5" cy="25" r="1.8" fill="#6B4FEC"/>
+              <circle cx="55" cy="32" r="2.2" fill="#6B4FEC"/>
+              <circle cx="47" cy="32" r="2.0" fill="#6B4FEC"/>
+              <circle cx="40" cy="32" r="1.8" fill="#6B4FEC"/>
+              <circle cx="46.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+              <circle cx="41.5" cy="45" r="2.0" fill="#6B4FEC"/>
+              <circle cx="37.5" cy="39" r="1.8" fill="#6B4FEC"/>
+              <circle cx="32" cy="55" r="2.2" fill="#6B4FEC"/>
+              <circle cx="32" cy="47" r="2.0" fill="#6B4FEC"/>
+              <circle cx="32" cy="40" r="1.8" fill="#6B4FEC"/>
+              <circle cx="17.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+              <circle cx="22.5" cy="45" r="2.0" fill="#6B4FEC"/>
+              <circle cx="26.5" cy="39" r="1.8" fill="#6B4FEC"/>
+              <circle cx="9" cy="32" r="2.2" fill="#6B4FEC"/>
+              <circle cx="17" cy="32" r="2.0" fill="#6B4FEC"/>
+              <circle cx="24" cy="32" r="1.8" fill="#6B4FEC"/>
+              <circle cx="17.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+              <circle cx="22.5" cy="19" r="2.0" fill="#6B4FEC"/>
+              <circle cx="26.5" cy="25" r="1.8" fill="#6B4FEC"/>
+            </svg>
+            <h1>INFRA<br>SINGULARITY</h1>
+          </div>
+          <div class="green-strip">
+            <div class="stat">50+ MAINNETS</div>
+            <div class="stat">$100M+ AUM</div>
+            <div class="stat">99.9% UPTIME</div>
+          </div>
+          <div class="amber-strip">
+            24/7 MONITORING • AUTOMATED FAILOVER • COMPLIANCE-READY
+          </div>
+          <div class="blue-strip">
+            <p>Enterprise-grade blockchain infrastructure for institutional clients. Official NaaS partner for Canton Network.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mutation">
+        <div class="mutation-label">3C: Rainbow Gradient + Echoed Marks</div>
+        <div class="preview brutalist-c">
+          <svg class="mark-echo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+            <circle cx="32" cy="9" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+            <circle cx="55" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="47" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="40" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="32" cy="55" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="47" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="9" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="17" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="24" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+          </svg>
+          <svg class="mark-echo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+            <circle cx="32" cy="9" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+            <circle cx="55" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="47" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="40" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="32" cy="55" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="47" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="9" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="17" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="24" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+          </svg>
+          <div class="strip-1">
+            <h1>WHERE INSTITUTIONAL<br>INFRASTRUCTURE CONVERGES</h1>
+          </div>
+          <div class="strip-2">
+            <div class="stat">
+              <div class="stat-value">50+</div>
+              <div class="stat-label">MAINNETS</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">$100M+</div>
+              <div class="stat-label">ASSETS</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">99.9%</div>
+              <div class="stat-label">UPTIME</div>
+            </div>
+          </div>
+          <div class="strip-3">
+            <p>InfraSingularity provides institutional-grade blockchain infrastructure with 24/7 monitoring, automated failover, and compliance-ready security protocols.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CINEMATIC FAMILY -->
+  <div class="family">
+    <div class="family-title">Cinematic/Atmospheric — Full Palette</div>
+    <div class="family-desc">Mark as atmosphere, color badges/CTAs</div>
+
+    <div class="mutations">
+      <div class="mutation">
+        <div class="mutation-label">5A: Minimal + Floating Mark + Color Badges</div>
+        <div class="preview cinematic-a">
+          <svg class="mark-float" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+            <circle cx="32" cy="9" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+            <circle cx="55" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="47" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="40" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="32" cy="55" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="47" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="9" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="17" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="24" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+          </svg>
+          <div class="content">
+            <h1>SINGULARITY</h1>
+            <div class="subtitle">Institutional Infrastructure</div>
+            <div class="badges">
+              <div class="badge">50+ MAINNETS</div>
+              <div class="badge">$100M+ AUM</div>
+              <div class="badge">99.9% UPTIME</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mutation">
+        <div class="mutation-label">5B: Off-Center + Mark Corner + Dual CTAs</div>
+        <div class="preview cinematic-b">
+          <svg class="mark-corner" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="2.5" fill="#6B4FEC"/>
+            <circle cx="32" cy="9" r="2.2" fill="#6B4FEC"/>
+            <circle cx="32" cy="17" r="2.0" fill="#6B4FEC"/>
+            <circle cx="32" cy="24" r="1.8" fill="#6B4FEC"/>
+            <circle cx="46.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+            <circle cx="41.5" cy="19" r="2.0" fill="#6B4FEC"/>
+            <circle cx="37.5" cy="25" r="1.8" fill="#6B4FEC"/>
+            <circle cx="55" cy="32" r="2.2" fill="#6B4FEC"/>
+            <circle cx="47" cy="32" r="2.0" fill="#6B4FEC"/>
+            <circle cx="40" cy="32" r="1.8" fill="#6B4FEC"/>
+            <circle cx="46.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+            <circle cx="41.5" cy="45" r="2.0" fill="#6B4FEC"/>
+            <circle cx="37.5" cy="39" r="1.8" fill="#6B4FEC"/>
+            <circle cx="32" cy="55" r="2.2" fill="#6B4FEC"/>
+            <circle cx="32" cy="47" r="2.0" fill="#6B4FEC"/>
+            <circle cx="32" cy="40" r="1.8" fill="#6B4FEC"/>
+            <circle cx="17.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+            <circle cx="22.5" cy="45" r="2.0" fill="#6B4FEC"/>
+            <circle cx="26.5" cy="39" r="1.8" fill="#6B4FEC"/>
+            <circle cx="9" cy="32" r="2.2" fill="#6B4FEC"/>
+            <circle cx="17" cy="32" r="2.0" fill="#6B4FEC"/>
+            <circle cx="24" cy="32" r="1.8" fill="#6B4FEC"/>
+            <circle cx="17.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+            <circle cx="22.5" cy="19" r="2.0" fill="#6B4FEC"/>
+            <circle cx="26.5" cy="25" r="1.8" fill="#6B4FEC"/>
+          </svg>
+          <div class="content">
+            <h1>INFRA<br>SINGULARITY</h1>
+            <div class="tagline">
+              Where institutional infrastructure converges.<br>
+              50+ mainnets. $100M+ AUM. 99.9% uptime.
+            </div>
+            <div class="cta-group">
+              <div class="cta-primary">Get Started</div>
+              <div class="cta-secondary">Learn More</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mutation">
+        <div class="mutation-label">5C: Gradient + Mark Array + Color Meta</div>
+        <div class="preview cinematic-c">
+          <svg class="mark-array" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+            <circle cx="32" cy="9" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+            <circle cx="55" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="47" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="40" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="32" cy="55" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="47" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="9" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="17" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="24" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+          </svg>
+          <svg class="mark-array" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+            <circle cx="32" cy="9" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+            <circle cx="55" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="47" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="40" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="32" cy="55" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="47" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="9" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="17" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="24" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+          </svg>
+          <svg class="mark-array" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+            <circle cx="32" cy="9" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+            <circle cx="55" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="47" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="40" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="32" cy="55" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="47" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="9" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="17" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="24" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+          </svg>
+          <svg class="mark-array" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+            <circle cx="32" cy="9" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+            <circle cx="55" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="47" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="40" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="32" cy="55" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="47" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="9" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="17" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="24" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+          </svg>
+          <div class="glow"></div>
+          <div class="content">
+            <h1>InfraSingularity</h1>
+            <div class="deck">
+              Institutional-grade infrastructure<br>
+              for the convergence economy
+            </div>
+            <div class="meta">
+              <div class="meta-item">50+ Mainnets</div>
+              <div class="meta-item">$100M+ AUM</div>
+              <div class="meta-item">99.9% Uptime</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

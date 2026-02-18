@@ -32,14 +32,28 @@ See `CHANGELOG.md` for full v2.0 release notes.
 
 **InfraSingularity Brand** (`projects/infrasingularity/`)
 - Institutional blockchain infrastructure provider
-- Progress: Phases 0-1-3 COMPLETE (narrative, philosophy, mark development). Phase 2 skipped (integrated into Phase 3)
-- Status: Phase 3 finalists presented to team (10 variants: v10 series + v11 series)
-  - v10 series: Simplified structural approach (spokes + brackets, 13-21 elements)
-  - v11 series: Preserve original radial starburst (25 dots, clean geometry)
-- Andy's preference: v10f (purple center + continuous bracket) or v11 series (keeping close to original)
-- Next: Team selection → lock mark → Phase 4 (Wordmark)
+- **Progress: Phases 0-5 COMPLETE. Phase 5.5 IN PROGRESS (2026-02-18)**
+  - Phase 2 skipped (integrated into Phase 3)
+  - Phase 3: Mark locked (v11d - 25-dot radial starburst)
+  - Phase 4: Wordmark locked (Infra Medium + Singularity Light, purple full stop)
+  - Phase 5: Design system complete (Outfit + Figtree, full color palette)
+  - Phase 5.5: Two-page site in progress
+- **Key files:**
+  - `phase5.5-composition/splash.html` — **BANKED.** Diagonal split splash (purple left panel + stat blocks right). ENTER → links to main page.
+  - `phase5.5-composition/composition-final.html` — Main page. Brutalist design: spec tables, corner marks, protocol manifest, investments grid.
+- **Design decisions locked:**
+  - Brutalist override: 0 border-radius everywhere (overrides DESIGN.md 8px cards)
+  - Sharp institutional aesthetic: hard borders, corner bracket marks, spec tables
+  - Hero: `clamp(56px, 8vw, 96px)` Outfit weight 300 (Light) — corrected from previous weight 500
+  - Section headers: `LABEL ──────` (flex + 1px rule)
+  - Copy rules: sourced-only (current site, Canton NaaS doc, pitch deck). No invented claims. No American marketing punchlines.
+  - Wordmark on splash: inlined SVG with purple full stop removed (already white-on-dark; no filter needed)
+- **CSS pattern (splash):** purple panel via `clip-path: polygon(0 0, 55% 0, 42% 100%, 0 100%)` + absolute-positioned layers
+- **Lessons learned this session:**
+  - Don't use `filter: brightness(0) invert(1)` on wordmark SVG — it makes the purple full stop white
+  - `justify-content: flex-start` + `flex: 1` on stat blocks is the correct stat-fill pattern
+  - All spacing vars must be `--space-X` (not `--spX`) per DESIGN.md
 - Notion workspace: `https://www.notion.so/3040d80f5eb781dcaa12dc35497dfdbd`
-- Phase 3 page: `https://www.notion.so/3050d80f5eb78160a34fc9306f3d6ad9`
 - Track state: `.brand-progress.md` in project directory
 
 ## Completed Reference Project

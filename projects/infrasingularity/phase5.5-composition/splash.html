@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InfraSingularity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Figtree', sans-serif;
+      background: #0A0D10;
+      color: #F5F5F7;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .splash {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Diagonal purple panel */
+    .panel-purple {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #6B4FEC;
+      clip-path: polygon(0 0, 55% 0, 42% 100%, 0 100%);
+    }
+
+    /* Left content — heading only */
+    .panel-left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      padding: 56px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      z-index: 2;
+    }
+
+    /* Wordmark — absolutely positioned across the diagonal */
+    .splash-wordmark {
+      position: absolute;
+      top: 56px;
+      left: 64px;
+      z-index: 3;
+    }
+
+    .splash-wordmark svg {
+      height: 72px;
+      width: auto;
+    }
+
+    .splash-heading {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: #000;
+      text-transform: uppercase;
+    }
+
+    /* Right content — stats + enter */
+    .panel-right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 46%;
+      height: 100%;
+      padding: 56px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 16px;
+      z-index: 2;
+    }
+
+    .stat-block {
+      flex: 1;
+      padding: 28px 32px;
+      border: 2px solid;
+      background: rgba(255, 255, 255, 0.02);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .stat-block:nth-child(1) { border-color: #4CAF8C; }
+    .stat-block:nth-child(2) { border-color: #F59E42; }
+    .stat-block:nth-child(3) { border-color: #5B9EFF; }
+
+    .stat-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(48px, 5.5vw, 72px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .stat-block:nth-child(1) .stat-value { color: #4CAF8C; }
+    .stat-block:nth-child(2) .stat-value { color: #F59E42; }
+    .stat-block:nth-child(3) .stat-value { color: #5B9EFF; }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6E7178;
+    }
+
+    /* Enter CTA */
+    .enter-cta {
+      position: absolute;
+      bottom: 56px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .enter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 32px;
+      border: 1px solid #3D4449;
+      background: transparent;
+      color: #C4C6CB;
+      font-family: 'Figtree', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 200ms cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    .enter-btn:hover {
+      border-color: #6B4FEC;
+      color: #F5F5F7;
+      background: rgba(107, 79, 236, 0.06);
+    }
+
+    .enter-arrow {
+      font-size: 16px;
+      transition: transform 200ms cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    .enter-btn:hover .enter-arrow {
+      transform: translateX(4px);
+    }
+  </style>
+</head>
+<body>
+  <div class="splash">
+
+    <!-- Purple diagonal background -->
+    <div class="panel-purple"></div>
+
+    <!-- Wordmark — anchored to stat top + INFRASTRUCTURE left -->
+    <div class="splash-wordmark">
+      <svg viewBox="0 0 475 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Mark v11d -->
+          <g transform="translate(0, 0)">
+            <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+            <circle cx="32" cy="9" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+            <circle cx="55" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="47" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="40" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="32" cy="55" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="47" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="9" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="17" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="24" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+          </g>
+          <text x="80" y="45" font-family="Outfit, sans-serif" font-size="40" letter-spacing="-0.4" fill="#fff">
+            <tspan font-weight="500">Infra</tspan><tspan font-weight="300">Singularity</tspan>
+          </text>
+      </svg>
+    </div>
+
+    <!-- Left: heading only -->
+    <div class="panel-left">
+      <div class="wordmark" style="display:none;">
+        <svg viewBox="0 0 475 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Mark v11d -->
+          <g transform="translate(0, 0)">
+            <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+            <circle cx="32" cy="9" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+            <circle cx="55" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="47" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="40" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="41.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="32" cy="55" r="2.2" fill="#fff"/>
+            <circle cx="32" cy="47" r="2.0" fill="#fff"/>
+            <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="45" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+            <circle cx="9" cy="32" r="2.2" fill="#fff"/>
+            <circle cx="17" cy="32" r="2.0" fill="#fff"/>
+            <circle cx="24" cy="32" r="1.8" fill="#fff"/>
+            <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+            <circle cx="22.5" cy="19" r="2.0" fill="#fff"/>
+            <circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+          </g>
+          <!-- Wordmark: Outfit Medium + Light, no full stop -->
+          <text x="80" y="45" font-family="Outfit, sans-serif" font-size="40" letter-spacing="-0.4" fill="#fff">
+            <tspan font-weight="500">Infra</tspan><tspan font-weight="300">Singularity</tspan>
+          </text>
+        </svg>
+      </div>
+      <div class="splash-heading">
+        Institutional<br>Infrastructure
+      </div>
+    </div>
+
+    <!-- Right: stats + enter -->
+    <div class="panel-right">
+      <div class="stat-block">
+        <div class="stat-value">50+</div>
+        <div class="stat-label">Mainnet Protocols</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-value">Top 10</div>
+        <div class="stat-label">Symbiotic by AUM</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-value">99.99%</div>
+        <div class="stat-label">Infrastructure Uptime</div>
+      </div>
+    </div>
+
+    <!-- Enter — centered across the diagonal -->
+    <div class="enter-cta">
+      <a href="composition-final.html" class="enter-btn">
+        Enter <span class="enter-arrow">→</span>
+      </a>
+    </div>
+
+  </div>
+</body>
+</html>

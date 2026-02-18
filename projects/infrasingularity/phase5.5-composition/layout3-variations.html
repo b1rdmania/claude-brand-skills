@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout 3 Variations - Less Purple</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #0A0D10;
+      --bg-warm: #12161A;
+      --text-primary: #F5F5F7;
+      --text-secondary: #C4C6CB;
+      --text-muted: #6E7178;
+      --border: #2D3339;
+      --accent: #6B4FEC;
+      --green: #4CAF8C;
+      --amber: #F59E42;
+      --blue: #5B9EFF;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-8: 48px;
+      --space-10: 64px;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Figtree', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background: #000;
+      color: var(--text-primary);
+    }
+
+    .header {
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--bg-deep);
+    }
+
+    .header h1 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .layouts {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 60px;
+      padding: 60px 20px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .layout {
+      border: 2px solid var(--border);
+      overflow: hidden;
+    }
+
+    .layout-label {
+      background: var(--bg-warm);
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .preview {
+      height: 800px;
+      background: var(--bg-deep);
+      position: relative;
+    }
+
+    /* Variation A: Dark with Purple Border */
+    .var-a {
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .var-a .brand-section {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 55%;
+      height: 100%;
+      background: var(--bg-deep);
+      border-right: 4px solid var(--accent);
+      clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+      padding: var(--space-10);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .var-a .wordmark {
+      width: 100%;
+      max-width: 350px;
+    }
+
+    .var-a h1 {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-top: var(--space-8);
+    }
+
+    .var-a .mark-watermark {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      opacity: 0.08;
+      bottom: var(--space-10);
+      left: var(--space-10);
+    }
+
+    .var-a .content-section {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      padding: var(--space-10);
+      padding-left: var(--space-10);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Variation B: Narrower Purple Strip */
+    .var-b {
+      height: 100%;
+      position: relative;
+    }
+
+    .var-b .purple-strip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 100%;
+      background: var(--accent);
+    }
+
+    .var-b .brand-section {
+      position: absolute;
+      top: 0;
+      left: 8px;
+      width: 50%;
+      height: 100%;
+      background: var(--bg-deep);
+      border-right: 2px solid var(--border);
+      clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+      padding: var(--space-10);
+      padding-left: calc(var(--space-10) + 20px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .var-b .wordmark {
+      width: 100%;
+      max-width: 350px;
+    }
+
+    .var-b h1 {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-top: var(--space-8);
+    }
+
+    .var-b .accent-bar {
+      height: 4px;
+      background: var(--accent);
+      width: 200px;
+      margin-top: var(--space-6);
+    }
+
+    .var-b .content-section {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 55%;
+      height: 100%;
+      padding: var(--space-10);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Variation C: Dark with Purple Glow */
+    .var-c {
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .var-c .brand-section {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 55%;
+      height: 100%;
+      background: #000;
+      clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+      padding: var(--space-10);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 0 80px rgba(107,79,236,0.3);
+    }
+
+    .var-c .wordmark {
+      width: 100%;
+      max-width: 350px;
+    }
+
+    .var-c h1 {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-top: var(--space-8);
+      border-left: 6px solid var(--accent);
+      padding-left: var(--space-5);
+    }
+
+    .var-c .content-section {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      padding: var(--space-10);
+      padding-left: var(--space-10);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Shared Stat Styles */
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .stat {
+      padding: var(--space-5);
+      border: 2px solid;
+      border-left-width: 6px;
+    }
+
+    .stat:nth-child(1) { border-color: var(--green); }
+    .stat:nth-child(2) { border-color: var(--amber); }
+    .stat:nth-child(3) { border-color: var(--blue); }
+
+    .stat .num {
+      font-family: var(--font-display);
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: var(--space-4);
+    }
+
+    .stat:nth-child(1) .num { color: var(--green); }
+    .stat:nth-child(2) .num { color: var(--amber); }
+    .stat:nth-child(3) .num { color: var(--blue); }
+
+    .stat .desc {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Layout 3 Variations - Less Purple</h1>
+    <p>3 ways to reduce purple while keeping the diagonal split</p>
+  </div>
+
+  <div class="layouts">
+    <!-- Variation A: Dark with Purple Border -->
+    <div class="layout">
+      <div class="layout-label">Variation A: Dark Panel + Purple Border</div>
+      <div class="preview">
+        <div class="var-a">
+          <div class="brand-section">
+            <img src="/Users/andy/Claude Skills/projects/infrasingularity/is-wordmark-lockup-final.svg" class="wordmark" alt="InfraSingularity">
+            <h1>INSTITUTIONAL<br>STAKING<br>PLATFORM</h1>
+            <img src="/Users/andy/Claude Skills/projects/infrasingularity/is-mark-standalone.svg" class="mark-watermark" alt="">
+          </div>
+          <div class="content-section">
+            <div class="stats">
+              <div class="stat">
+                <div class="num">50+</div>
+                <div class="desc">Mainnet Protocols</div>
+              </div>
+              <div class="stat">
+                <div class="num">Top 10</div>
+                <div class="desc">Symbiotic by AUM</div>
+              </div>
+              <div class="stat">
+                <div class="num">99.99%</div>
+                <div class="desc">Infrastructure Uptime</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Variation B: Narrow Purple Strip -->
+    <div class="layout">
+      <div class="layout-label">Variation B: Thin Purple Strip Edge</div>
+      <div class="preview">
+        <div class="var-b">
+          <div class="purple-strip"></div>
+          <div class="brand-section">
+            <div>
+              <img src="/Users/andy/Claude Skills/projects/infrasingularity/is-wordmark-lockup-final.svg" class="wordmark" alt="InfraSingularity">
+              <div class="accent-bar"></div>
+            </div>
+            <h1>INSTITUTIONAL<br>STAKING<br>PLATFORM</h1>
+          </div>
+          <div class="content-section">
+            <div class="stats">
+              <div class="stat">
+                <div class="num">50+</div>
+                <div class="desc">Mainnet Protocols</div>
+              </div>
+              <div class="stat">
+                <div class="num">Top 10</div>
+                <div class="desc">Symbiotic by AUM</div>
+              </div>
+              <div class="stat">
+                <div class="num">99.99%</div>
+                <div class="desc">Infrastructure Uptime</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Variation C: Purple Glow Only -->
+    <div class="layout">
+      <div class="layout-label">Variation C: Pure Black + Purple Glow/Accent</div>
+      <div class="preview">
+        <div class="var-c">
+          <div class="brand-section">
+            <img src="/Users/andy/Claude Skills/projects/infrasingularity/is-wordmark-lockup-final.svg" class="wordmark" alt="InfraSingularity">
+            <h1>INSTITUTIONAL<br>STAKING<br>PLATFORM</h1>
+          </div>
+          <div class="content-section">
+            <div class="stats">
+              <div class="stat">
+                <div class="num">50+</div>
+                <div class="desc">Mainnet Protocols</div>
+              </div>
+              <div class="stat">
+                <div class="num">Top 10</div>
+                <div class="desc">Symbiotic by AUM</div>
+              </div>
+              <div class="stat">
+                <div class="num">99.99%</div>
+                <div class="desc">Infrastructure Uptime</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

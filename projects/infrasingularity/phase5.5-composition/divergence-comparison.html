@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InfraSingularity - Composition Divergence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600&family=Figtree:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #000;
+      color: #fff;
+      padding: 40px 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .header p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 8px;
+    }
+
+    .instructions {
+      background: rgba(107,79,236,0.1);
+      border: 1px solid rgba(107,79,236,0.3);
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 800px;
+      margin: 0 auto 60px;
+    }
+
+    .instructions strong {
+      color: #6B4FEC;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 40px;
+      max-width: 2400px;
+      margin: 0 auto;
+    }
+
+    .direction {
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .direction:hover {
+      border-color: #6B4FEC;
+      transform: scale(1.02);
+    }
+
+    .direction-label {
+      background: rgba(255,255,255,0.05);
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .direction-label h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .direction-label p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .preview {
+      background: #0A0D10;
+      height: 800px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Direction 1: Editorial Dense */
+    .editorial {
+      padding: 60px 40px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .editorial .logo {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      margin-bottom: 80px;
+      opacity: 0.7;
+    }
+
+    .editorial h1 {
+      font-size: 72px;
+      font-weight: 500;
+      line-height: 0.95;
+      letter-spacing: -2px;
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    .editorial .deck {
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 1.4;
+      max-width: 500px;
+      margin-bottom: 40px;
+      opacity: 0.8;
+    }
+
+    .editorial .body {
+      font-family: 'Figtree', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 480px;
+      opacity: 0.7;
+      margin-bottom: 40px;
+    }
+
+    .editorial .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .editorial .stat-value {
+      font-size: 48px;
+      font-weight: 600;
+      color: #6B4FEC;
+      margin-bottom: 8px;
+    }
+
+    /* Direction 2: Data Dashboard */
+    .dashboard {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      height: 100%;
+    }
+
+    .dashboard .sidebar {
+      background: #000;
+      padding: 40px 20px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .dashboard .sidebar-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      margin-bottom: 60px;
+    }
+
+    .dashboard .main {
+      padding: 40px;
+    }
+
+    .dashboard .status-bar {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 40px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+    }
+
+    .dashboard .status-item {
+      padding: 8px 12px;
+      background: rgba(76,175,140,0.1);
+      border: 1px solid rgba(76,175,140,0.3);
+      border-radius: 4px;
+    }
+
+    .dashboard .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .dashboard .metric-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 24px;
+      border-radius: 8px;
+    }
+
+    .dashboard .metric-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+    }
+
+    .dashboard .metric-value {
+      font-size: 36px;
+      font-weight: 600;
+      color: #6B4FEC;
+    }
+
+    /* Direction 3: Architectural Brutalist */
+    .brutalist {
+      position: relative;
+      height: 100%;
+    }
+
+    .brutalist .hero-block {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 70%;
+      background: #6B4FEC;
+      padding: 80px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .brutalist h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 64px;
+      font-weight: 600;
+      line-height: 0.9;
+      letter-spacing: -2px;
+      color: #000;
+    }
+
+    .brutalist .info-block {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 50%;
+      height: 40%;
+      background: #fff;
+      padding: 40px;
+      color: #000;
+    }
+
+    .brutalist .info-block p {
+      font-family: 'Figtree', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .brutalist .accent-bar {
+      position: absolute;
+      top: 70%;
+      right: 60%;
+      width: 200px;
+      height: 8px;
+      background: #0A0D10;
+    }
+
+    /* Direction 4: Terminal/CLI */
+    .terminal {
+      font-family: 'JetBrains Mono', monospace;
+      padding: 40px;
+      background: #000;
+    }
+
+    .terminal .prompt {
+      color: #4CAF8C;
+      margin-bottom: 20px;
+    }
+
+    .terminal .prompt::before {
+      content: '$ ';
+      opacity: 0.5;
+    }
+
+    .terminal .output {
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .terminal .output-line {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .terminal .key {
+      color: #6B4FEC;
+      min-width: 180px;
+    }
+
+    .terminal .value {
+      color: rgba(255,255,255,0.8);
+    }
+
+    .terminal h1 {
+      font-size: 48px;
+      font-weight: 500;
+      margin-bottom: 40px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .terminal .ascii-art {
+      opacity: 0.3;
+      font-size: 10px;
+      line-height: 1.2;
+      margin-top: 40px;
+    }
+
+    /* Direction 5: Cinematic/Atmospheric */
+    .cinematic {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 40%, rgba(107,79,236,0.15) 0%, transparent 50%),
+                  linear-gradient(180deg, #0A0D10 0%, #000 100%);
+    }
+
+    .cinematic .content {
+      text-align: center;
+      z-index: 1;
+    }
+
+    .cinematic h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 80px;
+      font-weight: 300;
+      letter-spacing: -3px;
+      margin-bottom: 24px;
+      line-height: 0.95;
+    }
+
+    .cinematic .tagline {
+      font-size: 20px;
+      font-weight: 300;
+      opacity: 0.6;
+      margin-bottom: 60px;
+    }
+
+    .cinematic .cta {
+      display: inline-block;
+      padding: 16px 48px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 4px;
+      font-size: 14px;
+      letter-spacing: 1px;
+      transition: all 0.3s;
+    }
+
+    .cinematic .cta:hover {
+      background: #6B4FEC;
+      border-color: #6B4FEC;
+    }
+
+    .cinematic .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.1;
+    }
+
+    .cinematic .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #6B4FEC;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Phase 5.5: Composition Divergence</h1>
+    <p>5 structurally different directions for InfraSingularity</p>
+  </div>
+
+  <div class="instructions">
+    <p><strong>Binary Selection:</strong> React viscerally. Which ones do you HATE? Kill them immediately. We don't blend - we select survivors and mutate within them.</p>
+  </div>
+
+  <div class="grid">
+    <!-- Direction 1: Editorial Dense -->
+    <div class="direction">
+      <div class="direction-label">
+        <h2>Direction 1: Editorial Dense</h2>
+        <p>Magazine-style vertical rhythm, dense typography, stats-forward</p>
+      </div>
+      <div class="preview editorial">
+        <div class="logo">INFRASINGULARITY</div>
+        <h1>Where institutional infrastructure converges</h1>
+        <div class="deck">
+          50+ mainnets. $100M+ AUM. 99.9% uptime. Built for enterprises that demand precision.
+        </div>
+        <div class="body">
+          InfraSingularity provides institutional-grade blockchain infrastructure with 24/7 monitoring, automated failover systems, and compliance-ready security protocols. Official NaaS partner for Canton Network.
+        </div>
+        <div class="stats">
+          <div>
+            <div class="stat-value">50+</div>
+            <div class="stat-label">Supported Mainnets</div>
+          </div>
+          <div>
+            <div class="stat-value">$100M+</div>
+            <div class="stat-label">Assets Under Management</div>
+          </div>
+          <div>
+            <div class="stat-value">99.9%</div>
+            <div class="stat-label">Infrastructure Uptime</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Direction 2: Data Dashboard -->
+    <div class="direction">
+      <div class="direction-label">
+        <h2>Direction 2: Data Dashboard</h2>
+        <p>Technical precision, grid-heavy, metrics-first, operational view</p>
+      </div>
+      <div class="preview dashboard">
+        <div class="sidebar">
+          <div class="sidebar-logo">IS://</div>
+        </div>
+        <div class="main">
+          <div class="status-bar">
+            <div class="status-item">ALL SYSTEMS OPERATIONAL</div>
+            <div class="status-item">50 MAINNETS ACTIVE</div>
+          </div>
+          <div class="metrics">
+            <div class="metric-card">
+              <div class="metric-label">Infrastructure Uptime</div>
+              <div class="metric-value">99.9%</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Assets Under Management</div>
+              <div class="metric-value">$100M+</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Validator Nodes</div>
+              <div class="metric-value">200+</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Network Coverage</div>
+              <div class="metric-value">50+</div>
+            </div>
+          </div>
+          <div style="font-family: 'Figtree', sans-serif; font-size: 14px; line-height: 1.6; opacity: 0.7; max-width: 600px;">
+            Institutional-grade staking infrastructure for enterprises that demand reliability, security, and scale. Official NaaS partner for Canton Network, bridging traditional finance to decentralized infrastructure.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Direction 3: Architectural Brutalist -->
+    <div class="direction">
+      <div class="direction-label">
+        <h2>Direction 3: Architectural Brutalist</h2>
+        <p>Heavy geometric blocks, asymmetric weight, structural dominance</p>
+      </div>
+      <div class="preview brutalist">
+        <div class="hero-block">
+          <h1>INSTITUTIONAL<br>INFRASTRUCTURE<br>CONVERGENCE</h1>
+        </div>
+        <div class="info-block">
+          <p><strong>InfraSingularity</strong> provides enterprise-grade blockchain infrastructure for 50+ mainnets, managing $100M+ in assets with 99.9% uptime and institutional security protocols.</p>
+        </div>
+        <div class="accent-bar"></div>
+      </div>
+    </div>
+
+    <!-- Direction 4: Terminal/CLI -->
+    <div class="direction">
+      <div class="direction-label">
+        <h2>Direction 4: Terminal/CLI</h2>
+        <p>Command-line aesthetic, monospace-heavy, technical authenticity</p>
+      </div>
+      <div class="preview terminal">
+        <div class="prompt">infrasingularity --query status</div>
+        <div class="output">
+          <div class="output-line">
+            <span class="key">PROVIDER:</span>
+            <span class="value">InfraSingularity</span>
+          </div>
+          <div class="output-line">
+            <span class="key">NETWORKS_SUPPORTED:</span>
+            <span class="value">50+ mainnets</span>
+          </div>
+          <div class="output-line">
+            <span class="key">ASSETS_MANAGED:</span>
+            <span class="value">$100M+</span>
+          </div>
+          <div class="output-line">
+            <span class="key">UPTIME:</span>
+            <span class="value">99.9%</span>
+          </div>
+          <div class="output-line">
+            <span class="key">PARTNER_STATUS:</span>
+            <span class="value">Canton Network Official NaaS</span>
+          </div>
+        </div>
+        <h1>$ WHERE INFRASTRUCTURE<br>  CONVERGES</h1>
+        <div style="font-size: 13px; line-height: 1.8; opacity: 0.6; max-width: 500px; margin-top: 40px;">
+          > Institutional-grade blockchain infrastructure<br>
+          > 24/7 automated monitoring & failover<br>
+          > Enterprise security & compliance-ready<br>
+          > White-label platform for institutional clients
+        </div>
+      </div>
+    </div>
+
+    <!-- Direction 5: Cinematic/Atmospheric -->
+    <div class="direction">
+      <div class="direction-label">
+        <h2>Direction 5: Cinematic/Atmospheric</h2>
+        <p>Immersive gradients, minimal text, atmospheric presence</p>
+      </div>
+      <div class="preview cinematic">
+        <div class="particles">
+          <div class="particle" style="top: 20%; left: 30%;"></div>
+          <div class="particle" style="top: 40%; left: 70%;"></div>
+          <div class="particle" style="top: 60%; left: 50%;"></div>
+          <div class="particle" style="top: 80%; left: 25%;"></div>
+        </div>
+        <div class="content">
+          <h1>INFRA<br>SINGULARITY</h1>
+          <div class="tagline">Where institutional infrastructure converges</div>
+          <div class="cta">ENTER PLATFORM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

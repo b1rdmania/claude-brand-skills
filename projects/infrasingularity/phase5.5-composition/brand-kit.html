@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InfraSingularity — Brand Guidelines</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600;700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep:      #0A0D10;
+      --bg-warm:      #12161A;
+      --bg-surface:   #1A1F24;
+      --bg-elevated:  #23292F;
+      --text-primary: #F5F5F7;
+      --text-secondary: #C4C6CB;
+      --text-muted:   #6E7178;
+      --border:       #2D3339;
+      --border-light: #3D4449;
+      --border-accent: rgba(107, 79, 236, 0.35);
+      --border-green:  rgba(76, 175, 140, 0.3);
+      --border-amber:  rgba(245, 158, 66, 0.28);
+      --border-blue:   rgba(91, 158, 255, 0.28);
+      --accent:       #6B4FEC;
+      --green:        #4CAF8C;
+      --amber:        #F59E42;
+      --blue:         #5B9EFF;
+      --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px;
+      --space-6: 24px; --space-8: 32px; --space-10: 40px; --space-12: 48px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Figtree', sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ─── Nav ─────────────────────────────────── */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 56px;
+      height: 64px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(10, 13, 16, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-back {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 150ms;
+    }
+    .nav-back:hover { color: var(--text-primary); }
+
+    /* ─── Layout ──────────────────────────────── */
+    .content {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+
+    /* ─── Section structure ───────────────────── */
+    .section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: var(--space-3);
+    }
+
+    .section-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: var(--space-10);
+    }
+
+    /* ─── Hero ────────────────────────────────── */
+    .hero {
+      padding: 96px 0 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: var(--space-8);
+    }
+
+    .hero-wordmark {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: var(--space-8);
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+    }
+
+    .hero-title span { font-weight: 300; }
+
+    .hero-meta {
+      display: flex;
+      gap: 40px;
+      margin-top: var(--space-10);
+      padding-top: var(--space-8);
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-meta-item {}
+    .hero-meta-item dt {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .hero-meta-item dd {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* ─── Logo grid ───────────────────────────── */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .logo-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-swatch {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+    }
+
+    .logo-swatch.on-dark  { background: var(--bg-deep); }
+    .logo-swatch.on-warm  { background: var(--bg-warm); }
+    .logo-swatch.on-light { background: #F0F0F0; }
+    .logo-swatch.on-purple { background: var(--accent); }
+
+    .logo-meta {
+      padding: var(--space-5) 0 var(--space-6);
+    }
+
+    .logo-meta h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .logo-meta p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+    }
+
+    .dl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border: 1px solid var(--border-light);
+      font-family: 'Figtree', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 150ms;
+    }
+    .dl-btn:hover { border-color: var(--accent); color: var(--text-primary); }
+    .dl-btn + .dl-btn { margin-left: 8px; }
+
+    /* ─── Mark section ────────────────────────── */
+    .mark-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .mark-card .logo-swatch { height: 160px; }
+
+    /* ─── Spacing diagram ─────────────────────── */
+    .clearspace-demo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 240px;
+      border: 1px solid var(--border);
+      background: var(--bg-warm);
+      position: relative;
+      margin-bottom: var(--space-6);
+    }
+
+    .clearspace-inner {
+      position: relative;
+      display: inline-block;
+    }
+
+    .clearspace-box {
+      position: absolute;
+      top: -32px; left: -32px; right: -32px; bottom: -32px;
+      border: 1px dashed rgba(107, 79, 236, 0.4);
+    }
+
+    .clearspace-label {
+      position: absolute;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+    }
+
+    .cs-top    { top: -28px; left: 50%; transform: translateX(-50%); }
+    .cs-right  { right: -28px; top: 50%; transform: translateY(-50%) rotate(90deg); }
+    .cs-bottom { bottom: -28px; left: 50%; transform: translateX(-50%); }
+    .cs-left   { left: -28px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+
+    /* ─── Color system ────────────────────────── */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 2px;
+    }
+
+    .color-card {}
+
+    .color-swatch {
+      height: 80px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .color-info {
+      padding: var(--space-4) 0 0;
+    }
+
+    .color-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .color-hex {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .color-role {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .color-group-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-4);
+      grid-column: 1 / -1;
+    }
+
+    /* ─── Typography ──────────────────────────── */
+    .type-specimen {
+      border: 1px solid var(--border);
+      margin-bottom: 2px;
+    }
+
+    .type-specimen-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-4) var(--space-6);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-warm);
+    }
+
+    .type-specimen-header h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .type-specimen-header span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .type-specimen-body {
+      padding: var(--space-8) var(--space-6);
+      background: var(--bg-deep);
+    }
+
+    .type-alphabet {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: var(--space-4);
+      word-break: break-all;
+    }
+
+    .type-weights {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+
+    .type-weight-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: var(--space-6);
+      align-items: baseline;
+      padding: var(--space-5) var(--space-6);
+      border-bottom: 1px solid var(--border);
+    }
+    .type-weight-row:last-child { border-bottom: none; }
+
+    .weight-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+
+    .weight-sample { line-height: 1.2; }
+
+    /* Scale table */
+    .type-scale-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .type-scale-table th, .type-scale-table td {
+      padding: var(--space-4) var(--space-5);
+      border: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .type-scale-table th {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--bg-warm);
+      text-align: left;
+      font-weight: 500;
+    }
+    .type-scale-table td { color: var(--text-secondary); }
+    .type-scale-table td:first-child { color: var(--text-primary); font-weight: 500; }
+    .type-scale-table .mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+    .type-scale-table tr:nth-child(even) td { background: rgba(255,255,255,0.01); }
+
+    /* ─── Usage rules ─────────────────────────── */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .rule-block {
+      padding: var(--space-8) var(--space-8);
+      border: 1px solid var(--border);
+    }
+
+    .rule-block.do { border-top: 2px solid var(--green); }
+    .rule-block.dont { border-top: 2px solid #E85D5D; }
+
+    .rule-header {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-6);
+    }
+    .rule-block.do .rule-header { color: var(--green); }
+    .rule-block.dont .rule-header { color: #E85D5D; }
+
+    .rule-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .rule-list li {
+      font-size: 14px;
+      color: var(--text-secondary);
+      padding-left: 20px;
+      position: relative;
+    }
+    .rule-list li::before {
+      position: absolute;
+      left: 0;
+      font-size: 12px;
+    }
+    .rule-block.do li::before   { content: "→"; color: var(--green); }
+    .rule-block.dont li::before { content: "×"; color: #E85D5D; }
+
+    /* ─── Downloads ───────────────────────────── */
+    .dl-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .dl-card {
+      padding: var(--space-8);
+      border: 1px solid var(--border);
+      background: var(--bg-warm);
+    }
+
+    .dl-card-icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-6);
+    }
+
+    .dl-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+    }
+
+    .dl-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: var(--space-6);
+      line-height: 1.5;
+    }
+
+    .dl-card-files {
+      list-style: none;
+      margin-bottom: var(--space-6);
+    }
+    .dl-card-files li {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .dl-card-files li:first-child { border-top: 1px solid var(--border); }
+
+    .dl-btn-full {
+      display: block;
+      text-align: center;
+      padding: 12px 20px;
+      border: 1px solid var(--border-accent);
+      background: rgba(107, 79, 236, 0.04);
+      font-family: 'Figtree', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      transition: all 150ms;
+    }
+    .dl-btn-full:hover { background: rgba(107, 79, 236, 0.1); border-color: var(--accent); }
+
+    /* ─── Version bar ─────────────────────────── */
+    .version-bar {
+      padding: var(--space-5) 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      margin-top: 80px;
+    }
+    .version-bar span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+    .version-bar a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+    .version-bar a:hover { color: var(--text-secondary); }
+
+    /* ─── Spec table ──────────────────────────── */
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .spec-table th, .spec-table td {
+      padding: 14px var(--space-5);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      text-align: left;
+    }
+    .spec-table th {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--bg-warm);
+      font-weight: 500;
+    }
+    .spec-table td { color: var(--text-secondary); }
+    .spec-table td:first-child { color: var(--text-primary); font-weight: 500; }
+    .spec-table .mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+    .spec-table tr:nth-child(even) td { background: rgba(255,255,255,0.01); }
+
+    /* ─── Responsive ──────────────────────────── */
+    @media (max-width: 768px) {
+      .content { padding: 0 24px; }
+      .nav { padding: 0 24px; }
+      .logo-grid { grid-template-columns: 1fr; }
+      .mark-grid { grid-template-columns: repeat(2, 1fr); }
+      .color-grid { grid-template-columns: repeat(3, 1fr); }
+      .rules-grid { grid-template-columns: 1fr; }
+      .dl-grid { grid-template-columns: 1fr; }
+      .hero-meta { flex-wrap: wrap; gap: 20px; }
+      .hero-title { font-size: 48px; }
+      .type-weight-row { grid-template-columns: 1fr; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">InfraSingularity</a>
+    <span class="nav-badge">Brand Guidelines · v1.0</span>
+    <a href="composition-final.html" class="nav-back">← Site</a>
+  </nav>
+
+  <div class="content">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-eyebrow">InfraSingularity Brand System</div>
+      <div class="hero-wordmark">
+        <!-- Mark v11d -->
+        <svg viewBox="0 0 64 64" width="64" height="64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+          <circle cx="32" cy="9"  r="2.2" fill="#fff"/>
+          <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+          <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+          <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+          <circle cx="41.5" cy="19"   r="2.0" fill="#fff"/>
+          <circle cx="37.5" cy="25"   r="1.8" fill="#fff"/>
+          <circle cx="55"  cy="32" r="2.2" fill="#fff"/>
+          <circle cx="47"  cy="32" r="2.0" fill="#fff"/>
+          <circle cx="40"  cy="32" r="1.8" fill="#fff"/>
+          <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+          <circle cx="41.5" cy="45"   r="2.0" fill="#fff"/>
+          <circle cx="37.5" cy="39"   r="1.8" fill="#fff"/>
+          <circle cx="32"  cy="55" r="2.2" fill="#fff"/>
+          <circle cx="32"  cy="47" r="2.0" fill="#fff"/>
+          <circle cx="32"  cy="40" r="1.8" fill="#fff"/>
+          <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+          <circle cx="22.5" cy="45"   r="2.0" fill="#fff"/>
+          <circle cx="26.5" cy="39"   r="1.8" fill="#fff"/>
+          <circle cx="9"   cy="32" r="2.2" fill="#fff"/>
+          <circle cx="17"  cy="32" r="2.0" fill="#fff"/>
+          <circle cx="24"  cy="32" r="1.8" fill="#fff"/>
+          <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+          <circle cx="22.5" cy="19"   r="2.0" fill="#fff"/>
+          <circle cx="26.5" cy="25"   r="1.8" fill="#fff"/>
+        </svg>
+      </div>
+      <h1 class="hero-title">Infra<span>Singularity</span></h1>
+      <dl class="hero-meta">
+        <div class="hero-meta-item">
+          <dt>Mark</dt>
+          <dd>v11d — 25-dot radial starburst</dd>
+        </div>
+        <div class="hero-meta-item">
+          <dt>Typefaces</dt>
+          <dd>Outfit + Figtree</dd>
+        </div>
+        <div class="hero-meta-item">
+          <dt>Primary colour</dt>
+          <dd>#6B4FEC — Deep violet-purple</dd>
+        </div>
+        <div class="hero-meta-item">
+          <dt>Version</dt>
+          <dd>1.0 — February 2026</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- Logo Mark -->
+    <section class="section">
+      <div class="section-label">01 — Logo Mark</div>
+      <h2 class="section-title">The Mark</h2>
+      <p class="section-desc">A 25-dot radial starburst. Eight spokes radiate from a central node, dots diminishing in size outward — representing protocol convergence toward a single infrastructure layer.</p>
+
+      <div class="mark-grid">
+        <!-- White on deep -->
+        <div class="logo-card mark-card">
+          <div class="logo-swatch on-dark">
+            <svg viewBox="0 0 64 64" width="80" height="80" fill="none">
+              <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+              <circle cx="32" cy="9"  r="2.2" fill="#fff"/><circle cx="32" cy="17" r="2.0" fill="#fff"/>
+              <circle cx="32" cy="24" r="1.8" fill="#fff"/><circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+              <circle cx="41.5" cy="19" r="2.0" fill="#fff"/><circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+              <circle cx="55"  cy="32" r="2.2" fill="#fff"/><circle cx="47"  cy="32" r="2.0" fill="#fff"/>
+              <circle cx="40"  cy="32" r="1.8" fill="#fff"/><circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+              <circle cx="41.5" cy="45" r="2.0" fill="#fff"/><circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+              <circle cx="32"  cy="55" r="2.2" fill="#fff"/><circle cx="32"  cy="47" r="2.0" fill="#fff"/>
+              <circle cx="32"  cy="40" r="1.8" fill="#fff"/><circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+              <circle cx="22.5" cy="45" r="2.0" fill="#fff"/><circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+              <circle cx="9"   cy="32" r="2.2" fill="#fff"/><circle cx="17"  cy="32" r="2.0" fill="#fff"/>
+              <circle cx="24"  cy="32" r="1.8" fill="#fff"/><circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+              <circle cx="22.5" cy="19" r="2.0" fill="#fff"/><circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+            </svg>
+          </div>
+          <div class="logo-meta">
+            <h3>White on Dark</h3>
+            <p>Primary usage — dark backgrounds</p>
+            <a href="brand-assets/is-mark-white.svg" download class="dl-btn">SVG</a>
+            <a href="brand-assets/is-mark-256.png" download class="dl-btn">PNG 256</a>
+          </div>
+        </div>
+
+        <!-- Purple on dark -->
+        <div class="logo-card mark-card">
+          <div class="logo-swatch on-warm">
+            <svg viewBox="0 0 64 64" width="80" height="80" fill="none">
+              <circle cx="32" cy="32" r="2.5" fill="#6B4FEC"/>
+              <circle cx="32" cy="9"  r="2.2" fill="#6B4FEC"/><circle cx="32" cy="17" r="2.0" fill="#6B4FEC"/>
+              <circle cx="32" cy="24" r="1.8" fill="#6B4FEC"/><circle cx="46.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+              <circle cx="41.5" cy="19" r="2.0" fill="#6B4FEC"/><circle cx="37.5" cy="25" r="1.8" fill="#6B4FEC"/>
+              <circle cx="55"  cy="32" r="2.2" fill="#6B4FEC"/><circle cx="47"  cy="32" r="2.0" fill="#6B4FEC"/>
+              <circle cx="40"  cy="32" r="1.8" fill="#6B4FEC"/><circle cx="46.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+              <circle cx="41.5" cy="45" r="2.0" fill="#6B4FEC"/><circle cx="37.5" cy="39" r="1.8" fill="#6B4FEC"/>
+              <circle cx="32"  cy="55" r="2.2" fill="#6B4FEC"/><circle cx="32"  cy="47" r="2.0" fill="#6B4FEC"/>
+              <circle cx="32"  cy="40" r="1.8" fill="#6B4FEC"/><circle cx="17.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+              <circle cx="22.5" cy="45" r="2.0" fill="#6B4FEC"/><circle cx="26.5" cy="39" r="1.8" fill="#6B4FEC"/>
+              <circle cx="9"   cy="32" r="2.2" fill="#6B4FEC"/><circle cx="17"  cy="32" r="2.0" fill="#6B4FEC"/>
+              <circle cx="24"  cy="32" r="1.8" fill="#6B4FEC"/><circle cx="17.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+              <circle cx="22.5" cy="19" r="2.0" fill="#6B4FEC"/><circle cx="26.5" cy="25" r="1.8" fill="#6B4FEC"/>
+            </svg>
+          </div>
+          <div class="logo-meta">
+            <h3>Purple on Dark</h3>
+            <p>Secondary — brand-coloured variant</p>
+            <a href="brand-assets/is-mark-purple.svg" download class="dl-btn">SVG</a>
+            <a href="brand-assets/is-mark-512.png" download class="dl-btn">PNG 512</a>
+          </div>
+        </div>
+
+        <!-- Dark on light -->
+        <div class="logo-card mark-card">
+          <div class="logo-swatch on-light">
+            <svg viewBox="0 0 64 64" width="80" height="80" fill="none">
+              <circle cx="32" cy="32" r="2.5" fill="#0A0D10"/>
+              <circle cx="32" cy="9"  r="2.2" fill="#0A0D10"/><circle cx="32" cy="17" r="2.0" fill="#0A0D10"/>
+              <circle cx="32" cy="24" r="1.8" fill="#0A0D10"/><circle cx="46.5" cy="11.5" r="2.2" fill="#0A0D10"/>
+              <circle cx="41.5" cy="19" r="2.0" fill="#0A0D10"/><circle cx="37.5" cy="25" r="1.8" fill="#0A0D10"/>
+              <circle cx="55"  cy="32" r="2.2" fill="#0A0D10"/><circle cx="47"  cy="32" r="2.0" fill="#0A0D10"/>
+              <circle cx="40"  cy="32" r="1.8" fill="#0A0D10"/><circle cx="46.5" cy="52.5" r="2.2" fill="#0A0D10"/>
+              <circle cx="41.5" cy="45" r="2.0" fill="#0A0D10"/><circle cx="37.5" cy="39" r="1.8" fill="#0A0D10"/>
+              <circle cx="32"  cy="55" r="2.2" fill="#0A0D10"/><circle cx="32"  cy="47" r="2.0" fill="#0A0D10"/>
+              <circle cx="32"  cy="40" r="1.8" fill="#0A0D10"/><circle cx="17.5" cy="52.5" r="2.2" fill="#0A0D10"/>
+              <circle cx="22.5" cy="45" r="2.0" fill="#0A0D10"/><circle cx="26.5" cy="39" r="1.8" fill="#0A0D10"/>
+              <circle cx="9"   cy="32" r="2.2" fill="#0A0D10"/><circle cx="17"  cy="32" r="2.0" fill="#0A0D10"/>
+              <circle cx="24"  cy="32" r="1.8" fill="#0A0D10"/><circle cx="17.5" cy="11.5" r="2.2" fill="#0A0D10"/>
+              <circle cx="22.5" cy="19" r="2.0" fill="#0A0D10"/><circle cx="26.5" cy="25" r="1.8" fill="#0A0D10"/>
+            </svg>
+          </div>
+          <div class="logo-meta">
+            <h3>Dark on Light</h3>
+            <p>Light background contexts only</p>
+            <a href="brand-assets/is-mark-dark.svg" download class="dl-btn">SVG</a>
+            <a href="brand-assets/is-mark-64.png" download class="dl-btn">PNG 64</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clear space spec -->
+      <div style="margin-top: 48px;">
+        <div class="section-label" style="margin-bottom: 24px;">Clear space</div>
+        <div class="clearspace-demo">
+          <div class="clearspace-inner">
+            <div class="clearspace-box">
+              <span class="clearspace-label cs-top">½x</span>
+              <span class="clearspace-label cs-right">½x</span>
+              <span class="clearspace-label cs-bottom">½x</span>
+              <span class="clearspace-label cs-left">½x</span>
+            </div>
+            <svg viewBox="0 0 64 64" width="64" height="64" fill="none">
+              <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+              <circle cx="32" cy="9"  r="2.2" fill="#fff"/><circle cx="32" cy="17" r="2.0" fill="#fff"/>
+              <circle cx="32" cy="24" r="1.8" fill="#fff"/><circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+              <circle cx="41.5" cy="19" r="2.0" fill="#fff"/><circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+              <circle cx="55"  cy="32" r="2.2" fill="#fff"/><circle cx="47"  cy="32" r="2.0" fill="#fff"/>
+              <circle cx="40"  cy="32" r="1.8" fill="#fff"/><circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+              <circle cx="41.5" cy="45" r="2.0" fill="#fff"/><circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+              <circle cx="32"  cy="55" r="2.2" fill="#fff"/><circle cx="32"  cy="47" r="2.0" fill="#fff"/>
+              <circle cx="32"  cy="40" r="1.8" fill="#fff"/><circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+              <circle cx="22.5" cy="45" r="2.0" fill="#fff"/><circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+              <circle cx="9"   cy="32" r="2.2" fill="#fff"/><circle cx="17"  cy="32" r="2.0" fill="#fff"/>
+              <circle cx="24"  cy="32" r="1.8" fill="#fff"/><circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+              <circle cx="22.5" cy="19" r="2.0" fill="#fff"/><circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+            </svg>
+          </div>
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted);">Maintain a minimum clear space of ½x (half the mark width) on all sides. Do not crowd the mark with other elements.</p>
+      </div>
+
+      <!-- Minimum sizes -->
+      <div style="margin-top: 40px;">
+        <div class="section-label" style="margin-bottom: 24px;">Minimum sizes</div>
+        <table class="spec-table">
+          <thead>
+            <tr><th>Context</th><th>Min size</th><th>Format</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Digital UI</td><td class="mono">24 × 24px</td><td>SVG preferred</td></tr>
+            <tr><td>Favicon</td><td class="mono">16 × 16px</td><td>PNG (supplied)</td></tr>
+            <tr><td>Print</td><td class="mono">8mm × 8mm</td><td>SVG / PDF</td></tr>
+            <tr><td>Social avatar</td><td class="mono">192 × 192px</td><td>PNG (supplied)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Wordmark -->
+    <section class="section">
+      <div class="section-label">02 — Wordmark</div>
+      <h2 class="section-title">Wordmark &amp; Lockup</h2>
+      <p class="section-desc">Outfit Medium (500) for "Infra" and Outfit Light (300) for "Singularity". The weight contrast signals the duality at the core of the brand — infrastructure precision meeting singular scale.</p>
+
+      <div class="logo-grid">
+        <!-- Horizontal lockup on dark -->
+        <div class="logo-card">
+          <div class="logo-swatch on-dark" style="height: 160px; padding: 0 40px; justify-content: center;">
+            <svg viewBox="0 0 460 64" width="100%" height="64" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 340px;">
+              <g transform="translate(0,0)">
+                <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+                <circle cx="32" cy="9"  r="2.2" fill="#fff"/><circle cx="32" cy="17" r="2.0" fill="#fff"/>
+                <circle cx="32" cy="24" r="1.8" fill="#fff"/><circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+                <circle cx="41.5" cy="19" r="2.0" fill="#fff"/><circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+                <circle cx="55"  cy="32" r="2.2" fill="#fff"/><circle cx="47"  cy="32" r="2.0" fill="#fff"/>
+                <circle cx="40"  cy="32" r="1.8" fill="#fff"/><circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+                <circle cx="41.5" cy="45" r="2.0" fill="#fff"/><circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+                <circle cx="32"  cy="55" r="2.2" fill="#fff"/><circle cx="32"  cy="47" r="2.0" fill="#fff"/>
+                <circle cx="32"  cy="40" r="1.8" fill="#fff"/><circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+                <circle cx="22.5" cy="45" r="2.0" fill="#fff"/><circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+                <circle cx="9"   cy="32" r="2.2" fill="#fff"/><circle cx="17"  cy="32" r="2.0" fill="#fff"/>
+                <circle cx="24"  cy="32" r="1.8" fill="#fff"/><circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+                <circle cx="22.5" cy="19" r="2.0" fill="#fff"/><circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+              </g>
+              <text x="80" y="45" font-family="Outfit, sans-serif" font-size="40" letter-spacing="-0.4" fill="#fff">
+                <tspan font-weight="500">Infra</tspan><tspan font-weight="300">Singularity</tspan>
+              </text>
+            </svg>
+          </div>
+          <div class="logo-meta">
+            <h3>Horizontal Lockup — White</h3>
+            <p>Primary usage. Mark left, wordmark right, 16px gap.</p>
+            <a href="brand-assets/is-wordmark.svg" download class="dl-btn">SVG</a>
+          </div>
+        </div>
+
+        <!-- Wordmark only — dark bg -->
+        <div class="logo-card">
+          <div class="logo-swatch on-warm" style="height: 160px; flex-direction: column; gap: 24px;">
+            <svg viewBox="0 0 460 64" width="100%" height="48" fill="none" style="max-width: 320px;">
+              <text x="0" y="45" font-family="Outfit, sans-serif" font-size="40" letter-spacing="-0.4" fill="#fff">
+                <tspan font-weight="500">Infra</tspan><tspan font-weight="300">Singularity</tspan>
+              </text>
+            </svg>
+            <svg viewBox="0 0 460 64" width="100%" height="36" fill="none" style="max-width: 240px;">
+              <text x="0" y="34" font-family="Outfit, sans-serif" font-size="30" letter-spacing="-0.3" fill="#fff">
+                <tspan font-weight="500">Infra</tspan><tspan font-weight="300">Singularity</tspan>
+              </text>
+            </svg>
+          </div>
+          <div class="logo-meta">
+            <h3>Wordmark Only</h3>
+            <p>When the mark is already present in context. Shown at 40px and 30px.</p>
+            <a href="brand-assets/is-wordmark.svg" download class="dl-btn">SVG</a>
+          </div>
+        </div>
+
+        <!-- Mark only — solo usage -->
+        <div class="logo-card">
+          <div class="logo-swatch on-purple" style="height: 160px;">
+            <svg viewBox="0 0 64 64" width="80" height="80" fill="none">
+              <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+              <circle cx="32" cy="9"  r="2.2" fill="#fff"/><circle cx="32" cy="17" r="2.0" fill="#fff"/>
+              <circle cx="32" cy="24" r="1.8" fill="#fff"/><circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+              <circle cx="41.5" cy="19" r="2.0" fill="#fff"/><circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+              <circle cx="55"  cy="32" r="2.2" fill="#fff"/><circle cx="47"  cy="32" r="2.0" fill="#fff"/>
+              <circle cx="40"  cy="32" r="1.8" fill="#fff"/><circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+              <circle cx="41.5" cy="45" r="2.0" fill="#fff"/><circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+              <circle cx="32"  cy="55" r="2.2" fill="#fff"/><circle cx="32"  cy="47" r="2.0" fill="#fff"/>
+              <circle cx="32"  cy="40" r="1.8" fill="#fff"/><circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+              <circle cx="22.5" cy="45" r="2.0" fill="#fff"/><circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+              <circle cx="9"   cy="32" r="2.2" fill="#fff"/><circle cx="17"  cy="32" r="2.0" fill="#fff"/>
+              <circle cx="24"  cy="32" r="1.8" fill="#fff"/><circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+              <circle cx="22.5" cy="19" r="2.0" fill="#fff"/><circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+            </svg>
+          </div>
+          <div class="logo-meta">
+            <h3>Mark on Brand Colour</h3>
+            <p>App icons, avatars, and brand-accented contexts.</p>
+            <a href="brand-assets/is-mark-256.png" download class="dl-btn">PNG 256</a>
+            <a href="brand-assets/is-mark-512.png" download class="dl-btn">PNG 512</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wordmark spec table -->
+      <div style="margin-top: 48px;">
+        <div class="section-label" style="margin-bottom: 24px;">Wordmark specifications</div>
+        <table class="spec-table">
+          <thead>
+            <tr><th>Property</th><th>Infra</th><th>Singularity</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Typeface</td><td>Outfit</td><td>Outfit</td></tr>
+            <tr><td>Weight</td><td class="mono">500 Medium</td><td class="mono">300 Light</td></tr>
+            <tr><td>Default size</td><td class="mono">40px</td><td class="mono">40px</td></tr>
+            <tr><td>Letter spacing</td><td class="mono">−0.01em</td><td class="mono">−0.01em</td></tr>
+            <tr><td>Colour — dark bg</td><td class="mono">#F5F5F7</td><td class="mono">#F5F5F7</td></tr>
+            <tr><td>Colour — light bg</td><td class="mono">#0A0D10</td><td class="mono">#0A0D10</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Colour system -->
+    <section class="section">
+      <div class="section-label">03 — Colour</div>
+      <h2 class="section-title">Colour System</h2>
+      <p class="section-desc">A dark-first palette derived from institutional precision. Deep violet-purple anchors the brand. Functional colours — green, amber, blue — carry semantic meaning across data and UI contexts.</p>
+
+      <!-- Brand -->
+      <div class="section-label" style="margin-bottom: 16px;">Brand</div>
+      <div class="color-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 40px;">
+        <div class="color-card">
+          <div class="color-swatch" style="background: #6B4FEC;"></div>
+          <div class="color-info">
+            <div class="color-name">Accent</div>
+            <div class="color-hex">#6B4FEC</div>
+            <div class="color-role">Brand primary</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #513AC0;"></div>
+          <div class="color-info">
+            <div class="color-name">Accent Dim</div>
+            <div class="color-hex">#513AC0</div>
+            <div class="color-role">Hover / pressed</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #2B1F5C;"></div>
+          <div class="color-info">
+            <div class="color-name">Accent Dark</div>
+            <div class="color-hex">#2B1F5C</div>
+            <div class="color-role">Tinted backgrounds</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #8B6FFF;"></div>
+          <div class="color-info">
+            <div class="color-name">Accent Glow</div>
+            <div class="color-hex">#8B6FFF</div>
+            <div class="color-role">Focus / active states</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Backgrounds -->
+      <div class="section-label" style="margin-bottom: 16px;">Backgrounds</div>
+      <div class="color-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 40px;">
+        <div class="color-card">
+          <div class="color-swatch" style="background: #0A0D10; border: 1px solid #2D3339;"></div>
+          <div class="color-info">
+            <div class="color-name">Deep</div>
+            <div class="color-hex">#0A0D10</div>
+            <div class="color-role">Page background</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #12161A; border: 1px solid #2D3339;"></div>
+          <div class="color-info">
+            <div class="color-name">Warm</div>
+            <div class="color-hex">#12161A</div>
+            <div class="color-role">Section fills</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #1A1F24; border: 1px solid #2D3339;"></div>
+          <div class="color-info">
+            <div class="color-name">Surface</div>
+            <div class="color-hex">#1A1F24</div>
+            <div class="color-role">Cards / panels</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #23292F; border: 1px solid #2D3339;"></div>
+          <div class="color-info">
+            <div class="color-name">Elevated</div>
+            <div class="color-hex">#23292F</div>
+            <div class="color-role">Modals / elevated</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Functional -->
+      <div class="section-label" style="margin-bottom: 16px;">Functional</div>
+      <div class="color-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 40px;">
+        <div class="color-card">
+          <div class="color-swatch" style="background: #4CAF8C;"></div>
+          <div class="color-info">
+            <div class="color-name">Green</div>
+            <div class="color-hex">#4CAF8C</div>
+            <div class="color-role">Success / uptime</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #F59E42;"></div>
+          <div class="color-info">
+            <div class="color-name">Amber</div>
+            <div class="color-hex">#F59E42</div>
+            <div class="color-role">CTAs / warning</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #5B9EFF;"></div>
+          <div class="color-info">
+            <div class="color-name">Blue</div>
+            <div class="color-hex">#5B9EFF</div>
+            <div class="color-role">Info / links</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #E85D5D;"></div>
+          <div class="color-info">
+            <div class="color-name">Red</div>
+            <div class="color-hex">#E85D5D</div>
+            <div class="color-role">Error / critical</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="section-label" style="margin-bottom: 16px;">Text</div>
+      <div class="color-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="color-card">
+          <div class="color-swatch" style="background: #F5F5F7; border: 1px solid #2D3339;"></div>
+          <div class="color-info">
+            <div class="color-name">Primary</div>
+            <div class="color-hex">#F5F5F7</div>
+            <div class="color-role">Body text</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #C4C6CB; border: 1px solid #2D3339;"></div>
+          <div class="color-info">
+            <div class="color-name">Secondary</div>
+            <div class="color-hex">#C4C6CB</div>
+            <div class="color-role">Supporting copy</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #6E7178; border: 1px solid #2D3339;"></div>
+          <div class="color-info">
+            <div class="color-name">Muted</div>
+            <div class="color-hex">#6E7178</div>
+            <div class="color-role">Labels / metadata</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: #3D4147; border: 1px solid #2D3339;"></div>
+          <div class="color-info">
+            <div class="color-name">Whisper</div>
+            <div class="color-hex">#3D4147</div>
+            <div class="color-role">Borders / dividers</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section class="section">
+      <div class="section-label">04 — Typography</div>
+      <h2 class="section-title">Type System</h2>
+      <p class="section-desc">Two typefaces, one purpose. Outfit — geometric, precise — anchors display and headings. Figtree — warm, readable — handles body copy and UI. Both from Google Fonts, both free.</p>
+
+      <!-- Outfit -->
+      <div class="type-specimen" style="margin-bottom: 2px;">
+        <div class="type-specimen-header">
+          <h3>Outfit</h3>
+          <span>Display &amp; Headings — Google Fonts</span>
+        </div>
+        <div class="type-specimen-body">
+          <div class="type-weight-row" style="padding: 32px 24px; border-bottom: 1px solid var(--border);">
+            <span class="weight-label">300 Light</span>
+            <div class="weight-sample" style="font-family: 'Outfit'; font-weight: 300; font-size: 40px; letter-spacing: -0.02em; color: var(--text-primary);">Infrastructure</div>
+          </div>
+          <div class="type-weight-row" style="padding: 28px 24px; border-bottom: 1px solid var(--border);">
+            <span class="weight-label">500 Medium</span>
+            <div class="weight-sample" style="font-family: 'Outfit'; font-weight: 500; font-size: 32px; letter-spacing: -0.02em; color: var(--text-primary);">Institutional Grade</div>
+          </div>
+          <div class="type-weight-row" style="padding: 24px 24px; border-bottom: 1px solid var(--border);">
+            <span class="weight-label">600 SemiBold</span>
+            <div class="weight-sample" style="font-family: 'Outfit'; font-weight: 600; font-size: 24px; letter-spacing: -0.02em; color: var(--text-primary);">50+ Mainnet Protocols</div>
+          </div>
+          <div class="type-weight-row" style="padding: 20px 24px;">
+            <span class="weight-label">700 Bold</span>
+            <div class="weight-sample" style="font-family: 'Outfit'; font-weight: 700; font-size: 20px; letter-spacing: -0.02em; text-transform: uppercase; color: var(--text-primary);">Institutional Infrastructure</div>
+          </div>
+          <div style="padding: 20px 24px; border-top: 1px solid var(--border);">
+            <p class="type-alphabet" style="font-family: 'Outfit'; font-weight: 500;">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 !@#$%&amp;*().,;:</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Figtree -->
+      <div class="type-specimen" style="margin-bottom: 40px;">
+        <div class="type-specimen-header">
+          <h3>Figtree</h3>
+          <span>Body &amp; UI — Google Fonts</span>
+        </div>
+        <div class="type-specimen-body">
+          <div class="type-weight-row" style="padding: 28px 24px; border-bottom: 1px solid var(--border);">
+            <span class="weight-label">400 Regular</span>
+            <div class="weight-sample" style="font-family: 'Figtree'; font-weight: 400; font-size: 17px; max-width: 560px; color: var(--text-secondary); line-height: 1.65;">InfraSingularity delivers institutional-grade blockchain infrastructure across 50+ mainnet protocols. White-label by design. Built for the firms that can't afford downtime.</div>
+          </div>
+          <div class="type-weight-row" style="padding: 22px 24px; border-bottom: 1px solid var(--border);">
+            <span class="weight-label">500 Medium</span>
+            <div class="weight-sample" style="font-family: 'Figtree'; font-weight: 500; font-size: 15px; color: var(--text-primary);">Top 10 Symbiotic by AUM — 99.99% Infrastructure Uptime</div>
+          </div>
+          <div class="type-weight-row" style="padding: 18px 24px;">
+            <span class="weight-label">600 SemiBold</span>
+            <div class="weight-sample" style="font-family: 'Figtree'; font-weight: 600; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary);">Infrastructure · Protocols · Architecture</div>
+          </div>
+          <div style="padding: 20px 24px; border-top: 1px solid var(--border);">
+            <p class="type-alphabet" style="font-family: 'Figtree'; font-weight: 400;">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 !@#$%&amp;*().,;:</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Type scale -->
+      <div class="section-label" style="margin-bottom: 24px;">Type scale</div>
+      <table class="type-scale-table">
+        <thead>
+          <tr><th>Name</th><th>Size</th><th>Weight</th><th>Family</th><th>Usage</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Display</td><td class="mono">clamp(48px, 6vw, 80px)</td><td class="mono">700</td><td>Outfit</td><td>Hero titles</td></tr>
+          <tr><td>H1</td><td class="mono">clamp(40px, 5vw, 64px)</td><td class="mono">700</td><td>Outfit</td><td>Section headers</td></tr>
+          <tr><td>H2</td><td class="mono">32px</td><td class="mono">600</td><td>Outfit</td><td>Sub-headers</td></tr>
+          <tr><td>H3</td><td class="mono">20px</td><td class="mono">600</td><td>Outfit</td><td>Card titles</td></tr>
+          <tr><td>H4</td><td class="mono">14px</td><td class="mono">600</td><td>Figtree</td><td>Column headers</td></tr>
+          <tr><td>Body L</td><td class="mono">17px</td><td class="mono">400</td><td>Figtree</td><td>Primary body</td></tr>
+          <tr><td>Body</td><td class="mono">15px</td><td class="mono">400</td><td>Figtree</td><td>UI copy</td></tr>
+          <tr><td>Small</td><td class="mono">13px</td><td class="mono">400/500</td><td>Figtree</td><td>Captions, meta</td></tr>
+          <tr><td>Label</td><td class="mono">11px</td><td class="mono">500–600</td><td>Figtree</td><td>Tags, uppercase labels</td></tr>
+          <tr><td>Mono</td><td class="mono">12px</td><td class="mono">400/500</td><td>JetBrains Mono</td><td>Addresses, specs, code</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Usage guidelines -->
+    <section class="section">
+      <div class="section-label">05 — Usage</div>
+      <h2 class="section-title">Usage Guidelines</h2>
+      <p class="section-desc">The mark and wordmark carry institutional weight. Handle them with the same precision we bring to the infrastructure itself.</p>
+
+      <div class="rules-grid">
+        <div class="rule-block do">
+          <div class="rule-header">Do</div>
+          <ul class="rule-list">
+            <li>Use the white mark on dark backgrounds as the default</li>
+            <li>Maintain the prescribed clear space on all sides</li>
+            <li>Use the mark at the supplied aspect ratio — never stretch or skew</li>
+            <li>Use "InfraSingularity" as one camelCase word in all copy</li>
+            <li>Apply Outfit for all headings and display text</li>
+            <li>Apply Figtree for body text and UI elements</li>
+            <li>Use #6B4FEC as the sole brand accent — don't substitute</li>
+            <li>Use dark backgrounds (#0A0D10) as the primary environment</li>
+          </ul>
+        </div>
+        <div class="rule-block dont">
+          <div class="rule-header">Don't</div>
+          <ul class="rule-list">
+            <li>Don't place the mark on busy or photographic backgrounds</li>
+            <li>Don't use the mark below 16px at any size</li>
+            <li>Don't add drop shadows, gradients, or effects to the mark</li>
+            <li>Don't recolour individual dots or alter the mark geometry</li>
+            <li>Don't write "Infra Singularity", "infrasingularity", or "IS" in formal contexts</li>
+            <li>Don't use more than two brand accent colours in a single layout region</li>
+            <li>Don't use rounded corners — the brand is sharp and geometric</li>
+            <li>Don't approximate — always use supplied SVG files</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Downloads -->
+    <section class="section">
+      <div class="section-label">06 — Downloads</div>
+      <h2 class="section-title">Brand Kit</h2>
+      <p class="section-desc">All files are supplied in the formats needed for digital, print, and development use. Use SVG wherever possible for infinite scalability.</p>
+
+      <div class="dl-grid">
+        <div class="dl-card">
+          <div class="dl-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="0" stroke="#6B4FEC" stroke-width="1.5"/>
+              <path d="M12 7v10M8 13l4 4 4-4" stroke="#6B4FEC" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Logo Files</h3>
+          <p>Mark and wordmark in all variants. SVG master files plus PNG exports.</p>
+          <ul class="dl-card-files">
+            <li>is-mark-white.svg</li>
+            <li>is-mark-dark.svg</li>
+            <li>is-mark-purple.svg</li>
+            <li>is-wordmark.svg</li>
+            <li>is-mark-64.png</li>
+            <li>is-mark-256.png</li>
+            <li>is-mark-512.png</li>
+          </ul>
+          <a href="brand-assets/is-mark-white.svg" download="is-mark-white.svg" class="dl-btn-full">Download SVG Pack</a>
+        </div>
+
+        <div class="dl-card">
+          <div class="dl-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="0" stroke="#4CAF8C" stroke-width="1.5"/>
+              <circle cx="9" cy="9" r="2" fill="#4CAF8C"/>
+              <circle cx="15" cy="9" r="2" fill="#6B4FEC"/>
+              <circle cx="9" cy="15" r="2" fill="#F59E42"/>
+              <circle cx="15" cy="15" r="2" fill="#5B9EFF"/>
+            </svg>
+          </div>
+          <h3>Favicons &amp; Icons</h3>
+          <p>Platform-ready icon files for web, iOS, Android, and social.</p>
+          <ul class="dl-card-files">
+            <li>favicon-16.png</li>
+            <li>favicon-32.png</li>
+            <li>favicon-48.png</li>
+            <li>apple-touch-icon.png</li>
+            <li>android-chrome-192.png</li>
+            <li>android-chrome-512.png</li>
+            <li>og-image.png (1200×630)</li>
+          </ul>
+          <a href="brand-assets/og-image.png" download="og-image.png" class="dl-btn-full">Download Icon Pack</a>
+        </div>
+
+        <div class="dl-card">
+          <div class="dl-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="0" stroke="#F59E42" stroke-width="1.5"/>
+              <path d="M7 8h10M7 12h6M7 16h8" stroke="#F59E42" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Guidelines &amp; System</h3>
+          <p>Complete design system documentation including component specs and tokens.</p>
+          <ul class="dl-card-files">
+            <li>DESIGN.md (design system)</li>
+            <li>infrasingularity-philosophy.md</li>
+            <li>infrasingularity-narrative.md</li>
+            <li>infrasingularity-visual.md</li>
+            <li>README.md</li>
+          </ul>
+          <a href="brand-assets/../../../Downloads/infrasingularity-brand-kit-v1.zip" download class="dl-btn-full" style="pointer-events: auto; opacity: 0.5; cursor: not-allowed;">Full Kit ZIP — Contact Team</a>
+        </div>
+      </div>
+
+      <div style="margin-top: 40px; padding: 24px; border: 1px solid var(--border-accent); background: rgba(107,79,236,0.03);">
+        <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
+          <strong style="color: var(--text-primary);">Need the full brand kit?</strong> Contact the InfraSingularity team directly to receive the complete asset package including vector source files, colour profiles, and implementation specifications.
+          <a href="mailto:contact@infrasingularity.com" style="color: var(--accent); text-decoration: none; margin-left: 8px;">contact@infrasingularity.com →</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Version bar -->
+    <div class="version-bar">
+      <span>InfraSingularity Brand System · v1.0 · February 2026</span>
+      <a href="composition-final.html">infrasingularity.com →</a>
+    </div>
+
+  </div>
+
+</body>
+</html>

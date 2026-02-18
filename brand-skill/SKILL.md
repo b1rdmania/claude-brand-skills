@@ -321,6 +321,19 @@ Dark backgrounds should have warmth — pure #000 feels lifeless. Functional col
 - Color palette and spacing rhythm stay identical
 - Components recognizably "the same" but platform-appropriate
 
+### On Typography and Lockup Development
+
+**Font pairing requires methodology, not instinct.** When selecting body fonts to pair with display fonts:
+- Research what similar brands actually use (fintech, technical, luxury contexts differ dramatically)
+- Use professional pairing databases to understand proven combinations
+- Apply x-height analysis - similar x-heights create cohesion, contrast creates hierarchy
+- Present rationale with each option: explain *why* this pairing works, not just *what* it is
+- For technical/institutional brands, sans-serif body text is non-negotiable - screen readability trumps editorial styling
+
+**On lockup refinement:** Show 3-4 spacing and sizing variants before finalizing. Text should be 60-75% of mark height for optical balance. Gap between mark and text: tight spacing (0.25x mark height) creates density, loose spacing (0.75x) creates breathing room. Let the brand philosophy guide which feels right.
+
+**On technical execution:** Test typography rendering early - SVG text, web fonts, and export formats each have quirks that break differently. Validate before presenting to catch issues the user shouldn't see. If decorative elements are part of the concept, position them at natural boundaries (end of word, underlines, separate marks) rather than trying to align them with specific glyph features.
+
 ### On Quality
 
 Avoid generic patterns: purple-blue gradients, overly rounded shapes, meaningless geometric decorations. Create something distinctive that the brand can own.

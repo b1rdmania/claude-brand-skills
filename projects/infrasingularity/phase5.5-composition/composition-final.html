@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InfraSingularity — Where institutional infrastructure converges</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600;700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Backgrounds */
+      --bg-deep:     #0A0D10;
+      --bg-warm:     #12161A;
+      --bg-surface:  #1A1F24;
+      --bg-elevated: #23292F;
+
+      /* Text */
+      --text-primary:   #F5F5F7;
+      --text-secondary: #C4C6CB;
+      --text-muted:     #6E7178;
+      --text-whisper:   #3D4147;
+
+      /* Borders */
+      --border:       #2D3339;
+      --border-light: #3D4449;
+
+      /* Dim colour borders */
+      --border-green:  rgba(76, 175, 140, 0.3);
+      --border-amber:  rgba(245, 158, 66, 0.28);
+      --border-blue:   rgba(91, 158, 255, 0.28);
+      --border-accent: rgba(107, 79, 236, 0.35);
+
+      /* Dim colour fills */
+      --fill-green:  rgba(76, 175, 140, 0.03);
+      --fill-amber:  rgba(245, 158, 66, 0.03);
+      --fill-blue:   rgba(91, 158, 255, 0.03);
+      --fill-accent: rgba(107, 79, 236, 0.03);
+
+      /* Brand */
+      --accent:      #6B4FEC;
+      --accent-dim:  #513AC0;
+      --accent-dark: #2B1F5C;
+      --accent-glow: #8B6FFF;
+
+      /* Functional */
+      --green:      #4CAF8C;
+      --green-dim:  #3A8A6E;
+      --green-dark: #1F4A3A;
+      --amber:      #F59E42;
+      --amber-dim:  #C77E34;
+      --amber-dark: #5C3A1A;
+      --blue:       #5B9EFF;
+      --blue-dim:   #4780D6;
+      --blue-dark:  #2A3E5C;
+      --red:        #E85D5D;
+
+      /* Spacing (8px base) */
+      --space-1:   4px;
+      --space-2:   8px;
+      --space-3:   12px;
+      --space-4:   16px;
+      --space-5:   24px;
+      --space-6:   32px;
+      --space-8:   48px;
+      --space-10:  64px;
+      --space-12:  96px;
+      --space-16:  128px;
+
+      /* Typography */
+      --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body:    'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono:    'JetBrains Mono', 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+
+      /* Tracking */
+      --tracking-tight:  -0.02em;
+      --tracking-normal: -0.01em;
+      --tracking-loose:   0.02em;
+      --tracking-wide:    0.1em;
+
+      /* Animation */
+      --duration-fast:   150ms;
+      --duration-normal: 200ms;
+      --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      font-size: 16px;
+      line-height: 1.6;
+      padding-top: 56px;
+    }
+
+    /* ─── Nav ─────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 56px;
+      padding: 0 var(--space-10);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,13,16,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo img { height: 24px; width: auto; }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-8);
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 200ms;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .nav-cta {
+      padding: 6px var(--space-5);
+      border: 1px solid var(--border-light) !important;
+      color: var(--text-secondary) !important;
+      font-size: 12px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.05em !important;
+      text-transform: uppercase;
+      transition: all 200ms !important;
+    }
+
+    .nav-cta:hover {
+      border-color: var(--accent) !important;
+      color: var(--accent) !important;
+    }
+
+    /* ─── Section header ──────────────────────── */
+    .sh {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      margin-bottom: var(--space-8);
+    }
+
+    .sh-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .sh-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ─── Sections ────────────────────────────── */
+    .section {
+      padding: var(--space-8) var(--space-10);
+      max-width: 1400px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ─── Hero ────────────────────────────────── */
+    .hero {
+      padding: var(--space-10) var(--space-10) var(--space-8);
+      max-width: 1400px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-rule {
+      height: 3px;
+      background: var(--accent);
+      margin-bottom: var(--space-10);
+    }
+
+    .bg-mark {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* keep section content above bg marks */
+    .section > *:not(.bg-mark),
+    .hero > *:not(.bg-mark) { position: relative; z-index: 1; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: var(--space-10);
+      align-items: end;
+      position: relative;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 8vw, 96px);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: var(--tracking-tight);
+    }
+
+    .hero-facts {
+      border-left: 2px solid var(--border-accent);
+      padding-left: var(--space-6);
+    }
+
+    .fact-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: var(--space-4);
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--border-accent);
+      font-size: 12px;
+      font-family: var(--font-mono);
+    }
+
+    .fact-row:first-child { border-top: 1px solid var(--border-accent); }
+
+    .fact-key { color: var(--text-muted); }
+    .fact-val { color: var(--text-secondary); }
+
+    .hero-cta { margin-top: var(--space-6); }
+
+    /* ─── Buttons ─────────────────────────────── */
+    .btn {
+      display: inline-block;
+      padding: var(--space-3) var(--space-6);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 200ms;
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-accent:hover { background: #8B6FFF; }
+
+    .btn-amber {
+      background: var(--amber);
+      color: #000;
+      padding: var(--space-4) var(--space-10);
+      font-size: 14px;
+    }
+
+    .btn-amber:hover { background: #C77E34; }
+
+    /* ─── Protocol manifest ───────────────────── */
+    .protocol-manifest {
+      border: 2px solid var(--border-green);
+      background: var(--fill-green);
+    }
+
+    .protocol-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      border-bottom: 1px solid var(--border-green);
+    }
+
+    .protocol-row:last-child { border-bottom: none; }
+
+    .protocol-key {
+      padding: var(--space-4) var(--space-5);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-right: 1px solid var(--border-green);
+      background: rgba(76, 175, 140, 0.04);
+      display: flex;
+      align-items: center;
+    }
+
+    .protocol-names {
+      padding: var(--space-4) var(--space-5);
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+
+    /* ─── Model table ─────────────────────────── */
+    .model-table {
+      border: 2px solid var(--border-amber);
+      background: var(--fill-amber);
+    }
+
+    .model-row {
+      display: grid;
+      grid-template-columns: 48px 260px 1fr;
+      border-bottom: 1px solid var(--border-amber);
+    }
+
+    .model-row:last-child { border-bottom: none; }
+
+    .model-index {
+      padding: var(--space-5) var(--space-4);
+      border-right: 1px solid var(--border-amber);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      opacity: 0.5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .model-key {
+      padding: var(--space-5) var(--space-6);
+      border-right: 1px solid var(--border-amber);
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+    }
+
+    .model-val {
+      padding: var(--space-5) var(--space-6);
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      display: flex;
+      align-items: center;
+    }
+
+    /* ─── Spec grid (Infrastructure) ─────────── */
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-5);
+    }
+
+    .spec-cell {
+      padding: var(--space-5) var(--space-6);
+      border: 2px solid var(--border-accent);
+      background: var(--fill-accent);
+    }
+
+    .spec-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: var(--space-3);
+    }
+
+    .spec-value {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      margin-bottom: var(--space-3);
+      line-height: 1.1;
+    }
+
+    .spec-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── Investment grid ─────────────────────── */
+    .invest-intro {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: var(--space-6);
+    }
+
+    .invest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+
+    .invest-item {
+      padding: var(--space-4) var(--space-5);
+      border: 2px solid var(--border-blue);
+      background: var(--fill-blue);
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all 200ms;
+    }
+
+    .invest-item:hover {
+      color: var(--text-primary);
+      border-color: var(--blue);
+      background: rgba(91, 158, 255, 0.06);
+    }
+
+    /* ─── CTA ─────────────────────────────────── */
+    .cta {
+      padding: var(--space-16) var(--space-10);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 40px);
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: var(--tracking-normal);
+      margin-bottom: var(--space-5);
+    }
+
+    .cta p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: var(--space-8);
+    }
+
+    /* ─── Footer ──────────────────────────────── */
+    .footer {
+      padding: var(--space-10) var(--space-10) var(--space-6);
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: var(--space-10);
+      margin-bottom: var(--space-8);
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: var(--space-3);
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .footer-col h4 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: var(--space-3); }
+
+    .footer-col a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 200ms;
+    }
+
+    .footer-col a:hover { color: var(--accent); }
+
+    .footer-bottom {
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    /* Hide mobile-only elements on desktop */
+    .nav-hamburger { display: none; }
+    .nav-drawer { display: none; }
+
+    /* ─── Mobile responsive ───────────────────── */
+    @media (max-width: 768px) {
+      body { padding-top: 52px; }
+
+      .nav {
+        height: 52px;
+        padding: 0 16px;
+      }
+
+      .nav-logo img { height: 20px; }
+
+      /* Hide desktop nav links, show hamburger */
+      .nav-links { display: none; }
+
+      .nav-hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 8px;
+        background: none;
+        border: none;
+      }
+
+      .nav-hamburger span {
+        display: block;
+        width: 22px;
+        height: 1.5px;
+        background: var(--text-muted);
+      }
+
+      /* Mobile drawer */
+      .nav-drawer {
+        display: none;
+        position: fixed;
+        top: 52px; left: 0; right: 0;
+        background: var(--bg-warm);
+        border-bottom: 1px solid var(--border);
+        z-index: 99;
+        padding: 8px 0;
+      }
+
+      .nav-drawer.open { display: block; }
+
+      .nav-drawer a {
+        display: block;
+        padding: 12px 20px;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-drawer a:last-child { border-bottom: none; }
+
+      .nav-drawer a.drawer-cta {
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-top: 4px;
+      }
+
+      /* Hero */
+      .hero { padding: 40px 20px; }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .hero-headline { font-size: clamp(40px, 11vw, 56px); }
+
+      .hero-facts { border-left: none; padding-left: 0; }
+
+      /* Sections */
+      .section { padding: 40px 20px; }
+
+      /* Spec grid: 1 col */
+      .spec-grid { grid-template-columns: 1fr; gap: 12px; }
+      .spec-value { font-size: 20px; }
+
+      /* Protocol: stack key above names */
+      .protocol-row {
+        grid-template-columns: 1fr;
+      }
+
+      .protocol-key {
+        border-right: none;
+        border-bottom: 1px solid var(--border-green);
+        padding: 10px 16px 8px;
+      }
+
+      .protocol-names { padding: 10px 16px; }
+
+      /* Model: collapse 3-col to index + stacked key/val */
+      .model-row {
+        grid-template-columns: 36px 1fr;
+        gap: 12px;
+        padding: 16px;
+      }
+
+      .model-index {
+        padding: 2px 0 0;
+        border-right: none;
+        justify-content: flex-start;
+      }
+
+      /* Key and val stack in second column */
+      .model-key {
+        grid-column: auto;
+        font-size: 15px;
+        padding: 0 0 4px;
+        border-right: none;
+        display: block;
+      }
+
+      .model-val {
+        font-size: 14px;
+        padding: 0;
+        display: block;
+      }
+
+      /* Make key+val appear stacked in the second col */
+      .model-row { display: grid; grid-template-columns: 36px 1fr; }
+      .model-key, .model-val { grid-column: 2; }
+      .model-index { grid-column: 1; grid-row: 1 / 3; }
+
+      /* Investments: 2 col */
+      .invest-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .invest-item { font-size: 14px; padding: 14px 16px; }
+
+      /* CTA */
+      .cta { padding: 48px 20px; }
+      .btn-amber { display: block; text-align: center; padding: 16px 32px; }
+
+      /* Footer */
+      .footer { padding: 48px 20px 24px; }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-bottom { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a class="nav-logo" href="index.html">
+      <img src="is-wordmark-lockup-final.svg" alt="InfraSingularity">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#infrastructure">Infra</a></li>
+      <li><a href="#protocols">Protocols</a></li>
+      <li><a href="#model">The Model</a></li>
+      <li><a href="#investments">Investments</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="menu-btn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="#infrastructure" onclick="closeMenu()">Infrastructure</a>
+    <a href="#protocols" onclick="closeMenu()">Protocols</a>
+    <a href="#model" onclick="closeMenu()">The Model</a>
+    <a href="#investments" onclick="closeMenu()">Investments</a>
+    <a href="#contact" class="drawer-cta" onclick="closeMenu()">Contact →</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" style="position:relative; overflow:hidden;">
+    <svg class="bg-mark" style="top:50%;left:36%;transform:translate(-50%,-50%);width:800px;height:800px;opacity:0.07;" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="32" r="2.5" fill="#6B4FEC"/>
+      <circle cx="32" cy="9"  r="2.2" fill="#6B4FEC"/>
+      <circle cx="32" cy="17" r="2.0" fill="#6B4FEC"/>
+      <circle cx="32" cy="24" r="1.8" fill="#6B4FEC"/>
+      <circle cx="46.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+      <circle cx="41.5" cy="19"   r="2.0" fill="#6B4FEC"/>
+      <circle cx="37.5" cy="25"   r="1.8" fill="#6B4FEC"/>
+      <circle cx="55"   cy="32"   r="2.2" fill="#6B4FEC"/>
+      <circle cx="47"   cy="32"   r="2.0" fill="#6B4FEC"/>
+      <circle cx="40"   cy="32"   r="1.8" fill="#6B4FEC"/>
+      <circle cx="46.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+      <circle cx="41.5" cy="45"   r="2.0" fill="#6B4FEC"/>
+      <circle cx="37.5" cy="39"   r="1.8" fill="#6B4FEC"/>
+      <circle cx="32"   cy="55"   r="2.2" fill="#6B4FEC"/>
+      <circle cx="32"   cy="47"   r="2.0" fill="#6B4FEC"/>
+      <circle cx="32"   cy="40"   r="1.8" fill="#6B4FEC"/>
+      <circle cx="17.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+      <circle cx="22.5" cy="45"   r="2.0" fill="#6B4FEC"/>
+      <circle cx="26.5" cy="39"   r="1.8" fill="#6B4FEC"/>
+      <circle cx="9"    cy="32"   r="2.2" fill="#6B4FEC"/>
+      <circle cx="17"   cy="32"   r="2.0" fill="#6B4FEC"/>
+      <circle cx="24"   cy="32"   r="1.8" fill="#6B4FEC"/>
+      <circle cx="17.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+      <circle cx="22.5" cy="19"   r="2.0" fill="#6B4FEC"/>
+      <circle cx="26.5" cy="25"   r="1.8" fill="#6B4FEC"/>
+    </svg>
+    <div class="hero-rule"></div>
+    <div class="hero-grid">
+      <div class="hero-headline">
+        Institutional<br>Staking Platform.
+      </div>
+      <div class="hero-facts">
+        <div class="fact-row">
+          <span class="fact-key">Canton Network</span>
+          <span class="fact-val">Official NaaS</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Mainnet Protocols</span>
+          <span class="fact-val">50+</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Symbiotic Ranking</span>
+          <span class="fact-val">Top 10 by AUM</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Infrastructure Uptime</span>
+          <span class="fact-val">99.99%</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-accent">Talk to Our Team</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Infrastructure -->
+  <section class="section" id="infrastructure" style="position:relative;overflow:hidden;">
+    <svg class="bg-mark" style="top:50%;right:4%;transform:translateY(-50%);width:480px;height:480px;opacity:0.09;" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="2.5" fill="#6B4FEC"/><circle cx="32" cy="9" r="2.2" fill="#6B4FEC"/><circle cx="32" cy="17" r="2.0" fill="#6B4FEC"/><circle cx="32" cy="24" r="1.8" fill="#6B4FEC"/><circle cx="46.5" cy="11.5" r="2.2" fill="#6B4FEC"/><circle cx="41.5" cy="19" r="2.0" fill="#6B4FEC"/><circle cx="37.5" cy="25" r="1.8" fill="#6B4FEC"/><circle cx="55" cy="32" r="2.2" fill="#6B4FEC"/><circle cx="47" cy="32" r="2.0" fill="#6B4FEC"/><circle cx="40" cy="32" r="1.8" fill="#6B4FEC"/><circle cx="46.5" cy="52.5" r="2.2" fill="#6B4FEC"/><circle cx="41.5" cy="45" r="2.0" fill="#6B4FEC"/><circle cx="37.5" cy="39" r="1.8" fill="#6B4FEC"/><circle cx="32" cy="55" r="2.2" fill="#6B4FEC"/><circle cx="32" cy="47" r="2.0" fill="#6B4FEC"/><circle cx="32" cy="40" r="1.8" fill="#6B4FEC"/><circle cx="17.5" cy="52.5" r="2.2" fill="#6B4FEC"/><circle cx="22.5" cy="45" r="2.0" fill="#6B4FEC"/><circle cx="26.5" cy="39" r="1.8" fill="#6B4FEC"/><circle cx="9" cy="32" r="2.2" fill="#6B4FEC"/><circle cx="17" cy="32" r="2.0" fill="#6B4FEC"/><circle cx="24" cy="32" r="1.8" fill="#6B4FEC"/><circle cx="17.5" cy="11.5" r="2.2" fill="#6B4FEC"/><circle cx="22.5" cy="19" r="2.0" fill="#6B4FEC"/><circle cx="26.5" cy="25" r="1.8" fill="#6B4FEC"/></svg>
+    <div class="sh">
+      <span class="sh-label">Infrastructure</span>
+      <div class="sh-rule"></div>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-cell">
+<div class="spec-label">Managed Operations</div>
+        <div class="spec-value">Fully managed</div>
+        <div class="spec-desc">Backups every 3–4 hours. Go-live in days. Customised to your strategy.</div>
+      </div>
+      <div class="spec-cell">
+<div class="spec-label">Monitoring</div>
+        <div class="spec-value">Real-time</div>
+        <div class="spec-desc">Analytics and alerting across all active protocols. Performance tracked continuously.</div>
+      </div>
+      <div class="spec-cell">
+<div class="spec-label">White-label</div>
+        <div class="spec-value">Your brand</div>
+        <div class="spec-desc">Every deployment carries your identity. Institutional presentation, no IS branding required.</div>
+      </div>
+      <div class="spec-cell">
+<div class="spec-label">Ecosystem coverage</div>
+        <div class="spec-value">Multi-layer</div>
+        <div class="spec-desc">Eigenlayer &nbsp;·&nbsp; Symbiotic &nbsp;·&nbsp; Canton Network &nbsp;·&nbsp; Babylon &nbsp;·&nbsp; and more</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Protocols -->
+  <section class="section" id="protocols">
+    <div class="sh">
+      <span class="sh-label">Protocols</span>
+      <div class="sh-rule"></div>
+    </div>
+    <div class="protocol-manifest">
+      <div class="protocol-row">
+        <div class="protocol-key">Foundation Delegations</div>
+        <div class="protocol-names">Lava &nbsp;·&nbsp; Avail &nbsp;·&nbsp; IOTA &nbsp;·&nbsp; Starknet &nbsp;·&nbsp; ZK Verify &nbsp;·&nbsp; Sunrise</div>
+      </div>
+      <div class="protocol-row">
+        <div class="protocol-key">Top Protocols</div>
+        <div class="protocol-names">Tanssi &nbsp;·&nbsp; Babylon &nbsp;·&nbsp; Avail &nbsp;·&nbsp; Eigenda &nbsp;·&nbsp; Mezo &nbsp;·&nbsp; Mellow &nbsp;·&nbsp; Primev &nbsp;·&nbsp; Lido V3 &nbsp;·&nbsp; Aztec &nbsp;·&nbsp; IRYS &nbsp;·&nbsp; Canton Network &nbsp;·&nbsp; Somnia</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Model -->
+  <section class="section" id="model">
+    <div class="sh">
+      <span class="sh-label">The Model</span>
+      <div class="sh-rule"></div>
+    </div>
+    <div class="model-table">
+      <div class="model-row">
+        <div class="model-index">01</div>
+        <div class="model-key">No upfront cost</div>
+        <div class="model-val">Rewards-aligned commercial model. We earn when your validators earn.</div>
+      </div>
+      <div class="model-row">
+        <div class="model-index">02</div>
+        <div class="model-key">Monitor and manage funds</div>
+        <div class="model-val">Unlock higher yields with real-time analytics and effortless restaking across leading protocols.</div>
+      </div>
+      <div class="model-row">
+        <div class="model-index">03</div>
+        <div class="model-key">Secure and seamless</div>
+        <div class="model-val">Fully managed solutions customised to your strategy and built with uncompromising security.</div>
+      </div>
+      <div class="model-row">
+        <div class="model-index">04</div>
+        <div class="model-key">Work with top protocols</div>
+        <div class="model-val">Exposure to the fast-growing Symbiotic and Eigenlayer ecosystems, driving network efficiency and scalability.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Investments -->
+  <section class="section" id="investments">
+    <div class="sh">
+      <span class="sh-label">Investments</span>
+      <div class="sh-rule"></div>
+    </div>
+    <p class="invest-intro">We co-invest in the protocols we operate.</p>
+    <div class="invest-grid">
+      <div class="invest-item">
+SEI
+      </div>
+      <div class="invest-item">
+Lava Network
+      </div>
+      <div class="invest-item">
+Anoma
+      </div>
+      <div class="invest-item">
+Movement Labs
+      </div>
+      <div class="invest-item">
+io.net
+      </div>
+      <div class="invest-item">
+Zero Gravity
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact" style="position:relative; overflow:hidden;">
+    <svg style="position:absolute;top:50%;right:8%;transform:translateY(-50%);width:320px;height:320px;opacity:0.09;pointer-events:none;" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="32" r="2.5" fill="#6B4FEC"/>
+      <circle cx="32" cy="9"  r="2.2" fill="#6B4FEC"/>
+      <circle cx="32" cy="17" r="2.0" fill="#6B4FEC"/>
+      <circle cx="32" cy="24" r="1.8" fill="#6B4FEC"/>
+      <circle cx="46.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+      <circle cx="41.5" cy="19"   r="2.0" fill="#6B4FEC"/>
+      <circle cx="37.5" cy="25"   r="1.8" fill="#6B4FEC"/>
+      <circle cx="55"   cy="32"   r="2.2" fill="#6B4FEC"/>
+      <circle cx="47"   cy="32"   r="2.0" fill="#6B4FEC"/>
+      <circle cx="40"   cy="32"   r="1.8" fill="#6B4FEC"/>
+      <circle cx="46.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+      <circle cx="41.5" cy="45"   r="2.0" fill="#6B4FEC"/>
+      <circle cx="37.5" cy="39"   r="1.8" fill="#6B4FEC"/>
+      <circle cx="32"   cy="55"   r="2.2" fill="#6B4FEC"/>
+      <circle cx="32"   cy="47"   r="2.0" fill="#6B4FEC"/>
+      <circle cx="32"   cy="40"   r="1.8" fill="#6B4FEC"/>
+      <circle cx="17.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+      <circle cx="22.5" cy="45"   r="2.0" fill="#6B4FEC"/>
+      <circle cx="26.5" cy="39"   r="1.8" fill="#6B4FEC"/>
+      <circle cx="9"    cy="32"   r="2.2" fill="#6B4FEC"/>
+      <circle cx="17"   cy="32"   r="2.0" fill="#6B4FEC"/>
+      <circle cx="24"   cy="32"   r="1.8" fill="#6B4FEC"/>
+      <circle cx="17.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+      <circle cx="22.5" cy="19"   r="2.0" fill="#6B4FEC"/>
+      <circle cx="26.5" cy="25"   r="1.8" fill="#6B4FEC"/>
+    </svg>
+    <div class="sh">
+      <span class="sh-label">Contact</span>
+      <div class="sh-rule"></div>
+    </div>
+    <h2>Start a conversation.</h2>
+    <p>Institutional-grade infrastructure. Your brand on every deployment.</p>
+    <a href="mailto:contact@infrasingularity.com" class="btn btn-amber">Talk to Our Team</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">InfraSingularity</div>
+          <div class="footer-tagline">Institutional blockchain infrastructure.</div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#infrastructure">Infrastructure</a></li>
+            <li><a href="#protocols">Protocols</a></li>
+            <li><a href="#model">The Model</a></li>
+            <li><a href="#investments">Investments</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:contact@infrasingularity.com">contact@infrasingularity.com</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 InfraSingularity</div>
+        <a href="brand-kit.html" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); text-decoration: none; letter-spacing: 0.06em; transition: color 150ms;" onmouseover="this.style.color='#C4C6CB'" onmouseout="this.style.color='#6E7178'">Brand Kit →</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const drawer = document.getElementById('nav-drawer');
+    if (btn) btn.addEventListener('click', () => drawer.classList.toggle('open'));
+    function closeMenu() { if (drawer) drawer.classList.remove('open'); }
+    document.addEventListener('click', e => {
+      if (btn && !btn.contains(e.target) && !drawer.contains(e.target)) closeMenu();
+    });
+  </script>
+</body>
+</html>

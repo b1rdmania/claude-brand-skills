@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>InfraSingularity Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Backgrounds */
+  --bg-deep: #0A0D10;
+  --bg-warm: #12161A;
+  --bg-surface: #1A1F24;
+  --bg-elevated: #23292F;
+
+  /* Text */
+  --text-primary: #F5F5F7;
+  --text-secondary: #C4C6CB;
+  --text-muted: #6E7178;
+  --text-whisper: #3D4147;
+
+  /* Borders */
+  --border: #2D3339;
+  --border-light: #3D4449;
+
+  /* Brand Accent */
+  --accent: #6B4FEC;
+  --accent-dim: #513AC0;
+  --accent-dark: #2B1F5C;
+  --accent-glow: #8B6FFF;
+
+  /* Functional */
+  --green: #4CAF8C;
+  --green-dim: #3A8A6E;
+  --amber: #F59E42;
+  --red: #E85D5D;
+  --blue: #5B9EFF;
+
+  /* Spacing */
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-8: 48px;
+  --space-10: 64px;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.6;
+  padding: var(--space-10);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: var(--space-3);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 500;
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-5);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-4);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 14px;
+}
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-5);
+  max-width: 700px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 18px;
+  margin-bottom: var(--space-10);
+}
+
+/* Color Swatches */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.color-swatch {
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.color-block {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.color-info {
+  padding: var(--space-4);
+}
+
+.color-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.color-hex {
+  font-family: 'SF Mono', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Typography Specimens */
+.type-specimen {
+  margin-bottom: var(--space-6);
+  padding: var(--space-5);
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.type-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-2);
+}
+
+.type-hero {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.type-h1 {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.type-h2 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.type-body {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 600px;
+}
+
+/* Components */
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Outfit', sans-serif;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover {
+  background: var(--accent-glow);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+}
+
+.input {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: 'Outfit', sans-serif;
+  width: 100%;
+  margin-bottom: var(--space-4);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(107, 79, 236, 0.15);
+}
+
+.card {
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: var(--space-5);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.4);
+  border-color: var(--border-light);
+}
+
+.card-title {
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.card-body {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* Spacing Visual */
+.spacing-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.spacing-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.spacing-block {
+  background: var(--accent);
+  height: 32px;
+  border-radius: 4px;
+}
+
+.spacing-label {
+  font-family: 'SF Mono', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+  min-width: 80px;
+}
+
+/* Mark Showcase */
+.mark-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+.mark-card {
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: var(--space-8);
+  text-align: center;
+}
+
+.mark-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: var(--space-4);
+}
+
+.mark-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: var(--space-10) 0;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <h1>InfraSingularity</h1>
+  <p class="subtitle">Design System v1.0 — Where institutional infrastructure converges</p>
+
+  <!-- Colors Section -->
+  <h2>Color Palette</h2>
+
+  <h3>Backgrounds</h3>
+  <div class="color-grid">
+    <div class="color-swatch">
+      <div class="color-block" style="background: #0A0D10;"></div>
+      <div class="color-info">
+        <div class="color-name">Deep</div>
+        <div class="color-hex">#0A0D10</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background: #12161A;"></div>
+      <div class="color-info">
+        <div class="color-name">Warm</div>
+        <div class="color-hex">#12161A</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background: #1A1F24;"></div>
+      <div class="color-info">
+        <div class="color-name">Surface</div>
+        <div class="color-hex">#1A1F24</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background: #23292F;"></div>
+      <div class="color-info">
+        <div class="color-name">Elevated</div>
+        <div class="color-hex">#23292F</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Text</h3>
+  <div class="color-grid">
+    <div class="color-swatch">
+      <div class="color-block" style="background: #F5F5F7; color: #0A0D10;">Aa</div>
+      <div class="color-info">
+        <div class="color-name">Primary</div>
+        <div class="color-hex">#F5F5F7</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background: #C4C6CB; color: #0A0D10;">Aa</div>
+      <div class="color-info">
+        <div class="color-name">Secondary</div>
+        <div class="color-hex">#C4C6CB</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background: #6E7178;">Aa</div>
+      <div class="color-info">
+        <div class="color-name">Muted</div>
+        <div class="color-hex">#6E7178</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background: #3D4147;">Aa</div>
+      <div class="color-info">
+        <div class="color-name">Whisper</div>
+        <div class="color-hex">#3D4147</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Brand Accent</h3>
+  <div class="color-grid">
+    <div class="color-swatch">
+      <div class="color-block" style="background: #6B4FEC;">●</div>
+      <div class="color-info">
+        <div class="color-name">Accent</div>
+        <div class="color-hex">#6B4FEC</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background: #513AC0;">●</div>
+      <div class="color-info">
+        <div class="color-name">Accent Dim</div>
+        <div class="color-hex">#513AC0</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background: #2B1F5C;">●</div>
+      <div class="color-info">
+        <div class="color-name">Accent Dark</div>
+        <div class="color-hex">#2B1F5C</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background: #8B6FFF;">●</div>
+      <div class="color-info">
+        <div class="color-name">Accent Glow</div>
+        <div class="color-hex">#8B6FFF</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Functional</h3>
+  <div class="color-grid">
+    <div class="color-swatch">
+      <div class="color-block" style="background: #4CAF8C;">✓</div>
+      <div class="color-info">
+        <div class="color-name">Green</div>
+        <div class="color-hex">#4CAF8C</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background: #F59E42; color: #0A0D10;">!</div>
+      <div class="color-info">
+        <div class="color-name">Amber</div>
+        <div class="color-hex">#F59E42</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background: #E85D5D;">×</div>
+      <div class="color-info">
+        <div class="color-name">Red</div>
+        <div class="color-hex">#E85D5D</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background: #5B9EFF;">i</div>
+      <div class="color-info">
+        <div class="color-name">Blue</div>
+        <div class="color-hex">#5B9EFF</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Typography Section -->
+  <h2>Typography</h2>
+  <p>Primary font: Outfit — geometric sans with open apertures</p>
+
+  <div class="type-specimen">
+    <div class="type-label">Hero (72px / Light 300)</div>
+    <div class="type-hero">Where institutional infrastructure converges</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-label">H1 (48px / Medium 500)</div>
+    <div class="type-h1">InfraSingularity powers 50+ mainnets</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-label">H2 (32px / Medium 500)</div>
+    <div class="type-h2">Institutional-grade blockchain infrastructure</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-label">Body (16px / Regular 400)</div>
+    <div class="type-body">
+      InfraSingularity delivers validator infrastructure for institutions managing $100M+ in digital assets.
+      Our white-label model provides institutional clients with technical precision, operational resilience,
+      and partnership-grade service across 50+ mainnets.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Spacing Section -->
+  <h2>Spacing System</h2>
+  <p>8px base unit with geometric progression</p>
+
+  <div class="spacing-demo">
+    <div class="spacing-item">
+      <span class="spacing-label">8px (base)</span>
+      <div class="spacing-block" style="width: 8px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-label">12px</span>
+      <div class="spacing-block" style="width: 12px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-label">16px</span>
+      <div class="spacing-block" style="width: 16px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-label">24px</span>
+      <div class="spacing-block" style="width: 24px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-label">32px</span>
+      <div class="spacing-block" style="width: 32px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-label">48px</span>
+      <div class="spacing-block" style="width: 48px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-label">64px</span>
+      <div class="spacing-block" style="width: 64px;"></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Components Section -->
+  <h2>Components</h2>
+
+  <h3>Buttons</h3>
+  <div class="component-grid">
+    <button class="btn btn-primary">Primary Button</button>
+    <button class="btn btn-secondary">Secondary Button</button>
+    <button class="btn btn-ghost">Ghost Button</button>
+  </div>
+
+  <h3>Inputs</h3>
+  <input class="input" type="text" placeholder="validator@infrasingularity.com">
+
+  <h3>Cards</h3>
+  <div class="component-grid">
+    <div class="card">
+      <div class="card-title">Canton Network NaaS</div>
+      <div class="card-body">Official Network-as-a-Service partner for the Canton Network, delivering institutional connectivity to traditional finance.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">50+ Mainnets</div>
+      <div class="card-body">Production-grade validator infrastructure across Ethereum, Cosmos, Polkadot, and 47+ additional networks.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">$100M+ AUM</div>
+      <div class="card-body">Trusted by institutional clients managing significant digital asset portfolios with white-label infrastructure.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Wordmark Showcase -->
+  <h2>Brand Assets</h2>
+
+  <div class="mark-showcase">
+    <div class="mark-card">
+      <img src="is-wordmark-final.svg" alt="InfraSingularity Wordmark" style="max-height: 80px;">
+      <div class="mark-label">Primary Wordmark</div>
+    </div>
+    <div class="mark-card">
+      <img src="favourites/is-mark-v11d-original-tightened.svg" alt="InfraSingularity Mark" style="max-height: 80px;">
+      <div class="mark-label">Mark Only</div>
+    </div>
+  </div>
+
+  <div style="height: 64px;"></div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- InfraSingularity Standalone Mark (Final) -->
+  <!-- v11d: 25-dot radial starburst with tightened spacing -->
+  <!-- 1 center dot + 8 arms × 3 dots per arm -->
+
+  <!-- Center dot (2.5px radius) -->
+  <circle cx="32" cy="32" r="2.5" fill="#6B4FEC"/>
+
+  <!-- Top arm (3 dots: 2.2, 2.0, 1.8 radius progression) -->
+  <circle cx="32" cy="9" r="2.2" fill="#6B4FEC"/>
+  <circle cx="32" cy="17" r="2.0" fill="#6B4FEC"/>
+  <circle cx="32" cy="24" r="1.8" fill="#6B4FEC"/>
+
+  <!-- Top-right arm (diagonal 45°) -->
+  <circle cx="46.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+  <circle cx="41.5" cy="19" r="2.0" fill="#6B4FEC"/>
+  <circle cx="37.5" cy="25" r="1.8" fill="#6B4FEC"/>
+
+  <!-- Right arm -->
+  <circle cx="55" cy="32" r="2.2" fill="#6B4FEC"/>
+  <circle cx="47" cy="32" r="2.0" fill="#6B4FEC"/>
+  <circle cx="40" cy="32" r="1.8" fill="#6B4FEC"/>
+
+  <!-- Bottom-right arm (diagonal 45°) -->
+  <circle cx="46.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+  <circle cx="41.5" cy="45" r="2.0" fill="#6B4FEC"/>
+  <circle cx="37.5" cy="39" r="1.8" fill="#6B4FEC"/>
+
+  <!-- Bottom arm -->
+  <circle cx="32" cy="55" r="2.2" fill="#6B4FEC"/>
+  <circle cx="32" cy="47" r="2.0" fill="#6B4FEC"/>
+  <circle cx="32" cy="40" r="1.8" fill="#6B4FEC"/>
+
+  <!-- Bottom-left arm (diagonal 45°) -->
+  <circle cx="17.5" cy="52.5" r="2.2" fill="#6B4FEC"/>
+  <circle cx="22.5" cy="45" r="2.0" fill="#6B4FEC"/>
+  <circle cx="26.5" cy="39" r="1.8" fill="#6B4FEC"/>
+
+  <!-- Left arm -->
+  <circle cx="9" cy="32" r="2.2" fill="#6B4FEC"/>
+  <circle cx="17" cy="32" r="2.0" fill="#6B4FEC"/>
+  <circle cx="24" cy="32" r="1.8" fill="#6B4FEC"/>
+
+  <!-- Top-left arm (diagonal 45°) -->
+  <circle cx="17.5" cy="11.5" r="2.2" fill="#6B4FEC"/>
+  <circle cx="22.5" cy="19" r="2.0" fill="#6B4FEC"/>
+  <circle cx="26.5" cy="25" r="1.8" fill="#6B4FEC"/>
+</svg>

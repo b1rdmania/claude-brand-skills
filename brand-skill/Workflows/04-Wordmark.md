@@ -12,6 +12,27 @@ Pair the mark with typography to create complete logo lockups.
 
 ---
 
+## ⚠️ SVG Typography Rules (CRITICAL)
+
+**Letter-spacing in SVG:**
+- ✅ **ALWAYS use pixel values** (e.g., `letter-spacing="-0.4"`)
+- ❌ **NEVER use em units** (e.g., `letter-spacing="-0.4em"`)
+- SVG interprets letter-spacing differently than CSS
+- Em units will cause text to overlap and become illegible
+
+**Before presenting variants:**
+- Test SVG rendering in browser or with `rsvg-convert`
+- Verify text is readable and spacing is correct
+- Catch errors before user sees them
+
+**Decorative elements:**
+- ⚠️ **Don't position decorative elements ON font glyphs** (e.g., coloring the dot of "i")
+- Font rendering is dynamic - you can't accurately position elements on specific glyph features in SVG
+- Use end-of-line accents, underlines, or separate decorative marks instead
+- Example: purple dot at END of word ✅, purple dot on "i" tittle ❌
+
+---
+
 ## Process
 
 ### 1. Font Exploration (MANDATORY)
@@ -93,9 +114,21 @@ Present with brief rationale for each. The user selects. Do not default to whate
 
 Present spacing + case options and ask: "Which tracking and case treatment feels right?" Only then proceed to lockup creation.
 
-### 3. Create Variants
+### 3. Create Lockup Spacing/Sizing Variants
 
-Build 3-4 options:
+**Before creating final variants, show 3-4 spacing and sizing options:**
+
+Create a comparison showing different gap and text size combinations. Example:
+- Option A: 24px gap, 36px text (medium spacing, moderate size)
+- Option B: 20px gap, 40px text (tighter gap, larger text)
+- Option C: 16px gap, 40px text (tight spacing, larger text - "density")
+- Option D: 32px gap, 36px text (loose spacing, moderate size)
+
+Present visually and let user select which feels most balanced. This prevents having to redo sizing later.
+
+### 4. Create Final Variants
+
+Once spacing/sizing is locked, build 3-4 lockup options:
 
 **Name only:**
 Mark + "brandname"
@@ -104,9 +137,12 @@ Mark + "brandname"
 Mark + "brandname.com" (possibly with colored TLD)
 
 **Monospace variant:**
-Mark + "brandname" in mono
+Mark + "brandname" in mono (if brand uses monospace)
 
-### 4. Align
+**Accent element:**
+Consider subtle accent elements (e.g., colored dot, underline, bracket) if they support the brand concept
+
+### 5. Align
 
 This takes iteration. Considerations:
 
@@ -118,10 +154,17 @@ This takes iteration. Considerations:
 **Horizontal:**
 - Gap between mark and text
 - Too tight feels cramped, too loose feels disconnected
+- **Gap ratio guidelines:**
+  - Tight spacing (density aesthetic): 0.25x mark height (e.g., 16px gap for 64px mark)
+  - Medium spacing (balanced): 0.5x mark height (e.g., 32px gap for 64px mark)
+  - Loose spacing (breathing room): 0.75x mark height (e.g., 48px gap for 64px mark)
 
 **Scale:**
 - Mark should balance with text weight
 - May need to scale mark from original size
+- **Text size guideline:** 60-75% of mark height for optical balance
+  - Example: 64px mark → 40-48px text
+  - Smaller text makes mark dominate; larger text can overwhelm mark
 
 **Iterate with small adjustments:**
 ```svg
@@ -216,7 +259,7 @@ De-emphasizes extension. Use the brand's muted text color from Phase 5.
 **Same as name:**
 Treats it as unified word.
 
-### 6. Size Testing
+### 7. Size Testing
 
 Render all lockup variants at three sizes:
 

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InfraSingularity - Split Layout Experiments</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #0A0D10;
+      --bg-warm: #12161A;
+      --bg-surface: #1A1F24;
+      --text-primary: #F5F5F7;
+      --text-secondary: #C4C6CB;
+      --text-muted: #6E7178;
+      --border: #2D3339;
+      --accent: #6B4FEC;
+      --green: #4CAF8C;
+      --amber: #F59E42;
+      --blue: #5B9EFF;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-8: 48px;
+      --space-10: 64px;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Figtree', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background: #000;
+      color: var(--text-primary);
+    }
+
+    .header {
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--bg-deep);
+    }
+
+    .header h1 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .layouts {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 60px;
+      padding: 60px 20px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .layout {
+      border: 2px solid var(--border);
+      overflow: hidden;
+    }
+
+    .layout-label {
+      background: var(--bg-warm);
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .preview {
+      height: 800px;
+      background: var(--bg-deep);
+      position: relative;
+    }
+
+    /* Layout 1: Left Brand Panel */
+    .split-left {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      height: 100%;
+    }
+
+    .brand-panel {
+      background: var(--accent);
+      padding: var(--space-10);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .brand-panel .wordmark {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .brand-panel .tagline {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      color: #000;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-top: var(--space-8);
+    }
+
+    .brand-panel .mark-large {
+      width: 200px;
+      height: 200px;
+      opacity: 0.15;
+      position: absolute;
+      bottom: var(--space-6);
+      right: var(--space-6);
+    }
+
+    .stats-panel {
+      padding: var(--space-10);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
+    }
+
+    .stat-block {
+      padding: var(--space-5);
+      border: 2px solid;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .stat-block:nth-child(1) { border-color: var(--green); }
+    .stat-block:nth-child(2) { border-color: var(--amber); }
+    .stat-block:nth-child(3) { border-color: var(--blue); }
+
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: var(--space-4);
+    }
+
+    .stat-block:nth-child(1) .stat-value { color: var(--green); }
+    .stat-block:nth-child(2) .stat-value { color: var(--amber); }
+    .stat-block:nth-child(3) .stat-value { color: var(--blue); }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+
+    .content-block {
+      border-top: 2px solid var(--border);
+      padding-top: var(--space-6);
+    }
+
+    .content-block h2 {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-5);
+    }
+
+    .content-block p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      max-width: 700px;
+    }
+
+    /* Layout 2: Top Brand Bar */
+    .split-top {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .brand-bar {
+      background: #000;
+      border-bottom: 3px solid var(--accent);
+      padding: var(--space-6) var(--space-10);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-bar .wordmark {
+      height: 32px;
+      width: auto;
+    }
+
+    .brand-bar .badge {
+      padding: 8px 20px;
+      background: rgba(107,79,236,0.1);
+      border: 1px solid var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .hero-split {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      position: relative;
+    }
+
+    .hero-left {
+      padding: var(--space-10);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-left h1 {
+      font-family: var(--font-display);
+      font-size: 64px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-6);
+    }
+
+    .hero-left p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-8);
+    }
+
+    .hero-left .btn {
+      display: inline-block;
+      padding: 16px 48px;
+      background: var(--amber);
+      color: #000;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .hero-right {
+      background: var(--bg-warm);
+      padding: var(--space-10);
+      border-left: 2px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      position: relative;
+    }
+
+    .hero-right .mark-bg {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      opacity: 0.05;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .stat-card {
+      padding: var(--space-5);
+      border-left: 4px solid;
+      background: rgba(255,255,255,0.02);
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-card:nth-child(1) { border-color: var(--green); }
+    .stat-card:nth-child(2) { border-color: var(--amber); }
+    .stat-card:nth-child(3) { border-color: var(--blue); }
+
+    .stat-card .value {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: var(--space-4);
+    }
+
+    .stat-card:nth-child(1) .value { color: var(--green); }
+    .stat-card:nth-child(2) .value { color: var(--amber); }
+    .stat-card:nth-child(3) .value { color: var(--blue); }
+
+    .stat-card .label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    /* Layout 3: Diagonal Split */
+    .split-diagonal {
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .diagonal-brand {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 55%;
+      height: 100%;
+      background: var(--accent);
+      clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+      padding: var(--space-10);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .diagonal-brand .wordmark {
+      width: 100%;
+      max-width: 350px;
+    }
+
+    .diagonal-brand h1 {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: #000;
+      margin-top: var(--space-8);
+    }
+
+    .diagonal-content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      padding: var(--space-10);
+      padding-left: var(--space-10);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .diagonal-stats {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .diagonal-stat {
+      padding: var(--space-5);
+      border: 2px solid;
+      border-left-width: 6px;
+    }
+
+    .diagonal-stat:nth-child(1) { border-color: var(--green); }
+    .diagonal-stat:nth-child(2) { border-color: var(--amber); }
+    .diagonal-stat:nth-child(3) { border-color: var(--blue); }
+
+    .diagonal-stat .num {
+      font-family: var(--font-display);
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: var(--space-4);
+    }
+
+    .diagonal-stat:nth-child(1) .num { color: var(--green); }
+    .diagonal-stat:nth-child(2) .num { color: var(--amber); }
+    .diagonal-stat:nth-child(3) .num { color: var(--blue); }
+
+    .diagonal-stat .desc {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Split Layout Experiments</h1>
+    <p>3 asymmetric compositions using our wordmark and mark</p>
+  </div>
+
+  <div class="layouts">
+    <!-- Layout 1: Left Brand Panel -->
+    <div class="layout">
+      <div class="layout-label">Layout 1: Purple Brand Panel (Left)</div>
+      <div class="preview">
+        <div class="split-left">
+          <div class="brand-panel">
+            <img src="/Users/andy/Claude Skills/projects/infrasingularity/is-wordmark-lockup-final.svg" class="wordmark" alt="InfraSingularity">
+            <div class="tagline">Where institutional infrastructure converges</div>
+            <img src="/Users/andy/Claude Skills/projects/infrasingularity/is-mark-standalone.svg" class="mark-large" alt="">
+          </div>
+          <div class="stats-panel">
+            <div class="stat-row">
+              <div class="stat-block">
+                <div class="stat-value">50+</div>
+                <div class="stat-label">Mainnet Protocols</div>
+              </div>
+              <div class="stat-block">
+                <div class="stat-value">Top 10</div>
+                <div class="stat-label">Symbiotic by AUM</div>
+              </div>
+              <div class="stat-block">
+                <div class="stat-value">99.99%</div>
+                <div class="stat-label">Uptime</div>
+              </div>
+            </div>
+            <div class="content-block">
+              <h2>Institutional Staking Platform</h2>
+              <p>Canton NaaS Provider. Zero-cost enhanced returns with institutional-grade infrastructure across 50+ mainnet protocols.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layout 2: Top Brand Bar -->
+    <div class="layout">
+      <div class="layout-label">Layout 2: Top Bar + Side Stats</div>
+      <div class="preview">
+        <div class="split-top">
+          <div class="brand-bar">
+            <img src="/Users/andy/Claude Skills/projects/infrasingularity/is-wordmark-lockup-final.svg" class="wordmark" alt="InfraSingularity">
+            <div class="badge">Canton NaaS Provider</div>
+          </div>
+          <div class="hero-split">
+            <div class="hero-left">
+              <h1>Institutional Staking Platform</h1>
+              <p>Zero-cost enhanced returns with institutional-grade infrastructure. Top 10 on Symbiotic by AUM.</p>
+              <a href="#" class="btn">Get Started</a>
+            </div>
+            <div class="hero-right">
+              <img src="/Users/andy/Claude Skills/projects/infrasingularity/is-mark-standalone.svg" class="mark-bg" alt="">
+              <div class="stat-card">
+                <div class="value">50+</div>
+                <div class="label">Mainnet Protocols</div>
+              </div>
+              <div class="stat-card">
+                <div class="value">Top 10</div>
+                <div class="label">Symbiotic by AUM</div>
+              </div>
+              <div class="stat-card">
+                <div class="value">99.99%</div>
+                <div class="label">Infrastructure Uptime</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layout 3: Diagonal Split -->
+    <div class="layout">
+      <div class="layout-label">Layout 3: Diagonal Purple Split</div>
+      <div class="preview">
+        <div class="split-diagonal">
+          <div class="diagonal-brand">
+            <img src="/Users/andy/Claude Skills/projects/infrasingularity/is-wordmark-lockup-final.svg" class="wordmark" alt="InfraSingularity">
+            <h1>INSTITUTIONAL<br>STAKING<br>PLATFORM</h1>
+          </div>
+          <div class="diagonal-content">
+            <div class="diagonal-stats">
+              <div class="diagonal-stat">
+                <div class="num">50+</div>
+                <div class="desc">Mainnet Protocols</div>
+              </div>
+              <div class="diagonal-stat">
+                <div class="num">Top 10</div>
+                <div class="desc">Symbiotic by AUM</div>
+              </div>
+              <div class="diagonal-stat">
+                <div class="num">99.99%</div>
+                <div class="desc">Infrastructure Uptime</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
