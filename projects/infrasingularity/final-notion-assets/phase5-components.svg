@@ -1,0 +1,192 @@
+<svg width="1600" height="1800" viewBox="0 0 1600 1800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1600" height="1800" fill="#0A0D10"/>
+
+  <!-- Header -->
+  <text x="80" y="100" font-family="system-ui" font-size="48" font-weight="600" fill="#fff">
+    Component Library
+  </text>
+  <text x="80" y="145" font-family="system-ui" font-size="18" fill="rgba(255,255,255,0.5)">
+    Design system in practice
+  </text>
+
+  <!-- Buttons -->
+  <text x="80" y="240" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(255,255,255,0.5)" letter-spacing="2">
+    BUTTONS
+  </text>
+
+  <!-- Primary Button -->
+  <rect x="80" y="270" width="180" height="48" rx="6" fill="#6B4FEC"/>
+  <text x="170" y="300" font-family="system-ui" font-size="15" font-weight="500" fill="#fff" text-anchor="middle">
+    Get Started
+  </text>
+  <text x="80" y="340" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.5)">
+    Primary
+  </text>
+
+  <!-- Secondary Button -->
+  <rect x="280" y="270" width="180" height="48" rx="6" fill="transparent" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="370" y="300" font-family="system-ui" font-size="15" font-weight="500" fill="rgba(255,255,255,0.9)" text-anchor="middle">
+    Learn More
+  </text>
+  <text x="280" y="340" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.5)">
+    Secondary
+  </text>
+
+  <!-- Ghost Button -->
+  <rect x="480" y="270" width="180" height="48" rx="6" fill="transparent"/>
+  <text x="570" y="300" font-family="system-ui" font-size="15" font-weight="500" fill="rgba(255,255,255,0.7)" text-anchor="middle">
+    Contact
+  </text>
+  <text x="480" y="340" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.5)">
+    Ghost
+  </text>
+
+  <!-- Input Fields -->
+  <text x="80" y="430" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(255,255,255,0.5)" letter-spacing="2">
+    INPUT FIELDS
+  </text>
+
+  <!-- Default Input -->
+  <rect x="80" y="460" width="320" height="48" rx="6" fill="#1A1F24" stroke="#2D3339" stroke-width="1"/>
+  <text x="100" y="490" font-family="system-ui" font-size="15" fill="rgba(255,255,255,0.5)">
+    Email address
+  </text>
+  <text x="80" y="530" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.5)">
+    Default
+  </text>
+
+  <!-- Focused Input -->
+  <rect x="420" y="460" width="320" height="48" rx="6" fill="#1A1F24" stroke="#6B4FEC" stroke-width="2"/>
+  <text x="440" y="490" font-family="system-ui" font-size="15" fill="#fff">
+    hello@example.com
+  </text>
+  <text x="420" y="530" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.5)">
+    Focused
+  </text>
+
+  <!-- Cards -->
+  <text x="80" y="620" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(255,255,255,0.5)" letter-spacing="2">
+    CARDS
+  </text>
+
+  <!-- Card 1 -->
+  <rect x="80" y="650" width="340" height="200" rx="8" fill="#12161A" stroke="#2D3339" stroke-width="1"/>
+  <text x="110" y="700" font-family="system-ui" font-size="20" font-weight="600" fill="#fff">
+    50+ Mainnets
+  </text>
+  <text x="110" y="730" font-family="system-ui" font-size="14" fill="rgba(255,255,255,0.7)" style="line-height: 1.6;">
+    Institutional-grade infrastructure
+  </text>
+  <text x="110" y="755" font-family="system-ui" font-size="14" fill="rgba(255,255,255,0.7)">
+    supporting the world's most
+  </text>
+  <text x="110" y="780" font-family="system-ui" font-size="14" fill="rgba(255,255,255,0.7)">
+    critical blockchain operations.
+  </text>
+  <text x="110" y="825" font-family="system-ui" font-size="13" font-weight="500" fill="#6B4FEC">
+    Learn more →
+  </text>
+
+  <!-- Card 2 -->
+  <rect x="440" y="650" width="340" height="200" rx="8" fill="#12161A" stroke="#2D3339" stroke-width="1"/>
+  <text x="470" y="700" font-family="system-ui" font-size="20" font-weight="600" fill="#fff">
+    99.9% Uptime
+  </text>
+  <text x="470" y="730" font-family="system-ui" font-size="14" fill="rgba(255,255,255,0.7)">
+    24/7 monitoring with automated
+  </text>
+  <text x="470" y="755" font-family="system-ui" font-size="14" fill="rgba(255,255,255,0.7)">
+    failover systems ensuring
+  </text>
+  <text x="470" y="780" font-family="system-ui" font-size="14" fill="rgba(255,255,255,0.7)">
+    maximum reliability.
+  </text>
+  <text x="470" y="825" font-family="system-ui" font-size="13" font-weight="500" fill="#6B4FEC">
+    View details →
+  </text>
+
+  <!-- Spacing System -->
+  <text x="80" y="940" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(255,255,255,0.5)" letter-spacing="2">
+    SPACING SCALE — 8PX BASE
+  </text>
+
+  <g transform="translate(80, 970)">
+    <rect x="0" y="0" width="32" height="32" fill="#6B4FEC" opacity="0.2"/>
+    <rect x="0" y="0" width="4" height="4" fill="#6B4FEC"/>
+    <text x="50" y="20" font-family="monospace" font-size="13" fill="#fff">4px</text>
+    <text x="120" y="20" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">Tight padding</text>
+
+    <rect x="0" y="50" width="32" height="32" fill="#6B4FEC" opacity="0.2"/>
+    <rect x="0" y="50" width="8" height="8" fill="#6B4FEC"/>
+    <text x="50" y="70" font-family="monospace" font-size="13" fill="#fff">8px</text>
+    <text x="120" y="70" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">Base unit</text>
+
+    <rect x="0" y="100" width="32" height="32" fill="#6B4FEC" opacity="0.2"/>
+    <rect x="0" y="100" width="16" height="16" fill="#6B4FEC"/>
+    <text x="50" y="120" font-family="monospace" font-size="13" fill="#fff">16px</text>
+    <text x="120" y="120" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">Default padding</text>
+
+    <rect x="0" y="150" width="32" height="32" fill="#6B4FEC" opacity="0.2"/>
+    <rect x="0" y="150" width="24" height="24" fill="#6B4FEC"/>
+    <text x="50" y="170" font-family="monospace" font-size="13" fill="#fff">24px</text>
+    <text x="120" y="170" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">Section spacing</text>
+
+    <rect x="300" y="0" width="48" height="48" fill="#6B4FEC" opacity="0.2"/>
+    <rect x="300" y="0" width="32" height="32" fill="#6B4FEC"/>
+    <text x="360" y="25" font-family="monospace" font-size="13" fill="#fff">32px</text>
+    <text x="430" y="25" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">Large gaps</text>
+
+    <rect x="300" y="70" width="64" height="48" fill="#6B4FEC" opacity="0.2"/>
+    <rect x="300" y="70" width="48" height="48" fill="#6B4FEC"/>
+    <text x="380" y="100" font-family="monospace" font-size="13" fill="#fff">48px</text>
+    <text x="450" y="100" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">Component separation</text>
+
+    <rect x="300" y="140" width="80" height="48" fill="#6B4FEC" opacity="0.2"/>
+    <rect x="300" y="140" width="64" height="48" fill="#6B4FEC"/>
+    <text x="395" y="170" font-family="monospace" font-size="13" fill="#fff">64px</text>
+    <text x="465" y="170" font-family="system-ui" font-size="12" fill="rgba(255,255,255,0.6)">Major sections</text>
+  </g>
+
+  <!-- Typography Hierarchy -->
+  <text x="80" y="1260" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(255,255,255,0.5)" letter-spacing="2">
+    TYPOGRAPHY HIERARCHY
+  </text>
+
+  <text x="80" y="1320" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="500" fill="#fff" letter-spacing="-1">
+    Hero Heading
+  </text>
+  <text x="80" y="1350" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.4)">
+    Outfit Medium 500, 56px
+  </text>
+
+  <text x="80" y="1420" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="500" fill="#fff" letter-spacing="-0.5">
+    Section Heading
+  </text>
+  <text x="80" y="1445" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.4)">
+    Outfit Medium 500, 32px
+  </text>
+
+  <text x="80" y="1500" font-family="system-ui" font-size="17" font-weight="400" fill="rgba(255,255,255,0.85)">
+    Body text for long-form content and detailed technical descriptions.
+  </text>
+  <text x="80" y="1525" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.4)">
+    Figtree Regular 400, 17px, line-height 1.7
+  </text>
+
+  <text x="80" y="1580" font-family="system-ui" font-size="14" font-weight="500" fill="rgba(255,255,255,0.7)">
+    UI labels and small text elements
+  </text>
+  <text x="80" y="1605" font-family="system-ui" font-size="11" fill="rgba(255,255,255,0.4)">
+    Figtree Medium 500, 14px
+  </text>
+
+  <!-- Usage Note -->
+  <rect x="80" y="1680" width="1440" height="80" rx="8" fill="rgba(107,79,236,0.05)" stroke="rgba(107,79,236,0.15)" stroke-width="1"/>
+  <text x="120" y="1720" font-family="system-ui" font-size="15" font-weight="400" fill="rgba(255,255,255,0.85)">
+    All components use the color palette, typography, and spacing system defined in the design system.
+  </text>
+  <text x="120" y="1745" font-family="system-ui" font-size="15" font-weight="400" fill="rgba(255,255,255,0.85)">
+    Maintain consistency by following these patterns across all brand touchpoints.
+  </text>
+</svg>

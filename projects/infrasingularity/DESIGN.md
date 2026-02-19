@@ -448,7 +448,7 @@ IS mark v11d used as large low-opacity background element:
 position: fixed; height: 56px;
 background: rgba(10,13,16,0.92);
 backdrop-filter: blur(12px);
-border-bottom: 1px solid var(--border);
+border-bottom: 2px solid var(--accent);   /* permanent accent border */
 ```
 
 - Logo: wordmark lockup SVG, 24px height
@@ -781,7 +781,8 @@ See Web Composition Patterns → nav for backdrop blur. Key rules:
 
 ---
 
-🎨 **Design System v2.1** — Updated 2026-02-18
+**Design System v2.2** — Updated 2026-02-19
 v1.0 based on Phase 0–5 brand development
 v2.0 adds Phase 5.5 web composition patterns: brutalist direction, dim colour border system, 0 border-radius override, section coding, background mark usage
 v2.1 adds full iOS implementation: Asset Catalog, SwiftUI components, Dynamic Type, spacing struct, motion, iOS Safari guidance
+v2.2 corrects nav border: 2px solid var(--accent) — permanent accent border, matches shipped HTML

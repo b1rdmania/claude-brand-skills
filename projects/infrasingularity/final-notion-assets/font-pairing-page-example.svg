@@ -1,0 +1,160 @@
+<svg width="1600" height="1400" viewBox="0 0 1600 1400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1600" height="1400" fill="#0A0D10"/>
+
+  <!-- Header -->
+  <text x="80" y="80" font-family="system-ui" font-size="18" font-weight="600" fill="#6B4FEC" letter-spacing="2">
+    FONT PAIRING — OUTFIT + FIGTREE
+  </text>
+
+  <!-- Section 1: Why Figtree -->
+  <text x="80" y="160" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(255,255,255,0.5)" letter-spacing="2">
+    WHY FIGTREE?
+  </text>
+
+  <rect x="80" y="190" width="700" height="220" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.05)" stroke-width="2"/>
+
+  <text x="110" y="230" font-family="system-ui" font-size="16" font-weight="600" fill="#fff">
+    Geometric Cohesion
+  </text>
+  <text x="110" y="260" font-family="system-ui" font-size="14" font-weight="400" fill="rgba(255,255,255,0.8)" style="line-height: 1.7;">
+    Similar x-height and proportions to Outfit create
+  </text>
+  <text x="110" y="285" font-family="system-ui" font-size="14" font-weight="400" fill="rgba(255,255,255,0.8)">
+    unified type system. Hierarchy through weight
+  </text>
+  <text x="110" y="310" font-family="system-ui" font-size="14" font-weight="400" fill="rgba(255,255,255,0.8)">
+    and size, not jarring font changes.
+  </text>
+
+  <text x="110" y="350" font-family="system-ui" font-size="16" font-weight="600" fill="#fff">
+    Screen-Optimized
+  </text>
+  <text x="110" y="380" font-family="system-ui" font-size="14" font-weight="400" fill="rgba(255,255,255,0.8)">
+    Built for technical content and long-form reading.
+  </text>
+
+  <!-- Section 2: Type Pairing Comparison -->
+  <text x="820" y="160" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(255,255,255,0.5)" letter-spacing="2">
+    X-HEIGHT HARMONY
+  </text>
+
+  <rect x="820" y="190" width="700" height="220" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.05)" stroke-width="2"/>
+
+  <!-- Outfit specimen -->
+  <text x="850" y="235" font-family="system-ui" font-size="11" font-weight="600" fill="rgba(255,255,255,0.4)" letter-spacing="1">
+    OUTFIT MEDIUM 500
+  </text>
+  <text x="850" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="500" fill="#6B4FEC" letter-spacing="-0.5">
+    Singularity
+  </text>
+
+  <!-- Figtree specimen -->
+  <text x="850" y="330" font-family="system-ui" font-size="11" font-weight="600" fill="rgba(255,255,255,0.4)" letter-spacing="1">
+    FIGTREE REGULAR 400
+  </text>
+  <text x="850" y="375" font-family="system-ui" font-size="48" font-weight="400" fill="#4CAF8C" letter-spacing="-0.5">
+    Singularity
+  </text>
+
+  <!-- Page Layout Example -->
+  <text x="80" y="480" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(255,255,255,0.5)" letter-spacing="2">
+    IN CONTEXT — PAGE LAYOUT
+  </text>
+
+  <!-- Mock page -->
+  <rect x="80" y="510" width="1440" height="800" rx="12" fill="#12161A" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+
+  <!-- Page header -->
+  <text x="120" y="580" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="500" fill="#fff" letter-spacing="-1">
+    Where institutional
+  </text>
+  <text x="120" y="640" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="500" fill="#fff" letter-spacing="-1">
+    infrastructure converges
+  </text>
+  <text x="122" y="645" font-family="system-ui" font-size="9" font-weight="600" fill="rgba(107,79,236,0.4)" letter-spacing="1">
+    OUTFIT MEDIUM 500 — 52PX
+  </text>
+
+  <!-- Subheading -->
+  <text x="120" y="710" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="500" fill="rgba(255,255,255,0.9)" letter-spacing="-0.3">
+    Institutional-grade staking infrastructure
+  </text>
+  <text x="122" y="715" font-family="system-ui" font-size="8" font-weight="600" fill="rgba(107,79,236,0.4)" letter-spacing="1">
+    OUTFIT MEDIUM 500 — 24PX
+  </text>
+
+  <!-- Body paragraphs -->
+  <text x="120" y="770" font-family="system-ui" font-size="17" font-weight="400" fill="rgba(255,255,255,0.85)" style="line-height: 1.7;">
+    InfraSingularity provides institutional-grade blockchain infrastructure for 50+ mainnets,
+  </text>
+  <text x="120" y="800" font-family="system-ui" font-size="17" font-weight="400" fill="rgba(255,255,255,0.85)">
+    managing over $100M in assets under management. Our white-label platform serves as the
+  </text>
+  <text x="120" y="830" font-family="system-ui" font-size="17" font-weight="400" fill="rgba(255,255,255,0.85)">
+    official NaaS partner for Canton Network, bridging traditional finance to decentralized
+  </text>
+  <text x="120" y="860" font-family="system-ui" font-size="17" font-weight="400" fill="rgba(255,255,255,0.85)">
+    infrastructure with institutional security and compliance.
+  </text>
+  <text x="122" y="865" font-family="system-ui" font-size="8" font-weight="600" fill="rgba(77,175,140,0.4)" letter-spacing="1">
+    FIGTREE REGULAR 400 — 17PX • LINE-HEIGHT 1.7
+  </text>
+
+  <!-- Secondary paragraph -->
+  <text x="120" y="920" font-family="system-ui" font-size="17" font-weight="400" fill="rgba(255,255,255,0.85)">
+    Built for enterprises that demand reliability, security, and scale. Our infrastructure supports
+  </text>
+  <text x="120" y="950" font-family="system-ui" font-size="17" font-weight="400" fill="rgba(255,255,255,0.85)">
+    the world's most critical blockchain operations with 99.9% uptime and institutional-grade
+  </text>
+  <text x="120" y="980" font-family="system-ui" font-size="17" font-weight="400" fill="rgba(255,255,255,0.85)">
+    security protocols. Every validator is monitored 24/7 with automated failover systems.
+  </text>
+
+  <!-- UI Elements -->
+  <rect x="120" y="1030" width="180" height="48" rx="6" fill="#6B4FEC"/>
+  <text x="155" y="1059" font-family="system-ui" font-size="15" font-weight="500" fill="#fff">
+    Get Started
+  </text>
+  <text x="122" y="1085" font-family="system-ui" font-size="8" font-weight="600" fill="rgba(107,79,236,0.4)" letter-spacing="1">
+    FIGTREE MEDIUM 500 — 15PX
+  </text>
+
+  <rect x="320" y="1030" width="180" height="48" rx="6" fill="transparent" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="358" y="1059" font-family="system-ui" font-size="15" font-weight="500" fill="rgba(255,255,255,0.9)">
+    Learn More
+  </text>
+
+  <!-- Stats section -->
+  <rect x="850" y="730" width="580" height="200" rx="8" fill="rgba(107,79,236,0.05)" stroke="rgba(107,79,236,0.15)" stroke-width="1"/>
+
+  <text x="880" y="770" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="600" fill="#6B4FEC">
+    50+
+  </text>
+  <text x="880" y="800" font-family="system-ui" font-size="14" font-weight="400" fill="rgba(255,255,255,0.7)">
+    Supported Mainnets
+  </text>
+  <text x="882" y="805" font-family="system-ui" font-size="7" font-weight="600" fill="rgba(107,79,236,0.3)" letter-spacing="1">
+    OUTFIT SEMIBOLD 600 + FIGTREE REGULAR
+  </text>
+
+  <text x="1050" y="770" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="600" fill="#6B4FEC">
+    $100M+
+  </text>
+  <text x="1050" y="800" font-family="system-ui" font-size="14" font-weight="400" fill="rgba(255,255,255,0.7)">
+    Assets Under Management
+  </text>
+
+  <text x="880" y="870" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="600" fill="#6B4FEC">
+    99.9%
+  </text>
+  <text x="880" y="900" font-family="system-ui" font-size="14" font-weight="400" fill="rgba(255,255,255,0.7)">
+    Infrastructure Uptime
+  </text>
+
+  <!-- Key Insight -->
+  <text x="80" y="1360" font-family="system-ui" font-size="13" font-weight="400" fill="rgba(255,255,255,0.6)">
+    Typography pairing creates hierarchy without disruption — Outfit commands attention, Figtree delivers clarity.
+  </text>
+</svg>

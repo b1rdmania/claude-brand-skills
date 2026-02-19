@@ -1,0 +1,127 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1400" height="900" fill="#F5F5F7"/>
+
+  <!-- Title -->
+  <text x="60" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#6B4FEC" letter-spacing="2">
+    DESIGN SYSTEM
+  </text>
+
+  <!-- Color Palette Section -->
+  <text x="60" y="150" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(0,0,0,0.5)" letter-spacing="1.5">
+    COLOR PALETTE
+  </text>
+
+  <!-- Color swatches -->
+  <g id="colors">
+    <!-- Primary Purple -->
+    <rect x="60" y="180" width="150" height="150" rx="8" fill="#6B4FEC"/>
+    <text x="60" y="350" font-family="system-ui" font-size="13" font-weight="500" fill="#0A0D10">Primary Purple</text>
+    <text x="60" y="370" font-family="monospace" font-size="11" fill="rgba(0,0,0,0.6)">#6B4FEC</text>
+
+    <!-- Purple Glow -->
+    <rect x="230" y="180" width="150" height="150" rx="8" fill="rgba(107, 79, 236, 0.2)" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+    <text x="230" y="350" font-family="system-ui" font-size="13" font-weight="500" fill="#0A0D10">Purple Glow</text>
+    <text x="230" y="370" font-family="monospace" font-size="11" fill="rgba(0,0,0,0.6)">rgba(107,79,236,0.2)</text>
+
+    <!-- Background Dark -->
+    <rect x="400" y="180" width="150" height="150" rx="8" fill="#0A0D10" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+    <text x="400" y="350" font-family="system-ui" font-size="13" font-weight="500" fill="#0A0D10">Background Dark</text>
+    <text x="400" y="370" font-family="monospace" font-size="11" fill="rgba(0,0,0,0.6)">#0A0D10</text>
+
+    <!-- Surface -->
+    <rect x="570" y="180" width="150" height="150" rx="8" fill="#141920" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+    <text x="570" y="350" font-family="system-ui" font-size="13" font-weight="500" fill="#0A0D10">Surface</text>
+    <text x="570" y="370" font-family="monospace" font-size="11" fill="rgba(0,0,0,0.6)">#141920</text>
+
+    <!-- Border -->
+    <rect x="740" y="180" width="150" height="150" rx="8" fill="rgba(255,255,255,0.08)" stroke="rgba(0,0,0,0.2)" stroke-width="1"/>
+    <text x="740" y="350" font-family="system-ui" font-size="13" font-weight="500" fill="#0A0D10">Border</text>
+    <text x="740" y="370" font-family="monospace" font-size="11" fill="rgba(0,0,0,0.6)">rgba(255,255,255,0.08)</text>
+
+    <!-- Text Primary -->
+    <rect x="910" y="180" width="150" height="150" rx="8" fill="#FFFFFF" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+    <text x="910" y="350" font-family="system-ui" font-size="13" font-weight="500" fill="#0A0D10">Text Primary</text>
+    <text x="910" y="370" font-family="monospace" font-size="11" fill="rgba(0,0,0,0.6)">#FFFFFF</text>
+  </g>
+
+  <!-- Typography Section -->
+  <text x="60" y="450" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(0,0,0,0.5)" letter-spacing="1.5">
+    TYPOGRAPHY
+  </text>
+
+  <!-- Display font -->
+  <rect x="60" y="480" width="1280" height="100" rx="8" fill="rgba(0,0,0,0.03)" stroke="rgba(0,0,0,0.05)" stroke-width="1"/>
+  <text x="80" y="510" font-family="monospace" font-size="10" fill="rgba(0,0,0,0.4)" letter-spacing="1">
+    DISPLAY / HEADINGS — OUTFIT MEDIUM 500
+  </text>
+  <text x="80" y="555" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="500" fill="#0A0D10" letter-spacing="-0.5">
+    Where infrastructure converges
+  </text>
+
+  <!-- Body font -->
+  <rect x="60" y="600" width="1280" height="120" rx="8" fill="rgba(0,0,0,0.03)" stroke="rgba(0,0,0,0.05)" stroke-width="1"/>
+  <text x="80" y="630" font-family="monospace" font-size="10" fill="rgba(0,0,0,0.4)" letter-spacing="1">
+    BODY TEXT — FIGTREE REGULAR 400
+  </text>
+  <text x="80" y="660" font-family="system-ui" font-size="16" font-weight="400" fill="rgba(0,0,0,0.7)">
+    InfraSingularity provides institutional-grade blockchain infrastructure for 50+ mainnets,
+  </text>
+  <text x="80" y="690" font-family="system-ui" font-size="16" font-weight="400" fill="rgba(0,0,0,0.7)">
+    managing over $100M in assets. Official NaaS partner for Canton Network.
+  </text>
+
+  <!-- Logo Lockup Section -->
+  <text x="60" y="770" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(0,0,0,0.5)" letter-spacing="1.5">
+    LOGO LOCKUP
+  </text>
+
+  <!-- Lockup preview -->
+  <rect x="60" y="800" width="600" height="80" rx="8" fill="rgba(0,0,0,0.03)" stroke="rgba(0,0,0,0.05)" stroke-width="1"/>
+
+  <!-- Mark (scaled down to fit) -->
+  <g transform="translate(90, 820) scale(0.6)">
+    <circle cx="32" cy="32" r="2.5" fill="#0A0D10"/>
+    <circle cx="32" cy="9" r="2.2" fill="#0A0D10"/>
+    <circle cx="32" cy="17" r="2.0" fill="#0A0D10"/>
+    <circle cx="32" cy="24" r="1.8" fill="#0A0D10"/>
+    <circle cx="46.5" cy="11.5" r="2.2" fill="#0A0D10"/>
+    <circle cx="41.5" cy="19" r="2.0" fill="#0A0D10"/>
+    <circle cx="37.5" cy="25" r="1.8" fill="#0A0D10"/>
+    <circle cx="55" cy="32" r="2.2" fill="#0A0D10"/>
+    <circle cx="47" cy="32" r="2.0" fill="#0A0D10"/>
+    <circle cx="40" cy="32" r="1.8" fill="#0A0D10"/>
+    <circle cx="46.5" cy="52.5" r="2.2" fill="#0A0D10"/>
+    <circle cx="41.5" cy="45" r="2.0" fill="#0A0D10"/>
+    <circle cx="37.5" cy="39" r="1.8" fill="#0A0D10"/>
+    <circle cx="32" cy="55" r="2.2" fill="#0A0D10"/>
+    <circle cx="32" cy="47" r="2.0" fill="#0A0D10"/>
+    <circle cx="32" cy="40" r="1.8" fill="#0A0D10"/>
+    <circle cx="17.5" cy="52.5" r="2.2" fill="#0A0D10"/>
+    <circle cx="22.5" cy="45" r="2.0" fill="#0A0D10"/>
+    <circle cx="26.5" cy="39" r="1.8" fill="#0A0D10"/>
+    <circle cx="9" cy="32" r="2.2" fill="#0A0D10"/>
+    <circle cx="17" cy="32" r="2.0" fill="#0A0D10"/>
+    <circle cx="24" cy="32" r="1.8" fill="#0A0D10"/>
+    <circle cx="17.5" cy="11.5" r="2.2" fill="#0A0D10"/>
+    <circle cx="22.5" cy="19" r="2.0" fill="#0A0D10"/>
+    <circle cx="26.5" cy="25" r="1.8" fill="#0A0D10"/>
+  </g>
+
+  <!-- Wordmark text -->
+  <text x="145" y="854" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="500" fill="#0A0D10" letter-spacing="-0.3">
+    Infra
+  </text>
+  <text x="225" y="854" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="300" fill="#0A0D10" letter-spacing="-0.3">
+    Singularity
+  </text>
+  <circle cx="410" cy="848" r="3.5" fill="#6B4FEC"/>
+
+  <!-- Specs -->
+  <text x="480" y="830" font-family="monospace" font-size="11" fill="rgba(0,0,0,0.5)">
+    Gap: 16px | Text: 40px | Dot: 7px
+  </text>
+  <text x="480" y="850" font-family="monospace" font-size="11" fill="rgba(0,0,0,0.5)">
+    "Infra" Medium 500 | "Singularity" Light 300
+  </text>
+</svg>

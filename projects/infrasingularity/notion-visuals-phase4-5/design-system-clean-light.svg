@@ -1,0 +1,231 @@
+<svg width="1600" height="2000" viewBox="0 0 1600 2000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1600" height="2000" fill="#F5F5F7"/>
+
+  <!-- Header -->
+  <text x="80" y="100" font-family="system-ui" font-size="48" font-weight="600" fill="#0A0D10">
+    InfraSingularity Design System
+  </text>
+  <text x="80" y="145" font-family="system-ui" font-size="18" fill="rgba(0,0,0,0.5)">
+    v1.0 — Light Mode
+  </text>
+
+  <!-- Brand Colors -->
+  <text x="80" y="250" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(0,0,0,0.5)" letter-spacing="2">
+    BRAND COLORS
+  </text>
+
+  <rect x="80" y="280" width="180" height="180" rx="12" fill="#6B4FEC"/>
+  <text x="80" y="480" font-family="system-ui" font-size="16" font-weight="600" fill="#0A0D10">Primary Purple</text>
+  <text x="80" y="505" font-family="monospace" font-size="14" fill="rgba(0,0,0,0.6)">#6B4FEC</text>
+
+  <rect x="280" y="280" width="180" height="180" rx="12" fill="#8B6FFF"/>
+  <text x="280" y="480" font-family="system-ui" font-size="16" font-weight="600" fill="#0A0D10">Accent Glow</text>
+  <text x="280" y="505" font-family="monospace" font-size="14" fill="rgba(0,0,0,0.6)">#8B6FFF</text>
+
+  <rect x="480" y="280" width="180" height="180" rx="12" fill="#513AC0"/>
+  <text x="480" y="480" font-family="system-ui" font-size="16" font-weight="600" fill="#0A0D10">Accent Dim</text>
+  <text x="480" y="505" font-family="monospace" font-size="14" fill="rgba(0,0,0,0.6)">#513AC0</text>
+
+  <rect x="680" y="280" width="180" height="180" rx="12" fill="#2B1F5C"/>
+  <text x="680" y="480" font-family="system-ui" font-size="16" font-weight="600" fill="#0A0D10">Accent Dark</text>
+  <text x="680" y="505" font-family="monospace" font-size="14" fill="rgba(0,0,0,0.6)">#2B1F5C</text>
+
+  <!-- Functional Colors -->
+  <text x="80" y="620" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(0,0,0,0.5)" letter-spacing="2">
+    FUNCTIONAL COLORS
+  </text>
+
+  <!-- Success -->
+  <rect x="80" y="650" width="140" height="140" rx="12" fill="#4CAF8C"/>
+  <text x="80" y="810" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Success</text>
+  <text x="80" y="832" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#4CAF8C</text>
+
+  <rect x="240" y="650" width="140" height="140" rx="12" fill="#3A8A6E"/>
+  <text x="240" y="810" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Green Dim</text>
+  <text x="240" y="832" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#3A8A6E</text>
+
+  <rect x="400" y="650" width="140" height="140" rx="12" fill="#1F4A3A"/>
+  <text x="400" y="810" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Green Dark</text>
+  <text x="400" y="832" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#1F4A3A</text>
+
+  <!-- Warning -->
+  <rect x="560" y="650" width="140" height="140" rx="12" fill="#F59E42"/>
+  <text x="560" y="810" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Warning</text>
+  <text x="560" y="832" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#F59E42</text>
+
+  <rect x="720" y="650" width="140" height="140" rx="12" fill="#C77E34"/>
+  <text x="720" y="810" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Amber Dim</text>
+  <text x="720" y="832" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#C77E34</text>
+
+  <rect x="880" y="650" width="140" height="140" rx="12" fill="#5C3A1A"/>
+  <text x="880" y="810" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Amber Dark</text>
+  <text x="880" y="832" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#5C3A1A</text>
+
+  <!-- Error -->
+  <rect x="1040" y="650" width="140" height="140" rx="12" fill="#E85D5D"/>
+  <text x="1040" y="810" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Error</text>
+  <text x="1040" y="832" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#E85D5D</text>
+
+  <rect x="1200" y="650" width="140" height="140" rx="12" fill="#C44A4A"/>
+  <text x="1200" y="810" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Red Dim</text>
+  <text x="1200" y="832" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#C44A4A</text>
+
+  <rect x="1360" y="650" width="140" height="140" rx="12" fill="#5C2626"/>
+  <text x="1360" y="810" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Red Dark</text>
+  <text x="1360" y="832" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#5C2626</text>
+
+  <!-- Info -->
+  <rect x="80" y="870" width="140" height="140" rx="12" fill="#5B9EFF"/>
+  <text x="80" y="1030" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Info</text>
+  <text x="80" y="1052" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#5B9EFF</text>
+
+  <rect x="240" y="870" width="140" height="140" rx="12" fill="#4780D6"/>
+  <text x="240" y="1030" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Blue Dim</text>
+  <text x="240" y="1052" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#4780D6</text>
+
+  <rect x="400" y="870" width="140" height="140" rx="12" fill="#2A3E5C"/>
+  <text x="400" y="1030" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Blue Dark</text>
+  <text x="400" y="1052" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#2A3E5C</text>
+
+  <!-- Backgrounds -->
+  <text x="80" y="1180" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(0,0,0,0.5)" letter-spacing="2">
+    BACKGROUNDS
+  </text>
+
+  <rect x="80" y="1210" width="160" height="160" rx="12" fill="#0A0D10" stroke="rgba(0,0,0,0.1)" stroke-width="2"/>
+  <text x="80" y="1390" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Deep</text>
+  <text x="80" y="1412" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#0A0D10</text>
+
+  <rect x="260" y="1210" width="160" height="160" rx="12" fill="#12161A" stroke="rgba(0,0,0,0.1)" stroke-width="2"/>
+  <text x="260" y="1390" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Warm</text>
+  <text x="260" y="1412" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#12161A</text>
+
+  <rect x="440" y="1210" width="160" height="160" rx="12" fill="#1A1F24" stroke="rgba(0,0,0,0.1)" stroke-width="2"/>
+  <text x="440" y="1390" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Surface</text>
+  <text x="440" y="1412" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#1A1F24</text>
+
+  <rect x="620" y="1210" width="160" height="160" rx="12" fill="#23292F" stroke="rgba(0,0,0,0.1)" stroke-width="2"/>
+  <text x="620" y="1390" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Elevated</text>
+  <text x="620" y="1412" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#23292F</text>
+
+  <!-- Text Colors -->
+  <text x="80" y="1540" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(0,0,0,0.5)" letter-spacing="2">
+    TEXT COLORS
+  </text>
+
+  <rect x="80" y="1570" width="160" height="160" rx="12" fill="#F5F5F7" stroke="rgba(0,0,0,0.1)" stroke-width="2"/>
+  <text x="80" y="1750" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Primary</text>
+  <text x="80" y="1772" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#F5F5F7</text>
+
+  <rect x="260" y="1570" width="160" height="160" rx="12" fill="#C4C6CB"/>
+  <text x="260" y="1750" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Secondary</text>
+  <text x="260" y="1772" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#C4C6CB</text>
+
+  <rect x="440" y="1570" width="160" height="160" rx="12" fill="#6E7178"/>
+  <text x="440" y="1750" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Muted</text>
+  <text x="440" y="1772" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#6E7178</text>
+
+  <rect x="620" y="1570" width="160" height="160" rx="12" fill="#3D4147"/>
+  <text x="620" y="1750" font-family="system-ui" font-size="15" font-weight="600" fill="#0A0D10">Whisper</text>
+  <text x="620" y="1772" font-family="monospace" font-size="13" fill="rgba(0,0,0,0.6)">#3D4147</text>
+
+  <!-- Typography -->
+  <text x="920" y="250" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(0,0,0,0.5)" letter-spacing="2">
+    TYPOGRAPHY
+  </text>
+
+  <text x="920" y="300" font-family="system-ui" font-size="18" font-weight="600" fill="#6B4FEC">
+    Display / Headings
+  </text>
+  <text x="920" y="330" font-family="system-ui" font-size="14" fill="rgba(0,0,0,0.6)">
+    Outfit (300, 500, 600, 700)
+  </text>
+  <text x="920" y="390" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="500" fill="#0A0D10" letter-spacing="-0.8">
+    Where infrastructure
+  </text>
+  <text x="920" y="435" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="500" fill="#0A0D10" letter-spacing="-0.8">
+    converges
+  </text>
+
+  <text x="920" y="520" font-family="system-ui" font-size="18" font-weight="600" fill="#6B4FEC">
+    Body / UI Text
+  </text>
+  <text x="920" y="550" font-family="system-ui" font-size="14" fill="rgba(0,0,0,0.6)">
+    Figtree (400, 500, 600)
+  </text>
+  <text x="920" y="590" font-family="system-ui" font-size="17" font-weight="400" fill="rgba(0,0,0,0.75)" style="line-height: 1.6;">
+    InfraSingularity provides institutional-
+  </text>
+  <text x="920" y="620" font-family="system-ui" font-size="17" font-weight="400" fill="rgba(0,0,0,0.75)">
+    grade blockchain infrastructure for 50+
+  </text>
+  <text x="920" y="650" font-family="system-ui" font-size="17" font-weight="400" fill="rgba(0,0,0,0.75)">
+    mainnets, managing over $100M AUM.
+  </text>
+
+  <!-- Logo -->
+  <text x="920" y="750" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(0,0,0,0.5)" letter-spacing="2">
+    LOGO LOCKUP
+  </text>
+
+  <rect x="920" y="780" width="600" height="160" rx="12" fill="rgba(0,0,0,0.03)" stroke="rgba(0,0,0,0.05)" stroke-width="2"/>
+
+  <!-- Mark -->
+  <g transform="translate(955, 820) scale(0.8)">
+    <circle cx="32" cy="32" r="2.5" fill="#0A0D10"/>
+    <circle cx="32" cy="9" r="2.2" fill="#0A0D10"/>
+    <circle cx="32" cy="17" r="2.0" fill="#0A0D10"/>
+    <circle cx="32" cy="24" r="1.8" fill="#0A0D10"/>
+    <circle cx="46.5" cy="11.5" r="2.2" fill="#0A0D10"/>
+    <circle cx="41.5" cy="19" r="2.0" fill="#0A0D10"/>
+    <circle cx="37.5" cy="25" r="1.8" fill="#0A0D10"/>
+    <circle cx="55" cy="32" r="2.2" fill="#0A0D10"/>
+    <circle cx="47" cy="32" r="2.0" fill="#0A0D10"/>
+    <circle cx="40" cy="32" r="1.8" fill="#0A0D10"/>
+    <circle cx="46.5" cy="52.5" r="2.2" fill="#0A0D10"/>
+    <circle cx="41.5" cy="45" r="2.0" fill="#0A0D10"/>
+    <circle cx="37.5" cy="39" r="1.8" fill="#0A0D10"/>
+    <circle cx="32" cy="55" r="2.2" fill="#0A0D10"/>
+    <circle cx="32" cy="47" r="2.0" fill="#0A0D10"/>
+    <circle cx="32" cy="40" r="1.8" fill="#0A0D10"/>
+    <circle cx="17.5" cy="52.5" r="2.2" fill="#0A0D10"/>
+    <circle cx="22.5" cy="45" r="2.0" fill="#0A0D10"/>
+    <circle cx="26.5" cy="39" r="1.8" fill="#0A0D10"/>
+    <circle cx="9" cy="32" r="2.2" fill="#0A0D10"/>
+    <circle cx="17" cy="32" r="2.0" fill="#0A0D10"/>
+    <circle cx="24" cy="32" r="1.8" fill="#0A0D10"/>
+    <circle cx="17.5" cy="11.5" r="2.2" fill="#0A0D10"/>
+    <circle cx="22.5" cy="19" r="2.0" fill="#0A0D10"/>
+    <circle cx="26.5" cy="25" r="1.8" fill="#0A0D10"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="1020" y="867" font-family="system-ui, -apple-system, sans-serif" font-size="36" letter-spacing="-0.4" fill="#0A0D10">
+    <tspan font-weight="500">Infra</tspan><tspan font-weight="300">Singularity</tspan>
+  </text>
+  <circle cx="1310" cy="859" r="3.5" fill="#6B4FEC"/>
+
+  <text x="920" y="1000" font-family="monospace" font-size="12" fill="rgba(0,0,0,0.5)">
+    Outfit Medium 500 + Light 300 • 40px • 16px gap • 7px purple dot
+  </text>
+
+  <!-- Visual Philosophy -->
+  <text x="920" y="1120" font-family="system-ui" font-size="14" font-weight="600" fill="rgba(0,0,0,0.5)" letter-spacing="2">
+    VISUAL PHILOSOPHY
+  </text>
+
+  <text x="920" y="1170" font-family="system-ui" font-size="28" font-weight="600" fill="#6B4FEC">
+    Gravitational Density
+  </text>
+
+  <text x="920" y="1220" font-family="system-ui" font-size="16" font-weight="400" fill="rgba(0,0,0,0.7)" style="line-height: 1.7;">
+    Dark-first aesthetic with geometric precision
+  </text>
+  <text x="920" y="1250" font-family="system-ui" font-size="16" font-weight="400" fill="rgba(0,0,0,0.7)">
+    and institutional authority. Where infrastructure
+  </text>
+  <text x="920" y="1280" font-family="system-ui" font-size="16" font-weight="400" fill="rgba(0,0,0,0.7)">
+    converges to a singular point.
+  </text>
+</svg>

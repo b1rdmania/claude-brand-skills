@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Figtree', sans-serif;
+      background: #0A0D10;
+      color: #fff;
+      padding: 60px;
+      width: 1400px;
+    }
+
+    .section {
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #6B4FEC;
+      margin-bottom: 24px;
+    }
+
+    /* Color Palette */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+    }
+
+    .color-swatch {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .color-label {
+      position: absolute;
+      bottom: -30px;
+      left: 0;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .color-name {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* Typography */
+    .type-specimen {
+      margin-bottom: 32px;
+      padding: 24px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .type-label {
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .type-sample {
+      margin-bottom: 8px;
+    }
+
+    .outfit-display {
+      font-family: 'Outfit', sans-serif;
+      font-size: 48px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .outfit-heading {
+      font-family: 'Outfit', sans-serif;
+      font-size: 32px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .figtree-body {
+      font-family: 'Figtree', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .figtree-ui {
+      font-family: 'Figtree', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* Lockup Preview */
+    .lockup-preview {
+      padding: 40px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .mark-preview {
+      width: 64px;
+      height: 64px;
+    }
+
+    .wordmark-preview {
+      font-family: 'Outfit', sans-serif;
+      font-size: 40px;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .wordmark-infra {
+      font-weight: 500;
+    }
+
+    .wordmark-singularity {
+      font-weight: 300;
+    }
+
+    .purple-dot {
+      width: 7px;
+      height: 7px;
+      background: #6B4FEC;
+      border-radius: 50%;
+      margin-left: 4px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Colors -->
+  <div class="section">
+    <div class="section-title">Color System</div>
+    <div class="color-grid">
+      <div>
+        <div class="color-name">Primary Purple</div>
+        <div class="color-swatch" style="background: #6B4FEC;">
+          <div class="color-label">#6B4FEC</div>
+        </div>
+      </div>
+      <div>
+        <div class="color-name">Purple Glow</div>
+        <div class="color-swatch" style="background: rgba(107, 79, 236, 0.2);">
+          <div class="color-label">rgba(107,79,236,0.2)</div>
+        </div>
+      </div>
+      <div>
+        <div class="color-name">Background Dark</div>
+        <div class="color-swatch" style="background: #0A0D10;">
+          <div class="color-label">#0A0D10</div>
+        </div>
+      </div>
+      <div>
+        <div class="color-name">Surface</div>
+        <div class="color-swatch" style="background: #141920;">
+          <div class="color-label">#141920</div>
+        </div>
+      </div>
+      <div>
+        <div class="color-name">Border</div>
+        <div class="color-swatch" style="background: rgba(255,255,255,0.08);">
+          <div class="color-label">rgba(255,255,255,0.08)</div>
+        </div>
+      </div>
+      <div>
+        <div class="color-name">Text Primary</div>
+        <div class="color-swatch" style="background: #FFFFFF;">
+          <div class="color-label">#FFFFFF</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Typography -->
+  <div class="section" style="margin-top: 80px;">
+    <div class="section-title">Typography System</div>
+
+    <div class="type-specimen">
+      <div class="type-label">Display / Headings — Outfit Medium 500</div>
+      <div class="type-sample outfit-display">Where infrastructure converges</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Subheadings — Outfit Medium 500</div>
+      <div class="type-sample outfit-heading">Institutional-grade staking infrastructure</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Body Text — Figtree Regular 400</div>
+      <div class="type-sample figtree-body">InfraSingularity provides institutional-grade blockchain infrastructure for 50+ mainnets, managing over $100M in assets under management. Our white-label platform serves as the official NaaS partner for Canton Network, bridging traditional finance to decentralized infrastructure.</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">UI Elements — Figtree Medium 500</div>
+      <div class="type-sample figtree-ui">Get Started → | Learn More | Contact Sales</div>
+    </div>
+  </div>
+
+  <!-- Lockup -->
+  <div class="section" style="margin-top: 60px;">
+    <div class="section-title">Logo Lockup</div>
+    <div class="lockup-preview">
+      <svg class="mark-preview" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+        <circle cx="32" cy="9" r="2.2" fill="#fff"/>
+        <circle cx="32" cy="17" r="2.0" fill="#fff"/>
+        <circle cx="32" cy="24" r="1.8" fill="#fff"/>
+        <circle cx="46.5" cy="11.5" r="2.2" fill="#fff"/>
+        <circle cx="41.5" cy="19" r="2.0" fill="#fff"/>
+        <circle cx="37.5" cy="25" r="1.8" fill="#fff"/>
+        <circle cx="55" cy="32" r="2.2" fill="#fff"/>
+        <circle cx="47" cy="32" r="2.0" fill="#fff"/>
+        <circle cx="40" cy="32" r="1.8" fill="#fff"/>
+        <circle cx="46.5" cy="52.5" r="2.2" fill="#fff"/>
+        <circle cx="41.5" cy="45" r="2.0" fill="#fff"/>
+        <circle cx="37.5" cy="39" r="1.8" fill="#fff"/>
+        <circle cx="32" cy="55" r="2.2" fill="#fff"/>
+        <circle cx="32" cy="47" r="2.0" fill="#fff"/>
+        <circle cx="32" cy="40" r="1.8" fill="#fff"/>
+        <circle cx="17.5" cy="52.5" r="2.2" fill="#fff"/>
+        <circle cx="22.5" cy="45" r="2.0" fill="#fff"/>
+        <circle cx="26.5" cy="39" r="1.8" fill="#fff"/>
+        <circle cx="9" cy="32" r="2.2" fill="#fff"/>
+        <circle cx="17" cy="32" r="2.0" fill="#fff"/>
+        <circle cx="24" cy="32" r="1.8" fill="#fff"/>
+        <circle cx="17.5" cy="11.5" r="2.2" fill="#fff"/>
+        <circle cx="22.5" cy="19" r="2.0" fill="#fff"/>
+        <circle cx="26.5" cy="25" r="1.8" fill="#fff"/>
+      </svg>
+      <div class="wordmark-preview">
+        <span class="wordmark-infra">Infra</span><span class="wordmark-singularity">Singularity</span><div class="purple-dot"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
