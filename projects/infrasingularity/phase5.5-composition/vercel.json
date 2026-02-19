@@ -1,3 +1,7 @@
 {
-  "alias": ["infrasingularity-brand.vercel.app"]
+  "alias": ["infrasingularity-brand.vercel.app"],
+  "rewrites": [
+    { "source": "/site", "destination": "/composition-final.html" },
+    { "source": "/brand-kit", "destination": "/brand-kit.html" }
+  ]
 }

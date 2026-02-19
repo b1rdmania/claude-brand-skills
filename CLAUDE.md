@@ -36,10 +36,17 @@ See `CHANGELOG.md` for full v2.0 release notes.
 - Notion: `https://www.notion.so/3040d80f5eb781dcaa12dc35497dfdbd`
 
 **Final deliverables:**
-- `phase5.5-composition/index.html` — Splash entry (diagonal split, mobile-responsive)
-- `phase5.5-composition/composition-final.html` — Main site (mobile-responsive, hamburger nav)
-- `phase5.5-composition/brand-kit.html` — Brand guidelines page
+- `phase5.5-composition/index.html` — Splash → `/` (root)
+- `phase5.5-composition/composition-final.html` → `/site`
+- `phase5.5-composition/brand-kit.html` → `/brand-kit`
+- `phase5.5-composition/vercel.json` — rewrites + alias config
 - `~/Downloads/infrasingularity-brand-kit-v1.zip` — Full packaged kit
+
+**URL structure (vercel.json rewrites):**
+- `/` → splash (index.html)
+- `/site` → main page (composition-final.html)
+- `/brand-kit` → guidelines (brand-kit.html)
+- All internal links use root-relative paths (`/`, `/site`, `/brand-kit`)
 
 **Key decisions locked:**
 - Mark: v11d (25-dot radial starburst)
