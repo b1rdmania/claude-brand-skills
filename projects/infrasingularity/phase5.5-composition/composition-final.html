@@ -106,7 +106,7 @@
       background: rgba(10,13,16,0.92);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 2px solid var(--accent);
     }
 
     .nav-logo img { height: 24px; width: auto; }
@@ -182,12 +182,6 @@
       max-width: 1400px;
       margin: 0 auto;
       border-bottom: 1px solid var(--border);
-    }
-
-    .hero-rule {
-      height: 3px;
-      background: var(--accent);
-      margin-bottom: var(--space-10);
     }
 
     .bg-mark {
@@ -364,6 +358,10 @@
       border: 2px solid var(--border-accent);
       background: var(--fill-accent);
     }
+
+    .spec-cell--green  { border-color: var(--border-green);  background: var(--fill-green);  }
+    .spec-cell--amber  { border-color: var(--border-amber);  background: var(--fill-amber);  }
+    .spec-cell--blue   { border-color: var(--border-blue);   background: var(--fill-blue);   }
 
     .spec-label {
       font-size: 11px;
@@ -686,7 +684,7 @@
 
   <!-- Hero -->
   <section class="hero" style="position:relative; overflow:hidden;">
-    <svg class="bg-mark" style="top:50%;left:36%;transform:translate(-50%,-50%);width:800px;height:800px;opacity:0.07;" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="bg-mark" style="top:50%;left:36%;transform:translate(-50%,-50%);width:800px;height:800px;opacity:0.04;" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="32" cy="32" r="2.5" fill="#6B4FEC"/>
       <circle cx="32" cy="9"  r="2.2" fill="#6B4FEC"/>
       <circle cx="32" cy="17" r="2.0" fill="#6B4FEC"/>
@@ -713,7 +711,6 @@
       <circle cx="22.5" cy="19"   r="2.0" fill="#6B4FEC"/>
       <circle cx="26.5" cy="25"   r="1.8" fill="#6B4FEC"/>
     </svg>
-    <div class="hero-rule"></div>
     <div class="hero-grid">
       <div class="hero-headline">
         Institutional<br>Staking Platform.
@@ -736,7 +733,7 @@
           <span class="fact-val">99.99%</span>
         </div>
         <div class="hero-cta">
-          <a href="#contact" class="btn btn-accent">Talk to Our Team</a>
+          <a href="#contact" class="btn" style="display:block;text-align:center;white-space:nowrap;background:var(--amber);color:#000;">Talk to Our Team</a>
         </div>
       </div>
     </div>
@@ -751,22 +748,22 @@
     </div>
     <div class="spec-grid">
       <div class="spec-cell">
-<div class="spec-label">Managed Operations</div>
+        <div class="spec-label">Managed Operations</div>
         <div class="spec-value">Fully managed</div>
         <div class="spec-desc">Backups every 3–4 hours. Go-live in days. Customised to your strategy.</div>
       </div>
       <div class="spec-cell">
-<div class="spec-label">Monitoring</div>
+        <div class="spec-label">Monitoring</div>
         <div class="spec-value">Real-time</div>
         <div class="spec-desc">Analytics and alerting across all active protocols. Performance tracked continuously.</div>
       </div>
       <div class="spec-cell">
-<div class="spec-label">White-label</div>
+        <div class="spec-label">White-label</div>
         <div class="spec-value">Your brand</div>
         <div class="spec-desc">Every deployment carries your identity. Institutional presentation, no IS branding required.</div>
       </div>
       <div class="spec-cell">
-<div class="spec-label">Ecosystem coverage</div>
+        <div class="spec-label">Ecosystem coverage</div>
         <div class="spec-value">Multi-layer</div>
         <div class="spec-desc">Eigenlayer &nbsp;·&nbsp; Symbiotic &nbsp;·&nbsp; Canton Network &nbsp;·&nbsp; Babylon &nbsp;·&nbsp; and more</div>
       </div>
@@ -904,6 +901,7 @@ Zero Gravity
             <li><a href="#protocols">Protocols</a></li>
             <li><a href="#model">The Model</a></li>
             <li><a href="#investments">Investments</a></li>
+            <li><a href="brand-kit.html">Brand Kit</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -917,7 +915,6 @@ Zero Gravity
       </div>
       <div class="footer-bottom">
         <div>© 2026 InfraSingularity</div>
-        <a href="brand-kit.html" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); text-decoration: none; letter-spacing: 0.06em; transition: color 150ms;" onmouseover="this.style.color='#C4C6CB'" onmouseout="this.style.color='#6E7178'">Brand Kit →</a>
       </div>
     </div>
   </footer>
