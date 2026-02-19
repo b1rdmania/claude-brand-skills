@@ -28,33 +28,29 @@ Key additions:
 
 See `CHANGELOG.md` for full v2.0 release notes.
 
-## Current Active Project
+## Completed Project: InfraSingularity
 
-**InfraSingularity Brand** (`projects/infrasingularity/`)
+**InfraSingularity Brand** (`projects/infrasingularity/`) — **ALL PHASES COMPLETE (0–7)**
 - Institutional blockchain infrastructure provider
-- **Progress: Phases 0-5 COMPLETE. Phase 5.5 IN PROGRESS (2026-02-18)**
-  - Phase 2 skipped (integrated into Phase 3)
-  - Phase 3: Mark locked (v11d - 25-dot radial starburst)
-  - Phase 4: Wordmark locked (Infra Medium + Singularity Light, purple full stop)
-  - Phase 5: Design system complete (Outfit + Figtree, full color palette)
-  - Phase 5.5: Two-page site in progress
-- **Key files:**
-  - `phase5.5-composition/splash.html` — **BANKED.** Diagonal split splash (purple left panel + stat blocks right). ENTER → links to main page.
-  - `phase5.5-composition/composition-final.html` — Main page. Brutalist design: spec tables, corner marks, protocol manifest, investments grid.
-- **Design decisions locked:**
-  - Brutalist override: 0 border-radius everywhere (overrides DESIGN.md 8px cards)
-  - Sharp institutional aesthetic: hard borders, corner bracket marks, spec tables
-  - Hero: `clamp(56px, 8vw, 96px)` Outfit weight 300 (Light) — corrected from previous weight 500
-  - Section headers: `LABEL ──────` (flex + 1px rule)
-  - Copy rules: sourced-only (current site, Canton NaaS doc, pitch deck). No invented claims. No American marketing punchlines.
-  - Wordmark on splash: inlined SVG with purple full stop removed (already white-on-dark; no filter needed)
-- **CSS pattern (splash):** purple panel via `clip-path: polygon(0 0, 55% 0, 42% 100%, 0 100%)` + absolute-positioned layers
-- **Lessons learned this session:**
-  - Don't use `filter: brightness(0) invert(1)` on wordmark SVG — it makes the purple full stop white
-  - `justify-content: flex-start` + `flex: 1` on stat blocks is the correct stat-fill pattern
-  - All spacing vars must be `--space-X` (not `--spX`) per DESIGN.md
-- Notion workspace: `https://www.notion.so/3040d80f5eb781dcaa12dc35497dfdbd`
-- Track state: `.brand-progress.md` in project directory
+- Live: `https://infrasingularity-brand.vercel.app`
+- Notion: `https://www.notion.so/3040d80f5eb781dcaa12dc35497dfdbd`
+
+**Final deliverables:**
+- `phase5.5-composition/index.html` — Splash entry (diagonal split, mobile-responsive)
+- `phase5.5-composition/composition-final.html` — Main site (mobile-responsive, hamburger nav)
+- `phase5.5-composition/brand-kit.html` — Brand guidelines page
+- `~/Downloads/infrasingularity-brand-kit-v1.zip` — Full packaged kit
+
+**Key decisions locked:**
+- Mark: v11d (25-dot radial starburst)
+- Wordmark: Outfit "Infra" Medium (500) + "Singularity" Light (300) — no purple dot
+- Typography: Outfit (display) + Figtree (body/UI)
+- Colour: #6B4FEC accent, #4CAF8C green, #F59E42 amber, #5B9EFF blue
+- Aesthetic: 0 border-radius, sharp/geometric, institutional, dark-first
+- Nav: 2px accent purple border-bottom (permanent)
+- Hero CTA: amber button (`var(--amber)` bg, `#000` text, `white-space:nowrap`)
+- Section colour coding: purple = infrastructure, green = protocols, amber = model, blue = investments
+- Copy: sourced-only from real IS docs — no invented claims
 
 ## Completed Reference Project
 
@@ -118,4 +114,4 @@ Each phase has defined entry criteria, outputs, and gate checks tracked in `.bra
 ## Repository
 
 - **GitHub**: `b1rdmania/claude-brand-skills` on `master`
-- Last updated: 2026-02-12 (pulled 14 commits, v2.0 release)
+- Last updated: 2026-02-19
