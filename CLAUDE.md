@@ -33,7 +33,7 @@ See `CHANGELOG.md` for full v2.0 release notes.
 **InfraSingularity Brand** (`projects/infrasingularity/`) — **ALL PHASES COMPLETE (0–7)**
 - Institutional blockchain infrastructure provider
 - Live: `https://infrasingularity-brand.vercel.app`
-- Notion: `https://www.notion.so/3040d80f5eb781dcaa12dc35497dfdbd`
+- Notion: `https://www.notion.so/3040d80f5eb781dcaa12dc35497dfdbd` — **fully updated, all 8 phases linked with images**
 
 **Final deliverables:**
 - `phase5.5-composition/index.html` — Splash → `/` (root)
